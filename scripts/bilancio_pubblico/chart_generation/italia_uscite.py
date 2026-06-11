@@ -1,11 +1,11 @@
-from fisco.utils import (
+from bilancio_pubblico.utils import (
     BLACK,
     NAVY,
     ORANGE,
     PAPER,
     SOURCE_EUROSTAT_EXP,
 )
-from fisco.utils import create_post, format_mld, format_percent, save_chart
+from bilancio_pubblico.utils import create_post, format_mld, format_percent, save_chart
 
 
 def plot_cofog_spending(frame):

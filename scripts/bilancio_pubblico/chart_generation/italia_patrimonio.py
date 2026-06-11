@@ -1,12 +1,12 @@
 import pandas as pd
 
-from fisco.utils import (
+from bilancio_pubblico.utils import (
     BLACK,
     NAVY,
     ORANGE,
     SOURCE_BANKITALIA_WEALTH,
 )
-from fisco.utils import create_post, format_percent, save_chart
+from bilancio_pubblico.utils import create_post, format_percent, save_chart
 
 
 def plot_household_wealth_distribution():

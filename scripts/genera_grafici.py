@@ -1,6 +1,6 @@
 import argparse
 
-from fisco.pipeline import run
+from bilancio_pubblico.pipeline import run
 
 
 def main():

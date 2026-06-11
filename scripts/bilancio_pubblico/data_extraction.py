@@ -3,7 +3,7 @@ from urllib.parse import urlencode
 
 import pandas as pd
 
-from fisco.utils import (
+from bilancio_pubblico.utils import (
     BAND_ORDER,
     COFOG_LABELS,
     EUROSTAT_BASE_URL,

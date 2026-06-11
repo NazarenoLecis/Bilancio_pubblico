@@ -24,14 +24,14 @@ Output:
 ## Struttura
 
 - `scripts/genera_grafici.py`: comando principale, con opzione `--refresh`.
-- `scripts/fisco/utils.py`: percorsi, costanti, cache HTTP, stile grafico, salvataggio PNG e manifest.
-- `scripts/fisco/data_extraction.py`: estrazione e normalizzazione dati MEF, Eurostat, OCSE e dichiarazioni.
-- `scripts/fisco/pipeline.py`: ordine di esecuzione, manifest e analisi dei claim.
-- `scripts/fisco/chart_generation/italia_entrate.py`: grafici solo Italia su entrate, IRPEF, redditi, salari/capitali e successioni.
-- `scripts/fisco/chart_generation/italia_uscite.py`: grafici solo Italia su spesa per funzione e spesa totale.
-- `scripts/fisco/chart_generation/italia_patrimonio.py`: grafici solo Italia sul patrimonio.
-- `scripts/fisco/chart_generation/confronti_europa.py`: confronti Eurostat con UE e paesi europei.
-- `scripts/fisco/chart_generation/confronti_oecd.py`: confronti OCSE per entrate, spesa e successioni.
+- `scripts/bilancio_pubblico/utils.py`: percorsi, costanti, cache HTTP, stile grafico, salvataggio PNG e manifest.
+- `scripts/bilancio_pubblico/data_extraction.py`: estrazione e normalizzazione dati MEF, Eurostat, OCSE e dichiarazioni.
+- `scripts/bilancio_pubblico/pipeline.py`: ordine di esecuzione, manifest e analisi dei claim.
+- `scripts/bilancio_pubblico/chart_generation/italia_entrate.py`: grafici solo Italia su entrate, IRPEF, redditi, salari/capitali e successioni.
+- `scripts/bilancio_pubblico/chart_generation/italia_uscite.py`: grafici solo Italia su spesa per funzione e spesa totale.
+- `scripts/bilancio_pubblico/chart_generation/italia_patrimonio.py`: grafici solo Italia sul patrimonio.
+- `scripts/bilancio_pubblico/chart_generation/confronti_europa.py`: confronti Eurostat con UE e paesi europei.
+- `scripts/bilancio_pubblico/chart_generation/confronti_oecd.py`: confronti OCSE per entrate, spesa e successioni.
 
 ## Fonti dati
 

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from fisco.utils import (
+from bilancio_pubblico.utils import (
     BLACK,
     create_post,
     format_integer,
@@ -20,7 +20,7 @@ from fisco.utils import (
     SUCCESSIONI_DONAZIONI_2025,
     SUCCESSIONI_DONAZIONI_SERIE,
 )
-from fisco.data_extraction import aggregate_columns_by_band, find_mef_item, mef_annual_series
+from bilancio_pubblico.data_extraction import aggregate_columns_by_band, find_mef_item, mef_annual_series
 
 
 def plot_main_taxes(erariali_items, erariali_months, territoriali_items, territoriali_months):

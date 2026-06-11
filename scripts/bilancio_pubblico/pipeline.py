@@ -1,12 +1,12 @@
-from fisco.chart_generation.confronti_europa import plot_peer_comparison
-from fisco.chart_generation.confronti_oecd import (
+from bilancio_pubblico.chart_generation.confronti_europa import plot_peer_comparison
+from bilancio_pubblico.chart_generation.confronti_oecd import (
     plot_oecd_inheritance_tax,
     plot_oecd_revenue_categories,
     plot_oecd_spending_categories,
     plot_oecd_total_spending,
     plot_oecd_total_tax,
 )
-from fisco.chart_generation.italia_entrate import (
+from bilancio_pubblico.chart_generation.italia_entrate import (
     plot_direct_indirect,
     plot_income_composition,
     plot_irpef_shares_by_band,
@@ -17,9 +17,9 @@ from fisco.chart_generation.italia_entrate import (
     plot_tax_pressure,
     plot_wages_capital_distribution,
 )
-from fisco.chart_generation.italia_patrimonio import plot_household_wealth_distribution
-from fisco.chart_generation.italia_uscite import plot_cofog_spending, plot_total_spending_italy
-from fisco.data_extraction import (
+from bilancio_pubblico.chart_generation.italia_patrimonio import plot_household_wealth_distribution
+from bilancio_pubblico.chart_generation.italia_uscite import plot_cofog_spending, plot_total_spending_italy
+from bilancio_pubblico.data_extraction import (
     load_cofog_spending,
     load_declaration_data,
     load_mef_entrate,
@@ -31,7 +31,7 @@ from fisco.data_extraction import (
     load_tax_pressure,
     load_total_spending_italy,
 )
-from fisco.utils import (
+from bilancio_pubblico.utils import (
     BLACK,
     CHART_DIR,
     clean_generated_outputs,

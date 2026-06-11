@@ -1,6 +1,6 @@
 import numpy as np
 
-from fisco.utils import (
+from bilancio_pubblico.utils import (
     BLACK,
     create_post,
     format_percent,

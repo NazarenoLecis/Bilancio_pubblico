@@ -1,5 +1,5 @@
-from fisco.utils import BLACK, NAVY, ORANGE
-from fisco.utils import create_post, format_percent, save_chart
+from bilancio_pubblico.utils import BLACK, NAVY, ORANGE
+from bilancio_pubblico.utils import create_post, format_percent, save_chart
 
 
 def plot_peer_comparison(frame, title_lines, subtitle, filename, source, x_label="% del PIL"):
