@@ -1,0 +1,21 @@
+file,fonte,aggiornamento_fonte
+01_principali_entrate_tributarie_2025.png,"Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali e territoriali, competenza giuridica",2026-06-05 secondo API get_box_sintesi
+02_entrate_dirette_indirette_2002_2025.png,"Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali, competenza giuridica",2026-06-05 secondo API get_box_sintesi
+03_pressione_fiscale_componenti_1995_2024.png,"Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",2026-04-27T11:00:00+0200
+04_spesa_pubblica_funzioni_cofog_2024.png,"Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",2026-04-27T11:00:00+0200
+05_irpef_netto_per_fascia_2024.png,"Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",23 aprile 2026
+06_quote_irpef_per_fascia_2024.png,"Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",23 aprile 2026
+07_distribuzione_salari_capitali_2024.png,"Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",23 aprile 2026
+08_composizione_redditi_per_fascia_2024.png,"Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",23 aprile 2026
+09_pressione_fiscale_confronto_ue_2024.png,"Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",2026-04-27T11:00:00+0200
+10_spesa_pubblica_confronto_ue_2024.png,"Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",2026-04-27T11:00:00+0200
+11_protezione_sociale_confronto_ue_2024.png,"Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",2026-04-27T11:00:00+0200
+12_tipi_entrate_tributarie_2025.png,"Fonte: MEF - Dipartimento delle Finanze, API entrate erariali e territoriali; Appendici statistiche dicembre 2025",2026-06-05 secondo API get_box_sintesi
+13_spesa_totale_italia_1995_2024.png,"Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",2026-04-27T11:00:00+0200
+14_distribuzione_patrimonio_famiglie_2025.png,"Fonte: Banca d'Italia, Conti distributivi sulla ricchezza delle famiglie, IV trimestre 2025",3 giugno 2026
+15_successioni_donazioni_2025.png,"Fonte: MEF - Dipartimento delle Finanze, Appendici statistiche al bollettino entrate tributarie, dicembre 2025",dicembre 2025
+16_ocse_entrate_per_tipo_2024.png,"Fonte: OCSE, Revenue Statistics 2025, Comparative tax revenues, dati 2024",Revenue Statistics 2025; dati 2024
+17_ocse_spesa_per_funzione_2024.png,"Fonte: OCSE, National Accounts Statistics, Table 1100 COFOG e Table 0101 PIL corrente, dati 2024",estrazione API OCSE 10 giugno 2026; dati 2024
+18_ocse_pressione_fiscale_totale_2024.png,"Fonte: OCSE, Revenue Statistics 2025, Comparative tax revenues, dati 2024",Revenue Statistics 2025; dati 2024
+19_ocse_successioni_donazioni_2024.png,"Fonte: OCSE, Revenue Statistics 2025, Comparative tax revenues, dati 2024",Revenue Statistics 2025; dati 2024
+20_ocse_spesa_totale_2024.png,"Fonte: OCSE, National Accounts Statistics, Table 1100 COFOG e Table 0101 PIL corrente, dati 2024",estrazione API OCSE 10 giugno 2026; dati 2024
