@@ -1,4 +1,4 @@
-# Grafici sul fisco italiano
+# Bilancio pubblico
 
 Progetto Python per generare grafici social-format sulla situazione del fisco italiano, con fonte e dicitura "Elaborazione di Nazareno Lecis".
 
