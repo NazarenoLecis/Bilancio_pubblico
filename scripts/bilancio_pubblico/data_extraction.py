@@ -1,3 +1,13 @@
+"""Funzioni di estrazione + normalizzazione dei dataset.
+
+Qui trovi un solo punto di ingresso per ogni fonte:
+- MEF (entrate, territoriale, dichiarazioni)
+- Eurostat (imposta, contributiva, COFOG)
+- OCSE (fisco e spesa)
+
+Ogni funzione ritorna DataFrame/Series già nel formato atteso dalla pipeline grafica.
+"""
+
 import re
 from urllib.parse import urlencode
 
@@ -26,6 +36,7 @@ from bilancio_pubblico.utils import (
 
 
 def parse_mef_start(token):
+    # Converte `26-1` nel primo giorno di quel mese, es. "2026-01-01".
     year_text, month_text = token.split("-")
     year = 2000 + int(year_text)
     month = int(month_text)
@@ -33,6 +44,7 @@ def parse_mef_start(token):
 
 
 def collect_mef_items(node, items):
+    # Esplora ricorsivamente la struttura JSON MEF e raccoglie solo nodi con label + mesi.
     if isinstance(node, dict):
         label = node.get("lbl")
         months = node.get("mesi")
@@ -47,6 +59,7 @@ def collect_mef_items(node, items):
 
 
 def find_mef_item(items, exact=None, starts=None, contains=None):
+    # Trova un nodo MEF secondo priorità: match esatto, prefisso, contenuto.
     for item in items:
         label = item["label"]
         if exact is not None and label == exact:
@@ -59,11 +72,13 @@ def find_mef_item(items, exact=None, starts=None, contains=None):
 
 
 def mef_monthly_series(item, months):
+    # Crea una Serie mensile con indice temporale dal nodo MEF.
     values = pd.to_numeric(pd.Series(item["months"]), errors="coerce")
     return pd.Series(values.to_numpy(), index=months, name=item["label"])
 
 
 def mef_annual_series(item, months):
+    # Converte mensile in annuale usando solo anni completi e scala in miliardi.
     series = mef_monthly_series(item, months)
     frame = series.to_frame("value")
     frame["year"] = frame.index.year
@@ -74,11 +89,13 @@ def mef_annual_series(item, months):
 
 
 def eurostat_url(dataset, params):
+    # Costruisce in modo deterministico l'endpoint Eurostat completo.
     query = urlencode(params, doseq=True)
     return f"{EUROSTAT_BASE_URL}{dataset}?{query}"
 
 
 def eurostat_series(dataset, params, cache_name, refresh):
+    # Scarica una serie dal dataset Eurostat e la riconverte in pd.Series indicizzata.
     data = fetch_json(eurostat_url(dataset, params), cache_name, refresh)
     time_index = data["dimension"]["time"]["category"]["index"]
     time_by_position = {position: int(label) for label, position in time_index.items()}
@@ -92,6 +109,7 @@ def eurostat_series(dataset, params, cache_name, refresh):
 
 
 def clean_oecd_frame(frame):
+    # Pulisce i frame OCSE: coerziona numeri e rimuove NaN.
     result = frame.copy()
     result["OBS_VALUE"] = pd.to_numeric(result["OBS_VALUE"], errors="coerce")
     result["TIME_PERIOD"] = pd.to_numeric(result["TIME_PERIOD"], errors="coerce")
@@ -99,6 +117,7 @@ def clean_oecd_frame(frame):
 
 
 def load_mef_entrate(refresh):
+    # Carica dataset MEF entrate erariali e costruisce l'indice temporale completo.
     data = fetch_json(MEF_ENTRATE_URL, "mef_entrate_erariali.json", refresh)
     items = []
     collect_mef_items(data, items)
@@ -108,6 +127,7 @@ def load_mef_entrate(refresh):
 
 
 def load_mef_territoriali(refresh):
+    # Carica entrate territoriali (IRAP incluse nel dataset dedicato).
     data = fetch_json(MEF_TERRITORIALI_URL, "mef_entrate_territoriali.json", refresh)
     items = []
     collect_mef_items(data, items)
@@ -117,6 +137,7 @@ def load_mef_territoriali(refresh):
 
 
 def load_tax_pressure(refresh):
+    # Serie annuali Italia della pressione fiscale aggregata da componenti EUROSTAT.
     frame = pd.DataFrame()
     updated = None
     for item_code, label in TAXAG_LABELS.items():
@@ -137,6 +158,7 @@ def load_tax_pressure(refresh):
 
 
 def load_cofog_spending(refresh):
+    # Spesa pubblica italiana per funzione COFOG: valore assoluto e % PIL.
     records = []
     updated = None
     for code, label in COFOG_LABELS.items():
@@ -181,6 +203,7 @@ def load_cofog_spending(refresh):
 
 
 def load_peer_tax_pressure(refresh):
+    # Confronto pressione fiscale e contributiva per Italia + peer geografici.
     records = []
     updated = None
     for geo, country in PEER_GEOS.items():
@@ -206,6 +229,7 @@ def load_peer_tax_pressure(refresh):
 
 
 def load_peer_spending(refresh, cofog_code, cache_suffix):
+    # Confronto spesa % PIL per una specifica funzione COFOG.
     records = []
     updated = None
     for geo, country in PEER_GEOS.items():
@@ -228,6 +252,7 @@ def load_peer_spending(refresh, cofog_code, cache_suffix):
 
 
 def load_total_spending_italy(refresh):
+    # Storico Italia: totale spesa in miliardi e % PIL per trend e contesto.
     params_mio = {
         "format": "JSON",
         "lang": "en",
@@ -259,6 +284,7 @@ def load_total_spending_italy(refresh):
 
 
 def income_lower_bound(label):
+    # Normalizza stringhe etichetta reddito in un punto di taglio numerico minimo.
     if label.startswith("minore") or label.startswith("da -") or label == "zero":
         return -1
     if label.startswith("oltre"):
@@ -270,6 +296,7 @@ def income_lower_bound(label):
 
 
 def income_band(label):
+    # Riclassifica la label in fasce per grafici leggibili.
     lower = income_lower_bound(label)
     if lower < 15000:
         return "0 - 15.000"
@@ -283,16 +310,19 @@ def income_band(label):
 
 
 def numeric_column(frame, column):
+    # Converte colonna numerica e sostituisce valori non validi con 0.
     return pd.to_numeric(frame[column], errors="coerce").fillna(0)
 
 
 def add_income_bands(frame):
+    # Aggiunge colonna `fascia` alla base dichiarazioni.
     result = frame.copy()
     result["fascia"] = result["Classi di reddito complessivo in euro"].map(income_band)
     return result
 
 
 def aggregate_columns_by_band(frame, columns):
+    # Raggruppa e somma importi per fasce di reddito, in ordine fisso.
     with_bands = add_income_bands(frame)
     for column in columns:
         with_bands[column] = numeric_column(with_bands, column)
@@ -301,6 +331,7 @@ def aggregate_columns_by_band(frame, columns):
 
 
 def load_declaration_data(refresh):
+    # Scarica dataset dichiarazioni per distribuzione redditi, IRPEF e salari/capitale.
     tipo_url = f"{MEF_DICHIARAZIONI_BASE}cla_anno_tipo_reddito_2025.csv?d=1615465800"
     calcolo_url = f"{MEF_DICHIARAZIONI_BASE}cla_anno_calcolo_irpef_2025.csv?d=1615465800"
     tipo = load_semicolon_csv(tipo_url, "mef_dichiarazioni_tipo_reddito_2025.csv", refresh)
@@ -309,6 +340,7 @@ def load_declaration_data(refresh):
 
 
 def load_oecd_revenue_category(code, refresh):
+    # Scarica una categoria specifica del dataset Revenue Statistics OECD.
     safe_code = code.replace("_", "totale" if code == "_T" else "sott")
     key = f".TAX_REV.S13.{code}._T.PT_B1GQ.A"
     frame = load_oecd_csv(
@@ -323,6 +355,7 @@ def load_oecd_revenue_category(code, refresh):
 
 
 def load_oecd_revenue_data(refresh):
+    # Costruisce riepilogo categorie revenue: valore Italia, media OCSE, frame peer.
     category_rows = []
     category_frames = {}
     for category in OECD_REVENUE_CATEGORIES:
@@ -352,6 +385,7 @@ def load_oecd_revenue_data(refresh):
 
 
 def load_oecd_spending_category(code, refresh):
+    # Scarica una categoria COFOG dal dataset spesa OCSE (valore assoluto).
     key = f"A..S13._Z.D.OTE._Z.{code}.XDC.S.V.N.T1100"
     frame = load_oecd_csv(
         OECD_COFOG_BASE_URL,
@@ -365,6 +399,7 @@ def load_oecd_spending_category(code, refresh):
 
 
 def load_oecd_gdp(refresh):
+    # Scarica PIL OCSE (usato per trasformare spesa assoluta in % PIL).
     key = "A..S1.S1.B1GQ._Z._Z._Z.XDC.V.N.T0101"
     frame = load_oecd_csv(
         OECD_GDP_BASE_URL,
@@ -378,6 +413,7 @@ def load_oecd_gdp(refresh):
 
 
 def load_oecd_spending_data(refresh):
+    # Costruisce confronto spesa OCSE con denominatore PIL e calcola media OCSE.
     gdp = load_oecd_gdp(refresh)
     category_rows = []
     category_frames = {}

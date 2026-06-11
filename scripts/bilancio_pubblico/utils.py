@@ -1,3 +1,12 @@
+"""Utility condivise per estrazione dati, stile grafico e scrittura output.
+
+Questo modulo centralizza:
+- path e directory del progetto
+- fonti e costanti utilizzate dai grafici
+- funzioni di download/caching
+- formatteri e helper comuni di visualizzazione
+"""
+
 import json
 import textwrap
 from io import StringIO
@@ -221,11 +230,13 @@ GENERATED_FILES = [
 
 
 def ensure_directories():
+    # Crea cartelle indispensabili prima di leggere/scrivere.
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     CHART_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def clean_generated_outputs():
+    # Elimina i vecchi png dichiarati per evitare sovrascritture non desiderate.
     for filename in GENERATED_FILES:
         path = CHART_DIR / filename
         if path.exists():
@@ -233,6 +244,7 @@ def clean_generated_outputs():
 
 
 def configure_style():
+    # Imposta uno stile unico per tutti i grafici (layout social, leggibilità, griglia sobria).
     plt.rcParams.update(
         {
             "figure.facecolor": PAPER,
@@ -257,6 +269,9 @@ def configure_style():
 
 
 def fetch_bytes(url, cache_name, refresh):
+    # Download con cache locale:
+    # - se esiste e refresh=False, riusa il file salvato
+    # - se manca o refresh=True, richiede alla sorgente e sovrascrive.
     cache_path = DATA_DIR / cache_name
     if cache_path.exists() and not refresh:
         return cache_path.read_bytes()
@@ -272,17 +287,20 @@ def fetch_bytes(url, cache_name, refresh):
 
 
 def fetch_json(url, cache_name, refresh):
+    # Wrapper JSON usato da molte fonti.
     raw = fetch_bytes(url, cache_name, refresh)
     return json.loads(raw.decode("utf-8"))
 
 
 def load_semicolon_csv(url, cache_name, refresh):
+    # Scarica CSV con separatore ; (MEF dichiarazioni) e lo lascia già nel formato pandas.
     fetch_bytes(url, cache_name, refresh)
     cache_path = DATA_DIR / cache_name
     return pd.read_csv(cache_path, sep=";", thousands=".", decimal=",")
 
 
 def load_oecd_csv(base_url, key, cache_name, refresh, start_year=2024, end_year=2024):
+    # Scarica serie OECD in CSV e verifica che il payload sia valido prima di parseare.
     from urllib.parse import urlencode
 
     url = f"{base_url}/{key}?{urlencode({'startPeriod': start_year, 'endPeriod': end_year})}"
@@ -311,6 +329,7 @@ def load_oecd_csv(base_url, key, cache_name, refresh, start_year=2024, end_year=
 
 
 def save_chart(fig, filename, source):
+    # Inserisce testo in calce (+ eventuale logo) prima di salvare il file finale.
     footer = f"{source}."
     fig.text(
         0.5,
@@ -338,6 +357,7 @@ def save_chart(fig, filename, source):
 
 
 def add_logo(fig):
+    # Aggiunge il logo gufo in fondo, se presente in /assets.
     if not LOGO_PATH.exists():
         return
     logo = mpimg.imread(LOGO_PATH)
@@ -347,6 +367,7 @@ def add_logo(fig):
 
 
 def draw_title_line(fig, y_position, parts, size):
+    # Disegna il titolo colorato multisegmento usato su tutti i contenuti.
     areas = []
     for text, color in parts:
         areas.append(
@@ -374,6 +395,7 @@ def draw_title_line(fig, y_position, parts, size):
 
 
 def create_post(title_lines, subtitle, axes_rect=None):
+    # Crea la "scaffold" del grafico: titolo, sottotitolo, divider e area plot.
     fig = plt.figure(figsize=(10.8, 13.5), facecolor=PAPER)
     title_size = 42 if len(title_lines) <= 2 else 37
     y_start = 0.925
@@ -400,31 +422,38 @@ def create_post(title_lines, subtitle, axes_rect=None):
 
 
 def format_mld(value):
+    # Formatta miliardi in stile italiano per assi e annotazioni.
     return f"{value:,.1f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
 def format_percent(value):
+    # Formatta percentuali con una cifra decimale (stile italiano).
     return f"{value:,.1f}%".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
 def format_percent_compact(value):
+    # Per variazioni piccoli valori usa 2 decimali, altrimenti formato standard.
     if abs(value) < 1:
         return f"{value:,.2f}%".replace(",", "X").replace(".", ",").replace("X", ".")
     return format_percent(value)
 
 
 def format_integer(value):
+    # Formattazione numeri interi con separatore migliaia.
     return f"{value:,.0f}".replace(",", ".")
 
 
 def write_manifest(entries):
+    # Salva l'indice dei grafici: utile per tracciabilità e verifica pubblicazione.
     manifest = pd.DataFrame(entries)
     manifest.to_csv(CHART_DIR / "manifest.csv", index=False)
 
 
 def write_text_file(path, lines):
+    # Salva testi (analisi claims) con newline finale coerente.
     (BASE_DIR / path).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def navy_or_orange_colors(frame, italy_code_column="codice", italy_code="IT"):
+    # Utility rapida per evidenziare Italia in confronto a un ranking paese.
     return [ORANGE if getattr(row, italy_code_column) == italy_code else NAVY for row in frame.itertuples(index=False)]

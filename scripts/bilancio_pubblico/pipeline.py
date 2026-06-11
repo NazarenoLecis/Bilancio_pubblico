@@ -1,3 +1,13 @@
+"""Orchestratore completo del progetto.
+
+Il flusso è sempre questo:
+1) impostazione ambienti (cartelle, stile grafici, pulizia output vecchi)
+2) caricamento dati dalle fonti
+3) produzione dei grafici italiani
+4) produzione dei confronti UE/OECD
+5) scrittura analisi claims e manifest
+"""
+
 from bilancio_pubblico.chart_generation.confronti_europa import plot_peer_comparison
 from bilancio_pubblico.chart_generation.confronti_oecd import (
     plot_oecd_inheritance_tax,
@@ -56,6 +66,15 @@ from bilancio_pubblico.utils import (
 
 
 def write_claims_analysis(peer_tax, peer_spending, peer_social, oecd_revenue, oecd_spending):
+    """Scrive `analisi_claims.md` con i claim chiave e i numeri verificati.
+
+    Le righe create sono parte finale della pipeline e tengono insieme:
+    - i dati caricati in questo run
+    - il grafico di riferimento
+    - eventuali note metodologiche esplicative
+    """
+    # Ricava i numeri principali usati nel file analisi_claims.md.
+    # Usiamo i codici paese/filtro standard delle fonti in ingresso.
     italy_tax = float(peer_tax.loc[peer_tax["codice"] == "IT", "valore"].iloc[0])
     eu_tax = float(peer_tax.loc[peer_tax["codice"] == "EU27_2020", "valore"].iloc[0])
     area_tax = float(peer_tax.loc[peer_tax["codice"] == "EA20", "valore"].iloc[0])
@@ -103,6 +122,11 @@ def build_manifest_entries(
     peer_social_updated,
     total_spending_updated,
 ):
+    """Prepara la lista standardizzata di record da salvare in `manifest.csv`."""
+    # Crea il registro che accompagna tutti i file grafici:
+    # - nome file esportato
+    # - fonte ufficiale usata
+    # - data/periodo aggiornamento
     return [
         {
             "file": "01_principali_entrate_tributarie_2025.png",
@@ -208,10 +232,16 @@ def build_manifest_entries(
 
 
 def run(refresh=False):
+    """Esegue tutta la pipeline end-to-end.
+
+    `refresh=False` usa cache, `refresh=True` forza il refresh da rete.
+    """
+    # 1) Setup ambiente
     ensure_directories()
     configure_style()
     clean_generated_outputs()
 
+    # 2) Download/lettura dati: qui ogni funzione incapsula una fonte specifica
     mef_data, mef_items, mef_months = load_mef_entrate(refresh)
     territoriali_data, territoriali_items, territoriali_months = load_mef_territoriali(refresh)
     tax_pressure, eurostat_tax_updated = load_tax_pressure(refresh)
@@ -224,6 +254,7 @@ def run(refresh=False):
     oecd_spending, oecd_spending_peers = load_oecd_spending_data(refresh)
     tipo_reddito, calcolo_irpef = load_declaration_data(refresh)
 
+    # 3) Grafici Italia: entrate, contribuzione e composizione redditi
     plot_main_taxes(mef_items, mef_months, territoriali_items, territoriali_months)
     plot_direct_indirect(mef_items, mef_months)
     plot_tax_pressure(tax_pressure)
@@ -234,10 +265,12 @@ def run(refresh=False):
     plot_revenue_types(mef_items, mef_months, territoriali_items, territoriali_months)
     plot_succession_tax_focus(mef_items, mef_months)
 
+    # 4) Grafici Italia: spesa e patrimonio
     plot_cofog_spending(cofog_spending)
     plot_total_spending_italy(total_spending)
     plot_household_wealth_distribution()
 
+    # 5) Confronti internazionali
     plot_peer_comparison(
         peer_tax,
         [[("ITALIA: ", BLACK), ("TASSE ALTE?", ORANGE)]],
@@ -260,11 +293,14 @@ def run(refresh=False):
         SOURCE_EUROSTAT_EXP,
     )
 
+    # 6) Confronti OCSE per struttura fiscale, spesa e indicatori di sintesi
     plot_oecd_revenue_categories(oecd_revenue)
     plot_oecd_spending_categories(oecd_spending)
     plot_oecd_total_tax(oecd_revenue_peers["_T"])
     plot_oecd_inheritance_tax(oecd_revenue_peers["T_4300"])
     plot_oecd_total_spending(oecd_spending_peers["_T"])
+
+    # 7) Report finale: claim e indice di tracciabilità degli output
     write_claims_analysis(peer_tax, peer_spending, peer_social, oecd_revenue, oecd_spending)
 
     entries = build_manifest_entries(
