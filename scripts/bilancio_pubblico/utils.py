@@ -92,6 +92,9 @@ SOURCE_MEF_SUCCESSIONI = (
     "Fonte: MEF - Dipartimento delle Finanze, Appendici statistiche al bollettino entrate tributarie, "
     "dicembre 2025"
 )
+SOURCE_UPB_TARI = (
+    "Fonte: Ufficio parlamentare di bilancio, Focus n. 5/2024 sulla TARI, dati 2023"
+)
 SOURCE_EUROSTAT_TAX = (
     "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13"
 )

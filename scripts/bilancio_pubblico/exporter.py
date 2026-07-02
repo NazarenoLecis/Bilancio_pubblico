@@ -2,6 +2,7 @@
 
 from datetime import datetime, timezone
 import json
+import re
 
 import numpy as np
 import pandas as pd
@@ -23,11 +24,27 @@ from bilancio_pubblico.utils import (
     SOURCE_MEF_ENTRATE_COMBINED,
     SOURCE_MEF_ENTRATE_WITH_APPENDICI,
     SOURCE_MEF_SUCCESSIONI,
+    SOURCE_UPB_TARI,
 )
 
 
 IRPEF_TAX_LABEL = "Imposta netta - Ammontare in euro"
 IRPEF_CONTRIBUTORS_LABEL = "Numero contribuenti"
+TARI_GETTITO_2023_MLD = 10.5
+
+
+AGGREGATE_REVENUE_LABELS = {
+    "Totale entrate",
+    "Totale entrate territoriali",
+    "Imposte dirette",
+    "Imposte indirette",
+}
+
+
+def _slug_code(value):
+    text = str(value or "").strip().upper()
+    text = re.sub(r"[^A-Z0-9]+", "_", text)
+    return text.strip("_")[:80] or "VOCE"
 
 
 def _to_number(value, digits=4):
@@ -105,6 +122,124 @@ def _to_payload_item(code, label, year, value, source, unit, status=None, note=N
     return payload
 
 
+def _revenue_group(label, source):
+    lower = (label or "").lower()
+    if "irpef" in lower:
+        return "Redditi persone fisiche"
+    if "ires" in lower or "irap" in lower:
+        return "Imprese"
+    if "iva" in lower or "accisa" in lower or "consumo" in lower or "tabacchi" in lower:
+        return "Consumi e accise"
+    if "bollo" in lower or "registro" in lower or "ipotec" in lower or "catastal" in lower or "concessioni" in lower:
+        return "Atti, concessioni e patrimonio"
+    if "sost" in lower or "rit." in lower or "ritenute" in lower:
+        return "Sostitutive e ritenute"
+    if source == "MEF territoriali":
+        return "Tributi territoriali"
+    return "Altre entrate"
+
+
+def _is_revenue_line_candidate(label):
+    if not label:
+        return False
+    clean = str(label).strip()
+    if not clean:
+        return False
+    if clean.startswith("Fonte:"):
+        return False
+    if clean in AGGREGATE_REVENUE_LABELS:
+        return False
+    if clean.lower().startswith("di cui"):
+        return False
+    return True
+
+
+def _all_revenue_lines_from_items(erariali_items, erariali_months, territoriali_items, territoriali_months):
+    rows = []
+    seen = set()
+    for source, items, months in (
+        ("MEF erariali", erariali_items, erariali_months),
+        ("MEF territoriali", territoriali_items, territoriali_months),
+    ):
+        for item in items:
+            label = item.get("label")
+            if not _is_revenue_line_candidate(label):
+                continue
+            try:
+                annual = mef_annual_series(item, months).dropna().sort_index()
+            except Exception:
+                continue
+            if annual.empty:
+                continue
+            latest_year = int(annual.index.max())
+            latest_value = _to_number(annual.loc[latest_year], 4)
+            if latest_value is None or latest_value <= 0:
+                continue
+            key = (source, label)
+            if key in seen:
+                continue
+            seen.add(key)
+            code = _slug_code(f"{source}_{label}")
+            rows.append(
+                {
+                    "code": code,
+                    "label": label,
+                    "group": _revenue_group(label, source),
+                    "source": source,
+                    "unit": "mld",
+                    "latest_year": _to_number(latest_year),
+                    "latest_value_mld": latest_value,
+                    "series": [
+                        {"year": _to_number(int(year)), "value_mld": _to_number(value, 4)}
+                        for year, value in annual.items()
+                    ],
+                }
+            )
+
+    rows.append(
+        {
+            "code": "TARI_UPB_2023",
+            "label": "TARI",
+            "group": "Tributi comunali",
+            "source": SOURCE_UPB_TARI,
+            "unit": "mld",
+            "latest_year": 2023,
+            "latest_value_mld": TARI_GETTITO_2023_MLD,
+            "series": [{"year": 2023, "value_mld": TARI_GETTITO_2023_MLD}],
+            "note": "La TARI non compare come serie separata nella API mensile MEF usata per le entrate tributarie; il valore e' tratto dal focus UPB sulla tassa rifiuti.",
+        }
+    )
+
+    return sorted(rows, key=lambda row: row["latest_value_mld"], reverse=True)
+
+
+def _known_revenue_gaps():
+    return [
+        {
+            "code": "PASSAPORTO",
+            "label": "Tassa/contributo su passaporti",
+            "status": "included_in_broader_item",
+            "mapped_to": "Concessioni governative",
+            "source": "MEF entrate erariali / normativa passaporto",
+            "note": "La fonte MEF mensile disponibile non separa i passaporti: il gettito confluisce nella voce piu' ampia 'Concessioni governative'.",
+        },
+        {
+            "code": "TASSA_ETICA",
+            "label": "Tassa etica",
+            "status": "not_separately_quantified",
+            "source": "Agenzia delle Entrate, scadenzario e codici tributo",
+            "note": "La fonte conferma l'obbligo di versamento, ma il gettito aggregato separato non e' disponibile nelle serie MEF usate.",
+        },
+        {
+            "code": "ENTRATE_STRAORDINARIE",
+            "label": "Entrate straordinarie",
+            "status": "not_unique_category",
+            "source": "MEF entrate tributarie",
+            "note": "Non e' una voce univoca nella classificazione mensile MEF: alcune componenti possono comparire dentro sostitutive, sanatorie, rivalutazioni o altre entrate.",
+        },
+    ]
+
+
 def _build_tax_items_detail(
     mef_items,
     mef_months,
@@ -172,42 +307,17 @@ def _build_tax_items_detail(
             )
         )
 
-    try:
-        tari_year = None
-        tari_value = None
-        for selector in ({"exact": "TARI"}, {"starts": "TARI"}, {"contains": "TARI"}):
-            try:
-                tari_year, tari_value = _safe_mef_value(territoriali_items, territoriali_months, selector)
-                break
-            except Exception:
-                continue
-        rows.append(
-            _to_payload_item(
-                "TARI",
-                "TARI",
-                tari_year,
-                tari_value,
-                "MEF territoriale / MEF erariali",
-                "mld",
-                status=None if tari_value is not None else "not_available_in_current_payload",
-                note=None
-                if tari_value is not None
-                else "Nessuna voce TARI rintracciabile nelle fonti disponibili in questa pipeline.",
-            )
+    rows.append(
+        _to_payload_item(
+            "TARI",
+            "TARI",
+            2023,
+            TARI_GETTITO_2023_MLD,
+            SOURCE_UPB_TARI,
+            "mld",
+            note="La TARI non compare come serie separata nella API mensile MEF usata per le entrate tributarie; il valore e' tratto dal focus UPB sulla tassa rifiuti.",
         )
-    except Exception:
-        rows.append(
-            _to_payload_item(
-                "TARI",
-                "TARI",
-                None,
-                None,
-                "MEF territoriale / MEF erariali",
-                "mld",
-                status="not_available_in_current_payload",
-                note="Nessuna voce TARI rintracciabile nelle fonti disponibili in questa pipeline.",
-            )
-        )
+    )
 
     rows.append(
         _to_payload_item(
@@ -690,8 +800,8 @@ def _safe_count(values):
     return sum(1 for value in values if value is not None and not pd.isna(value))
 
 
-def _build_under_500m_revenue_summary(revenue_category_series, total_revenue_year=None, threshold_mld=0.5):
-    if not revenue_category_series:
+def _build_under_500m_revenue_summary(revenue_lines, total_revenue_year=None, threshold_mld=0.5):
+    if not revenue_lines:
         return {
             "year": None,
             "threshold_mld": threshold_mld,
@@ -703,7 +813,7 @@ def _build_under_500m_revenue_summary(revenue_category_series, total_revenue_yea
         }
 
     candidates = []
-    for row in revenue_category_series:
+    for row in revenue_lines:
         if not isinstance(row, dict):
             continue
         value = row.get("latest_value_mld")
@@ -715,6 +825,7 @@ def _build_under_500m_revenue_summary(revenue_category_series, total_revenue_yea
                     "code": row.get("code"),
                     "label": row.get("label"),
                     "group": row.get("group"),
+                    "source": row.get("source"),
                     "year": row.get("latest_year"),
                     "value_mld": _to_number(value, 4),
                 }
@@ -736,7 +847,7 @@ def _build_under_500m_revenue_summary(revenue_category_series, total_revenue_yea
         "cumulative_effect": "sommato",
         "note": (
             f"Cumulato delle voci con valore < {threshold_mld} mld. "
-            "Le categorie non rintracciabili in questa pipeline sono indicate a parte."
+            "Sono considerate le voci quantificate separatamente nelle fonti disponibili."
         ),
     }
 
@@ -971,11 +1082,17 @@ def export_bilancio_source_json(
         territoriali_items,
         territoriali_months,
     )
+    all_revenue_lines = _all_revenue_lines_from_items(
+        mef_items,
+        mef_months,
+        territoriali_items,
+        territoriali_months,
+    )
     revenue_pie = _build_pie_payload(revenue_category_series, "latest_value_mld")
     spending_category_series = _cofog_category_series(cofog_spending_trend)
     spending_pie = _build_pie_payload(spending_category_series, "latest_value_mld")
     under_500m_revenue = _build_under_500m_revenue_summary(
-        revenue_category_series,
+        all_revenue_lines,
         total_revenue_year=_to_number(total_erariali_2025, 4),
     )
     spending_focus = _build_spending_focus(cofog_spending, total_spending)
@@ -988,7 +1105,7 @@ def export_bilancio_source_json(
             "generated_at": generated_at,
             "generated_by": "Bilancio_pubblico",
             "updated_at": generated_at,
-            "description": "Dati completi e normalizzati dal repo Bilancio_pubblico. La pipeline dati li converte nel formato pubblico per R2.",
+            "description": "Dati completi e normalizzati dal repo Bilancio_pubblico per la dashboard Bilancio pubblico italiano.",
             "sources": [
                 SOURCE_MEF_ENTRATE_COMBINED,
                 SOURCE_EUROSTAT_TAX,
@@ -997,6 +1114,7 @@ def export_bilancio_source_json(
                 SOURCE_MEF_DICHIARAZIONI,
                 SOURCE_MEF_ENTRATE_WITH_APPENDICI,
                 SOURCE_MEF_SUCCESSIONI,
+                SOURCE_UPB_TARI,
             ],
             "source_updates": {
                 "mef_entrate": _safe_last(mef_data.get("aggiornamento")),
@@ -1041,10 +1159,12 @@ def export_bilancio_source_json(
         "pressure_components": pressure_rows,
         "peer": peer_rows,
         "revenue_items": revenue_tax_items,
+        "all_revenue_lines": all_revenue_lines,
         "revenue_pie": revenue_pie,
         "revenue_category_series": revenue_category_series,
         "all_revenues_focus": revenue_tax_items,
         "under_500m_revenue_summary": under_500m_revenue,
+        "known_revenue_gaps": _known_revenue_gaps(),
         "declaration_summary": declaration_summary,
         "cofog_spending_2024": _cofog_distribution(cofog_spending),
         "spending_by_function": cofog_summary,
@@ -1063,6 +1183,7 @@ def export_bilancio_source_json(
         "oecd": _build_oecd_payload(oecd_revenue, oecd_revenue_peers, oecd_spending, oecd_spending_peers),
         "counts": {
             "revenue_items": len(revenue_tax_items),
+            "all_revenue_lines": len(all_revenue_lines),
             "revenue_category_series": len(revenue_category_series),
             "revenue_under_500m_items": len(under_500m_revenue.get("entries", [])),
             "top_taxes": len(top_taxes),

@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-07-02T13:29:51.784038+00:00",
+    "generated_at": "2026-07-02T15:11:23.941895+00:00",
     "generated_by": "Bilancio_pubblico",
-    "updated_at": "2026-07-02T13:29:51.784038+00:00",
-    "description": "Dati completi e normalizzati dal repo Bilancio_pubblico. La pipeline dati li converte nel formato pubblico per R2.",
+    "updated_at": "2026-07-02T15:11:23.941895+00:00",
+    "description": "Dati completi e normalizzati dal repo Bilancio_pubblico per la dashboard Bilancio pubblico italiano.",
     "sources": [
       "Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali e territoriali, competenza giuridica",
       "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
@@ -11,7 +11,8 @@
       "Fonte: Banca d'Italia, Conti distributivi sulla ricchezza delle famiglie, IV trimestre 2025",
       "Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",
       "Fonte: MEF - Dipartimento delle Finanze, API entrate erariali e territoriali; Appendici statistiche dicembre 2025",
-      "Fonte: MEF - Dipartimento delle Finanze, Appendici statistiche al bollettino entrate tributarie, dicembre 2025"
+      "Fonte: MEF - Dipartimento delle Finanze, Appendici statistiche al bollettino entrate tributarie, dicembre 2025",
+      "Fonte: Ufficio parlamentare di bilancio, Focus n. 5/2024 sulla TARI, dati 2023"
     ],
     "source_updates": {
       "mef_entrate": null,
@@ -1735,11 +1736,5914 @@
     {
       "code": "TARI",
       "label": "TARI",
-      "source": "MEF territoriale / MEF erariali",
-      "year": null,
+      "source": "Fonte: Ufficio parlamentare di bilancio, Focus n. 5/2024 sulla TARI, dati 2023",
+      "year": 2023,
       "unit": "mld",
-      "status": "not_available_in_current_payload",
-      "note": "Nessuna voce TARI rintracciabile nelle fonti disponibili in questa pipeline."
+      "value": 10.5,
+      "note": "La TARI non compare come serie separata nella API mensile MEF usata per le entrate tributarie; il valore e' tratto dal focus UPB sulla tassa rifiuti."
+    }
+  ],
+  "all_revenue_lines": [
+    {
+      "code": "MEF_ERARIALI_IRPEF",
+      "label": "IRPEF",
+      "group": "Redditi persone fisiche",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 231.301,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 123.316
+        },
+        {
+          "year": 2003,
+          "value_mld": 127.788
+        },
+        {
+          "year": 2004,
+          "value_mld": 131.213
+        },
+        {
+          "year": 2005,
+          "value_mld": 135.989
+        },
+        {
+          "year": 2006,
+          "value_mld": 145.408
+        },
+        {
+          "year": 2007,
+          "value_mld": 153.154
+        },
+        {
+          "year": 2008,
+          "value_mld": 163.245
+        },
+        {
+          "year": 2009,
+          "value_mld": 157.84
+        },
+        {
+          "year": 2010,
+          "value_mld": 164.608
+        },
+        {
+          "year": 2011,
+          "value_mld": 163.868
+        },
+        {
+          "year": 2012,
+          "value_mld": 165.614
+        },
+        {
+          "year": 2013,
+          "value_mld": 163.691
+        },
+        {
+          "year": 2014,
+          "value_mld": 163.65
+        },
+        {
+          "year": 2015,
+          "value_mld": 176.22
+        },
+        {
+          "year": 2016,
+          "value_mld": 180.004
+        },
+        {
+          "year": 2017,
+          "value_mld": 182.3536
+        },
+        {
+          "year": 2018,
+          "value_mld": 187.428
+        },
+        {
+          "year": 2019,
+          "value_mld": 191.6138
+        },
+        {
+          "year": 2020,
+          "value_mld": 187.524
+        },
+        {
+          "year": 2021,
+          "value_mld": 198.209
+        },
+        {
+          "year": 2022,
+          "value_mld": 205.8182
+        },
+        {
+          "year": 2023,
+          "value_mld": 221.385
+        },
+        {
+          "year": 2024,
+          "value_mld": 235.78
+        },
+        {
+          "year": 2025,
+          "value_mld": 231.301
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IVA",
+      "label": "IVA",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 186.8087,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 95.515
+        },
+        {
+          "year": 2003,
+          "value_mld": 98.864
+        },
+        {
+          "year": 2004,
+          "value_mld": 101.71
+        },
+        {
+          "year": 2005,
+          "value_mld": 106.179
+        },
+        {
+          "year": 2006,
+          "value_mld": 115.477
+        },
+        {
+          "year": 2007,
+          "value_mld": 120.703
+        },
+        {
+          "year": 2008,
+          "value_mld": 119.472
+        },
+        {
+          "year": 2009,
+          "value_mld": 111.237
+        },
+        {
+          "year": 2010,
+          "value_mld": 115.506
+        },
+        {
+          "year": 2011,
+          "value_mld": 117.46
+        },
+        {
+          "year": 2012,
+          "value_mld": 115.234
+        },
+        {
+          "year": 2013,
+          "value_mld": 112.273
+        },
+        {
+          "year": 2014,
+          "value_mld": 114.49
+        },
+        {
+          "year": 2015,
+          "value_mld": 119.376
+        },
+        {
+          "year": 2016,
+          "value_mld": 124.336
+        },
+        {
+          "year": 2017,
+          "value_mld": 129.574
+        },
+        {
+          "year": 2018,
+          "value_mld": 133.5774
+        },
+        {
+          "year": 2019,
+          "value_mld": 136.8625
+        },
+        {
+          "year": 2020,
+          "value_mld": 124.053
+        },
+        {
+          "year": 2021,
+          "value_mld": 147.955
+        },
+        {
+          "year": 2022,
+          "value_mld": 171.5974
+        },
+        {
+          "year": 2023,
+          "value_mld": 174.89
+        },
+        {
+          "year": 2024,
+          "value_mld": 180.8001
+        },
+        {
+          "year": 2025,
+          "value_mld": 186.8087
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SCAMBI_INTERNI",
+      "label": "scambi interni",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 168.1787,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 84.256
+        },
+        {
+          "year": 2003,
+          "value_mld": 87.714
+        },
+        {
+          "year": 2004,
+          "value_mld": 89.921
+        },
+        {
+          "year": 2005,
+          "value_mld": 93.686
+        },
+        {
+          "year": 2006,
+          "value_mld": 101.028
+        },
+        {
+          "year": 2007,
+          "value_mld": 106.311
+        },
+        {
+          "year": 2008,
+          "value_mld": 104.098
+        },
+        {
+          "year": 2009,
+          "value_mld": 100.244
+        },
+        {
+          "year": 2010,
+          "value_mld": 100.952
+        },
+        {
+          "year": 2011,
+          "value_mld": 100.328
+        },
+        {
+          "year": 2012,
+          "value_mld": 99.145
+        },
+        {
+          "year": 2013,
+          "value_mld": 98.926
+        },
+        {
+          "year": 2014,
+          "value_mld": 101.117
+        },
+        {
+          "year": 2015,
+          "value_mld": 106.977
+        },
+        {
+          "year": 2016,
+          "value_mld": 112.706
+        },
+        {
+          "year": 2017,
+          "value_mld": 116.206
+        },
+        {
+          "year": 2018,
+          "value_mld": 119.3672
+        },
+        {
+          "year": 2019,
+          "value_mld": 122.9715
+        },
+        {
+          "year": 2020,
+          "value_mld": 114.013
+        },
+        {
+          "year": 2021,
+          "value_mld": 132.569
+        },
+        {
+          "year": 2022,
+          "value_mld": 149.0041
+        },
+        {
+          "year": 2023,
+          "value_mld": 156.231
+        },
+        {
+          "year": 2024,
+          "value_mld": 162.4174
+        },
+        {
+          "year": 2025,
+          "value_mld": 168.1787
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_RITENUTE_DIPENDENTI_SETTORE_PRIVATO",
+      "label": "Ritenute dipendenti settore privato",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 96.7454,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 49.97
+        },
+        {
+          "year": 2003,
+          "value_mld": 50.13
+        },
+        {
+          "year": 2004,
+          "value_mld": 52.361
+        },
+        {
+          "year": 2005,
+          "value_mld": 53.989
+        },
+        {
+          "year": 2006,
+          "value_mld": 57.768
+        },
+        {
+          "year": 2007,
+          "value_mld": 60.799
+        },
+        {
+          "year": 2008,
+          "value_mld": 65.5
+        },
+        {
+          "year": 2009,
+          "value_mld": 62.736
+        },
+        {
+          "year": 2010,
+          "value_mld": 63.755
+        },
+        {
+          "year": 2011,
+          "value_mld": 63.883
+        },
+        {
+          "year": 2012,
+          "value_mld": 65.436
+        },
+        {
+          "year": 2013,
+          "value_mld": 65.053
+        },
+        {
+          "year": 2014,
+          "value_mld": 64.783
+        },
+        {
+          "year": 2015,
+          "value_mld": 76.286
+        },
+        {
+          "year": 2016,
+          "value_mld": 74.364
+        },
+        {
+          "year": 2017,
+          "value_mld": 75.541
+        },
+        {
+          "year": 2018,
+          "value_mld": 78.8
+        },
+        {
+          "year": 2019,
+          "value_mld": 81.4247
+        },
+        {
+          "year": 2020,
+          "value_mld": 77.163
+        },
+        {
+          "year": 2021,
+          "value_mld": 84.429
+        },
+        {
+          "year": 2022,
+          "value_mld": 85.58
+        },
+        {
+          "year": 2023,
+          "value_mld": 91.799
+        },
+        {
+          "year": 2024,
+          "value_mld": 99.1572
+        },
+        {
+          "year": 2025,
+          "value_mld": 96.7454
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_RITENUTE_DIPENDENTI_SETTORE_PUBBLICO",
+      "label": "Ritenute dipendenti settore pubblico",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 93.7232,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 41.97
+        },
+        {
+          "year": 2003,
+          "value_mld": 44.858
+        },
+        {
+          "year": 2004,
+          "value_mld": 47.012
+        },
+        {
+          "year": 2005,
+          "value_mld": 47.669
+        },
+        {
+          "year": 2006,
+          "value_mld": 52.071
+        },
+        {
+          "year": 2007,
+          "value_mld": 51.673
+        },
+        {
+          "year": 2008,
+          "value_mld": 55.995
+        },
+        {
+          "year": 2009,
+          "value_mld": 59.045
+        },
+        {
+          "year": 2010,
+          "value_mld": 61.867
+        },
+        {
+          "year": 2011,
+          "value_mld": 62.841
+        },
+        {
+          "year": 2012,
+          "value_mld": 62.761
+        },
+        {
+          "year": 2013,
+          "value_mld": 64.274
+        },
+        {
+          "year": 2014,
+          "value_mld": 64.889
+        },
+        {
+          "year": 2015,
+          "value_mld": 65.038
+        },
+        {
+          "year": 2016,
+          "value_mld": 69.978
+        },
+        {
+          "year": 2017,
+          "value_mld": 71.267
+        },
+        {
+          "year": 2018,
+          "value_mld": 73.555
+        },
+        {
+          "year": 2019,
+          "value_mld": 76.0213
+        },
+        {
+          "year": 2020,
+          "value_mld": 79.217
+        },
+        {
+          "year": 2021,
+          "value_mld": 80.546
+        },
+        {
+          "year": 2022,
+          "value_mld": 81.0402
+        },
+        {
+          "year": 2023,
+          "value_mld": 88.844
+        },
+        {
+          "year": 2024,
+          "value_mld": 94.1646
+        },
+        {
+          "year": 2025,
+          "value_mld": 93.7232
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IRES",
+      "label": "IRES",
+      "group": "Imprese",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 60.0847,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 30.185
+        },
+        {
+          "year": 2003,
+          "value_mld": 28.682
+        },
+        {
+          "year": 2004,
+          "value_mld": 28.335
+        },
+        {
+          "year": 2005,
+          "value_mld": 34.14
+        },
+        {
+          "year": 2006,
+          "value_mld": 39.822
+        },
+        {
+          "year": 2007,
+          "value_mld": 50.707
+        },
+        {
+          "year": 2008,
+          "value_mld": 47.718
+        },
+        {
+          "year": 2009,
+          "value_mld": 37.179
+        },
+        {
+          "year": 2010,
+          "value_mld": 37
+        },
+        {
+          "year": 2011,
+          "value_mld": 35.949
+        },
+        {
+          "year": 2012,
+          "value_mld": 36.582
+        },
+        {
+          "year": 2013,
+          "value_mld": 40.026
+        },
+        {
+          "year": 2014,
+          "value_mld": 32.293
+        },
+        {
+          "year": 2015,
+          "value_mld": 33.402
+        },
+        {
+          "year": 2016,
+          "value_mld": 35.251
+        },
+        {
+          "year": 2017,
+          "value_mld": 35.1618
+        },
+        {
+          "year": 2018,
+          "value_mld": 32.662
+        },
+        {
+          "year": 2019,
+          "value_mld": 33.7335
+        },
+        {
+          "year": 2020,
+          "value_mld": 33.781
+        },
+        {
+          "year": 2021,
+          "value_mld": 31.792
+        },
+        {
+          "year": 2022,
+          "value_mld": 45.6598
+        },
+        {
+          "year": 2023,
+          "value_mld": 51.826
+        },
+        {
+          "year": 2024,
+          "value_mld": 57.5821
+        },
+        {
+          "year": 2025,
+          "value_mld": 60.0847
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IRES_ACCONTO",
+      "label": "IRES acconto",
+      "group": "Imprese",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 47.6774,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 22.727
+        },
+        {
+          "year": 2003,
+          "value_mld": 22.157
+        },
+        {
+          "year": 2004,
+          "value_mld": 21.896
+        },
+        {
+          "year": 2005,
+          "value_mld": 26.309
+        },
+        {
+          "year": 2006,
+          "value_mld": 30.588
+        },
+        {
+          "year": 2007,
+          "value_mld": 37.365
+        },
+        {
+          "year": 2008,
+          "value_mld": 35.44
+        },
+        {
+          "year": 2009,
+          "value_mld": 27.052
+        },
+        {
+          "year": 2010,
+          "value_mld": 27.973
+        },
+        {
+          "year": 2011,
+          "value_mld": 27.751
+        },
+        {
+          "year": 2012,
+          "value_mld": 28.2
+        },
+        {
+          "year": 2013,
+          "value_mld": 31.534
+        },
+        {
+          "year": 2014,
+          "value_mld": 25.197
+        },
+        {
+          "year": 2015,
+          "value_mld": 26.4324
+        },
+        {
+          "year": 2016,
+          "value_mld": 27.2989
+        },
+        {
+          "year": 2017,
+          "value_mld": 27.8182
+        },
+        {
+          "year": 2018,
+          "value_mld": 26.5797
+        },
+        {
+          "year": 2019,
+          "value_mld": 26.6379
+        },
+        {
+          "year": 2020,
+          "value_mld": 25.9655
+        },
+        {
+          "year": 2021,
+          "value_mld": 24.5685
+        },
+        {
+          "year": 2022,
+          "value_mld": 32.369
+        },
+        {
+          "year": 2023,
+          "value_mld": 36.3705
+        },
+        {
+          "year": 2024,
+          "value_mld": 41.6418
+        },
+        {
+          "year": 2025,
+          "value_mld": 47.6774
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_IRAP",
+      "label": "IRAP",
+      "group": "Imprese",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 33.318,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 32.072
+        },
+        {
+          "year": 2003,
+          "value_mld": 33.593
+        },
+        {
+          "year": 2004,
+          "value_mld": 33.384
+        },
+        {
+          "year": 2005,
+          "value_mld": 35.995
+        },
+        {
+          "year": 2006,
+          "value_mld": 39.09
+        },
+        {
+          "year": 2007,
+          "value_mld": 40.966
+        },
+        {
+          "year": 2008,
+          "value_mld": 38.151
+        },
+        {
+          "year": 2009,
+          "value_mld": 33.503
+        },
+        {
+          "year": 2010,
+          "value_mld": 33.583
+        },
+        {
+          "year": 2011,
+          "value_mld": 34.136
+        },
+        {
+          "year": 2012,
+          "value_mld": 34.342
+        },
+        {
+          "year": 2013,
+          "value_mld": 34.767
+        },
+        {
+          "year": 2014,
+          "value_mld": 30.468
+        },
+        {
+          "year": 2015,
+          "value_mld": 29.37
+        },
+        {
+          "year": 2016,
+          "value_mld": 22.773
+        },
+        {
+          "year": 2017,
+          "value_mld": 23.618
+        },
+        {
+          "year": 2018,
+          "value_mld": 25.009
+        },
+        {
+          "year": 2019,
+          "value_mld": 25.168
+        },
+        {
+          "year": 2020,
+          "value_mld": 19.9395
+        },
+        {
+          "year": 2021,
+          "value_mld": 23.959
+        },
+        {
+          "year": 2022,
+          "value_mld": 28.727
+        },
+        {
+          "year": 2023,
+          "value_mld": 30.053
+        },
+        {
+          "year": 2024,
+          "value_mld": 33.142
+        },
+        {
+          "year": 2025,
+          "value_mld": 33.318
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ACCISA_SUI_PRODOTTI_ENERGETICI_LORO_DERIVATI_E_PRODOTTI_ANALOGHI",
+      "label": "Accisa sui prodotti energetici, loro derivati e prodotti analoghi",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 26.338,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 19.912
+        },
+        {
+          "year": 2003,
+          "value_mld": 21.131
+        },
+        {
+          "year": 2004,
+          "value_mld": 20.752
+        },
+        {
+          "year": 2005,
+          "value_mld": 21.226
+        },
+        {
+          "year": 2006,
+          "value_mld": 21.579
+        },
+        {
+          "year": 2007,
+          "value_mld": 21.079
+        },
+        {
+          "year": 2008,
+          "value_mld": 20.676
+        },
+        {
+          "year": 2009,
+          "value_mld": 20.171
+        },
+        {
+          "year": 2010,
+          "value_mld": 20.232
+        },
+        {
+          "year": 2011,
+          "value_mld": 20.703
+        },
+        {
+          "year": 2012,
+          "value_mld": 25.469
+        },
+        {
+          "year": 2013,
+          "value_mld": 25.774
+        },
+        {
+          "year": 2014,
+          "value_mld": 25.56
+        },
+        {
+          "year": 2015,
+          "value_mld": 25.412
+        },
+        {
+          "year": 2016,
+          "value_mld": 25.428
+        },
+        {
+          "year": 2017,
+          "value_mld": 25.795
+        },
+        {
+          "year": 2018,
+          "value_mld": 25.457
+        },
+        {
+          "year": 2019,
+          "value_mld": 25.4404
+        },
+        {
+          "year": 2020,
+          "value_mld": 21.258
+        },
+        {
+          "year": 2021,
+          "value_mld": 23.833
+        },
+        {
+          "year": 2022,
+          "value_mld": 18.054
+        },
+        {
+          "year": 2023,
+          "value_mld": 25.253
+        },
+        {
+          "year": 2024,
+          "value_mld": 25.7769
+        },
+        {
+          "year": 2025,
+          "value_mld": 26.338
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_IRAP_PRIVATA",
+      "label": "IRAP privata",
+      "group": "Imprese",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 21.206,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 23.689
+        },
+        {
+          "year": 2003,
+          "value_mld": 24.324
+        },
+        {
+          "year": 2004,
+          "value_mld": 23.803
+        },
+        {
+          "year": 2005,
+          "value_mld": 26.293
+        },
+        {
+          "year": 2006,
+          "value_mld": 28.744
+        },
+        {
+          "year": 2007,
+          "value_mld": 30.583
+        },
+        {
+          "year": 2008,
+          "value_mld": 27.659
+        },
+        {
+          "year": 2009,
+          "value_mld": 23.469
+        },
+        {
+          "year": 2010,
+          "value_mld": 23.347
+        },
+        {
+          "year": 2011,
+          "value_mld": 23.962
+        },
+        {
+          "year": 2012,
+          "value_mld": 24.422
+        },
+        {
+          "year": 2013,
+          "value_mld": 24.813
+        },
+        {
+          "year": 2014,
+          "value_mld": 20.921
+        },
+        {
+          "year": 2015,
+          "value_mld": 19.714
+        },
+        {
+          "year": 2016,
+          "value_mld": 13.125
+        },
+        {
+          "year": 2017,
+          "value_mld": 13.836
+        },
+        {
+          "year": 2018,
+          "value_mld": 14.936
+        },
+        {
+          "year": 2019,
+          "value_mld": 15.002
+        },
+        {
+          "year": 2020,
+          "value_mld": 9.559
+        },
+        {
+          "year": 2021,
+          "value_mld": 13.304
+        },
+        {
+          "year": 2022,
+          "value_mld": 17.866
+        },
+        {
+          "year": 2023,
+          "value_mld": 18.662
+        },
+        {
+          "year": 2024,
+          "value_mld": 21.215
+        },
+        {
+          "year": 2025,
+          "value_mld": 21.206
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SOST_REDDITI_NONCH_RIT_SU_INTERESSI_E_ALTRI_REDDITI_DI_CAPIT",
+      "label": "Sost. redditi nonchè rit. su interessi e altri redditi di capit.",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 21.0554,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 9.231
+        },
+        {
+          "year": 2003,
+          "value_mld": 7.542
+        },
+        {
+          "year": 2004,
+          "value_mld": 6.916
+        },
+        {
+          "year": 2005,
+          "value_mld": 6.926
+        },
+        {
+          "year": 2006,
+          "value_mld": 8.888
+        },
+        {
+          "year": 2007,
+          "value_mld": 10.886
+        },
+        {
+          "year": 2008,
+          "value_mld": 12.329
+        },
+        {
+          "year": 2009,
+          "value_mld": 12.33
+        },
+        {
+          "year": 2010,
+          "value_mld": 6.287
+        },
+        {
+          "year": 2011,
+          "value_mld": 6.061
+        },
+        {
+          "year": 2012,
+          "value_mld": 9.227
+        },
+        {
+          "year": 2013,
+          "value_mld": 10.747
+        },
+        {
+          "year": 2014,
+          "value_mld": 10.083
+        },
+        {
+          "year": 2015,
+          "value_mld": 11.123
+        },
+        {
+          "year": 2016,
+          "value_mld": 9.024
+        },
+        {
+          "year": 2017,
+          "value_mld": 8.565
+        },
+        {
+          "year": 2018,
+          "value_mld": 8.161
+        },
+        {
+          "year": 2019,
+          "value_mld": 8.285
+        },
+        {
+          "year": 2020,
+          "value_mld": 8.245
+        },
+        {
+          "year": 2021,
+          "value_mld": 10.536
+        },
+        {
+          "year": 2022,
+          "value_mld": 8.888
+        },
+        {
+          "year": 2023,
+          "value_mld": 9.957
+        },
+        {
+          "year": 2024,
+          "value_mld": 18.3033
+        },
+        {
+          "year": 2025,
+          "value_mld": 21.0554
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ALTRE_DIRETTE",
+      "label": "Altre dirette",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 19.7877,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 2.963
+        },
+        {
+          "year": 2003,
+          "value_mld": 2.456
+        },
+        {
+          "year": 2004,
+          "value_mld": 1.621
+        },
+        {
+          "year": 2005,
+          "value_mld": 2.255
+        },
+        {
+          "year": 2006,
+          "value_mld": 3.062
+        },
+        {
+          "year": 2007,
+          "value_mld": 2.339
+        },
+        {
+          "year": 2008,
+          "value_mld": 2.541
+        },
+        {
+          "year": 2009,
+          "value_mld": 13.47
+        },
+        {
+          "year": 2010,
+          "value_mld": 5.598
+        },
+        {
+          "year": 2011,
+          "value_mld": 8.548
+        },
+        {
+          "year": 2012,
+          "value_mld": 13.158
+        },
+        {
+          "year": 2013,
+          "value_mld": 11.171
+        },
+        {
+          "year": 2014,
+          "value_mld": 8.956
+        },
+        {
+          "year": 2015,
+          "value_mld": 9.461
+        },
+        {
+          "year": 2016,
+          "value_mld": 13.732
+        },
+        {
+          "year": 2017,
+          "value_mld": 11.6139
+        },
+        {
+          "year": 2018,
+          "value_mld": 10.7552
+        },
+        {
+          "year": 2019,
+          "value_mld": 10.709
+        },
+        {
+          "year": 2020,
+          "value_mld": 12.6169
+        },
+        {
+          "year": 2021,
+          "value_mld": 13.668
+        },
+        {
+          "year": 2022,
+          "value_mld": 18.456
+        },
+        {
+          "year": 2023,
+          "value_mld": 21.436
+        },
+        {
+          "year": 2024,
+          "value_mld": 19.3308
+        },
+        {
+          "year": 2025,
+          "value_mld": 19.7877
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IMPORTAZIONI",
+      "label": "importazioni",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 18.63,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 11.259
+        },
+        {
+          "year": 2003,
+          "value_mld": 11.15
+        },
+        {
+          "year": 2004,
+          "value_mld": 11.789
+        },
+        {
+          "year": 2005,
+          "value_mld": 12.493
+        },
+        {
+          "year": 2006,
+          "value_mld": 14.449
+        },
+        {
+          "year": 2007,
+          "value_mld": 14.392
+        },
+        {
+          "year": 2008,
+          "value_mld": 15.374
+        },
+        {
+          "year": 2009,
+          "value_mld": 10.993
+        },
+        {
+          "year": 2010,
+          "value_mld": 14.554
+        },
+        {
+          "year": 2011,
+          "value_mld": 17.132
+        },
+        {
+          "year": 2012,
+          "value_mld": 16.089
+        },
+        {
+          "year": 2013,
+          "value_mld": 13.347
+        },
+        {
+          "year": 2014,
+          "value_mld": 13.373
+        },
+        {
+          "year": 2015,
+          "value_mld": 12.399
+        },
+        {
+          "year": 2016,
+          "value_mld": 11.63
+        },
+        {
+          "year": 2017,
+          "value_mld": 13.368
+        },
+        {
+          "year": 2018,
+          "value_mld": 14.2102
+        },
+        {
+          "year": 2019,
+          "value_mld": 13.891
+        },
+        {
+          "year": 2020,
+          "value_mld": 10.04
+        },
+        {
+          "year": 2021,
+          "value_mld": 15.386
+        },
+        {
+          "year": 2022,
+          "value_mld": 22.5933
+        },
+        {
+          "year": 2023,
+          "value_mld": 18.659
+        },
+        {
+          "year": 2024,
+          "value_mld": 18.3827
+        },
+        {
+          "year": 2025,
+          "value_mld": 18.63
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_IMU_IMIS_QUOTA_COMUNI",
+      "label": "Imu - Imis (Quota Comuni)",
+      "group": "Tributi territoriali",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 18.189,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0
+        },
+        {
+          "year": 2003,
+          "value_mld": 0
+        },
+        {
+          "year": 2004,
+          "value_mld": 0
+        },
+        {
+          "year": 2005,
+          "value_mld": 0
+        },
+        {
+          "year": 2006,
+          "value_mld": 0
+        },
+        {
+          "year": 2007,
+          "value_mld": 0
+        },
+        {
+          "year": 2008,
+          "value_mld": 0
+        },
+        {
+          "year": 2009,
+          "value_mld": 0
+        },
+        {
+          "year": 2010,
+          "value_mld": 0
+        },
+        {
+          "year": 2011,
+          "value_mld": 9.2
+        },
+        {
+          "year": 2012,
+          "value_mld": 15.609
+        },
+        {
+          "year": 2013,
+          "value_mld": 15.706
+        },
+        {
+          "year": 2014,
+          "value_mld": 16.529
+        },
+        {
+          "year": 2015,
+          "value_mld": 16.546
+        },
+        {
+          "year": 2016,
+          "value_mld": 15.93
+        },
+        {
+          "year": 2017,
+          "value_mld": 16.032
+        },
+        {
+          "year": 2018,
+          "value_mld": 16.19
+        },
+        {
+          "year": 2019,
+          "value_mld": 16.301
+        },
+        {
+          "year": 2020,
+          "value_mld": 16.948
+        },
+        {
+          "year": 2021,
+          "value_mld": 17.772
+        },
+        {
+          "year": 2022,
+          "value_mld": 17.895
+        },
+        {
+          "year": 2023,
+          "value_mld": 18.064
+        },
+        {
+          "year": 2024,
+          "value_mld": 18.103
+        },
+        {
+          "year": 2025,
+          "value_mld": 18.189
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IRPEF_ACCONTO",
+      "label": "IRPEF acconto",
+      "group": "Redditi persone fisiche",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 16.1209,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 16.133
+        },
+        {
+          "year": 2003,
+          "value_mld": 16.963
+        },
+        {
+          "year": 2004,
+          "value_mld": 15.978
+        },
+        {
+          "year": 2005,
+          "value_mld": 17.057
+        },
+        {
+          "year": 2006,
+          "value_mld": 17.623
+        },
+        {
+          "year": 2007,
+          "value_mld": 20.1
+        },
+        {
+          "year": 2008,
+          "value_mld": 20.536
+        },
+        {
+          "year": 2009,
+          "value_mld": 16.741
+        },
+        {
+          "year": 2010,
+          "value_mld": 18.149
+        },
+        {
+          "year": 2011,
+          "value_mld": 16.706
+        },
+        {
+          "year": 2012,
+          "value_mld": 17.239
+        },
+        {
+          "year": 2013,
+          "value_mld": 16.113
+        },
+        {
+          "year": 2014,
+          "value_mld": 15.631
+        },
+        {
+          "year": 2015,
+          "value_mld": 15.287
+        },
+        {
+          "year": 2016,
+          "value_mld": 15.372
+        },
+        {
+          "year": 2017,
+          "value_mld": 15.1802
+        },
+        {
+          "year": 2018,
+          "value_mld": 14.7497
+        },
+        {
+          "year": 2019,
+          "value_mld": 14.7568
+        },
+        {
+          "year": 2020,
+          "value_mld": 13.135
+        },
+        {
+          "year": 2021,
+          "value_mld": 13.62
+        },
+        {
+          "year": 2022,
+          "value_mld": 15.429
+        },
+        {
+          "year": 2023,
+          "value_mld": 15.738
+        },
+        {
+          "year": 2024,
+          "value_mld": 17.1744
+        },
+        {
+          "year": 2025,
+          "value_mld": 16.1209
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_ADDIZIONALE_REGIONALE_IRPEF",
+      "label": "Addizionale regionale IRPEF",
+      "group": "Redditi persone fisiche",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 16.04,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 4.975
+        },
+        {
+          "year": 2003,
+          "value_mld": 6.166
+        },
+        {
+          "year": 2004,
+          "value_mld": 6.741
+        },
+        {
+          "year": 2005,
+          "value_mld": 6.43
+        },
+        {
+          "year": 2006,
+          "value_mld": 6.199
+        },
+        {
+          "year": 2007,
+          "value_mld": 7.387
+        },
+        {
+          "year": 2008,
+          "value_mld": 8.229
+        },
+        {
+          "year": 2009,
+          "value_mld": 8.085
+        },
+        {
+          "year": 2010,
+          "value_mld": 8.168
+        },
+        {
+          "year": 2011,
+          "value_mld": 8.401
+        },
+        {
+          "year": 2012,
+          "value_mld": 10.73
+        },
+        {
+          "year": 2013,
+          "value_mld": 10.617
+        },
+        {
+          "year": 2014,
+          "value_mld": 10.95
+        },
+        {
+          "year": 2015,
+          "value_mld": 11.322
+        },
+        {
+          "year": 2016,
+          "value_mld": 11.884
+        },
+        {
+          "year": 2017,
+          "value_mld": 11.963
+        },
+        {
+          "year": 2018,
+          "value_mld": 11.947
+        },
+        {
+          "year": 2019,
+          "value_mld": 11.41
+        },
+        {
+          "year": 2020,
+          "value_mld": 12.047
+        },
+        {
+          "year": 2021,
+          "value_mld": 12.223
+        },
+        {
+          "year": 2022,
+          "value_mld": 12.937
+        },
+        {
+          "year": 2023,
+          "value_mld": 13.929
+        },
+        {
+          "year": 2024,
+          "value_mld": 15.133
+        },
+        {
+          "year": 2025,
+          "value_mld": 16.04
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_RITENUTE_LAVORATORI_AUTONOMI",
+      "label": "Ritenute lavoratori autonomi",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 14.9915,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 9.925
+        },
+        {
+          "year": 2003,
+          "value_mld": 10.643
+        },
+        {
+          "year": 2004,
+          "value_mld": 11.034
+        },
+        {
+          "year": 2005,
+          "value_mld": 11.696
+        },
+        {
+          "year": 2006,
+          "value_mld": 12.414
+        },
+        {
+          "year": 2007,
+          "value_mld": 13.221
+        },
+        {
+          "year": 2008,
+          "value_mld": 13.813
+        },
+        {
+          "year": 2009,
+          "value_mld": 13.509
+        },
+        {
+          "year": 2010,
+          "value_mld": 13.613
+        },
+        {
+          "year": 2011,
+          "value_mld": 13.671
+        },
+        {
+          "year": 2012,
+          "value_mld": 13.057
+        },
+        {
+          "year": 2013,
+          "value_mld": 12.384
+        },
+        {
+          "year": 2014,
+          "value_mld": 12.156
+        },
+        {
+          "year": 2015,
+          "value_mld": 12.357
+        },
+        {
+          "year": 2016,
+          "value_mld": 12.224
+        },
+        {
+          "year": 2017,
+          "value_mld": 12.3027
+        },
+        {
+          "year": 2018,
+          "value_mld": 12.586
+        },
+        {
+          "year": 2019,
+          "value_mld": 11.3097
+        },
+        {
+          "year": 2020,
+          "value_mld": 10.711
+        },
+        {
+          "year": 2021,
+          "value_mld": 11.83
+        },
+        {
+          "year": 2022,
+          "value_mld": 12.606
+        },
+        {
+          "year": 2023,
+          "value_mld": 13.17
+        },
+        {
+          "year": 2024,
+          "value_mld": 14.2653
+        },
+        {
+          "year": 2025,
+          "value_mld": 14.9915
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IRES_SALDO",
+      "label": "IRES saldo",
+      "group": "Imprese",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 12.4073,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 7.458
+        },
+        {
+          "year": 2003,
+          "value_mld": 6.525
+        },
+        {
+          "year": 2004,
+          "value_mld": 6.439
+        },
+        {
+          "year": 2005,
+          "value_mld": 7.831
+        },
+        {
+          "year": 2006,
+          "value_mld": 9.234
+        },
+        {
+          "year": 2007,
+          "value_mld": 13.342
+        },
+        {
+          "year": 2008,
+          "value_mld": 12.278
+        },
+        {
+          "year": 2009,
+          "value_mld": 10.127
+        },
+        {
+          "year": 2010,
+          "value_mld": 9.027
+        },
+        {
+          "year": 2011,
+          "value_mld": 8.198
+        },
+        {
+          "year": 2012,
+          "value_mld": 8.382
+        },
+        {
+          "year": 2013,
+          "value_mld": 8.492
+        },
+        {
+          "year": 2014,
+          "value_mld": 7.096
+        },
+        {
+          "year": 2015,
+          "value_mld": 6.9696
+        },
+        {
+          "year": 2016,
+          "value_mld": 7.9521
+        },
+        {
+          "year": 2017,
+          "value_mld": 7.3436
+        },
+        {
+          "year": 2018,
+          "value_mld": 6.0823
+        },
+        {
+          "year": 2019,
+          "value_mld": 7.0956
+        },
+        {
+          "year": 2020,
+          "value_mld": 7.8155
+        },
+        {
+          "year": 2021,
+          "value_mld": 7.2235
+        },
+        {
+          "year": 2022,
+          "value_mld": 13.2908
+        },
+        {
+          "year": 2023,
+          "value_mld": 15.4555
+        },
+        {
+          "year": 2024,
+          "value_mld": 15.9403
+        },
+        {
+          "year": 2025,
+          "value_mld": 12.4073
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_IRAP_PUBBLICA",
+      "label": "IRAP pubblica",
+      "group": "Imprese",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 12.112,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 8.383
+        },
+        {
+          "year": 2003,
+          "value_mld": 9.269
+        },
+        {
+          "year": 2004,
+          "value_mld": 9.581
+        },
+        {
+          "year": 2005,
+          "value_mld": 9.702
+        },
+        {
+          "year": 2006,
+          "value_mld": 10.346
+        },
+        {
+          "year": 2007,
+          "value_mld": 10.383
+        },
+        {
+          "year": 2008,
+          "value_mld": 10.492
+        },
+        {
+          "year": 2009,
+          "value_mld": 10.034
+        },
+        {
+          "year": 2010,
+          "value_mld": 10.236
+        },
+        {
+          "year": 2011,
+          "value_mld": 10.174
+        },
+        {
+          "year": 2012,
+          "value_mld": 9.92
+        },
+        {
+          "year": 2013,
+          "value_mld": 9.954
+        },
+        {
+          "year": 2014,
+          "value_mld": 9.547
+        },
+        {
+          "year": 2015,
+          "value_mld": 9.656
+        },
+        {
+          "year": 2016,
+          "value_mld": 9.648
+        },
+        {
+          "year": 2017,
+          "value_mld": 9.782
+        },
+        {
+          "year": 2018,
+          "value_mld": 10.073
+        },
+        {
+          "year": 2019,
+          "value_mld": 10.166
+        },
+        {
+          "year": 2020,
+          "value_mld": 10.3805
+        },
+        {
+          "year": 2021,
+          "value_mld": 10.655
+        },
+        {
+          "year": 2022,
+          "value_mld": 10.861
+        },
+        {
+          "year": 2023,
+          "value_mld": 11.391
+        },
+        {
+          "year": 2024,
+          "value_mld": 11.927
+        },
+        {
+          "year": 2025,
+          "value_mld": 12.112
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IMPOSTA_SUL_CONSUMO_DEI_TABACCHI",
+      "label": "Imposta sul consumo dei tabacchi",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 11.461,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 7.871
+        },
+        {
+          "year": 2003,
+          "value_mld": 8.047
+        },
+        {
+          "year": 2004,
+          "value_mld": 8.72
+        },
+        {
+          "year": 2005,
+          "value_mld": 9.01
+        },
+        {
+          "year": 2006,
+          "value_mld": 9.936
+        },
+        {
+          "year": 2007,
+          "value_mld": 10.339
+        },
+        {
+          "year": 2008,
+          "value_mld": 10.38
+        },
+        {
+          "year": 2009,
+          "value_mld": 10.496
+        },
+        {
+          "year": 2010,
+          "value_mld": 10.647
+        },
+        {
+          "year": 2011,
+          "value_mld": 10.939
+        },
+        {
+          "year": 2012,
+          "value_mld": 10.953
+        },
+        {
+          "year": 2013,
+          "value_mld": 10.371
+        },
+        {
+          "year": 2014,
+          "value_mld": 10.304
+        },
+        {
+          "year": 2015,
+          "value_mld": 10.647
+        },
+        {
+          "year": 2016,
+          "value_mld": 10.882
+        },
+        {
+          "year": 2017,
+          "value_mld": 10.4984
+        },
+        {
+          "year": 2018,
+          "value_mld": 10.5357
+        },
+        {
+          "year": 2019,
+          "value_mld": 10.6764
+        },
+        {
+          "year": 2020,
+          "value_mld": 10.569
+        },
+        {
+          "year": 2021,
+          "value_mld": 10.782
+        },
+        {
+          "year": 2022,
+          "value_mld": 10.889
+        },
+        {
+          "year": 2023,
+          "value_mld": 11.024
+        },
+        {
+          "year": 2024,
+          "value_mld": 11.338
+        },
+        {
+          "year": 2025,
+          "value_mld": 11.461
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_BOLLO",
+      "label": "Bollo",
+      "group": "Atti, concessioni e patrimonio",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 10.9976,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 3.971
+        },
+        {
+          "year": 2003,
+          "value_mld": 3.998
+        },
+        {
+          "year": 2004,
+          "value_mld": 5.22
+        },
+        {
+          "year": 2005,
+          "value_mld": 5.019
+        },
+        {
+          "year": 2006,
+          "value_mld": 5.646
+        },
+        {
+          "year": 2007,
+          "value_mld": 5.584
+        },
+        {
+          "year": 2008,
+          "value_mld": 5.405
+        },
+        {
+          "year": 2009,
+          "value_mld": 5.723
+        },
+        {
+          "year": 2010,
+          "value_mld": 5.515
+        },
+        {
+          "year": 2011,
+          "value_mld": 5.573
+        },
+        {
+          "year": 2012,
+          "value_mld": 6.17
+        },
+        {
+          "year": 2013,
+          "value_mld": 7.717
+        },
+        {
+          "year": 2014,
+          "value_mld": 7.759
+        },
+        {
+          "year": 2015,
+          "value_mld": 7.182
+        },
+        {
+          "year": 2016,
+          "value_mld": 6.806
+        },
+        {
+          "year": 2017,
+          "value_mld": 6.3465
+        },
+        {
+          "year": 2018,
+          "value_mld": 6.982
+        },
+        {
+          "year": 2019,
+          "value_mld": 6.5679
+        },
+        {
+          "year": 2020,
+          "value_mld": 6.732
+        },
+        {
+          "year": 2021,
+          "value_mld": 6.982
+        },
+        {
+          "year": 2022,
+          "value_mld": 7.5545
+        },
+        {
+          "year": 2023,
+          "value_mld": 6.777
+        },
+        {
+          "year": 2024,
+          "value_mld": 8.8589
+        },
+        {
+          "year": 2025,
+          "value_mld": 10.9976
+        }
+      ]
+    },
+    {
+      "code": "TARI_UPB_2023",
+      "label": "TARI",
+      "group": "Tributi comunali",
+      "source": "Fonte: Ufficio parlamentare di bilancio, Focus n. 5/2024 sulla TARI, dati 2023",
+      "unit": "mld",
+      "latest_year": 2023,
+      "latest_value_mld": 10.5,
+      "series": [
+        {
+          "year": 2023,
+          "value_mld": 10.5
+        }
+      ],
+      "note": "La TARI non compare come serie separata nella API mensile MEF usata per le entrate tributarie; il valore e' tratto dal focus UPB sulla tassa rifiuti."
+    },
+    {
+      "code": "MEF_TERRITORIALI_ADDIZIONALE_REGIONALE_IRPEF_DIP_SETTORE_PRIVATO_E_LAV_AUTONOMI",
+      "label": "Addizionale regionale IRPEF(dip. settore privato e lav. autonomi)",
+      "group": "Redditi persone fisiche",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 9.177,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 3.015
+        },
+        {
+          "year": 2003,
+          "value_mld": 3.743
+        },
+        {
+          "year": 2004,
+          "value_mld": 3.822
+        },
+        {
+          "year": 2005,
+          "value_mld": 3.913
+        },
+        {
+          "year": 2006,
+          "value_mld": 3.776
+        },
+        {
+          "year": 2007,
+          "value_mld": 4.45
+        },
+        {
+          "year": 2008,
+          "value_mld": 4.981
+        },
+        {
+          "year": 2009,
+          "value_mld": 4.783
+        },
+        {
+          "year": 2010,
+          "value_mld": 4.71
+        },
+        {
+          "year": 2011,
+          "value_mld": 4.774
+        },
+        {
+          "year": 2012,
+          "value_mld": 6.012
+        },
+        {
+          "year": 2013,
+          "value_mld": 5.911
+        },
+        {
+          "year": 2014,
+          "value_mld": 6.092
+        },
+        {
+          "year": 2015,
+          "value_mld": 6.392
+        },
+        {
+          "year": 2016,
+          "value_mld": 6.697
+        },
+        {
+          "year": 2017,
+          "value_mld": 6.807
+        },
+        {
+          "year": 2018,
+          "value_mld": 6.792
+        },
+        {
+          "year": 2019,
+          "value_mld": 6.985
+        },
+        {
+          "year": 2020,
+          "value_mld": 6.752
+        },
+        {
+          "year": 2021,
+          "value_mld": 6.785
+        },
+        {
+          "year": 2022,
+          "value_mld": 7.406
+        },
+        {
+          "year": 2023,
+          "value_mld": 8.073
+        },
+        {
+          "year": 2024,
+          "value_mld": 8.637
+        },
+        {
+          "year": 2025,
+          "value_mld": 9.177
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SOST_SU_INTERESSI_E_PREMI_DI_OBBLIG_E_TITOLI_DI_CUI_AL_DLGS_239_96",
+      "label": "sost. su interessi e premi di obblig. e titoli di cui al DLgs 239/96",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.8895,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 4.415
+        },
+        {
+          "year": 2003,
+          "value_mld": 3.823
+        },
+        {
+          "year": 2004,
+          "value_mld": 3.883
+        },
+        {
+          "year": 2005,
+          "value_mld": 3.936
+        },
+        {
+          "year": 2006,
+          "value_mld": 5.2
+        },
+        {
+          "year": 2007,
+          "value_mld": 5.202
+        },
+        {
+          "year": 2008,
+          "value_mld": 6.077
+        },
+        {
+          "year": 2009,
+          "value_mld": 4.752
+        },
+        {
+          "year": 2010,
+          "value_mld": 4.078
+        },
+        {
+          "year": 2011,
+          "value_mld": 4.433
+        },
+        {
+          "year": 2012,
+          "value_mld": 5.045
+        },
+        {
+          "year": 2013,
+          "value_mld": 5.562
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.391
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.539
+        },
+        {
+          "year": 2016,
+          "value_mld": 4.135
+        },
+        {
+          "year": 2017,
+          "value_mld": 3.3725
+        },
+        {
+          "year": 2018,
+          "value_mld": 2.9327
+        },
+        {
+          "year": 2019,
+          "value_mld": 3.7864
+        },
+        {
+          "year": 2020,
+          "value_mld": 2.681
+        },
+        {
+          "year": 2021,
+          "value_mld": 3.431
+        },
+        {
+          "year": 2022,
+          "value_mld": 3.969
+        },
+        {
+          "year": 2023,
+          "value_mld": 4.783
+        },
+        {
+          "year": 2024,
+          "value_mld": 6.2204
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.8895
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_ADDIZIONALE_REGIONALE_IRPEF_DIP_SETTORE_PUBBLICO",
+      "label": "Addizionale regionale IRPEF (dip. settore pubblico)",
+      "group": "Redditi persone fisiche",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.863,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 1.96
+        },
+        {
+          "year": 2003,
+          "value_mld": 2.423
+        },
+        {
+          "year": 2004,
+          "value_mld": 2.919
+        },
+        {
+          "year": 2005,
+          "value_mld": 2.517
+        },
+        {
+          "year": 2006,
+          "value_mld": 2.423
+        },
+        {
+          "year": 2007,
+          "value_mld": 2.937
+        },
+        {
+          "year": 2008,
+          "value_mld": 3.248
+        },
+        {
+          "year": 2009,
+          "value_mld": 3.302
+        },
+        {
+          "year": 2010,
+          "value_mld": 3.458
+        },
+        {
+          "year": 2011,
+          "value_mld": 3.627
+        },
+        {
+          "year": 2012,
+          "value_mld": 4.718
+        },
+        {
+          "year": 2013,
+          "value_mld": 4.706
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.858
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.93
+        },
+        {
+          "year": 2016,
+          "value_mld": 5.187
+        },
+        {
+          "year": 2017,
+          "value_mld": 5.156
+        },
+        {
+          "year": 2018,
+          "value_mld": 5.155
+        },
+        {
+          "year": 2019,
+          "value_mld": 4.425
+        },
+        {
+          "year": 2020,
+          "value_mld": 5.295
+        },
+        {
+          "year": 2021,
+          "value_mld": 5.438
+        },
+        {
+          "year": 2022,
+          "value_mld": 5.531
+        },
+        {
+          "year": 2023,
+          "value_mld": 5.856
+        },
+        {
+          "year": 2024,
+          "value_mld": 6.496
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.863
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_RIT_SU_UTILI_DISTRIBUITI_DALLE_PERSONE_GIURIDICHE",
+      "label": "Rit. su utili distribuiti dalle persone giuridiche",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.6951,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.317
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.267
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.315
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.492
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.754
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.542
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.686
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.428
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.393
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.444
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.644
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.563
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.975
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.875
+        },
+        {
+          "year": 2016,
+          "value_mld": 1.133
+        },
+        {
+          "year": 2017,
+          "value_mld": 1.143
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.157
+        },
+        {
+          "year": 2019,
+          "value_mld": 1.7498
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.741
+        },
+        {
+          "year": 2021,
+          "value_mld": 2.7
+        },
+        {
+          "year": 2022,
+          "value_mld": 3.567
+        },
+        {
+          "year": 2023,
+          "value_mld": 5.29
+        },
+        {
+          "year": 2024,
+          "value_mld": 6.441
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.6951
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_RIT_SU_INTERESSI_E_PREMI_CORRISPOSTI_DA_ISTITUTI_DI_CREDITO",
+      "label": "rit. su interessi e premi corrisposti da istituti di credito",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.6129,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 3.971
+        },
+        {
+          "year": 2003,
+          "value_mld": 3.014
+        },
+        {
+          "year": 2004,
+          "value_mld": 2.3
+        },
+        {
+          "year": 2005,
+          "value_mld": 2.277
+        },
+        {
+          "year": 2006,
+          "value_mld": 2.641
+        },
+        {
+          "year": 2007,
+          "value_mld": 4.464
+        },
+        {
+          "year": 2008,
+          "value_mld": 5.077
+        },
+        {
+          "year": 2009,
+          "value_mld": 6.583
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.254
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.674
+        },
+        {
+          "year": 2012,
+          "value_mld": 2.602
+        },
+        {
+          "year": 2013,
+          "value_mld": 3.068
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.157
+        },
+        {
+          "year": 2015,
+          "value_mld": 1.57
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.928
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.643
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.759
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.8655
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.116
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.954
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.952
+        },
+        {
+          "year": 2023,
+          "value_mld": 1.323
+        },
+        {
+          "year": 2024,
+          "value_mld": 5.7182
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.6129
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SOST_SUI_REDDITI_DA_CAPITALE_E_SULLE_PLUSVALENZE",
+      "label": "Sost. sui redditi da capitale e sulle plusvalenze",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.581,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 3.745
+        },
+        {
+          "year": 2003,
+          "value_mld": 3.212
+        },
+        {
+          "year": 2004,
+          "value_mld": 3.751
+        },
+        {
+          "year": 2005,
+          "value_mld": 1.36
+        },
+        {
+          "year": 2006,
+          "value_mld": 2.233
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.803
+        },
+        {
+          "year": 2008,
+          "value_mld": 1.004
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.638
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.892
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.69
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.887
+        },
+        {
+          "year": 2013,
+          "value_mld": 2.438
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.844
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.271
+        },
+        {
+          "year": 2016,
+          "value_mld": 1.308
+        },
+        {
+          "year": 2017,
+          "value_mld": 1.652
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.748
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.9784
+        },
+        {
+          "year": 2020,
+          "value_mld": 2.596
+        },
+        {
+          "year": 2021,
+          "value_mld": 3.263
+        },
+        {
+          "year": 2022,
+          "value_mld": 3.7996
+        },
+        {
+          "year": 2023,
+          "value_mld": 1.468
+        },
+        {
+          "year": 2024,
+          "value_mld": 3.3224
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.581
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_ADDIZIONALE_COMUNALE_IRPEF",
+      "label": "Addizionale comunale IRPEF",
+      "group": "Redditi persone fisiche",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.44,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 1.096
+        },
+        {
+          "year": 2003,
+          "value_mld": 1.571
+        },
+        {
+          "year": 2004,
+          "value_mld": 1.615
+        },
+        {
+          "year": 2005,
+          "value_mld": 1.555
+        },
+        {
+          "year": 2006,
+          "value_mld": 1.561
+        },
+        {
+          "year": 2007,
+          "value_mld": 2.23
+        },
+        {
+          "year": 2008,
+          "value_mld": 2.725
+        },
+        {
+          "year": 2009,
+          "value_mld": 2.874
+        },
+        {
+          "year": 2010,
+          "value_mld": 2.854
+        },
+        {
+          "year": 2011,
+          "value_mld": 2.913
+        },
+        {
+          "year": 2012,
+          "value_mld": 3.234
+        },
+        {
+          "year": 2013,
+          "value_mld": 3.889
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.159
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.298
+        },
+        {
+          "year": 2016,
+          "value_mld": 4.492
+        },
+        {
+          "year": 2017,
+          "value_mld": 4.482
+        },
+        {
+          "year": 2018,
+          "value_mld": 4.52
+        },
+        {
+          "year": 2019,
+          "value_mld": 4.67
+        },
+        {
+          "year": 2020,
+          "value_mld": 4.732
+        },
+        {
+          "year": 2021,
+          "value_mld": 4.781
+        },
+        {
+          "year": 2022,
+          "value_mld": 5.142
+        },
+        {
+          "year": 2023,
+          "value_mld": 5.621
+        },
+        {
+          "year": 2024,
+          "value_mld": 6.087
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.44
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_REGISTRO",
+      "label": "Registro",
+      "group": "Atti, concessioni e patrimonio",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.0252,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 4.201
+        },
+        {
+          "year": 2003,
+          "value_mld": 4.186
+        },
+        {
+          "year": 2004,
+          "value_mld": 4.427
+        },
+        {
+          "year": 2005,
+          "value_mld": 4.811
+        },
+        {
+          "year": 2006,
+          "value_mld": 5.243
+        },
+        {
+          "year": 2007,
+          "value_mld": 5.762
+        },
+        {
+          "year": 2008,
+          "value_mld": 5.385
+        },
+        {
+          "year": 2009,
+          "value_mld": 4.738
+        },
+        {
+          "year": 2010,
+          "value_mld": 4.98
+        },
+        {
+          "year": 2011,
+          "value_mld": 4.704
+        },
+        {
+          "year": 2012,
+          "value_mld": 4.104
+        },
+        {
+          "year": 2013,
+          "value_mld": 3.878
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.259
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.253
+        },
+        {
+          "year": 2016,
+          "value_mld": 4.747
+        },
+        {
+          "year": 2017,
+          "value_mld": 4.8348
+        },
+        {
+          "year": 2018,
+          "value_mld": 5.005
+        },
+        {
+          "year": 2019,
+          "value_mld": 4.7744
+        },
+        {
+          "year": 2020,
+          "value_mld": 3.912
+        },
+        {
+          "year": 2021,
+          "value_mld": 5.074
+        },
+        {
+          "year": 2022,
+          "value_mld": 5.472
+        },
+        {
+          "year": 2023,
+          "value_mld": 5.482
+        },
+        {
+          "year": 2024,
+          "value_mld": 5.7511
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.0252
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IRPEF_SALDO",
+      "label": "IRPEF saldo",
+      "group": "Redditi persone fisiche",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 5.685,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 5.318
+        },
+        {
+          "year": 2003,
+          "value_mld": 5.194
+        },
+        {
+          "year": 2004,
+          "value_mld": 4.828
+        },
+        {
+          "year": 2005,
+          "value_mld": 5.578
+        },
+        {
+          "year": 2006,
+          "value_mld": 5.532
+        },
+        {
+          "year": 2007,
+          "value_mld": 7.361
+        },
+        {
+          "year": 2008,
+          "value_mld": 7.401
+        },
+        {
+          "year": 2009,
+          "value_mld": 5.809
+        },
+        {
+          "year": 2010,
+          "value_mld": 6.665
+        },
+        {
+          "year": 2011,
+          "value_mld": 5.734
+        },
+        {
+          "year": 2012,
+          "value_mld": 6.443
+        },
+        {
+          "year": 2013,
+          "value_mld": 4.945
+        },
+        {
+          "year": 2014,
+          "value_mld": 5.258
+        },
+        {
+          "year": 2015,
+          "value_mld": 5.603
+        },
+        {
+          "year": 2016,
+          "value_mld": 6.217
+        },
+        {
+          "year": 2017,
+          "value_mld": 6.222
+        },
+        {
+          "year": 2018,
+          "value_mld": 5.8693
+        },
+        {
+          "year": 2019,
+          "value_mld": 6.215
+        },
+        {
+          "year": 2020,
+          "value_mld": 5.556
+        },
+        {
+          "year": 2021,
+          "value_mld": 5.264
+        },
+        {
+          "year": 2022,
+          "value_mld": 7.592
+        },
+        {
+          "year": 2023,
+          "value_mld": 8.458
+        },
+        {
+          "year": 2024,
+          "value_mld": 7.0689
+        },
+        {
+          "year": 2025,
+          "value_mld": 5.685
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ASSICURAZIONI",
+      "label": "Assicurazioni",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 5.285,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 2.525
+        },
+        {
+          "year": 2003,
+          "value_mld": 2.654
+        },
+        {
+          "year": 2004,
+          "value_mld": 3.116
+        },
+        {
+          "year": 2005,
+          "value_mld": 2.813
+        },
+        {
+          "year": 2006,
+          "value_mld": 2.902
+        },
+        {
+          "year": 2007,
+          "value_mld": 2.971
+        },
+        {
+          "year": 2008,
+          "value_mld": 3.095
+        },
+        {
+          "year": 2009,
+          "value_mld": 3.546
+        },
+        {
+          "year": 2010,
+          "value_mld": 3.367
+        },
+        {
+          "year": 2011,
+          "value_mld": 3.077
+        },
+        {
+          "year": 2012,
+          "value_mld": 3.064
+        },
+        {
+          "year": 2013,
+          "value_mld": 3.03
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.94
+        },
+        {
+          "year": 2015,
+          "value_mld": 3.07
+        },
+        {
+          "year": 2016,
+          "value_mld": 3.098
+        },
+        {
+          "year": 2017,
+          "value_mld": 3.196
+        },
+        {
+          "year": 2018,
+          "value_mld": 3.833
+        },
+        {
+          "year": 2019,
+          "value_mld": 4.2946
+        },
+        {
+          "year": 2020,
+          "value_mld": 3.813
+        },
+        {
+          "year": 2021,
+          "value_mld": 4.123
+        },
+        {
+          "year": 2022,
+          "value_mld": 4.1634
+        },
+        {
+          "year": 2023,
+          "value_mld": 4.481
+        },
+        {
+          "year": 2024,
+          "value_mld": 4.8322
+        },
+        {
+          "year": 2025,
+          "value_mld": 5.285
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_APPARECCHI_E_CONGEGNI_DI_GIOCO_DL_269_2003_ART_39_C_13",
+      "label": "Apparecchi e congegni di gioco(DL 269/2003 art.39,c.13)",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 5.244,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.001
+        },
+        {
+          "year": 2003,
+          "value_mld": 0
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.425
+        },
+        {
+          "year": 2005,
+          "value_mld": 1.281
+        },
+        {
+          "year": 2006,
+          "value_mld": 1.931
+        },
+        {
+          "year": 2007,
+          "value_mld": 2.16
+        },
+        {
+          "year": 2008,
+          "value_mld": 2.492
+        },
+        {
+          "year": 2009,
+          "value_mld": 2.945
+        },
+        {
+          "year": 2010,
+          "value_mld": 3.577
+        },
+        {
+          "year": 2011,
+          "value_mld": 3.813
+        },
+        {
+          "year": 2012,
+          "value_mld": 3.867
+        },
+        {
+          "year": 2013,
+          "value_mld": 4.147
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.262
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.115
+        },
+        {
+          "year": 2016,
+          "value_mld": 5.557
+        },
+        {
+          "year": 2017,
+          "value_mld": 5.806
+        },
+        {
+          "year": 2018,
+          "value_mld": 5.864
+        },
+        {
+          "year": 2019,
+          "value_mld": 6.591
+        },
+        {
+          "year": 2020,
+          "value_mld": 3.208
+        },
+        {
+          "year": 2021,
+          "value_mld": 3.043
+        },
+        {
+          "year": 2022,
+          "value_mld": 5.62
+        },
+        {
+          "year": 2023,
+          "value_mld": 5.664
+        },
+        {
+          "year": 2024,
+          "value_mld": 5.4225
+        },
+        {
+          "year": 2025,
+          "value_mld": 5.244
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ALTRE_INDIRETTE",
+      "label": "Altre indirette",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 4.436,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 7.071
+        },
+        {
+          "year": 2003,
+          "value_mld": 9.566
+        },
+        {
+          "year": 2004,
+          "value_mld": 12.135
+        },
+        {
+          "year": 2005,
+          "value_mld": 6.56
+        },
+        {
+          "year": 2006,
+          "value_mld": 7.005
+        },
+        {
+          "year": 2007,
+          "value_mld": 2.462
+        },
+        {
+          "year": 2008,
+          "value_mld": 2.867
+        },
+        {
+          "year": 2009,
+          "value_mld": 3.069
+        },
+        {
+          "year": 2010,
+          "value_mld": 3.762
+        },
+        {
+          "year": 2011,
+          "value_mld": 4.03
+        },
+        {
+          "year": 2012,
+          "value_mld": 2.57
+        },
+        {
+          "year": 2013,
+          "value_mld": 3.331
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.722
+        },
+        {
+          "year": 2015,
+          "value_mld": 2.893
+        },
+        {
+          "year": 2016,
+          "value_mld": 2.4331
+        },
+        {
+          "year": 2017,
+          "value_mld": 2.5458
+        },
+        {
+          "year": 2018,
+          "value_mld": 10.232
+        },
+        {
+          "year": 2019,
+          "value_mld": 10.1595
+        },
+        {
+          "year": 2020,
+          "value_mld": 8.2333
+        },
+        {
+          "year": 2021,
+          "value_mld": 10.742
+        },
+        {
+          "year": 2022,
+          "value_mld": 10.525
+        },
+        {
+          "year": 2023,
+          "value_mld": 3.551
+        },
+        {
+          "year": 2024,
+          "value_mld": 3.6585
+        },
+        {
+          "year": 2025,
+          "value_mld": 4.436
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_RIT_A_TITOLO_DI_ACCONTO_SUI_BONIFICI_PER_BENEFICIARE_DI_ONERI_DEDUC",
+      "label": "Rit. a titolo di acconto sui bonifici per beneficiare di oneri deduc. o detr.",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 4.035,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0
+        },
+        {
+          "year": 2003,
+          "value_mld": 0
+        },
+        {
+          "year": 2004,
+          "value_mld": 0
+        },
+        {
+          "year": 2005,
+          "value_mld": 0
+        },
+        {
+          "year": 2006,
+          "value_mld": 0
+        },
+        {
+          "year": 2007,
+          "value_mld": 0
+        },
+        {
+          "year": 2008,
+          "value_mld": 0
+        },
+        {
+          "year": 2009,
+          "value_mld": 0
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.559
+        },
+        {
+          "year": 2011,
+          "value_mld": 1.033
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.635
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.922
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.933
+        },
+        {
+          "year": 2015,
+          "value_mld": 1.649
+        },
+        {
+          "year": 2016,
+          "value_mld": 1.849
+        },
+        {
+          "year": 2017,
+          "value_mld": 1.8407
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.868
+        },
+        {
+          "year": 2019,
+          "value_mld": 1.8863
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.742
+        },
+        {
+          "year": 2021,
+          "value_mld": 2.52
+        },
+        {
+          "year": 2022,
+          "value_mld": 3.571
+        },
+        {
+          "year": 2023,
+          "value_mld": 3.376
+        },
+        {
+          "year": 2024,
+          "value_mld": 3.9497
+        },
+        {
+          "year": 2025,
+          "value_mld": 4.035
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_ADDIZIONALE_COMUNALE_IRPEF_DIP_SETTORE_PRIVATO_E_LAV_AUTONOMI",
+      "label": "Addizionale comunale IRPEF (dip. settore privato e lav. autonomi)",
+      "group": "Redditi persone fisiche",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 3.857,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.607
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.844
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.881
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.909
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.906
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.291
+        },
+        {
+          "year": 2008,
+          "value_mld": 1.756
+        },
+        {
+          "year": 2009,
+          "value_mld": 1.795
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.733
+        },
+        {
+          "year": 2011,
+          "value_mld": 1.764
+        },
+        {
+          "year": 2012,
+          "value_mld": 1.956
+        },
+        {
+          "year": 2013,
+          "value_mld": 2.342
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.48
+        },
+        {
+          "year": 2015,
+          "value_mld": 2.611
+        },
+        {
+          "year": 2016,
+          "value_mld": 2.69
+        },
+        {
+          "year": 2017,
+          "value_mld": 2.695
+        },
+        {
+          "year": 2018,
+          "value_mld": 2.72
+        },
+        {
+          "year": 2019,
+          "value_mld": 2.819
+        },
+        {
+          "year": 2020,
+          "value_mld": 2.794
+        },
+        {
+          "year": 2021,
+          "value_mld": 2.786
+        },
+        {
+          "year": 2022,
+          "value_mld": 3.097
+        },
+        {
+          "year": 2023,
+          "value_mld": 3.429
+        },
+        {
+          "year": 2024,
+          "value_mld": 3.656
+        },
+        {
+          "year": 2025,
+          "value_mld": 3.857
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ACCISA_SULL_ENERGIA_ELETTRICA_E_ADDIZ_DI_CUI_AL_D_L_N_511_88_ART_6_",
+      "label": "Accisa sull'energia elettrica e addiz. di cui al D.L. n. 511/88,art.6,c.7",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 2.724,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 1.097
+        },
+        {
+          "year": 2003,
+          "value_mld": 1.201
+        },
+        {
+          "year": 2004,
+          "value_mld": 1.198
+        },
+        {
+          "year": 2005,
+          "value_mld": 1.336
+        },
+        {
+          "year": 2006,
+          "value_mld": 1.361
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.456
+        },
+        {
+          "year": 2008,
+          "value_mld": 1.402
+        },
+        {
+          "year": 2009,
+          "value_mld": 1.402
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.328
+        },
+        {
+          "year": 2011,
+          "value_mld": 1.297
+        },
+        {
+          "year": 2012,
+          "value_mld": 3.119
+        },
+        {
+          "year": 2013,
+          "value_mld": 2.716
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.914
+        },
+        {
+          "year": 2015,
+          "value_mld": 2.531
+        },
+        {
+          "year": 2016,
+          "value_mld": 2.853
+        },
+        {
+          "year": 2017,
+          "value_mld": 2.5371
+        },
+        {
+          "year": 2018,
+          "value_mld": 2.639
+        },
+        {
+          "year": 2019,
+          "value_mld": 2.7179
+        },
+        {
+          "year": 2020,
+          "value_mld": 2.67
+        },
+        {
+          "year": 2021,
+          "value_mld": 2.503
+        },
+        {
+          "year": 2022,
+          "value_mld": 2.793
+        },
+        {
+          "year": 2023,
+          "value_mld": 2.689
+        },
+        {
+          "year": 2024,
+          "value_mld": 2.4616
+        },
+        {
+          "year": 2025,
+          "value_mld": 2.724
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ACCISA_SUL_GAS_NATURALE_PER_COMBUSTIONE",
+      "label": "Accisa sul gas naturale per combustione",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 2.614,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 2.861
+        },
+        {
+          "year": 2003,
+          "value_mld": 3.96
+        },
+        {
+          "year": 2004,
+          "value_mld": 3.682
+        },
+        {
+          "year": 2005,
+          "value_mld": 4.053
+        },
+        {
+          "year": 2006,
+          "value_mld": 4.295
+        },
+        {
+          "year": 2007,
+          "value_mld": 4.186
+        },
+        {
+          "year": 2008,
+          "value_mld": 2.56
+        },
+        {
+          "year": 2009,
+          "value_mld": 4.444
+        },
+        {
+          "year": 2010,
+          "value_mld": 4.292
+        },
+        {
+          "year": 2011,
+          "value_mld": 4.762
+        },
+        {
+          "year": 2012,
+          "value_mld": 3.881
+        },
+        {
+          "year": 2013,
+          "value_mld": 3.7
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.468
+        },
+        {
+          "year": 2015,
+          "value_mld": 2.9
+        },
+        {
+          "year": 2016,
+          "value_mld": 3.416
+        },
+        {
+          "year": 2017,
+          "value_mld": 3.4474
+        },
+        {
+          "year": 2018,
+          "value_mld": 3.48
+        },
+        {
+          "year": 2019,
+          "value_mld": 3.5852
+        },
+        {
+          "year": 2020,
+          "value_mld": 3.051
+        },
+        {
+          "year": 2021,
+          "value_mld": 3.146
+        },
+        {
+          "year": 2022,
+          "value_mld": 3.708
+        },
+        {
+          "year": 2023,
+          "value_mld": 2.774
+        },
+        {
+          "year": 2024,
+          "value_mld": 2.0757
+        },
+        {
+          "year": 2025,
+          "value_mld": 2.614
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_ADDIZIONALE_COMUNALE_IRPEF_DIP_SETTORE_PUBBLICO",
+      "label": "Addizionale comunale IRPEF (dip. settore pubblico)",
+      "group": "Redditi persone fisiche",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 2.583,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.489
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.727
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.734
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.646
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.655
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.939
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.969
+        },
+        {
+          "year": 2009,
+          "value_mld": 1.079
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.121
+        },
+        {
+          "year": 2011,
+          "value_mld": 1.149
+        },
+        {
+          "year": 2012,
+          "value_mld": 1.278
+        },
+        {
+          "year": 2013,
+          "value_mld": 1.547
+        },
+        {
+          "year": 2014,
+          "value_mld": 1.679
+        },
+        {
+          "year": 2015,
+          "value_mld": 1.687
+        },
+        {
+          "year": 2016,
+          "value_mld": 1.802
+        },
+        {
+          "year": 2017,
+          "value_mld": 1.787
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.8
+        },
+        {
+          "year": 2019,
+          "value_mld": 1.851
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.938
+        },
+        {
+          "year": 2021,
+          "value_mld": 1.995
+        },
+        {
+          "year": 2022,
+          "value_mld": 2.045
+        },
+        {
+          "year": 2023,
+          "value_mld": 2.192
+        },
+        {
+          "year": 2024,
+          "value_mld": 2.431
+        },
+        {
+          "year": 2025,
+          "value_mld": 2.583
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IMP_SULLE_RISERVE_MATEMATICHE_RAMI_VITA_ASSICURAZIONI",
+      "label": "Imp. sulle riserve matematiche rami vita assicurazioni",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 2.238,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.459
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.609
+        },
+        {
+          "year": 2004,
+          "value_mld": 1.297
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.142
+        },
+        {
+          "year": 2006,
+          "value_mld": 1.053
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.105
+        },
+        {
+          "year": 2008,
+          "value_mld": 1.268
+        },
+        {
+          "year": 2009,
+          "value_mld": 1.108
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.332
+        },
+        {
+          "year": 2011,
+          "value_mld": 1.404
+        },
+        {
+          "year": 2012,
+          "value_mld": 1.409
+        },
+        {
+          "year": 2013,
+          "value_mld": 2.32
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.114
+        },
+        {
+          "year": 2015,
+          "value_mld": 2.325
+        },
+        {
+          "year": 2016,
+          "value_mld": 2.574
+        },
+        {
+          "year": 2017,
+          "value_mld": 2.77
+        },
+        {
+          "year": 2018,
+          "value_mld": 2.97
+        },
+        {
+          "year": 2019,
+          "value_mld": 2.882
+        },
+        {
+          "year": 2020,
+          "value_mld": 3
+        },
+        {
+          "year": 2021,
+          "value_mld": 2.543
+        },
+        {
+          "year": 2022,
+          "value_mld": 2.98
+        },
+        {
+          "year": 2023,
+          "value_mld": 1.568
+        },
+        {
+          "year": 2024,
+          "value_mld": 1.5559
+        },
+        {
+          "year": 2025,
+          "value_mld": 2.238
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SOST_PER_RIDETERMINAZIONE_VALORI_DI_ACQ_DI_PART_NON_NEG",
+      "label": "Sost. per rideterminazione valori di acq. di part. non neg.",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 2.077,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.687
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.377
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.716
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.382
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.801
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.426
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.993
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.449
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.81
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.222
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.56
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.44
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.642
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.682
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.889
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.95
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.281
+        },
+        {
+          "year": 2019,
+          "value_mld": 1.406
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.432
+        },
+        {
+          "year": 2021,
+          "value_mld": 2.048
+        },
+        {
+          "year": 2022,
+          "value_mld": 2.2569
+        },
+        {
+          "year": 2023,
+          "value_mld": 2.229
+        },
+        {
+          "year": 2024,
+          "value_mld": 2.1645
+        },
+        {
+          "year": 2025,
+          "value_mld": 2.077
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_CANONI_DI_ABBONAMENTO_RADIO_E_TV",
+      "label": "Canoni di abbonamento radio e TV",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 1.941,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 1.404
+        },
+        {
+          "year": 2003,
+          "value_mld": 1.462
+        },
+        {
+          "year": 2004,
+          "value_mld": 1.502
+        },
+        {
+          "year": 2005,
+          "value_mld": 1.516
+        },
+        {
+          "year": 2006,
+          "value_mld": 1.513
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.592
+        },
+        {
+          "year": 2008,
+          "value_mld": 1.629
+        },
+        {
+          "year": 2009,
+          "value_mld": 1.663
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.698
+        },
+        {
+          "year": 2011,
+          "value_mld": 1.722
+        },
+        {
+          "year": 2012,
+          "value_mld": 1.757
+        },
+        {
+          "year": 2013,
+          "value_mld": 1.776
+        },
+        {
+          "year": 2014,
+          "value_mld": 1.739
+        },
+        {
+          "year": 2015,
+          "value_mld": 1.721
+        },
+        {
+          "year": 2016,
+          "value_mld": 2.112
+        },
+        {
+          "year": 2017,
+          "value_mld": 1.9423
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.922
+        },
+        {
+          "year": 2019,
+          "value_mld": 1.8958
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.9
+        },
+        {
+          "year": 2021,
+          "value_mld": 1.917
+        },
+        {
+          "year": 2022,
+          "value_mld": 1.949
+        },
+        {
+          "year": 2023,
+          "value_mld": 1.908
+        },
+        {
+          "year": 2024,
+          "value_mld": 1.5059
+        },
+        {
+          "year": 2025,
+          "value_mld": 1.941
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_TASSE_E_IMPOSTE_IPOTECARIE",
+      "label": "Tasse e imposte ipotecarie",
+      "group": "Atti, concessioni e patrimonio",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 1.8812,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 1.243
+        },
+        {
+          "year": 2003,
+          "value_mld": 1.248
+        },
+        {
+          "year": 2004,
+          "value_mld": 1.227
+        },
+        {
+          "year": 2005,
+          "value_mld": 1.44
+        },
+        {
+          "year": 2006,
+          "value_mld": 2.101
+        },
+        {
+          "year": 2007,
+          "value_mld": 2.544
+        },
+        {
+          "year": 2008,
+          "value_mld": 2.397
+        },
+        {
+          "year": 2009,
+          "value_mld": 2.061
+        },
+        {
+          "year": 2010,
+          "value_mld": 2.052
+        },
+        {
+          "year": 2011,
+          "value_mld": 2.054
+        },
+        {
+          "year": 2012,
+          "value_mld": 1.897
+        },
+        {
+          "year": 2013,
+          "value_mld": 1.852
+        },
+        {
+          "year": 2014,
+          "value_mld": 1.522
+        },
+        {
+          "year": 2015,
+          "value_mld": 1.522
+        },
+        {
+          "year": 2016,
+          "value_mld": 1.609
+        },
+        {
+          "year": 2017,
+          "value_mld": 1.6678
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.653
+        },
+        {
+          "year": 2019,
+          "value_mld": 1.5961
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.458
+        },
+        {
+          "year": 2021,
+          "value_mld": 1.817
+        },
+        {
+          "year": 2022,
+          "value_mld": 1.824
+        },
+        {
+          "year": 2023,
+          "value_mld": 1.744
+        },
+        {
+          "year": 2024,
+          "value_mld": 1.8658
+        },
+        {
+          "year": 2025,
+          "value_mld": 1.8812
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SOST_SUL_VALORE_DELL_ATTIVO_DEI_FONDI_PENSIONE",
+      "label": "Sost. sul valore dell'attivo dei fondi pensione",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 1.51,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.065
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.06
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.089
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.115
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.189
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.145
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.113
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.068
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.176
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.2
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.098
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.539
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.575
+        },
+        {
+          "year": 2015,
+          "value_mld": 1.108
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.676
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.67
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.93
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.1518
+        },
+        {
+          "year": 2020,
+          "value_mld": 1.281
+        },
+        {
+          "year": 2021,
+          "value_mld": 1.016
+        },
+        {
+          "year": 2022,
+          "value_mld": 2.062
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.13
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.2712
+        },
+        {
+          "year": 2025,
+          "value_mld": 1.51
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_DIRITTI_CATASTALI_E_DI_SCRITTURATO",
+      "label": "Diritti catastali e di scritturato",
+      "group": "Atti, concessioni e patrimonio",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.729,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.663
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.662
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.648
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.784
+        },
+        {
+          "year": 2006,
+          "value_mld": 1.058
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.168
+        },
+        {
+          "year": 2008,
+          "value_mld": 1.106
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.971
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.947
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.956
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.84
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.785
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.617
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.622
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.649
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.67
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.661
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.6149
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.577
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.717
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.715
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.685
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.7226
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.729
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_CONCESSIONI_GOVERNATIVE",
+      "label": "Concessioni governative",
+      "group": "Atti, concessioni e patrimonio",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.6941,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.898
+        },
+        {
+          "year": 2003,
+          "value_mld": 1.135
+        },
+        {
+          "year": 2004,
+          "value_mld": 1.119
+        },
+        {
+          "year": 2005,
+          "value_mld": 1.251
+        },
+        {
+          "year": 2006,
+          "value_mld": 1.328
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.543
+        },
+        {
+          "year": 2008,
+          "value_mld": 1.584
+        },
+        {
+          "year": 2009,
+          "value_mld": 1.588
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.611
+        },
+        {
+          "year": 2011,
+          "value_mld": 1.61
+        },
+        {
+          "year": 2012,
+          "value_mld": 1.602
+        },
+        {
+          "year": 2013,
+          "value_mld": 1.562
+        },
+        {
+          "year": 2014,
+          "value_mld": 1.375
+        },
+        {
+          "year": 2015,
+          "value_mld": 1.086
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.965
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.8715
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.807
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.7529
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.69
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.721
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.7142
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.711
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.7153
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.6941
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ACCISA_E_IMPOSTA_ERARIALE_DI_CONSUMO_SULLA_BIRRA",
+      "label": "Accisa e imposta erariale di consumo sulla birra",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.692,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.278
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.331
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.33
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.41
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.47
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.484
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.535
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.493
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.471
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.529
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.497
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.527
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.634
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.631
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.66
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.6939
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.84
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.7076
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.632
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.695
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.717
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.693
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.7119
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.692
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ACCISA_E_IMPOSTA_ERARIALE_DI_CONSUMO_SUGLI_SPIRITI",
+      "label": "Accisa e imposta erariale di consumo sugli spiriti",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.688,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.563
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.574
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.571
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.592
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.656
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.6
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.596
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.584
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.565
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.554
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.551
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.569
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.646
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.617
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.643
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.6465
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.691
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.6474
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.601
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.694
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.758
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.734
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.691
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.688
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_ACCISA_E_IMPOSTA_ERARIALE_SUI_GAS_INCONDENSABILI",
+      "label": "Accisa e imposta erariale sui gas incondensabili",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.602,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.617
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.644
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.585
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.698
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.537
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.471
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.465
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.515
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.58
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.521
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.566
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.564
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.563
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.627
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.605
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.6428
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.623
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.6343
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.5231
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.564
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.492
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.593
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.5982
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.602
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_RIT_SU_CONTRIB_DI_ENTI_PUBB_PREMI_CAP_DI_ASS_SULLA_VITA",
+      "label": "Rit. su contrib. di enti pubb., premi, cap. di ass. sulla vita",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.5295,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.517
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.538
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.536
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.542
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.643
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.58
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.503
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.452
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.426
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.497
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.617
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.594
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.543
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.509
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.526
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.622
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.597
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.578
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.592
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.613
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.5247
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.505
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.5275
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.5295
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_PROVENTI_DELLE_ATTIVIT_DI_GIOCO",
+      "label": "Proventi delle attività di gioco",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.383,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.773
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.479
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.967
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.712
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.679
+        },
+        {
+          "year": 2007,
+          "value_mld": 1.068
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.833
+        },
+        {
+          "year": 2009,
+          "value_mld": 1.1
+        },
+        {
+          "year": 2010,
+          "value_mld": 1.019
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.703
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.571
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.452
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.395
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.338
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.27
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.253
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.274
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.3162
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.233
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.3
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.399
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.52
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.3906
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.383
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_IMP_DI_CONSUMO_SU_OLI_LUBRIFICANTI_E_BITUMI_DI_PETROLIO",
+      "label": "Imp. di consumo su oli lubrificanti e bitumi di petrolio",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.317,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.366
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.389
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.351
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.357
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.431
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.4
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.384
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.305
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.322
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.347
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.306
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.294
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.351
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.327
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.325
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.3237
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.34
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.3171
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.285
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.318
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.317
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.315
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.3141
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.317
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_TASSE_AUTOMOBILISTICHE",
+      "label": "Tasse automobilistiche",
+      "group": "Altre entrate",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.314,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.294
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.467
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.484
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.548
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.588
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.635
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.609
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.621
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.603
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.626
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.623
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.594
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.578
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.578
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.599
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.5782
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.588
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.2778
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.241
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.274
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.276
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.296
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.323
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.314
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SOST_PER_RIDETERMINAZIONE_VALORI_DI_ACQ_DI_TERRENI_EDIFIC",
+      "label": "Sost. per rideterminazione valori di acq. di terreni edific.",
+      "group": "Sostitutive e ritenute",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.083,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.568
+        },
+        {
+          "year": 2003,
+          "value_mld": 0.289
+        },
+        {
+          "year": 2004,
+          "value_mld": 0.463
+        },
+        {
+          "year": 2005,
+          "value_mld": 0.307
+        },
+        {
+          "year": 2006,
+          "value_mld": 0.429
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.204
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.585
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.241
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.452
+        },
+        {
+          "year": 2011,
+          "value_mld": 0.112
+        },
+        {
+          "year": 2012,
+          "value_mld": 0.207
+        },
+        {
+          "year": 2013,
+          "value_mld": 0.101
+        },
+        {
+          "year": 2014,
+          "value_mld": 0.096
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.067
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.062
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.069
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.075
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.0713
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.071
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.085
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.088
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.083
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.0885
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.083
+        }
+      ]
+    },
+    {
+      "code": "MEF_TERRITORIALI_TASI",
+      "label": "TASI",
+      "group": "Tributi territoriali",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.023,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0
+        },
+        {
+          "year": 2003,
+          "value_mld": 0
+        },
+        {
+          "year": 2004,
+          "value_mld": 0
+        },
+        {
+          "year": 2005,
+          "value_mld": 0
+        },
+        {
+          "year": 2006,
+          "value_mld": 0
+        },
+        {
+          "year": 2007,
+          "value_mld": 0
+        },
+        {
+          "year": 2008,
+          "value_mld": 0
+        },
+        {
+          "year": 2009,
+          "value_mld": 0
+        },
+        {
+          "year": 2010,
+          "value_mld": 0
+        },
+        {
+          "year": 2011,
+          "value_mld": 0
+        },
+        {
+          "year": 2012,
+          "value_mld": 0
+        },
+        {
+          "year": 2013,
+          "value_mld": 0
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.607
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.76
+        },
+        {
+          "year": 2016,
+          "value_mld": 1.186
+        },
+        {
+          "year": 2017,
+          "value_mld": 1.131
+        },
+        {
+          "year": 2018,
+          "value_mld": 1.136
+        },
+        {
+          "year": 2019,
+          "value_mld": 1.156
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.122
+        },
+        {
+          "year": 2021,
+          "value_mld": 0.108
+        },
+        {
+          "year": 2022,
+          "value_mld": 0.07
+        },
+        {
+          "year": 2023,
+          "value_mld": 0.058
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.044
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.023
+        }
+      ]
+    },
+    {
+      "code": "MEF_ERARIALI_SOST_DELLE_IMPOSTE_SUI_REDDITI_SULLE_RIVALUTAZIONI_DEI_BENI_AZIENDA",
+      "label": "Sost. delle imposte sui redditi sulle rivalutazioni dei beni aziendali iscritti in Bilancio e sullo smobilizzo dei fondi in sospensione di imposta ",
+      "group": "Consumi e accise",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 0.015,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0.003
+        },
+        {
+          "year": 2003,
+          "value_mld": 0
+        },
+        {
+          "year": 2004,
+          "value_mld": 0
+        },
+        {
+          "year": 2005,
+          "value_mld": 0
+        },
+        {
+          "year": 2006,
+          "value_mld": 3.939
+        },
+        {
+          "year": 2007,
+          "value_mld": 0.284
+        },
+        {
+          "year": 2008,
+          "value_mld": 0.228
+        },
+        {
+          "year": 2009,
+          "value_mld": 0.005
+        },
+        {
+          "year": 2010,
+          "value_mld": 0.001
+        },
+        {
+          "year": 2011,
+          "value_mld": 0
+        },
+        {
+          "year": 2012,
+          "value_mld": 0
+        },
+        {
+          "year": 2013,
+          "value_mld": 0
+        },
+        {
+          "year": 2014,
+          "value_mld": 2.219
+        },
+        {
+          "year": 2015,
+          "value_mld": 0.016
+        },
+        {
+          "year": 2016,
+          "value_mld": 0.115
+        },
+        {
+          "year": 2017,
+          "value_mld": 0.05
+        },
+        {
+          "year": 2018,
+          "value_mld": 0.004
+        },
+        {
+          "year": 2019,
+          "value_mld": 0.39
+        },
+        {
+          "year": 2020,
+          "value_mld": 0.075
+        },
+        {
+          "year": 2021,
+          "value_mld": 3.369
+        },
+        {
+          "year": 2022,
+          "value_mld": 2.108
+        },
+        {
+          "year": 2023,
+          "value_mld": 1.994
+        },
+        {
+          "year": 2024,
+          "value_mld": 0.0997
+        },
+        {
+          "year": 2025,
+          "value_mld": 0.015
+        }
+      ]
     }
   ],
   "revenue_pie": [
@@ -2731,23 +8635,96 @@
     {
       "code": "TARI",
       "label": "TARI",
-      "source": "MEF territoriale / MEF erariali",
-      "year": null,
+      "source": "Fonte: Ufficio parlamentare di bilancio, Focus n. 5/2024 sulla TARI, dati 2023",
+      "year": 2023,
       "unit": "mld",
-      "status": "not_available_in_current_payload",
-      "note": "Nessuna voce TARI rintracciabile nelle fonti disponibili in questa pipeline."
+      "value": 10.5,
+      "note": "La TARI non compare come serie separata nella API mensile MEF usata per le entrate tributarie; il valore e' tratto dal focus UPB sulla tassa rifiuti."
     }
   ],
   "under_500m_revenue_summary": {
-    "year": null,
+    "year": 2025,
     "threshold_mld": 0.5,
-    "entries": [],
-    "entries_count": 0,
-    "under_500_total_mld": 0,
-    "under_500_share_of_total_percent": 0,
+    "entries": [
+      {
+        "code": "MEF_ERARIALI_PROVENTI_DELLE_ATTIVIT_DI_GIOCO",
+        "label": "Proventi delle attività di gioco",
+        "group": "Altre entrate",
+        "source": "MEF erariali",
+        "year": 2025,
+        "value_mld": 0.383
+      },
+      {
+        "code": "MEF_ERARIALI_IMP_DI_CONSUMO_SU_OLI_LUBRIFICANTI_E_BITUMI_DI_PETROLIO",
+        "label": "Imp. di consumo su oli lubrificanti e bitumi di petrolio",
+        "group": "Consumi e accise",
+        "source": "MEF erariali",
+        "year": 2025,
+        "value_mld": 0.317
+      },
+      {
+        "code": "MEF_ERARIALI_TASSE_AUTOMOBILISTICHE",
+        "label": "Tasse automobilistiche",
+        "group": "Altre entrate",
+        "source": "MEF erariali",
+        "year": 2025,
+        "value_mld": 0.314
+      },
+      {
+        "code": "MEF_ERARIALI_SOST_PER_RIDETERMINAZIONE_VALORI_DI_ACQ_DI_TERRENI_EDIFIC",
+        "label": "Sost. per rideterminazione valori di acq. di terreni edific.",
+        "group": "Sostitutive e ritenute",
+        "source": "MEF erariali",
+        "year": 2025,
+        "value_mld": 0.083
+      },
+      {
+        "code": "MEF_TERRITORIALI_TASI",
+        "label": "TASI",
+        "group": "Tributi territoriali",
+        "source": "MEF territoriali",
+        "year": 2025,
+        "value_mld": 0.023
+      },
+      {
+        "code": "MEF_ERARIALI_SOST_DELLE_IMPOSTE_SUI_REDDITI_SULLE_RIVALUTAZIONI_DEI_BENI_AZIENDA",
+        "label": "Sost. delle imposte sui redditi sulle rivalutazioni dei beni aziendali iscritti in Bilancio e sullo smobilizzo dei fondi in sospensione di imposta ",
+        "group": "Consumi e accise",
+        "source": "MEF erariali",
+        "year": 2025,
+        "value_mld": 0.015
+      }
+    ],
+    "entries_count": 6,
+    "under_500_total_mld": 1.135,
+    "under_500_share_of_total_percent": 0.1824,
     "cumulative_effect": "sommato",
-    "note": "Cumulato delle voci con valore < 0.5 mld. Le categorie non rintracciabili in questa pipeline sono indicate a parte."
+    "note": "Cumulato delle voci con valore < 0.5 mld. Sono considerate le voci quantificate separatamente nelle fonti disponibili."
   },
+  "known_revenue_gaps": [
+    {
+      "code": "PASSAPORTO",
+      "label": "Tassa/contributo su passaporti",
+      "status": "included_in_broader_item",
+      "mapped_to": "Concessioni governative",
+      "source": "MEF entrate erariali / normativa passaporto",
+      "note": "La fonte MEF mensile disponibile non separa i passaporti: il gettito confluisce nella voce piu' ampia 'Concessioni governative'."
+    },
+    {
+      "code": "TASSA_ETICA",
+      "label": "Tassa etica",
+      "status": "not_separately_quantified",
+      "source": "Agenzia delle Entrate, scadenzario e codici tributo",
+      "note": "La fonte conferma l'obbligo di versamento, ma il gettito aggregato separato non e' disponibile nelle serie MEF usate."
+    },
+    {
+      "code": "ENTRATE_STRAORDINARIE",
+      "label": "Entrate straordinarie",
+      "status": "not_unique_category",
+      "source": "MEF entrate tributarie",
+      "note": "Non e' una voce univoca nella classificazione mensile MEF: alcune componenti possono comparire dentro sostitutive, sanatorie, rivalutazioni o altre entrate."
+    }
+  ],
   "declaration_summary": {
     "year": 2024,
     "bands": [
@@ -7924,8 +13901,9 @@
   },
   "counts": {
     "revenue_items": 7,
+    "all_revenue_lines": 56,
     "revenue_category_series": 9,
-    "revenue_under_500m_items": 0,
+    "revenue_under_500m_items": 6,
     "top_taxes": 10,
     "pressure_points": 30,
     "peer_countries": 10,
