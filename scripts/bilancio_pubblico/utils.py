@@ -23,6 +23,8 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data" / "raw"
 CHART_DIR = BASE_DIR / "grafici"
 ASSET_DIR = BASE_DIR / "assets"
+EXPORT_ROOT_DIR = BASE_DIR / "data" / "export"
+SOURCE_DATA_JSON_PATH = EXPORT_ROOT_DIR / "bilancio-pubblico" / "source-data.json"
 LOGO_PATH = ASSET_DIR / "gufo_logo.png"
 
 USER_AGENT = "Fisco grafici - Elaborazione Nazareno Lecis"

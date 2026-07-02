@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-07-02T13:29:51.803278+00:00",
+  "total_files": 1,
+  "files": [
+    {
+      "path": "C:\\Users\\NLecis\\OneDrive - European Securities and Markets Authority\\Documents\\PythonProjects\\General\\Bilancio_pubblico\\data\\export\\bilancio-pubblico\\source-data.json",
+      "name": "source-data.json",
+      "role": "source_json",
+      "endpoint_hint": null
+    }
+  ]
+}

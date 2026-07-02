@@ -1,0 +1,7938 @@
+{
+  "meta": {
+    "generated_at": "2026-07-02T13:29:51.784038+00:00",
+    "generated_by": "Bilancio_pubblico",
+    "updated_at": "2026-07-02T13:29:51.784038+00:00",
+    "description": "Dati completi e normalizzati dal repo Bilancio_pubblico. La pipeline dati li converte nel formato pubblico per R2.",
+    "sources": [
+      "Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali e territoriali, competenza giuridica",
+      "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+      "Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",
+      "Fonte: Banca d'Italia, Conti distributivi sulla ricchezza delle famiglie, IV trimestre 2025",
+      "Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",
+      "Fonte: MEF - Dipartimento delle Finanze, API entrate erariali e territoriali; Appendici statistiche dicembre 2025",
+      "Fonte: MEF - Dipartimento delle Finanze, Appendici statistiche al bollettino entrate tributarie, dicembre 2025"
+    ],
+    "source_updates": {
+      "mef_entrate": null,
+      "mef_territoriali": null,
+      "source": {
+        "eurostat_tax": "2026-04-27T11:00:00+0200",
+        "eurostat_exp": "2026-04-27T11:00:00+0200",
+        "peer_tax": "2026-04-27T11:00:00+0200",
+        "peer_spending": "2026-04-27T11:00:00+0200",
+        "peer_social": "2026-04-27T11:00:00+0200",
+        "total_spending": "2026-04-27T11:00:00+0200"
+      }
+    },
+    "manifest_rows": 20,
+    "manifest": [
+      {
+        "file": "01_principali_entrate_tributarie_2025.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali e territoriali, competenza giuridica",
+        "aggiornamento_fonte": "2026-06-05 secondo API get_box_sintesi"
+      },
+      {
+        "file": "02_entrate_dirette_indirette_2002_2025.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali, competenza giuridica",
+        "aggiornamento_fonte": "2026-06-05 secondo API get_box_sintesi"
+      },
+      {
+        "file": "03_pressione_fiscale_componenti_1995_2024.png",
+        "fonte": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+        "aggiornamento_fonte": "2026-04-27T11:00:00+0200"
+      },
+      {
+        "file": "04_spesa_pubblica_funzioni_cofog_2024.png",
+        "fonte": "Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",
+        "aggiornamento_fonte": "2026-04-27T11:00:00+0200"
+      },
+      {
+        "file": "05_irpef_netto_per_fascia_2024.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",
+        "aggiornamento_fonte": "23 aprile 2026"
+      },
+      {
+        "file": "06_quote_irpef_per_fascia_2024.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",
+        "aggiornamento_fonte": "23 aprile 2026"
+      },
+      {
+        "file": "07_distribuzione_salari_capitali_2024.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",
+        "aggiornamento_fonte": "23 aprile 2026"
+      },
+      {
+        "file": "08_composizione_redditi_per_fascia_2024.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, Statistiche dichiarazioni 2025, anno d'imposta 2024",
+        "aggiornamento_fonte": "23 aprile 2026"
+      },
+      {
+        "file": "09_pressione_fiscale_confronto_ue_2024.png",
+        "fonte": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+        "aggiornamento_fonte": "2026-04-27T11:00:00+0200"
+      },
+      {
+        "file": "10_spesa_pubblica_confronto_ue_2024.png",
+        "fonte": "Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",
+        "aggiornamento_fonte": "2026-04-27T11:00:00+0200"
+      },
+      {
+        "file": "11_protezione_sociale_confronto_ue_2024.png",
+        "fonte": "Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",
+        "aggiornamento_fonte": "2026-04-27T11:00:00+0200"
+      },
+      {
+        "file": "12_tipi_entrate_tributarie_2025.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, API entrate erariali e territoriali; Appendici statistiche dicembre 2025",
+        "aggiornamento_fonte": "2026-06-05 secondo API get_box_sintesi"
+      },
+      {
+        "file": "13_spesa_totale_italia_1995_2024.png",
+        "fonte": "Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG",
+        "aggiornamento_fonte": "2026-04-27T11:00:00+0200"
+      },
+      {
+        "file": "14_distribuzione_patrimonio_famiglie_2025.png",
+        "fonte": "Fonte: Banca d'Italia, Conti distributivi sulla ricchezza delle famiglie, IV trimestre 2025",
+        "aggiornamento_fonte": "3 giugno 2026"
+      },
+      {
+        "file": "15_successioni_donazioni_2025.png",
+        "fonte": "Fonte: MEF - Dipartimento delle Finanze, Appendici statistiche al bollettino entrate tributarie, dicembre 2025",
+        "aggiornamento_fonte": "dicembre 2025"
+      },
+      {
+        "file": "16_ocse_entrate_per_tipo_2024.png",
+        "fonte": "Fonte: OCSE, Revenue Statistics 2025, Comparative tax revenues, dati 2024",
+        "aggiornamento_fonte": "Revenue Statistics 2025; dati 2024"
+      },
+      {
+        "file": "17_ocse_spesa_per_funzione_2024.png",
+        "fonte": "Fonte: OCSE, National Accounts Statistics, Table 1100 COFOG e Table 0101 PIL corrente, dati 2024",
+        "aggiornamento_fonte": "estrazione API OCSE 10 giugno 2026; dati 2024"
+      },
+      {
+        "file": "18_ocse_pressione_fiscale_totale_2024.png",
+        "fonte": "Fonte: OCSE, Revenue Statistics 2025, Comparative tax revenues, dati 2024",
+        "aggiornamento_fonte": "Revenue Statistics 2025; dati 2024"
+      },
+      {
+        "file": "19_ocse_successioni_donazioni_2024.png",
+        "fonte": "Fonte: OCSE, Revenue Statistics 2025, Comparative tax revenues, dati 2024",
+        "aggiornamento_fonte": "Revenue Statistics 2025; dati 2024"
+      },
+      {
+        "file": "20_ocse_spesa_totale_2024.png",
+        "fonte": "Fonte: OCSE, National Accounts Statistics, Table 1100 COFOG e Table 0101 PIL corrente, dati 2024",
+        "aggiornamento_fonte": "estrazione API OCSE 10 giugno 2026; dati 2024"
+      }
+    ]
+  },
+  "kpis": [
+    {
+      "id": "fiscal_pressure",
+      "label": "Pressione fiscale e contributiva",
+      "value": 42.5,
+      "unit": "% PIL",
+      "year": 2024
+    },
+    {
+      "id": "public_spending",
+      "label": "Spesa pubblica totale",
+      "value": 50.4,
+      "unit": "% PIL",
+      "year": 2024,
+      "value_mld": 1109.154,
+      "unit_mld": "mld"
+    },
+    {
+      "id": "social_spending",
+      "label": "Spesa sociale",
+      "value": 21.3,
+      "unit": "% PIL",
+      "year": 2024
+    }
+  ],
+  "top_taxes": [
+    {
+      "code": "IRPEF",
+      "label": "IRPEF",
+      "year": 2025,
+      "value": 231.301,
+      "unit": "mld"
+    },
+    {
+      "code": "IVA",
+      "label": "IVA",
+      "year": 2025,
+      "value": 186.8087,
+      "unit": "mld"
+    },
+    {
+      "code": "IRES",
+      "label": "IRES",
+      "year": 2025,
+      "value": 60.0847,
+      "unit": "mld"
+    },
+    {
+      "code": "IRAP",
+      "label": "IRAP",
+      "year": 2025,
+      "value": 33.318,
+      "unit": "mld"
+    },
+    {
+      "code": "SUCCESSIONI CAPITALE",
+      "label": "Imposte successioni capitale",
+      "year": 2025,
+      "value": 21.0554,
+      "unit": "mld"
+    },
+    {
+      "code": "TABACCHI",
+      "label": "Tabacchi",
+      "year": 2025,
+      "value": 11.461,
+      "unit": "mld"
+    },
+    {
+      "code": "BOLLO",
+      "label": "Bollo",
+      "year": 2025,
+      "value": 10.9976,
+      "unit": "mld"
+    },
+    {
+      "code": "PLUSVALENZE",
+      "label": "Plusvalenze",
+      "year": 2025,
+      "value": 6.581,
+      "unit": "mld"
+    },
+    {
+      "code": "REGISTRO",
+      "label": "Registro",
+      "year": 2025,
+      "value": 6.0252,
+      "unit": "mld"
+    },
+    {
+      "code": "ENERGIA ELETTRICA",
+      "label": "Energia elettrica",
+      "year": 2025,
+      "value": 2.724,
+      "unit": "mld"
+    }
+  ],
+  "top_taxes_2025": [
+    {
+      "code": "IRPEF",
+      "label": "IRPEF",
+      "year": 2025,
+      "value": 231.301,
+      "unit": "mld"
+    },
+    {
+      "code": "IVA",
+      "label": "IVA",
+      "year": 2025,
+      "value": 186.8087,
+      "unit": "mld"
+    },
+    {
+      "code": "IRES",
+      "label": "IRES",
+      "year": 2025,
+      "value": 60.0847,
+      "unit": "mld"
+    },
+    {
+      "code": "IRAP",
+      "label": "IRAP",
+      "year": 2025,
+      "value": 33.318,
+      "unit": "mld"
+    },
+    {
+      "code": "SUCCESSIONI CAPITALE",
+      "label": "Imposte successioni capitale",
+      "year": 2025,
+      "value": 21.0554,
+      "unit": "mld"
+    },
+    {
+      "code": "TABACCHI",
+      "label": "Tabacchi",
+      "year": 2025,
+      "value": 11.461,
+      "unit": "mld"
+    },
+    {
+      "code": "BOLLO",
+      "label": "Bollo",
+      "year": 2025,
+      "value": 10.9976,
+      "unit": "mld"
+    },
+    {
+      "code": "PLUSVALENZE",
+      "label": "Plusvalenze",
+      "year": 2025,
+      "value": 6.581,
+      "unit": "mld"
+    },
+    {
+      "code": "REGISTRO",
+      "label": "Registro",
+      "year": 2025,
+      "value": 6.0252,
+      "unit": "mld"
+    },
+    {
+      "code": "ENERGIA ELETTRICA",
+      "label": "Energia elettrica",
+      "year": 2025,
+      "value": 2.724,
+      "unit": "mld"
+    }
+  ],
+  "main_taxes_2025": [
+    {
+      "code": "IRPEF",
+      "label": "IRPEF",
+      "year": 2025,
+      "value": 231.301,
+      "unit": "mld"
+    },
+    {
+      "code": "IVA",
+      "label": "IVA",
+      "year": 2025,
+      "value": 186.8087,
+      "unit": "mld"
+    },
+    {
+      "code": "IRES",
+      "label": "IRES",
+      "year": 2025,
+      "value": 60.0847,
+      "unit": "mld"
+    },
+    {
+      "code": "IRAP",
+      "label": "IRAP",
+      "year": 2025,
+      "value": 33.318,
+      "unit": "mld"
+    },
+    {
+      "code": "SUCCESSIONI CAPITALE",
+      "label": "Imposte successioni capitale",
+      "year": 2025,
+      "value": 21.0554,
+      "unit": "mld"
+    },
+    {
+      "code": "TABACCHI",
+      "label": "Tabacchi",
+      "year": 2025,
+      "value": 11.461,
+      "unit": "mld"
+    },
+    {
+      "code": "BOLLO",
+      "label": "Bollo",
+      "year": 2025,
+      "value": 10.9976,
+      "unit": "mld"
+    },
+    {
+      "code": "PLUSVALENZE",
+      "label": "Plusvalenze",
+      "year": 2025,
+      "value": 6.581,
+      "unit": "mld"
+    },
+    {
+      "code": "REGISTRO",
+      "label": "Registro",
+      "year": 2025,
+      "value": 6.0252,
+      "unit": "mld"
+    },
+    {
+      "code": "ENERGIA ELETTRICA",
+      "label": "Energia elettrica",
+      "year": 2025,
+      "value": 2.724,
+      "unit": "mld"
+    }
+  ],
+  "pressureTrend": [
+    {
+      "year": 1995,
+      "value": 40,
+      "produzione e importazioni": 11.7,
+      "reddito e patrimonio": 13.8,
+      "contributi sociali netti": 14,
+      "imposte in conto capitale": 0.5
+    },
+    {
+      "year": 1996,
+      "value": 40.5,
+      "produzione e importazioni": 11.5,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 14.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 1997,
+      "value": 42.2,
+      "produzione e importazioni": 12,
+      "reddito e patrimonio": 15.1,
+      "contributi sociali netti": 14.4,
+      "imposte in conto capitale": 0.7
+    },
+    {
+      "year": 1998,
+      "value": 40.9,
+      "produzione e importazioni": 14.8,
+      "reddito e patrimonio": 13.6,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 1999,
+      "value": 41,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2000,
+      "value": 39.8,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.7,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2001,
+      "value": 39.9,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2002,
+      "value": 39.4,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 13.3,
+      "contributi sociali netti": 11.9,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2003,
+      "value": 39.8,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 12.8,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 1.3
+    },
+    {
+      "year": 2004,
+      "value": 39.1,
+      "produzione e importazioni": 13.7,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.6
+    },
+    {
+      "year": 2005,
+      "value": 38.8,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2006,
+      "value": 39.9,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2007,
+      "value": 41.2,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2008,
+      "value": 41.1,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2009,
+      "value": 41.7,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.8
+    },
+    {
+      "year": 2010,
+      "value": 41.3,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2011,
+      "value": 41.3,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 2012,
+      "value": 43.2,
+      "produzione e importazioni": 15.2,
+      "reddito e patrimonio": 14.7,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2013,
+      "value": 43.4,
+      "produzione e importazioni": 14.9,
+      "reddito e patrimonio": 14.9,
+      "contributi sociali netti": 13.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2014,
+      "value": 43.1,
+      "produzione e importazioni": 15.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2015,
+      "value": 42.9,
+      "produzione e importazioni": 15,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2016,
+      "value": 42.1,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 12.9,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2017,
+      "value": 41.8,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2018,
+      "value": 41.7,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2019,
+      "value": 42.3,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2020,
+      "value": 42.7,
+      "produzione e importazioni": 13.8,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 13.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2021,
+      "value": 42.3,
+      "produzione e importazioni": 14.2,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2022,
+      "value": 41.6,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2023,
+      "value": 41.2,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2024,
+      "value": 42.5,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 15.6,
+      "contributi sociali netti": 12.7,
+      "imposte in conto capitale": 0.1
+    }
+  ],
+  "tax_pressure_trend": [
+    {
+      "year": 1995,
+      "value": 40,
+      "produzione e importazioni": 11.7,
+      "reddito e patrimonio": 13.8,
+      "contributi sociali netti": 14,
+      "imposte in conto capitale": 0.5
+    },
+    {
+      "year": 1996,
+      "value": 40.5,
+      "produzione e importazioni": 11.5,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 14.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 1997,
+      "value": 42.2,
+      "produzione e importazioni": 12,
+      "reddito e patrimonio": 15.1,
+      "contributi sociali netti": 14.4,
+      "imposte in conto capitale": 0.7
+    },
+    {
+      "year": 1998,
+      "value": 40.9,
+      "produzione e importazioni": 14.8,
+      "reddito e patrimonio": 13.6,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 1999,
+      "value": 41,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2000,
+      "value": 39.8,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.7,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2001,
+      "value": 39.9,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2002,
+      "value": 39.4,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 13.3,
+      "contributi sociali netti": 11.9,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2003,
+      "value": 39.8,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 12.8,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 1.3
+    },
+    {
+      "year": 2004,
+      "value": 39.1,
+      "produzione e importazioni": 13.7,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.6
+    },
+    {
+      "year": 2005,
+      "value": 38.8,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2006,
+      "value": 39.9,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2007,
+      "value": 41.2,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2008,
+      "value": 41.1,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2009,
+      "value": 41.7,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.8
+    },
+    {
+      "year": 2010,
+      "value": 41.3,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2011,
+      "value": 41.3,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 2012,
+      "value": 43.2,
+      "produzione e importazioni": 15.2,
+      "reddito e patrimonio": 14.7,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2013,
+      "value": 43.4,
+      "produzione e importazioni": 14.9,
+      "reddito e patrimonio": 14.9,
+      "contributi sociali netti": 13.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2014,
+      "value": 43.1,
+      "produzione e importazioni": 15.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2015,
+      "value": 42.9,
+      "produzione e importazioni": 15,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2016,
+      "value": 42.1,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 12.9,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2017,
+      "value": 41.8,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2018,
+      "value": 41.7,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2019,
+      "value": 42.3,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2020,
+      "value": 42.7,
+      "produzione e importazioni": 13.8,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 13.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2021,
+      "value": 42.3,
+      "produzione e importazioni": 14.2,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2022,
+      "value": 41.6,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2023,
+      "value": 41.2,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2024,
+      "value": 42.5,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 15.6,
+      "contributi sociali netti": 12.7,
+      "imposte in conto capitale": 0.1
+    }
+  ],
+  "pressure_trend": [
+    {
+      "year": 1995,
+      "value": 40,
+      "produzione e importazioni": 11.7,
+      "reddito e patrimonio": 13.8,
+      "contributi sociali netti": 14,
+      "imposte in conto capitale": 0.5
+    },
+    {
+      "year": 1996,
+      "value": 40.5,
+      "produzione e importazioni": 11.5,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 14.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 1997,
+      "value": 42.2,
+      "produzione e importazioni": 12,
+      "reddito e patrimonio": 15.1,
+      "contributi sociali netti": 14.4,
+      "imposte in conto capitale": 0.7
+    },
+    {
+      "year": 1998,
+      "value": 40.9,
+      "produzione e importazioni": 14.8,
+      "reddito e patrimonio": 13.6,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 1999,
+      "value": 41,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2000,
+      "value": 39.8,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.7,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2001,
+      "value": 39.9,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2002,
+      "value": 39.4,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 13.3,
+      "contributi sociali netti": 11.9,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2003,
+      "value": 39.8,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 12.8,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 1.3
+    },
+    {
+      "year": 2004,
+      "value": 39.1,
+      "produzione e importazioni": 13.7,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.6
+    },
+    {
+      "year": 2005,
+      "value": 38.8,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2006,
+      "value": 39.9,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2007,
+      "value": 41.2,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2008,
+      "value": 41.1,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2009,
+      "value": 41.7,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.8
+    },
+    {
+      "year": 2010,
+      "value": 41.3,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2011,
+      "value": 41.3,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 2012,
+      "value": 43.2,
+      "produzione e importazioni": 15.2,
+      "reddito e patrimonio": 14.7,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2013,
+      "value": 43.4,
+      "produzione e importazioni": 14.9,
+      "reddito e patrimonio": 14.9,
+      "contributi sociali netti": 13.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2014,
+      "value": 43.1,
+      "produzione e importazioni": 15.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2015,
+      "value": 42.9,
+      "produzione e importazioni": 15,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2016,
+      "value": 42.1,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 12.9,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2017,
+      "value": 41.8,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2018,
+      "value": 41.7,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2019,
+      "value": 42.3,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2020,
+      "value": 42.7,
+      "produzione e importazioni": 13.8,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 13.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2021,
+      "value": 42.3,
+      "produzione e importazioni": 14.2,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2022,
+      "value": 41.6,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2023,
+      "value": 41.2,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2024,
+      "value": 42.5,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 15.6,
+      "contributi sociali netti": 12.7,
+      "imposte in conto capitale": 0.1
+    }
+  ],
+  "fiscal_trend": [
+    {
+      "year": 1995,
+      "value": 40,
+      "produzione e importazioni": 11.7,
+      "reddito e patrimonio": 13.8,
+      "contributi sociali netti": 14,
+      "imposte in conto capitale": 0.5
+    },
+    {
+      "year": 1996,
+      "value": 40.5,
+      "produzione e importazioni": 11.5,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 14.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 1997,
+      "value": 42.2,
+      "produzione e importazioni": 12,
+      "reddito e patrimonio": 15.1,
+      "contributi sociali netti": 14.4,
+      "imposte in conto capitale": 0.7
+    },
+    {
+      "year": 1998,
+      "value": 40.9,
+      "produzione e importazioni": 14.8,
+      "reddito e patrimonio": 13.6,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 1999,
+      "value": 41,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2000,
+      "value": 39.8,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.7,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2001,
+      "value": 39.9,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2002,
+      "value": 39.4,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 13.3,
+      "contributi sociali netti": 11.9,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2003,
+      "value": 39.8,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 12.8,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 1.3
+    },
+    {
+      "year": 2004,
+      "value": 39.1,
+      "produzione e importazioni": 13.7,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.6
+    },
+    {
+      "year": 2005,
+      "value": 38.8,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2006,
+      "value": 39.9,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2007,
+      "value": 41.2,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2008,
+      "value": 41.1,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2009,
+      "value": 41.7,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.8
+    },
+    {
+      "year": 2010,
+      "value": 41.3,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2011,
+      "value": 41.3,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 2012,
+      "value": 43.2,
+      "produzione e importazioni": 15.2,
+      "reddito e patrimonio": 14.7,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2013,
+      "value": 43.4,
+      "produzione e importazioni": 14.9,
+      "reddito e patrimonio": 14.9,
+      "contributi sociali netti": 13.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2014,
+      "value": 43.1,
+      "produzione e importazioni": 15.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2015,
+      "value": 42.9,
+      "produzione e importazioni": 15,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2016,
+      "value": 42.1,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 12.9,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2017,
+      "value": 41.8,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2018,
+      "value": 41.7,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2019,
+      "value": 42.3,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2020,
+      "value": 42.7,
+      "produzione e importazioni": 13.8,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 13.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2021,
+      "value": 42.3,
+      "produzione e importazioni": 14.2,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2022,
+      "value": 41.6,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2023,
+      "value": 41.2,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2024,
+      "value": 42.5,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 15.6,
+      "contributi sociali netti": 12.7,
+      "imposte in conto capitale": 0.1
+    }
+  ],
+  "pressure_components": [
+    {
+      "year": 1995,
+      "value": 40,
+      "produzione e importazioni": 11.7,
+      "reddito e patrimonio": 13.8,
+      "contributi sociali netti": 14,
+      "imposte in conto capitale": 0.5
+    },
+    {
+      "year": 1996,
+      "value": 40.5,
+      "produzione e importazioni": 11.5,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 14.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 1997,
+      "value": 42.2,
+      "produzione e importazioni": 12,
+      "reddito e patrimonio": 15.1,
+      "contributi sociali netti": 14.4,
+      "imposte in conto capitale": 0.7
+    },
+    {
+      "year": 1998,
+      "value": 40.9,
+      "produzione e importazioni": 14.8,
+      "reddito e patrimonio": 13.6,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 1999,
+      "value": 41,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2000,
+      "value": 39.8,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.7,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2001,
+      "value": 39.9,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2002,
+      "value": 39.4,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 13.3,
+      "contributi sociali netti": 11.9,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2003,
+      "value": 39.8,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 12.8,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 1.3
+    },
+    {
+      "year": 2004,
+      "value": 39.1,
+      "produzione e importazioni": 13.7,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.6
+    },
+    {
+      "year": 2005,
+      "value": 38.8,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 12.7,
+      "contributi sociali netti": 12.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2006,
+      "value": 39.9,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 11.8,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2007,
+      "value": 41.2,
+      "produzione e importazioni": 14.3,
+      "reddito e patrimonio": 14.4,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2008,
+      "value": 41.1,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0
+    },
+    {
+      "year": 2009,
+      "value": 41.7,
+      "produzione e importazioni": 13.5,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.8
+    },
+    {
+      "year": 2010,
+      "value": 41.3,
+      "produzione e importazioni": 13.9,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.2
+    },
+    {
+      "year": 2011,
+      "value": 41.3,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 13.7,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.4
+    },
+    {
+      "year": 2012,
+      "value": 43.2,
+      "produzione e importazioni": 15.2,
+      "reddito e patrimonio": 14.7,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2013,
+      "value": 43.4,
+      "produzione e importazioni": 14.9,
+      "reddito e patrimonio": 14.9,
+      "contributi sociali netti": 13.3,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2014,
+      "value": 43.1,
+      "produzione e importazioni": 15.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13.1,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2015,
+      "value": 42.9,
+      "produzione e importazioni": 15,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2016,
+      "value": 42.1,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 12.9,
+      "imposte in conto capitale": 0.3
+    },
+    {
+      "year": 2017,
+      "value": 41.8,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2018,
+      "value": 41.7,
+      "produzione e importazioni": 14.4,
+      "reddito e patrimonio": 14,
+      "contributi sociali netti": 13.2,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2019,
+      "value": 42.3,
+      "produzione e importazioni": 14.5,
+      "reddito e patrimonio": 14.3,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2020,
+      "value": 42.7,
+      "produzione e importazioni": 13.8,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 13.8,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2021,
+      "value": 42.3,
+      "produzione e importazioni": 14.2,
+      "reddito e patrimonio": 14.6,
+      "contributi sociali netti": 13.4,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2022,
+      "value": 41.6,
+      "produzione e importazioni": 14,
+      "reddito e patrimonio": 14.5,
+      "contributi sociali netti": 13,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2023,
+      "value": 41.2,
+      "produzione e importazioni": 13.6,
+      "reddito e patrimonio": 15,
+      "contributi sociali netti": 12.5,
+      "imposte in conto capitale": 0.1
+    },
+    {
+      "year": 2024,
+      "value": 42.5,
+      "produzione e importazioni": 14.1,
+      "reddito e patrimonio": 15.6,
+      "contributi sociali netti": 12.7,
+      "imposte in conto capitale": 0.1
+    }
+  ],
+  "peer": [
+    {
+      "code": "IT",
+      "country": "Italia",
+      "tax_pressure": 42.5,
+      "tax_year": 2024,
+      "public_spending": 50.4,
+      "spending_year": 2024,
+      "social_spending": 21.3,
+      "social_year": 2024
+    },
+    {
+      "code": "EU27_2020",
+      "country": "UE",
+      "tax_pressure": 40.3,
+      "tax_year": 2024,
+      "public_spending": 49.1,
+      "spending_year": 2024,
+      "social_spending": 19.6,
+      "social_year": 2024
+    },
+    {
+      "code": "EA20",
+      "country": "Area euro",
+      "tax_pressure": 40.7,
+      "tax_year": 2024,
+      "public_spending": 49.4,
+      "spending_year": 2024,
+      "social_spending": 20.1,
+      "social_year": 2024
+    },
+    {
+      "code": "FR",
+      "country": "Francia",
+      "tax_pressure": 45.2,
+      "tax_year": 2024,
+      "public_spending": 57.3,
+      "spending_year": 2024,
+      "social_spending": 23.7,
+      "social_year": 2024
+    },
+    {
+      "code": "DE",
+      "country": "Germania",
+      "tax_pressure": 40.8,
+      "tax_year": 2024,
+      "public_spending": 49.4,
+      "spending_year": 2024,
+      "social_spending": 20.4,
+      "social_year": 2024
+    },
+    {
+      "code": "ES",
+      "country": "Spagna",
+      "tax_pressure": 37.2,
+      "tax_year": 2024,
+      "public_spending": 45.5,
+      "spending_year": 2024,
+      "social_spending": 18.7,
+      "social_year": 2024
+    },
+    {
+      "code": "SE",
+      "country": "Svezia",
+      "tax_pressure": 42.2,
+      "tax_year": 2024,
+      "public_spending": 50.5,
+      "spending_year": 2024,
+      "social_spending": 19.1,
+      "social_year": 2024
+    },
+    {
+      "code": "DK",
+      "country": "Danimarca",
+      "tax_pressure": 46.1,
+      "tax_year": 2024,
+      "public_spending": 47.3,
+      "spending_year": 2024,
+      "social_spending": 19.6,
+      "social_year": 2024
+    },
+    {
+      "code": "BE",
+      "country": "Belgio",
+      "tax_pressure": 44.6,
+      "tax_year": 2024,
+      "public_spending": 54.1,
+      "spending_year": 2024,
+      "social_spending": 20.4,
+      "social_year": 2024
+    },
+    {
+      "code": "AT",
+      "country": "Austria",
+      "tax_pressure": 43.7,
+      "tax_year": 2024,
+      "public_spending": 55.2,
+      "spending_year": 2024,
+      "social_spending": 22.8,
+      "social_year": 2024
+    }
+  ],
+  "revenue_items": [
+    {
+      "code": "CEDOLARE",
+      "label": "Cedolare secca",
+      "source": "MEF dichiarazioni",
+      "year": null,
+      "unit": "mld",
+      "status": "not_available_in_payload",
+      "note": "Il dataset dichiarazioni usa il campo 'Reddito complessivo al netto della cedolare secca', ma non contiene la misura aggregata dell'incasso effettivo."
+    },
+    {
+      "code": "DONAZIONI_EREDITA",
+      "label": "Successioni e donazioni",
+      "source": "MEF appendici dichiarazioni",
+      "year": 2025,
+      "unit": "mld",
+      "value": 1.081
+    },
+    {
+      "code": "IMU",
+      "label": "IMU (quota Comuni)",
+      "source": "MEF territoriali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 18.189
+    },
+    {
+      "code": "IRES",
+      "label": "IRES",
+      "source": "MEF erariali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 60.0847
+    },
+    {
+      "code": "IRPEF",
+      "label": "IRPEF",
+      "source": "MEF erariali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 231.301
+    },
+    {
+      "code": "IVA",
+      "label": "IVA",
+      "source": "MEF erariali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 186.8087
+    },
+    {
+      "code": "TARI",
+      "label": "TARI",
+      "source": "MEF territoriale / MEF erariali",
+      "year": null,
+      "unit": "mld",
+      "status": "not_available_in_current_payload",
+      "note": "Nessuna voce TARI rintracciabile nelle fonti disponibili in questa pipeline."
+    }
+  ],
+  "revenue_pie": [
+    {
+      "code": "IRPEF",
+      "label": "IRPEF",
+      "year": 2025,
+      "value_mld": 231.301,
+      "share_percent": 40.738
+    },
+    {
+      "code": "IVA",
+      "label": "IVA",
+      "year": 2025,
+      "value_mld": 186.8087,
+      "share_percent": 32.902
+    },
+    {
+      "code": "IRES",
+      "label": "IRES",
+      "year": 2025,
+      "value_mld": 60.0847,
+      "share_percent": 10.582
+    },
+    {
+      "code": "IRAP",
+      "label": "IRAP",
+      "year": 2025,
+      "value_mld": 33.318,
+      "share_percent": 5.868
+    },
+    {
+      "code": "SUCCESSIONI",
+      "label": "Successioni e donazioni",
+      "year": 2025,
+      "value_mld": 21.0554,
+      "share_percent": 3.708
+    },
+    {
+      "code": "IMU",
+      "label": "IMU (quota comuni)",
+      "year": 2025,
+      "value_mld": 18.189,
+      "share_percent": 3.204
+    },
+    {
+      "code": "SUPERBOLLO",
+      "label": "Superbollo",
+      "year": 2025,
+      "value_mld": 10.9976,
+      "share_percent": 1.937
+    },
+    {
+      "code": "CASSA_AZIONI",
+      "label": "Imposte sul registro",
+      "year": 2025,
+      "value_mld": 6.0252,
+      "share_percent": 1.061
+    }
+  ],
+  "revenue_category_series": [
+    {
+      "code": "IRPEF",
+      "label": "IRPEF",
+      "group": "Entrate tributarie",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 231.301,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 123.316
+        },
+        {
+          "year": 2003,
+          "value_mld": 127.788
+        },
+        {
+          "year": 2004,
+          "value_mld": 131.213
+        },
+        {
+          "year": 2005,
+          "value_mld": 135.989
+        },
+        {
+          "year": 2006,
+          "value_mld": 145.408
+        },
+        {
+          "year": 2007,
+          "value_mld": 153.154
+        },
+        {
+          "year": 2008,
+          "value_mld": 163.245
+        },
+        {
+          "year": 2009,
+          "value_mld": 157.84
+        },
+        {
+          "year": 2010,
+          "value_mld": 164.608
+        },
+        {
+          "year": 2011,
+          "value_mld": 163.868
+        },
+        {
+          "year": 2012,
+          "value_mld": 165.614
+        },
+        {
+          "year": 2013,
+          "value_mld": 163.691
+        },
+        {
+          "year": 2014,
+          "value_mld": 163.65
+        },
+        {
+          "year": 2015,
+          "value_mld": 176.22
+        },
+        {
+          "year": 2016,
+          "value_mld": 180.004
+        },
+        {
+          "year": 2017,
+          "value_mld": 182.3536
+        },
+        {
+          "year": 2018,
+          "value_mld": 187.428
+        },
+        {
+          "year": 2019,
+          "value_mld": 191.6138
+        },
+        {
+          "year": 2020,
+          "value_mld": 187.524
+        },
+        {
+          "year": 2021,
+          "value_mld": 198.209
+        },
+        {
+          "year": 2022,
+          "value_mld": 205.8182
+        },
+        {
+          "year": 2023,
+          "value_mld": 221.385
+        },
+        {
+          "year": 2024,
+          "value_mld": 235.78
+        },
+        {
+          "year": 2025,
+          "value_mld": 231.301
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "IVA",
+      "label": "IVA",
+      "group": "Entrate tributarie",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 186.8087,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 95.515
+        },
+        {
+          "year": 2003,
+          "value_mld": 98.864
+        },
+        {
+          "year": 2004,
+          "value_mld": 101.71
+        },
+        {
+          "year": 2005,
+          "value_mld": 106.179
+        },
+        {
+          "year": 2006,
+          "value_mld": 115.477
+        },
+        {
+          "year": 2007,
+          "value_mld": 120.703
+        },
+        {
+          "year": 2008,
+          "value_mld": 119.472
+        },
+        {
+          "year": 2009,
+          "value_mld": 111.237
+        },
+        {
+          "year": 2010,
+          "value_mld": 115.506
+        },
+        {
+          "year": 2011,
+          "value_mld": 117.46
+        },
+        {
+          "year": 2012,
+          "value_mld": 115.234
+        },
+        {
+          "year": 2013,
+          "value_mld": 112.273
+        },
+        {
+          "year": 2014,
+          "value_mld": 114.49
+        },
+        {
+          "year": 2015,
+          "value_mld": 119.376
+        },
+        {
+          "year": 2016,
+          "value_mld": 124.336
+        },
+        {
+          "year": 2017,
+          "value_mld": 129.574
+        },
+        {
+          "year": 2018,
+          "value_mld": 133.5774
+        },
+        {
+          "year": 2019,
+          "value_mld": 136.8625
+        },
+        {
+          "year": 2020,
+          "value_mld": 124.053
+        },
+        {
+          "year": 2021,
+          "value_mld": 147.955
+        },
+        {
+          "year": 2022,
+          "value_mld": 171.5974
+        },
+        {
+          "year": 2023,
+          "value_mld": 174.89
+        },
+        {
+          "year": 2024,
+          "value_mld": 180.8001
+        },
+        {
+          "year": 2025,
+          "value_mld": 186.8087
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "IRES",
+      "label": "IRES",
+      "group": "Entrate tributarie",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 60.0847,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 30.185
+        },
+        {
+          "year": 2003,
+          "value_mld": 28.682
+        },
+        {
+          "year": 2004,
+          "value_mld": 28.335
+        },
+        {
+          "year": 2005,
+          "value_mld": 34.14
+        },
+        {
+          "year": 2006,
+          "value_mld": 39.822
+        },
+        {
+          "year": 2007,
+          "value_mld": 50.707
+        },
+        {
+          "year": 2008,
+          "value_mld": 47.718
+        },
+        {
+          "year": 2009,
+          "value_mld": 37.179
+        },
+        {
+          "year": 2010,
+          "value_mld": 37
+        },
+        {
+          "year": 2011,
+          "value_mld": 35.949
+        },
+        {
+          "year": 2012,
+          "value_mld": 36.582
+        },
+        {
+          "year": 2013,
+          "value_mld": 40.026
+        },
+        {
+          "year": 2014,
+          "value_mld": 32.293
+        },
+        {
+          "year": 2015,
+          "value_mld": 33.402
+        },
+        {
+          "year": 2016,
+          "value_mld": 35.251
+        },
+        {
+          "year": 2017,
+          "value_mld": 35.1618
+        },
+        {
+          "year": 2018,
+          "value_mld": 32.662
+        },
+        {
+          "year": 2019,
+          "value_mld": 33.7335
+        },
+        {
+          "year": 2020,
+          "value_mld": 33.781
+        },
+        {
+          "year": 2021,
+          "value_mld": 31.792
+        },
+        {
+          "year": 2022,
+          "value_mld": 45.6598
+        },
+        {
+          "year": 2023,
+          "value_mld": 51.826
+        },
+        {
+          "year": 2024,
+          "value_mld": 57.5821
+        },
+        {
+          "year": 2025,
+          "value_mld": 60.0847
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "IRAP",
+      "label": "IRAP",
+      "group": "Imposte regionali e locali",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 33.318,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 32.072
+        },
+        {
+          "year": 2003,
+          "value_mld": 33.593
+        },
+        {
+          "year": 2004,
+          "value_mld": 33.384
+        },
+        {
+          "year": 2005,
+          "value_mld": 35.995
+        },
+        {
+          "year": 2006,
+          "value_mld": 39.09
+        },
+        {
+          "year": 2007,
+          "value_mld": 40.966
+        },
+        {
+          "year": 2008,
+          "value_mld": 38.151
+        },
+        {
+          "year": 2009,
+          "value_mld": 33.503
+        },
+        {
+          "year": 2010,
+          "value_mld": 33.583
+        },
+        {
+          "year": 2011,
+          "value_mld": 34.136
+        },
+        {
+          "year": 2012,
+          "value_mld": 34.342
+        },
+        {
+          "year": 2013,
+          "value_mld": 34.767
+        },
+        {
+          "year": 2014,
+          "value_mld": 30.468
+        },
+        {
+          "year": 2015,
+          "value_mld": 29.37
+        },
+        {
+          "year": 2016,
+          "value_mld": 22.773
+        },
+        {
+          "year": 2017,
+          "value_mld": 23.618
+        },
+        {
+          "year": 2018,
+          "value_mld": 25.009
+        },
+        {
+          "year": 2019,
+          "value_mld": 25.168
+        },
+        {
+          "year": 2020,
+          "value_mld": 19.9395
+        },
+        {
+          "year": 2021,
+          "value_mld": 23.959
+        },
+        {
+          "year": 2022,
+          "value_mld": 28.727
+        },
+        {
+          "year": 2023,
+          "value_mld": 30.053
+        },
+        {
+          "year": 2024,
+          "value_mld": 33.142
+        },
+        {
+          "year": 2025,
+          "value_mld": 33.318
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "SUCCESSIONI",
+      "label": "Successioni e donazioni",
+      "group": "Altri tributari",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 21.0554,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 9.231
+        },
+        {
+          "year": 2003,
+          "value_mld": 7.542
+        },
+        {
+          "year": 2004,
+          "value_mld": 6.916
+        },
+        {
+          "year": 2005,
+          "value_mld": 6.926
+        },
+        {
+          "year": 2006,
+          "value_mld": 8.888
+        },
+        {
+          "year": 2007,
+          "value_mld": 10.886
+        },
+        {
+          "year": 2008,
+          "value_mld": 12.329
+        },
+        {
+          "year": 2009,
+          "value_mld": 12.33
+        },
+        {
+          "year": 2010,
+          "value_mld": 6.287
+        },
+        {
+          "year": 2011,
+          "value_mld": 6.061
+        },
+        {
+          "year": 2012,
+          "value_mld": 9.227
+        },
+        {
+          "year": 2013,
+          "value_mld": 10.747
+        },
+        {
+          "year": 2014,
+          "value_mld": 10.083
+        },
+        {
+          "year": 2015,
+          "value_mld": 11.123
+        },
+        {
+          "year": 2016,
+          "value_mld": 9.024
+        },
+        {
+          "year": 2017,
+          "value_mld": 8.565
+        },
+        {
+          "year": 2018,
+          "value_mld": 8.161
+        },
+        {
+          "year": 2019,
+          "value_mld": 8.285
+        },
+        {
+          "year": 2020,
+          "value_mld": 8.245
+        },
+        {
+          "year": 2021,
+          "value_mld": 10.536
+        },
+        {
+          "year": 2022,
+          "value_mld": 8.888
+        },
+        {
+          "year": 2023,
+          "value_mld": 9.957
+        },
+        {
+          "year": 2024,
+          "value_mld": 18.3033
+        },
+        {
+          "year": 2025,
+          "value_mld": 21.0554
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "IMU",
+      "label": "IMU (quota comuni)",
+      "group": "Imposte immobiliari",
+      "source": "MEF territoriali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 18.189,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 0
+        },
+        {
+          "year": 2003,
+          "value_mld": 0
+        },
+        {
+          "year": 2004,
+          "value_mld": 0
+        },
+        {
+          "year": 2005,
+          "value_mld": 0
+        },
+        {
+          "year": 2006,
+          "value_mld": 0
+        },
+        {
+          "year": 2007,
+          "value_mld": 0
+        },
+        {
+          "year": 2008,
+          "value_mld": 0
+        },
+        {
+          "year": 2009,
+          "value_mld": 0
+        },
+        {
+          "year": 2010,
+          "value_mld": 0
+        },
+        {
+          "year": 2011,
+          "value_mld": 9.2
+        },
+        {
+          "year": 2012,
+          "value_mld": 15.609
+        },
+        {
+          "year": 2013,
+          "value_mld": 15.706
+        },
+        {
+          "year": 2014,
+          "value_mld": 16.529
+        },
+        {
+          "year": 2015,
+          "value_mld": 16.546
+        },
+        {
+          "year": 2016,
+          "value_mld": 15.93
+        },
+        {
+          "year": 2017,
+          "value_mld": 16.032
+        },
+        {
+          "year": 2018,
+          "value_mld": 16.19
+        },
+        {
+          "year": 2019,
+          "value_mld": 16.301
+        },
+        {
+          "year": 2020,
+          "value_mld": 16.948
+        },
+        {
+          "year": 2021,
+          "value_mld": 17.772
+        },
+        {
+          "year": 2022,
+          "value_mld": 17.895
+        },
+        {
+          "year": 2023,
+          "value_mld": 18.064
+        },
+        {
+          "year": 2024,
+          "value_mld": 18.103
+        },
+        {
+          "year": 2025,
+          "value_mld": 18.189
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "SUPERBOLLO",
+      "label": "Superbollo",
+      "group": "Contributi specifici",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 10.9976,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 3.971
+        },
+        {
+          "year": 2003,
+          "value_mld": 3.998
+        },
+        {
+          "year": 2004,
+          "value_mld": 5.22
+        },
+        {
+          "year": 2005,
+          "value_mld": 5.019
+        },
+        {
+          "year": 2006,
+          "value_mld": 5.646
+        },
+        {
+          "year": 2007,
+          "value_mld": 5.584
+        },
+        {
+          "year": 2008,
+          "value_mld": 5.405
+        },
+        {
+          "year": 2009,
+          "value_mld": 5.723
+        },
+        {
+          "year": 2010,
+          "value_mld": 5.515
+        },
+        {
+          "year": 2011,
+          "value_mld": 5.573
+        },
+        {
+          "year": 2012,
+          "value_mld": 6.17
+        },
+        {
+          "year": 2013,
+          "value_mld": 7.717
+        },
+        {
+          "year": 2014,
+          "value_mld": 7.759
+        },
+        {
+          "year": 2015,
+          "value_mld": 7.182
+        },
+        {
+          "year": 2016,
+          "value_mld": 6.806
+        },
+        {
+          "year": 2017,
+          "value_mld": 6.3465
+        },
+        {
+          "year": 2018,
+          "value_mld": 6.982
+        },
+        {
+          "year": 2019,
+          "value_mld": 6.5679
+        },
+        {
+          "year": 2020,
+          "value_mld": 6.732
+        },
+        {
+          "year": 2021,
+          "value_mld": 6.982
+        },
+        {
+          "year": 2022,
+          "value_mld": 7.5545
+        },
+        {
+          "year": 2023,
+          "value_mld": 6.777
+        },
+        {
+          "year": 2024,
+          "value_mld": 8.8589
+        },
+        {
+          "year": 2025,
+          "value_mld": 10.9976
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "CASSA_AZIONI",
+      "label": "Imposte sul registro",
+      "group": "Imposte indirette",
+      "source": "MEF erariali",
+      "unit": "mld",
+      "latest_year": 2025,
+      "latest_value_mld": 6.0252,
+      "series": [
+        {
+          "year": 2002,
+          "value_mld": 4.201
+        },
+        {
+          "year": 2003,
+          "value_mld": 4.186
+        },
+        {
+          "year": 2004,
+          "value_mld": 4.427
+        },
+        {
+          "year": 2005,
+          "value_mld": 4.811
+        },
+        {
+          "year": 2006,
+          "value_mld": 5.243
+        },
+        {
+          "year": 2007,
+          "value_mld": 5.762
+        },
+        {
+          "year": 2008,
+          "value_mld": 5.385
+        },
+        {
+          "year": 2009,
+          "value_mld": 4.738
+        },
+        {
+          "year": 2010,
+          "value_mld": 4.98
+        },
+        {
+          "year": 2011,
+          "value_mld": 4.704
+        },
+        {
+          "year": 2012,
+          "value_mld": 4.104
+        },
+        {
+          "year": 2013,
+          "value_mld": 3.878
+        },
+        {
+          "year": 2014,
+          "value_mld": 4.259
+        },
+        {
+          "year": 2015,
+          "value_mld": 4.253
+        },
+        {
+          "year": 2016,
+          "value_mld": 4.747
+        },
+        {
+          "year": 2017,
+          "value_mld": 4.8348
+        },
+        {
+          "year": 2018,
+          "value_mld": 5.005
+        },
+        {
+          "year": 2019,
+          "value_mld": 4.7744
+        },
+        {
+          "year": 2020,
+          "value_mld": 3.912
+        },
+        {
+          "year": 2021,
+          "value_mld": 5.074
+        },
+        {
+          "year": 2022,
+          "value_mld": 5.472
+        },
+        {
+          "year": 2023,
+          "value_mld": 5.482
+        },
+        {
+          "year": 2024,
+          "value_mld": 5.7511
+        },
+        {
+          "year": 2025,
+          "value_mld": 6.0252
+        }
+      ],
+      "status": null
+    },
+    {
+      "code": "TARI",
+      "label": "TARI",
+      "group": "Tributi locali",
+      "source": "MEF territoriali",
+      "status": "not_available_in_payload",
+      "series": [],
+      "latest_year": null,
+      "latest_value_mld": null,
+      "unit": "mld",
+      "note": "Voce 'TARI' non rintracciata in questo set di fonti."
+    }
+  ],
+  "all_revenues_focus": [
+    {
+      "code": "CEDOLARE",
+      "label": "Cedolare secca",
+      "source": "MEF dichiarazioni",
+      "year": null,
+      "unit": "mld",
+      "status": "not_available_in_payload",
+      "note": "Il dataset dichiarazioni usa il campo 'Reddito complessivo al netto della cedolare secca', ma non contiene la misura aggregata dell'incasso effettivo."
+    },
+    {
+      "code": "DONAZIONI_EREDITA",
+      "label": "Successioni e donazioni",
+      "source": "MEF appendici dichiarazioni",
+      "year": 2025,
+      "unit": "mld",
+      "value": 1.081
+    },
+    {
+      "code": "IMU",
+      "label": "IMU (quota Comuni)",
+      "source": "MEF territoriali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 18.189
+    },
+    {
+      "code": "IRES",
+      "label": "IRES",
+      "source": "MEF erariali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 60.0847
+    },
+    {
+      "code": "IRPEF",
+      "label": "IRPEF",
+      "source": "MEF erariali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 231.301
+    },
+    {
+      "code": "IVA",
+      "label": "IVA",
+      "source": "MEF erariali",
+      "year": 2025,
+      "unit": "mld",
+      "value": 186.8087
+    },
+    {
+      "code": "TARI",
+      "label": "TARI",
+      "source": "MEF territoriale / MEF erariali",
+      "year": null,
+      "unit": "mld",
+      "status": "not_available_in_current_payload",
+      "note": "Nessuna voce TARI rintracciabile nelle fonti disponibili in questa pipeline."
+    }
+  ],
+  "under_500m_revenue_summary": {
+    "year": null,
+    "threshold_mld": 0.5,
+    "entries": [],
+    "entries_count": 0,
+    "under_500_total_mld": 0,
+    "under_500_share_of_total_percent": 0,
+    "cumulative_effect": "sommato",
+    "note": "Cumulato delle voci con valore < 0.5 mld. Le categorie non rintracciabili in questa pipeline sono indicate a parte."
+  },
+  "declaration_summary": {
+    "year": 2024,
+    "bands": [
+      {
+        "band": "0 - 15.000",
+        "contributors": 15394946,
+        "tax_eur": 5064727405,
+        "tax_mld": 5.0647,
+        "average_tax_per_contributor": 328986370267.23
+      },
+      {
+        "band": "15.001 - 29.000",
+        "contributors": 14498375,
+        "tax_eur": 37614290881,
+        "tax_mld": 37.6143,
+        "average_tax_per_contributor": 2594379775733.49
+      },
+      {
+        "band": "29.001 - 55.000",
+        "contributors": 10267325,
+        "tax_eur": 73682438675,
+        "tax_mld": 73.6824,
+        "average_tax_per_contributor": 7176400734855.48
+      },
+      {
+        "band": "55.001 - 75.000",
+        "contributors": 1243547,
+        "tax_eur": 20013329021,
+        "tax_mld": 20.0133,
+        "average_tax_per_contributor": 16093745568925.02
+      },
+      {
+        "band": "oltre 75.000",
+        "contributors": 1432813,
+        "tax_eur": 60996612762,
+        "tax_mld": 60.9966,
+        "average_tax_per_contributor": 42571230692351.34
+      }
+    ],
+    "share_by_band": [
+      {
+        "band": "0 - 15.000",
+        "tax_share": 2.566,
+        "contributors_share": 35.938
+      },
+      {
+        "band": "15.001 - 29.000",
+        "tax_share": 19.058,
+        "contributors_share": 33.845
+      },
+      {
+        "band": "29.001 - 55.000",
+        "tax_share": 37.332,
+        "contributors_share": 23.968
+      },
+      {
+        "band": "55.001 - 75.000",
+        "tax_share": 10.14,
+        "contributors_share": 2.903
+      },
+      {
+        "band": "oltre 75.000",
+        "tax_share": 30.904,
+        "contributors_share": 3.345
+      }
+    ],
+    "totals": {
+      "contributors": 42837006,
+      "tax_mld": 197.37130000000002
+    },
+    "taxpayers_focus": [
+      {
+        "band": "0 - 15.000",
+        "contributors": 15394946
+      },
+      {
+        "band": "15.001 - 29.000",
+        "contributors": 14498375
+      },
+      {
+        "band": "29.001 - 55.000",
+        "contributors": 10267325
+      },
+      {
+        "band": "55.001 - 75.000",
+        "contributors": 1243547
+      },
+      {
+        "band": "oltre 75.000",
+        "contributors": 1432813
+      }
+    ]
+  },
+  "cofog_spending_2024": [
+    {
+      "code": "GF10",
+      "country": "Protezione sociale",
+      "year": 2024,
+      "value_mld": 468.135,
+      "value_pil": 21.3
+    },
+    {
+      "code": "GF01",
+      "country": "Servizi generali",
+      "year": 2024,
+      "value_mld": 170.414,
+      "value_pil": 7.7
+    },
+    {
+      "code": "GF07",
+      "country": "Sanita",
+      "year": 2024,
+      "value_mld": 146.075,
+      "value_pil": 6.6
+    },
+    {
+      "code": "GF04",
+      "country": "Affari economici",
+      "year": 2024,
+      "value_mld": 112.3808,
+      "value_pil": 5.1
+    },
+    {
+      "code": "GF09",
+      "country": "Istruzione",
+      "year": 2024,
+      "value_mld": 89.1799,
+      "value_pil": 4
+    },
+    {
+      "code": "GF03",
+      "country": "Ordine pubblico",
+      "year": 2024,
+      "value_mld": 39.094,
+      "value_pil": 1.8
+    },
+    {
+      "code": "GF02",
+      "country": "Difesa",
+      "year": 2024,
+      "value_mld": 28.301,
+      "value_pil": 1.3
+    },
+    {
+      "code": "GF05",
+      "country": "Ambiente",
+      "year": 2024,
+      "value_mld": 19.828,
+      "value_pil": 0.9
+    },
+    {
+      "code": "GF08",
+      "country": "Cultura e religione",
+      "year": 2024,
+      "value_mld": 18.7736,
+      "value_pil": 0.9
+    },
+    {
+      "code": "GF06",
+      "country": "Casa e territorio",
+      "year": 2024,
+      "value_mld": 16.9727,
+      "value_pil": 0.8
+    }
+  ],
+  "spending_by_function": [
+    {
+      "code": "GF10",
+      "label": "Protezione sociale",
+      "year": 2024,
+      "value_mld": 468.135,
+      "value_pil": 21.3,
+      "share_of_total": 42.2065
+    },
+    {
+      "code": "GF01",
+      "label": "Servizi generali",
+      "year": 2024,
+      "value_mld": 170.414,
+      "value_pil": 7.7,
+      "share_of_total": 15.3643
+    },
+    {
+      "code": "GF07",
+      "label": "Sanita",
+      "year": 2024,
+      "value_mld": 146.075,
+      "value_pil": 6.6,
+      "share_of_total": 13.1699
+    },
+    {
+      "code": "GF04",
+      "label": "Affari economici",
+      "year": 2024,
+      "value_mld": 112.3808,
+      "value_pil": 5.1,
+      "share_of_total": 10.1321
+    },
+    {
+      "code": "GF09",
+      "label": "Istruzione",
+      "year": 2024,
+      "value_mld": 89.1799,
+      "value_pil": 4,
+      "share_of_total": 8.0404
+    },
+    {
+      "code": "GF03",
+      "label": "Ordine pubblico",
+      "year": 2024,
+      "value_mld": 39.094,
+      "value_pil": 1.8,
+      "share_of_total": 3.5247
+    },
+    {
+      "code": "GF02",
+      "label": "Difesa",
+      "year": 2024,
+      "value_mld": 28.301,
+      "value_pil": 1.3,
+      "share_of_total": 2.5516
+    },
+    {
+      "code": "GF05",
+      "label": "Ambiente",
+      "year": 2024,
+      "value_mld": 19.828,
+      "value_pil": 0.9,
+      "share_of_total": 1.7877
+    },
+    {
+      "code": "GF08",
+      "label": "Cultura e religione",
+      "year": 2024,
+      "value_mld": 18.7736,
+      "value_pil": 0.9,
+      "share_of_total": 1.6926
+    },
+    {
+      "code": "GF06",
+      "label": "Casa e territorio",
+      "year": 2024,
+      "value_mld": 16.9727,
+      "value_pil": 0.8,
+      "share_of_total": 1.5302
+    }
+  ],
+  "spending_focus": [
+    {
+      "code": "DIFESA",
+      "label": "Difesa",
+      "source": "Eurostat gov_10a_exp",
+      "year": 2024,
+      "unit": "mld",
+      "value": 28.301,
+      "cofog_code": "GF02",
+      "value_pil_percent": 1.3,
+      "share_spesa_totale": 2.5516
+    },
+    {
+      "code": "ISTRUZIONE",
+      "label": "Istruzione",
+      "source": "Eurostat gov_10a_exp",
+      "year": 2024,
+      "unit": "mld",
+      "value": 89.1799,
+      "cofog_code": "GF09",
+      "value_pil_percent": 4,
+      "share_spesa_totale": 8.0404
+    },
+    {
+      "code": "RICERCA",
+      "label": "Affari economici (approssimato)",
+      "source": "Eurostat gov_10a_exp",
+      "year": 2024,
+      "unit": "mld",
+      "value": 112.3808,
+      "cofog_code": "GF04",
+      "value_pil_percent": 5.1,
+      "share_spesa_totale": 10.1321,
+      "status": "proxy_available",
+      "note": "Codice COFOG non specifico; aggregato in Affari economici."
+    },
+    {
+      "code": "INVESTIMENTI",
+      "label": "Investimenti",
+      "source": "Eurostat gov_10a_exp",
+      "year": 2024,
+      "unit": "mld",
+      "status": "not_available_in_current_sources",
+      "note": "Richiesta non presente nei dataset COFOG/MEF usati dalla pipeline corrente."
+    },
+    {
+      "code": "SALARI",
+      "label": "Spesa per personale pubblico",
+      "source": "Eurostat gov_10a_exp",
+      "year": 2024,
+      "unit": "mld",
+      "status": "not_available_in_current_sources",
+      "note": "Richiesta non presente nei dataset COFOG/MEF usati dalla pipeline corrente."
+    },
+    {
+      "code": "INTERESSI_PASSIVI",
+      "label": "Interessi passivi",
+      "source": "Eurostat gov_10a_exp",
+      "year": 2024,
+      "unit": "mld",
+      "status": "not_available_in_current_sources",
+      "note": "Richiesta non presente nei dataset COFOG/MEF usati dalla pipeline corrente."
+    },
+    {
+      "code": "INTERESSI_ATTIVI",
+      "label": "Interessi attivi",
+      "source": "Eurostat gov_10a_exp",
+      "year": 2024,
+      "unit": "mld",
+      "status": "not_available_in_current_sources",
+      "note": "Richiesta non presente nei dataset COFOG/MEF usati dalla pipeline corrente."
+    }
+  ],
+  "cofog_spending_trend": [
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 1995,
+      "mld": 136.766,
+      "pil": 15.2
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 1996,
+      "mld": 159.8046,
+      "pil": 15.4
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 1997,
+      "mld": 146.9909,
+      "pil": 13.4
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 1998,
+      "mld": 138.9617,
+      "pil": 12.2
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 1999,
+      "mld": 128.995,
+      "pil": 11
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2000,
+      "mld": 131.845,
+      "pil": 10.6
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2001,
+      "mld": 139.629,
+      "pil": 10.7
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2002,
+      "mld": 138.608,
+      "pil": 10.2
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2003,
+      "mld": 136.849,
+      "pil": 9.8
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2004,
+      "mld": 138.136,
+      "pil": 9.5
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2005,
+      "mld": 141.197,
+      "pil": 9.4
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2006,
+      "mld": 143.059,
+      "pil": 9.2
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2007,
+      "mld": 148.289,
+      "pil": 9.1
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2008,
+      "mld": 156.66,
+      "pil": 9.5
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2009,
+      "mld": 146.167,
+      "pil": 9.2
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2010,
+      "mld": 144.274,
+      "pil": 8.9
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2011,
+      "mld": 150.189,
+      "pil": 9.1
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2012,
+      "mld": 156.616,
+      "pil": 9.6
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2013,
+      "mld": 153.129,
+      "pil": 9.4
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2014,
+      "mld": 146.358,
+      "pil": 8.9
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2015,
+      "mld": 136.928,
+      "pil": 8.2
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2016,
+      "mld": 137.217,
+      "pil": 8
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2017,
+      "mld": 134.572,
+      "pil": 7.7
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2018,
+      "mld": 136.531,
+      "pil": 7.7
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2019,
+      "mld": 132.178,
+      "pil": 7.3
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2020,
+      "mld": 133.863,
+      "pil": 8
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2021,
+      "mld": 141.809,
+      "pil": 7.7
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2022,
+      "mld": 162.393,
+      "pil": 8.1
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2023,
+      "mld": 158.234,
+      "pil": 7.4
+    },
+    {
+      "codice": "GF01",
+      "funzione": "Servizi generali",
+      "anno": 2024,
+      "mld": 170.414,
+      "pil": 7.7
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 1995,
+      "mld": 11.2514,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 1996,
+      "mld": 12.4818,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 1997,
+      "mld": 12.9175,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 1998,
+      "mld": 12.2643,
+      "pil": 1.1
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 1999,
+      "mld": 12.623,
+      "pil": 1.1
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2000,
+      "mld": 13.838,
+      "pil": 1.1
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2001,
+      "mld": 15.306,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2002,
+      "mld": 15.506,
+      "pil": 1.1
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2003,
+      "mld": 17.466,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2004,
+      "mld": 18.544,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2005,
+      "mld": 18.913,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2006,
+      "mld": 18.816,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2007,
+      "mld": 19.329,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2008,
+      "mld": 21.447,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2009,
+      "mld": 23.635,
+      "pil": 1.5
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2010,
+      "mld": 22.191,
+      "pil": 1.4
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2011,
+      "mld": 22.56,
+      "pil": 1.4
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2012,
+      "mld": 20.861,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2013,
+      "mld": 19.783,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2014,
+      "mld": 19.32,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2015,
+      "mld": 19.722,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2016,
+      "mld": 22.051,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2017,
+      "mld": 22.314,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2018,
+      "mld": 21.995,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2019,
+      "mld": 23.06,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2020,
+      "mld": 22.726,
+      "pil": 1.4
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2021,
+      "mld": 24.994,
+      "pil": 1.4
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2022,
+      "mld": 24.037,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2023,
+      "mld": 25.513,
+      "pil": 1.2
+    },
+    {
+      "codice": "GF02",
+      "funzione": "Difesa",
+      "anno": 2024,
+      "mld": 28.301,
+      "pil": 1.3
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 1995,
+      "mld": 17.158,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 1996,
+      "mld": 20.6935,
+      "pil": 2
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 1997,
+      "mld": 21.6419,
+      "pil": 2
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 1998,
+      "mld": 22.7593,
+      "pil": 2
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 1999,
+      "mld": 23.284,
+      "pil": 2
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2000,
+      "mld": 24.625,
+      "pil": 2
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2001,
+      "mld": 24.132,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2002,
+      "mld": 25.736,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2003,
+      "mld": 27.531,
+      "pil": 2
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2004,
+      "mld": 27.611,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2005,
+      "mld": 28.678,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2006,
+      "mld": 28.462,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2007,
+      "mld": 29.222,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2008,
+      "mld": 28.846,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2009,
+      "mld": 30.861,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2010,
+      "mld": 31.114,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2011,
+      "mld": 31.744,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2012,
+      "mld": 30.632,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2013,
+      "mld": 30.675,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2014,
+      "mld": 30.317,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2015,
+      "mld": 30.784,
+      "pil": 1.9
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2016,
+      "mld": 30.887,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2017,
+      "mld": 31.68,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2018,
+      "mld": 32.503,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2019,
+      "mld": 32.921,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2020,
+      "mld": 33.513,
+      "pil": 2
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2021,
+      "mld": 33.899,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2022,
+      "mld": 35.2,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2023,
+      "mld": 36.209,
+      "pil": 1.7
+    },
+    {
+      "codice": "GF03",
+      "funzione": "Ordine pubblico",
+      "anno": 2024,
+      "mld": 39.094,
+      "pil": 1.8
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 1995,
+      "mld": 37.988,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 1996,
+      "mld": 43.0828,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 1997,
+      "mld": 39.5936,
+      "pil": 3.6
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 1998,
+      "mld": 42.7094,
+      "pil": 3.8
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 1999,
+      "mld": 44.3126,
+      "pil": 3.8
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2000,
+      "mld": 45.5023,
+      "pil": 3.7
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2001,
+      "mld": 55.9149,
+      "pil": 4.3
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2002,
+      "mld": 57.5209,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2003,
+      "mld": 56.8635,
+      "pil": 4.1
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2004,
+      "mld": 56.953,
+      "pil": 3.9
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2005,
+      "mld": 59.5345,
+      "pil": 4
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2006,
+      "mld": 77.1354,
+      "pil": 4.9
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2007,
+      "mld": 64.0605,
+      "pil": 4
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2008,
+      "mld": 63.0783,
+      "pil": 3.8
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2009,
+      "mld": 71.2123,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2010,
+      "mld": 64.6306,
+      "pil": 4
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2011,
+      "mld": 65.6498,
+      "pil": 4
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2012,
+      "mld": 70.5416,
+      "pil": 4.3
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2013,
+      "mld": 68.3555,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2014,
+      "mld": 74.2463,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2015,
+      "mld": 78.454,
+      "pil": 4.7
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2016,
+      "mld": 71.4122,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2017,
+      "mld": 80.5506,
+      "pil": 4.6
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2018,
+      "mld": 75.1262,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2019,
+      "mld": 75.9188,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2020,
+      "mld": 98.8201,
+      "pil": 5.9
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2021,
+      "mld": 124.3089,
+      "pil": 6.7
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2022,
+      "mld": 129.5205,
+      "pil": 6.5
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2023,
+      "mld": 124.434,
+      "pil": 5.8
+    },
+    {
+      "codice": "GF04",
+      "funzione": "Affari economici",
+      "anno": 2024,
+      "mld": 112.3808,
+      "pil": 5.1
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 1995,
+      "mld": 6.2747,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 1996,
+      "mld": 7.2738,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 1997,
+      "mld": 8.1724,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 1998,
+      "mld": 8.9549,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 1999,
+      "mld": 9.532,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2000,
+      "mld": 10.551,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2001,
+      "mld": 10.74,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2002,
+      "mld": 11.563,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2003,
+      "mld": 11.593,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2004,
+      "mld": 11.862,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2005,
+      "mld": 12.106,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2006,
+      "mld": 11.634,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2007,
+      "mld": 12.877,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2008,
+      "mld": 13.763,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2009,
+      "mld": 13.926,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2010,
+      "mld": 14.115,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2011,
+      "mld": 14.6623,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2012,
+      "mld": 14.447,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2013,
+      "mld": 15.679,
+      "pil": 1
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2014,
+      "mld": 15.185,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2015,
+      "mld": 15.461,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2016,
+      "mld": 15.617,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2017,
+      "mld": 15.372,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2018,
+      "mld": 15.334,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2019,
+      "mld": 16.378,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2020,
+      "mld": 16.187,
+      "pil": 1
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2021,
+      "mld": 17.583,
+      "pil": 1
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2022,
+      "mld": 18.1707,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2023,
+      "mld": 18.6268,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF05",
+      "funzione": "Ambiente",
+      "anno": 2024,
+      "mld": 19.828,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 1995,
+      "mld": 5.3061,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 1996,
+      "mld": 6.2934,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 1997,
+      "mld": 7.0262,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 1998,
+      "mld": 7.3504,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 1999,
+      "mld": 7.1812,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2000,
+      "mld": 7.2253,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2001,
+      "mld": 7.5995,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2002,
+      "mld": 8.0094,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2003,
+      "mld": 8.0382,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2004,
+      "mld": 8.6217,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2005,
+      "mld": 8.4742,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2006,
+      "mld": 8.8049,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2007,
+      "mld": 9.2897,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2008,
+      "mld": 9.4019,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2009,
+      "mld": 9.8777,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2010,
+      "mld": 10.395,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2011,
+      "mld": 9.0864,
+      "pil": 0.5
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2012,
+      "mld": 9.6825,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2013,
+      "mld": 8.2524,
+      "pil": 0.5
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2014,
+      "mld": 7.4858,
+      "pil": 0.5
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2015,
+      "mld": 7.5261,
+      "pil": 0.5
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2016,
+      "mld": 6.9229,
+      "pil": 0.4
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2017,
+      "mld": 6.7186,
+      "pil": 0.4
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2018,
+      "mld": 7.2556,
+      "pil": 0.4
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2019,
+      "mld": 7.3706,
+      "pil": 0.4
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2020,
+      "mld": 9.7223,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2021,
+      "mld": 44.9943,
+      "pil": 2.4
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2022,
+      "mld": 65.879,
+      "pil": 3.3
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2023,
+      "mld": 95.0371,
+      "pil": 4.4
+    },
+    {
+      "codice": "GF06",
+      "funzione": "Casa e territorio",
+      "anno": 2024,
+      "mld": 16.9727,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 1995,
+      "mld": 45.7602,
+      "pil": 5.1
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 1996,
+      "mld": 53.4438,
+      "pil": 5.2
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 1997,
+      "mld": 58.8267,
+      "pil": 5.4
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 1998,
+      "mld": 60.915,
+      "pil": 5.4
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 1999,
+      "mld": 64.393,
+      "pil": 5.5
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2000,
+      "mld": 71.943,
+      "pil": 5.8
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2001,
+      "mld": 79.689,
+      "pil": 6.1
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2002,
+      "mld": 84.008,
+      "pil": 6.2
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2003,
+      "mld": 86.93,
+      "pil": 6.2
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2004,
+      "mld": 95.319,
+      "pil": 6.5
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2005,
+      "mld": 101.69,
+      "pil": 6.8
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2006,
+      "mld": 106.836,
+      "pil": 6.8
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2007,
+      "mld": 107.648,
+      "pil": 6.6
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2008,
+      "mld": 114.568,
+      "pil": 7
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2009,
+      "mld": 117.133,
+      "pil": 7.4
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2010,
+      "mld": 119.119,
+      "pil": 7.4
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2011,
+      "mld": 116.98,
+      "pil": 7.1
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2012,
+      "mld": 115.188,
+      "pil": 7.1
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2013,
+      "mld": 114.244,
+      "pil": 7
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2014,
+      "mld": 115.261,
+      "pil": 7
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2015,
+      "mld": 115.779,
+      "pil": 7
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2016,
+      "mld": 116.516,
+      "pil": 6.8
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2017,
+      "mld": 117.95,
+      "pil": 6.8
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2018,
+      "mld": 119.526,
+      "pil": 6.7
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2019,
+      "mld": 121.075,
+      "pil": 6.7
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2020,
+      "mld": 130.297,
+      "pil": 7.8
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2021,
+      "mld": 135.909,
+      "pil": 7.4
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2022,
+      "mld": 137.431,
+      "pil": 6.9
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2023,
+      "mld": 139.65,
+      "pil": 6.5
+    },
+    {
+      "codice": "GF07",
+      "funzione": "Sanita",
+      "anno": 2024,
+      "mld": 146.075,
+      "pil": 6.6
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 1995,
+      "mld": 6.0207,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 1996,
+      "mld": 7.7246,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 1997,
+      "mld": 8.3787,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 1998,
+      "mld": 8.5429,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 1999,
+      "mld": 9.287,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2000,
+      "mld": 8.8134,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2001,
+      "mld": 9.5222,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2002,
+      "mld": 9.451,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2003,
+      "mld": 9.9321,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2004,
+      "mld": 10.8773,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2005,
+      "mld": 10.8097,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2006,
+      "mld": 10.5849,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2007,
+      "mld": 11.4224,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2008,
+      "mld": 11.4263,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2009,
+      "mld": 11.5658,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2010,
+      "mld": 10.6316,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2011,
+      "mld": 10.5236,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2012,
+      "mld": 9.9462,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2013,
+      "mld": 10.7767,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2014,
+      "mld": 10.6282,
+      "pil": 0.6
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2015,
+      "mld": 11.374,
+      "pil": 0.7
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2016,
+      "mld": 13.253,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2017,
+      "mld": 13.309,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2018,
+      "mld": 14.1374,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2019,
+      "mld": 14.4149,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2020,
+      "mld": 13.9647,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2021,
+      "mld": 16.2539,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2022,
+      "mld": 17.7847,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2023,
+      "mld": 17.8095,
+      "pil": 0.8
+    },
+    {
+      "codice": "GF08",
+      "funzione": "Cultura e religione",
+      "anno": 2024,
+      "mld": 18.7736,
+      "pil": 0.9
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 1995,
+      "mld": 39.3332,
+      "pil": 4.4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 1996,
+      "mld": 46.6862,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 1997,
+      "mld": 49.2295,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 1998,
+      "mld": 50.8046,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 1999,
+      "mld": 52.5592,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2000,
+      "mld": 54.366,
+      "pil": 4.4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2001,
+      "mld": 58.1344,
+      "pil": 4.4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2002,
+      "mld": 60.3777,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2003,
+      "mld": 64.0012,
+      "pil": 4.6
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2004,
+      "mld": 63.427,
+      "pil": 4.4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2005,
+      "mld": 67.1536,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2006,
+      "mld": 68.4878,
+      "pil": 4.4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2007,
+      "mld": 72.3754,
+      "pil": 4.5
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2008,
+      "mld": 71.1295,
+      "pil": 4.3
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2009,
+      "mld": 72.5032,
+      "pil": 4.6
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2010,
+      "mld": 71.0928,
+      "pil": 4.4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2011,
+      "mld": 68.0809,
+      "pil": 4.1
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2012,
+      "mld": 66.6417,
+      "pil": 4.1
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2013,
+      "mld": 66.7944,
+      "pil": 4.1
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2014,
+      "mld": 66.8207,
+      "pil": 4.1
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2015,
+      "mld": 67.1859,
+      "pil": 4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2016,
+      "mld": 67.3139,
+      "pil": 3.9
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2017,
+      "mld": 69.1558,
+      "pil": 4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2018,
+      "mld": 70.2998,
+      "pil": 4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2019,
+      "mld": 71.3677,
+      "pil": 4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2020,
+      "mld": 72.1409,
+      "pil": 4.3
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2021,
+      "mld": 77.1569,
+      "pil": 4.2
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2022,
+      "mld": 80.0661,
+      "pil": 4
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2023,
+      "mld": 84.3556,
+      "pil": 3.9
+    },
+    {
+      "codice": "GF09",
+      "funzione": "Istruzione",
+      "anno": 2024,
+      "mld": 89.1799,
+      "pil": 4
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 1995,
+      "mld": 157.3537,
+      "pil": 17.5
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 1996,
+      "mld": 174.2948,
+      "pil": 16.8
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 1997,
+      "mld": 189.3232,
+      "pil": 17.2
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 1998,
+      "mld": 192.5097,
+      "pil": 16.9
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 1999,
+      "mld": 202.184,
+      "pil": 17.2
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2000,
+      "mld": 208.46,
+      "pil": 16.7
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2001,
+      "mld": 216.111,
+      "pil": 16.5
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2002,
+      "mld": 219.446,
+      "pil": 16.2
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2003,
+      "mld": 238.067,
+      "pil": 17
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2004,
+      "mld": 248.75,
+      "pil": 17.1
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2005,
+      "mld": 256.809,
+      "pil": 17.1
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2006,
+      "mld": 268.05,
+      "pil": 17.2
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2007,
+      "mld": 281.212,
+      "pil": 17.3
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2008,
+      "mld": 294.57,
+      "pil": 17.9
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2009,
+      "mld": 311.847,
+      "pil": 19.7
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2010,
+      "mld": 318.154,
+      "pil": 19.7
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2011,
+      "mld": 323.073,
+      "pil": 19.5
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2012,
+      "mld": 329.745,
+      "pil": 20.2
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2013,
+      "mld": 337.544,
+      "pil": 20.8
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2014,
+      "mld": 344.01,
+      "pil": 21
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2015,
+      "mld": 352.48,
+      "pil": 21.2
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2016,
+      "mld": 353.847,
+      "pil": 20.8
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2017,
+      "mld": 359.393,
+      "pil": 20.6
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2018,
+      "mld": 366.31,
+      "pil": 20.6
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2019,
+      "mld": 378.914,
+      "pil": 21
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2020,
+      "mld": 417.062,
+      "pil": 25
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2021,
+      "mld": 415.621,
+      "pil": 22.6
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2022,
+      "mld": 427.145,
+      "pil": 21.4
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2023,
+      "mld": 449.337,
+      "pil": 21
+    },
+    {
+      "codice": "GF10",
+      "funzione": "Protezione sociale",
+      "anno": 2024,
+      "mld": 468.135,
+      "pil": 21.3
+    }
+  ],
+  "spending_category_series": [
+    {
+      "code": "GF10",
+      "label": "Protezione sociale",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 157.3537,
+          "value_pil": 17.5
+        },
+        {
+          "year": 1996,
+          "value_mld": 174.2948,
+          "value_pil": 16.8
+        },
+        {
+          "year": 1997,
+          "value_mld": 189.3232,
+          "value_pil": 17.2
+        },
+        {
+          "year": 1998,
+          "value_mld": 192.5097,
+          "value_pil": 16.9
+        },
+        {
+          "year": 1999,
+          "value_mld": 202.184,
+          "value_pil": 17.2
+        },
+        {
+          "year": 2000,
+          "value_mld": 208.46,
+          "value_pil": 16.7
+        },
+        {
+          "year": 2001,
+          "value_mld": 216.111,
+          "value_pil": 16.5
+        },
+        {
+          "year": 2002,
+          "value_mld": 219.446,
+          "value_pil": 16.2
+        },
+        {
+          "year": 2003,
+          "value_mld": 238.067,
+          "value_pil": 17
+        },
+        {
+          "year": 2004,
+          "value_mld": 248.75,
+          "value_pil": 17.1
+        },
+        {
+          "year": 2005,
+          "value_mld": 256.809,
+          "value_pil": 17.1
+        },
+        {
+          "year": 2006,
+          "value_mld": 268.05,
+          "value_pil": 17.2
+        },
+        {
+          "year": 2007,
+          "value_mld": 281.212,
+          "value_pil": 17.3
+        },
+        {
+          "year": 2008,
+          "value_mld": 294.57,
+          "value_pil": 17.9
+        },
+        {
+          "year": 2009,
+          "value_mld": 311.847,
+          "value_pil": 19.7
+        },
+        {
+          "year": 2010,
+          "value_mld": 318.154,
+          "value_pil": 19.7
+        },
+        {
+          "year": 2011,
+          "value_mld": 323.073,
+          "value_pil": 19.5
+        },
+        {
+          "year": 2012,
+          "value_mld": 329.745,
+          "value_pil": 20.2
+        },
+        {
+          "year": 2013,
+          "value_mld": 337.544,
+          "value_pil": 20.8
+        },
+        {
+          "year": 2014,
+          "value_mld": 344.01,
+          "value_pil": 21
+        },
+        {
+          "year": 2015,
+          "value_mld": 352.48,
+          "value_pil": 21.2
+        },
+        {
+          "year": 2016,
+          "value_mld": 353.847,
+          "value_pil": 20.8
+        },
+        {
+          "year": 2017,
+          "value_mld": 359.393,
+          "value_pil": 20.6
+        },
+        {
+          "year": 2018,
+          "value_mld": 366.31,
+          "value_pil": 20.6
+        },
+        {
+          "year": 2019,
+          "value_mld": 378.914,
+          "value_pil": 21
+        },
+        {
+          "year": 2020,
+          "value_mld": 417.062,
+          "value_pil": 25
+        },
+        {
+          "year": 2021,
+          "value_mld": 415.621,
+          "value_pil": 22.6
+        },
+        {
+          "year": 2022,
+          "value_mld": 427.145,
+          "value_pil": 21.4
+        },
+        {
+          "year": 2023,
+          "value_mld": 449.337,
+          "value_pil": 21
+        },
+        {
+          "year": 2024,
+          "value_mld": 468.135,
+          "value_pil": 21.3
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 468.135
+    },
+    {
+      "code": "GF01",
+      "label": "Servizi generali",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 136.766,
+          "value_pil": 15.2
+        },
+        {
+          "year": 1996,
+          "value_mld": 159.8046,
+          "value_pil": 15.4
+        },
+        {
+          "year": 1997,
+          "value_mld": 146.9909,
+          "value_pil": 13.4
+        },
+        {
+          "year": 1998,
+          "value_mld": 138.9617,
+          "value_pil": 12.2
+        },
+        {
+          "year": 1999,
+          "value_mld": 128.995,
+          "value_pil": 11
+        },
+        {
+          "year": 2000,
+          "value_mld": 131.845,
+          "value_pil": 10.6
+        },
+        {
+          "year": 2001,
+          "value_mld": 139.629,
+          "value_pil": 10.7
+        },
+        {
+          "year": 2002,
+          "value_mld": 138.608,
+          "value_pil": 10.2
+        },
+        {
+          "year": 2003,
+          "value_mld": 136.849,
+          "value_pil": 9.8
+        },
+        {
+          "year": 2004,
+          "value_mld": 138.136,
+          "value_pil": 9.5
+        },
+        {
+          "year": 2005,
+          "value_mld": 141.197,
+          "value_pil": 9.4
+        },
+        {
+          "year": 2006,
+          "value_mld": 143.059,
+          "value_pil": 9.2
+        },
+        {
+          "year": 2007,
+          "value_mld": 148.289,
+          "value_pil": 9.1
+        },
+        {
+          "year": 2008,
+          "value_mld": 156.66,
+          "value_pil": 9.5
+        },
+        {
+          "year": 2009,
+          "value_mld": 146.167,
+          "value_pil": 9.2
+        },
+        {
+          "year": 2010,
+          "value_mld": 144.274,
+          "value_pil": 8.9
+        },
+        {
+          "year": 2011,
+          "value_mld": 150.189,
+          "value_pil": 9.1
+        },
+        {
+          "year": 2012,
+          "value_mld": 156.616,
+          "value_pil": 9.6
+        },
+        {
+          "year": 2013,
+          "value_mld": 153.129,
+          "value_pil": 9.4
+        },
+        {
+          "year": 2014,
+          "value_mld": 146.358,
+          "value_pil": 8.9
+        },
+        {
+          "year": 2015,
+          "value_mld": 136.928,
+          "value_pil": 8.2
+        },
+        {
+          "year": 2016,
+          "value_mld": 137.217,
+          "value_pil": 8
+        },
+        {
+          "year": 2017,
+          "value_mld": 134.572,
+          "value_pil": 7.7
+        },
+        {
+          "year": 2018,
+          "value_mld": 136.531,
+          "value_pil": 7.7
+        },
+        {
+          "year": 2019,
+          "value_mld": 132.178,
+          "value_pil": 7.3
+        },
+        {
+          "year": 2020,
+          "value_mld": 133.863,
+          "value_pil": 8
+        },
+        {
+          "year": 2021,
+          "value_mld": 141.809,
+          "value_pil": 7.7
+        },
+        {
+          "year": 2022,
+          "value_mld": 162.393,
+          "value_pil": 8.1
+        },
+        {
+          "year": 2023,
+          "value_mld": 158.234,
+          "value_pil": 7.4
+        },
+        {
+          "year": 2024,
+          "value_mld": 170.414,
+          "value_pil": 7.7
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 170.414
+    },
+    {
+      "code": "GF07",
+      "label": "Sanita",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 45.7602,
+          "value_pil": 5.1
+        },
+        {
+          "year": 1996,
+          "value_mld": 53.4438,
+          "value_pil": 5.2
+        },
+        {
+          "year": 1997,
+          "value_mld": 58.8267,
+          "value_pil": 5.4
+        },
+        {
+          "year": 1998,
+          "value_mld": 60.915,
+          "value_pil": 5.4
+        },
+        {
+          "year": 1999,
+          "value_mld": 64.393,
+          "value_pil": 5.5
+        },
+        {
+          "year": 2000,
+          "value_mld": 71.943,
+          "value_pil": 5.8
+        },
+        {
+          "year": 2001,
+          "value_mld": 79.689,
+          "value_pil": 6.1
+        },
+        {
+          "year": 2002,
+          "value_mld": 84.008,
+          "value_pil": 6.2
+        },
+        {
+          "year": 2003,
+          "value_mld": 86.93,
+          "value_pil": 6.2
+        },
+        {
+          "year": 2004,
+          "value_mld": 95.319,
+          "value_pil": 6.5
+        },
+        {
+          "year": 2005,
+          "value_mld": 101.69,
+          "value_pil": 6.8
+        },
+        {
+          "year": 2006,
+          "value_mld": 106.836,
+          "value_pil": 6.8
+        },
+        {
+          "year": 2007,
+          "value_mld": 107.648,
+          "value_pil": 6.6
+        },
+        {
+          "year": 2008,
+          "value_mld": 114.568,
+          "value_pil": 7
+        },
+        {
+          "year": 2009,
+          "value_mld": 117.133,
+          "value_pil": 7.4
+        },
+        {
+          "year": 2010,
+          "value_mld": 119.119,
+          "value_pil": 7.4
+        },
+        {
+          "year": 2011,
+          "value_mld": 116.98,
+          "value_pil": 7.1
+        },
+        {
+          "year": 2012,
+          "value_mld": 115.188,
+          "value_pil": 7.1
+        },
+        {
+          "year": 2013,
+          "value_mld": 114.244,
+          "value_pil": 7
+        },
+        {
+          "year": 2014,
+          "value_mld": 115.261,
+          "value_pil": 7
+        },
+        {
+          "year": 2015,
+          "value_mld": 115.779,
+          "value_pil": 7
+        },
+        {
+          "year": 2016,
+          "value_mld": 116.516,
+          "value_pil": 6.8
+        },
+        {
+          "year": 2017,
+          "value_mld": 117.95,
+          "value_pil": 6.8
+        },
+        {
+          "year": 2018,
+          "value_mld": 119.526,
+          "value_pil": 6.7
+        },
+        {
+          "year": 2019,
+          "value_mld": 121.075,
+          "value_pil": 6.7
+        },
+        {
+          "year": 2020,
+          "value_mld": 130.297,
+          "value_pil": 7.8
+        },
+        {
+          "year": 2021,
+          "value_mld": 135.909,
+          "value_pil": 7.4
+        },
+        {
+          "year": 2022,
+          "value_mld": 137.431,
+          "value_pil": 6.9
+        },
+        {
+          "year": 2023,
+          "value_mld": 139.65,
+          "value_pil": 6.5
+        },
+        {
+          "year": 2024,
+          "value_mld": 146.075,
+          "value_pil": 6.6
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 146.075
+    },
+    {
+      "code": "GF04",
+      "label": "Affari economici",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 37.988,
+          "value_pil": 4.2
+        },
+        {
+          "year": 1996,
+          "value_mld": 43.0828,
+          "value_pil": 4.2
+        },
+        {
+          "year": 1997,
+          "value_mld": 39.5936,
+          "value_pil": 3.6
+        },
+        {
+          "year": 1998,
+          "value_mld": 42.7094,
+          "value_pil": 3.8
+        },
+        {
+          "year": 1999,
+          "value_mld": 44.3126,
+          "value_pil": 3.8
+        },
+        {
+          "year": 2000,
+          "value_mld": 45.5023,
+          "value_pil": 3.7
+        },
+        {
+          "year": 2001,
+          "value_mld": 55.9149,
+          "value_pil": 4.3
+        },
+        {
+          "year": 2002,
+          "value_mld": 57.5209,
+          "value_pil": 4.2
+        },
+        {
+          "year": 2003,
+          "value_mld": 56.8635,
+          "value_pil": 4.1
+        },
+        {
+          "year": 2004,
+          "value_mld": 56.953,
+          "value_pil": 3.9
+        },
+        {
+          "year": 2005,
+          "value_mld": 59.5345,
+          "value_pil": 4
+        },
+        {
+          "year": 2006,
+          "value_mld": 77.1354,
+          "value_pil": 4.9
+        },
+        {
+          "year": 2007,
+          "value_mld": 64.0605,
+          "value_pil": 4
+        },
+        {
+          "year": 2008,
+          "value_mld": 63.0783,
+          "value_pil": 3.8
+        },
+        {
+          "year": 2009,
+          "value_mld": 71.2123,
+          "value_pil": 4.5
+        },
+        {
+          "year": 2010,
+          "value_mld": 64.6306,
+          "value_pil": 4
+        },
+        {
+          "year": 2011,
+          "value_mld": 65.6498,
+          "value_pil": 4
+        },
+        {
+          "year": 2012,
+          "value_mld": 70.5416,
+          "value_pil": 4.3
+        },
+        {
+          "year": 2013,
+          "value_mld": 68.3555,
+          "value_pil": 4.2
+        },
+        {
+          "year": 2014,
+          "value_mld": 74.2463,
+          "value_pil": 4.5
+        },
+        {
+          "year": 2015,
+          "value_mld": 78.454,
+          "value_pil": 4.7
+        },
+        {
+          "year": 2016,
+          "value_mld": 71.4122,
+          "value_pil": 4.2
+        },
+        {
+          "year": 2017,
+          "value_mld": 80.5506,
+          "value_pil": 4.6
+        },
+        {
+          "year": 2018,
+          "value_mld": 75.1262,
+          "value_pil": 4.2
+        },
+        {
+          "year": 2019,
+          "value_mld": 75.9188,
+          "value_pil": 4.2
+        },
+        {
+          "year": 2020,
+          "value_mld": 98.8201,
+          "value_pil": 5.9
+        },
+        {
+          "year": 2021,
+          "value_mld": 124.3089,
+          "value_pil": 6.7
+        },
+        {
+          "year": 2022,
+          "value_mld": 129.5205,
+          "value_pil": 6.5
+        },
+        {
+          "year": 2023,
+          "value_mld": 124.434,
+          "value_pil": 5.8
+        },
+        {
+          "year": 2024,
+          "value_mld": 112.3808,
+          "value_pil": 5.1
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 112.3808
+    },
+    {
+      "code": "GF09",
+      "label": "Istruzione",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 39.3332,
+          "value_pil": 4.4
+        },
+        {
+          "year": 1996,
+          "value_mld": 46.6862,
+          "value_pil": 4.5
+        },
+        {
+          "year": 1997,
+          "value_mld": 49.2295,
+          "value_pil": 4.5
+        },
+        {
+          "year": 1998,
+          "value_mld": 50.8046,
+          "value_pil": 4.5
+        },
+        {
+          "year": 1999,
+          "value_mld": 52.5592,
+          "value_pil": 4.5
+        },
+        {
+          "year": 2000,
+          "value_mld": 54.366,
+          "value_pil": 4.4
+        },
+        {
+          "year": 2001,
+          "value_mld": 58.1344,
+          "value_pil": 4.4
+        },
+        {
+          "year": 2002,
+          "value_mld": 60.3777,
+          "value_pil": 4.5
+        },
+        {
+          "year": 2003,
+          "value_mld": 64.0012,
+          "value_pil": 4.6
+        },
+        {
+          "year": 2004,
+          "value_mld": 63.427,
+          "value_pil": 4.4
+        },
+        {
+          "year": 2005,
+          "value_mld": 67.1536,
+          "value_pil": 4.5
+        },
+        {
+          "year": 2006,
+          "value_mld": 68.4878,
+          "value_pil": 4.4
+        },
+        {
+          "year": 2007,
+          "value_mld": 72.3754,
+          "value_pil": 4.5
+        },
+        {
+          "year": 2008,
+          "value_mld": 71.1295,
+          "value_pil": 4.3
+        },
+        {
+          "year": 2009,
+          "value_mld": 72.5032,
+          "value_pil": 4.6
+        },
+        {
+          "year": 2010,
+          "value_mld": 71.0928,
+          "value_pil": 4.4
+        },
+        {
+          "year": 2011,
+          "value_mld": 68.0809,
+          "value_pil": 4.1
+        },
+        {
+          "year": 2012,
+          "value_mld": 66.6417,
+          "value_pil": 4.1
+        },
+        {
+          "year": 2013,
+          "value_mld": 66.7944,
+          "value_pil": 4.1
+        },
+        {
+          "year": 2014,
+          "value_mld": 66.8207,
+          "value_pil": 4.1
+        },
+        {
+          "year": 2015,
+          "value_mld": 67.1859,
+          "value_pil": 4
+        },
+        {
+          "year": 2016,
+          "value_mld": 67.3139,
+          "value_pil": 3.9
+        },
+        {
+          "year": 2017,
+          "value_mld": 69.1558,
+          "value_pil": 4
+        },
+        {
+          "year": 2018,
+          "value_mld": 70.2998,
+          "value_pil": 4
+        },
+        {
+          "year": 2019,
+          "value_mld": 71.3677,
+          "value_pil": 4
+        },
+        {
+          "year": 2020,
+          "value_mld": 72.1409,
+          "value_pil": 4.3
+        },
+        {
+          "year": 2021,
+          "value_mld": 77.1569,
+          "value_pil": 4.2
+        },
+        {
+          "year": 2022,
+          "value_mld": 80.0661,
+          "value_pil": 4
+        },
+        {
+          "year": 2023,
+          "value_mld": 84.3556,
+          "value_pil": 3.9
+        },
+        {
+          "year": 2024,
+          "value_mld": 89.1799,
+          "value_pil": 4
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 89.1799
+    },
+    {
+      "code": "GF03",
+      "label": "Ordine pubblico",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 17.158,
+          "value_pil": 1.9
+        },
+        {
+          "year": 1996,
+          "value_mld": 20.6935,
+          "value_pil": 2
+        },
+        {
+          "year": 1997,
+          "value_mld": 21.6419,
+          "value_pil": 2
+        },
+        {
+          "year": 1998,
+          "value_mld": 22.7593,
+          "value_pil": 2
+        },
+        {
+          "year": 1999,
+          "value_mld": 23.284,
+          "value_pil": 2
+        },
+        {
+          "year": 2000,
+          "value_mld": 24.625,
+          "value_pil": 2
+        },
+        {
+          "year": 2001,
+          "value_mld": 24.132,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2002,
+          "value_mld": 25.736,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2003,
+          "value_mld": 27.531,
+          "value_pil": 2
+        },
+        {
+          "year": 2004,
+          "value_mld": 27.611,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2005,
+          "value_mld": 28.678,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2006,
+          "value_mld": 28.462,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2007,
+          "value_mld": 29.222,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2008,
+          "value_mld": 28.846,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2009,
+          "value_mld": 30.861,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2010,
+          "value_mld": 31.114,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2011,
+          "value_mld": 31.744,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2012,
+          "value_mld": 30.632,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2013,
+          "value_mld": 30.675,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2014,
+          "value_mld": 30.317,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2015,
+          "value_mld": 30.784,
+          "value_pil": 1.9
+        },
+        {
+          "year": 2016,
+          "value_mld": 30.887,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2017,
+          "value_mld": 31.68,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2018,
+          "value_mld": 32.503,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2019,
+          "value_mld": 32.921,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2020,
+          "value_mld": 33.513,
+          "value_pil": 2
+        },
+        {
+          "year": 2021,
+          "value_mld": 33.899,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2022,
+          "value_mld": 35.2,
+          "value_pil": 1.8
+        },
+        {
+          "year": 2023,
+          "value_mld": 36.209,
+          "value_pil": 1.7
+        },
+        {
+          "year": 2024,
+          "value_mld": 39.094,
+          "value_pil": 1.8
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 39.094
+    },
+    {
+      "code": "GF02",
+      "label": "Difesa",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 11.2514,
+          "value_pil": 1.2
+        },
+        {
+          "year": 1996,
+          "value_mld": 12.4818,
+          "value_pil": 1.2
+        },
+        {
+          "year": 1997,
+          "value_mld": 12.9175,
+          "value_pil": 1.2
+        },
+        {
+          "year": 1998,
+          "value_mld": 12.2643,
+          "value_pil": 1.1
+        },
+        {
+          "year": 1999,
+          "value_mld": 12.623,
+          "value_pil": 1.1
+        },
+        {
+          "year": 2000,
+          "value_mld": 13.838,
+          "value_pil": 1.1
+        },
+        {
+          "year": 2001,
+          "value_mld": 15.306,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2002,
+          "value_mld": 15.506,
+          "value_pil": 1.1
+        },
+        {
+          "year": 2003,
+          "value_mld": 17.466,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2004,
+          "value_mld": 18.544,
+          "value_pil": 1.3
+        },
+        {
+          "year": 2005,
+          "value_mld": 18.913,
+          "value_pil": 1.3
+        },
+        {
+          "year": 2006,
+          "value_mld": 18.816,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2007,
+          "value_mld": 19.329,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2008,
+          "value_mld": 21.447,
+          "value_pil": 1.3
+        },
+        {
+          "year": 2009,
+          "value_mld": 23.635,
+          "value_pil": 1.5
+        },
+        {
+          "year": 2010,
+          "value_mld": 22.191,
+          "value_pil": 1.4
+        },
+        {
+          "year": 2011,
+          "value_mld": 22.56,
+          "value_pil": 1.4
+        },
+        {
+          "year": 2012,
+          "value_mld": 20.861,
+          "value_pil": 1.3
+        },
+        {
+          "year": 2013,
+          "value_mld": 19.783,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2014,
+          "value_mld": 19.32,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2015,
+          "value_mld": 19.722,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2016,
+          "value_mld": 22.051,
+          "value_pil": 1.3
+        },
+        {
+          "year": 2017,
+          "value_mld": 22.314,
+          "value_pil": 1.3
+        },
+        {
+          "year": 2018,
+          "value_mld": 21.995,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2019,
+          "value_mld": 23.06,
+          "value_pil": 1.3
+        },
+        {
+          "year": 2020,
+          "value_mld": 22.726,
+          "value_pil": 1.4
+        },
+        {
+          "year": 2021,
+          "value_mld": 24.994,
+          "value_pil": 1.4
+        },
+        {
+          "year": 2022,
+          "value_mld": 24.037,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2023,
+          "value_mld": 25.513,
+          "value_pil": 1.2
+        },
+        {
+          "year": 2024,
+          "value_mld": 28.301,
+          "value_pil": 1.3
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 28.301
+    },
+    {
+      "code": "GF05",
+      "label": "Ambiente",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 6.2747,
+          "value_pil": 0.7
+        },
+        {
+          "year": 1996,
+          "value_mld": 7.2738,
+          "value_pil": 0.7
+        },
+        {
+          "year": 1997,
+          "value_mld": 8.1724,
+          "value_pil": 0.7
+        },
+        {
+          "year": 1998,
+          "value_mld": 8.9549,
+          "value_pil": 0.8
+        },
+        {
+          "year": 1999,
+          "value_mld": 9.532,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2000,
+          "value_mld": 10.551,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2001,
+          "value_mld": 10.74,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2002,
+          "value_mld": 11.563,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2003,
+          "value_mld": 11.593,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2004,
+          "value_mld": 11.862,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2005,
+          "value_mld": 12.106,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2006,
+          "value_mld": 11.634,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2007,
+          "value_mld": 12.877,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2008,
+          "value_mld": 13.763,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2009,
+          "value_mld": 13.926,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2010,
+          "value_mld": 14.115,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2011,
+          "value_mld": 14.6623,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2012,
+          "value_mld": 14.447,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2013,
+          "value_mld": 15.679,
+          "value_pil": 1
+        },
+        {
+          "year": 2014,
+          "value_mld": 15.185,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2015,
+          "value_mld": 15.461,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2016,
+          "value_mld": 15.617,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2017,
+          "value_mld": 15.372,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2018,
+          "value_mld": 15.334,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2019,
+          "value_mld": 16.378,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2020,
+          "value_mld": 16.187,
+          "value_pil": 1
+        },
+        {
+          "year": 2021,
+          "value_mld": 17.583,
+          "value_pil": 1
+        },
+        {
+          "year": 2022,
+          "value_mld": 18.1707,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2023,
+          "value_mld": 18.6268,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2024,
+          "value_mld": 19.828,
+          "value_pil": 0.9
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 19.828
+    },
+    {
+      "code": "GF08",
+      "label": "Cultura e religione",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 6.0207,
+          "value_pil": 0.7
+        },
+        {
+          "year": 1996,
+          "value_mld": 7.7246,
+          "value_pil": 0.7
+        },
+        {
+          "year": 1997,
+          "value_mld": 8.3787,
+          "value_pil": 0.8
+        },
+        {
+          "year": 1998,
+          "value_mld": 8.5429,
+          "value_pil": 0.8
+        },
+        {
+          "year": 1999,
+          "value_mld": 9.287,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2000,
+          "value_mld": 8.8134,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2001,
+          "value_mld": 9.5222,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2002,
+          "value_mld": 9.451,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2003,
+          "value_mld": 9.9321,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2004,
+          "value_mld": 10.8773,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2005,
+          "value_mld": 10.8097,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2006,
+          "value_mld": 10.5849,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2007,
+          "value_mld": 11.4224,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2008,
+          "value_mld": 11.4263,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2009,
+          "value_mld": 11.5658,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2010,
+          "value_mld": 10.6316,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2011,
+          "value_mld": 10.5236,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2012,
+          "value_mld": 9.9462,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2013,
+          "value_mld": 10.7767,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2014,
+          "value_mld": 10.6282,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2015,
+          "value_mld": 11.374,
+          "value_pil": 0.7
+        },
+        {
+          "year": 2016,
+          "value_mld": 13.253,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2017,
+          "value_mld": 13.309,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2018,
+          "value_mld": 14.1374,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2019,
+          "value_mld": 14.4149,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2020,
+          "value_mld": 13.9647,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2021,
+          "value_mld": 16.2539,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2022,
+          "value_mld": 17.7847,
+          "value_pil": 0.9
+        },
+        {
+          "year": 2023,
+          "value_mld": 17.8095,
+          "value_pil": 0.8
+        },
+        {
+          "year": 2024,
+          "value_mld": 18.7736,
+          "value_pil": 0.9
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 18.7736
+    },
+    {
+      "code": "GF06",
+      "label": "Casa e territorio",
+      "unit": "mld",
+      "series": [
+        {
+          "year": 1995,
+          "value_mld": 5.3061,
+          "value_pil": 0.6
+        },
+        {
+          "year": 1996,
+          "value_mld": 6.2934,
+          "value_pil": 0.6
+        },
+        {
+          "year": 1997,
+          "value_mld": 7.0262,
+          "value_pil": 0.6
+        },
+        {
+          "year": 1998,
+          "value_mld": 7.3504,
+          "value_pil": 0.6
+        },
+        {
+          "year": 1999,
+          "value_mld": 7.1812,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2000,
+          "value_mld": 7.2253,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2001,
+          "value_mld": 7.5995,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2002,
+          "value_mld": 8.0094,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2003,
+          "value_mld": 8.0382,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2004,
+          "value_mld": 8.6217,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2005,
+          "value_mld": 8.4742,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2006,
+          "value_mld": 8.8049,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2007,
+          "value_mld": 9.2897,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2008,
+          "value_mld": 9.4019,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2009,
+          "value_mld": 9.8777,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2010,
+          "value_mld": 10.395,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2011,
+          "value_mld": 9.0864,
+          "value_pil": 0.5
+        },
+        {
+          "year": 2012,
+          "value_mld": 9.6825,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2013,
+          "value_mld": 8.2524,
+          "value_pil": 0.5
+        },
+        {
+          "year": 2014,
+          "value_mld": 7.4858,
+          "value_pil": 0.5
+        },
+        {
+          "year": 2015,
+          "value_mld": 7.5261,
+          "value_pil": 0.5
+        },
+        {
+          "year": 2016,
+          "value_mld": 6.9229,
+          "value_pil": 0.4
+        },
+        {
+          "year": 2017,
+          "value_mld": 6.7186,
+          "value_pil": 0.4
+        },
+        {
+          "year": 2018,
+          "value_mld": 7.2556,
+          "value_pil": 0.4
+        },
+        {
+          "year": 2019,
+          "value_mld": 7.3706,
+          "value_pil": 0.4
+        },
+        {
+          "year": 2020,
+          "value_mld": 9.7223,
+          "value_pil": 0.6
+        },
+        {
+          "year": 2021,
+          "value_mld": 44.9943,
+          "value_pil": 2.4
+        },
+        {
+          "year": 2022,
+          "value_mld": 65.879,
+          "value_pil": 3.3
+        },
+        {
+          "year": 2023,
+          "value_mld": 95.0371,
+          "value_pil": 4.4
+        },
+        {
+          "year": 2024,
+          "value_mld": 16.9727,
+          "value_pil": 0.8
+        }
+      ],
+      "latest_year": 2024,
+      "latest_value_mld": 16.9727
+    }
+  ],
+  "spending_pie": [
+    {
+      "code": "GF10",
+      "label": "Protezione sociale",
+      "year": 2024,
+      "value_mld": 468.135,
+      "share_percent": 42.206
+    },
+    {
+      "code": "GF01",
+      "label": "Servizi generali",
+      "year": 2024,
+      "value_mld": 170.414,
+      "share_percent": 15.364
+    },
+    {
+      "code": "GF07",
+      "label": "Sanita",
+      "year": 2024,
+      "value_mld": 146.075,
+      "share_percent": 13.17
+    },
+    {
+      "code": "GF04",
+      "label": "Affari economici",
+      "year": 2024,
+      "value_mld": 112.3808,
+      "share_percent": 10.132
+    },
+    {
+      "code": "GF09",
+      "label": "Istruzione",
+      "year": 2024,
+      "value_mld": 89.1799,
+      "share_percent": 8.04
+    },
+    {
+      "code": "GF03",
+      "label": "Ordine pubblico",
+      "year": 2024,
+      "value_mld": 39.094,
+      "share_percent": 3.525
+    },
+    {
+      "code": "GF02",
+      "label": "Difesa",
+      "year": 2024,
+      "value_mld": 28.301,
+      "share_percent": 2.552
+    },
+    {
+      "code": "GF05",
+      "label": "Ambiente",
+      "year": 2024,
+      "value_mld": 19.828,
+      "share_percent": 1.788
+    },
+    {
+      "code": "GF08",
+      "label": "Cultura e religione",
+      "year": 2024,
+      "value_mld": 18.7736,
+      "share_percent": 1.693
+    },
+    {
+      "code": "GF06",
+      "label": "Casa e territorio",
+      "year": 2024,
+      "value_mld": 16.9727,
+      "share_percent": 1.53
+    }
+  ],
+  "total_spending_trend": [
+    {
+      "mld": 463.212,
+      "pil": 51.4
+    },
+    {
+      "mld": 531.7792,
+      "pil": 51.3
+    },
+    {
+      "mld": 542.1006,
+      "pil": 49.3
+    },
+    {
+      "mld": 545.7722,
+      "pil": 48
+    },
+    {
+      "mld": 554.351,
+      "pil": 47.1
+    },
+    {
+      "mld": 577.169,
+      "pil": 46.4
+    },
+    {
+      "mld": 616.778,
+      "pil": 47.1
+    },
+    {
+      "mld": 630.226,
+      "pil": 46.5
+    },
+    {
+      "mld": 657.271,
+      "pil": 47
+    },
+    {
+      "mld": 680.101,
+      "pil": 46.7
+    },
+    {
+      "mld": 705.365,
+      "pil": 47.1
+    },
+    {
+      "mld": 741.87,
+      "pil": 47.6
+    },
+    {
+      "mld": 755.725,
+      "pil": 46.6
+    },
+    {
+      "mld": 784.89,
+      "pil": 47.8
+    },
+    {
+      "mld": 808.728,
+      "pil": 51.1
+    },
+    {
+      "mld": 805.717,
+      "pil": 49.8
+    },
+    {
+      "mld": 812.549,
+      "pil": 49
+    },
+    {
+      "mld": 824.301,
+      "pil": 50.5
+    },
+    {
+      "mld": 825.233,
+      "pil": 50.9
+    },
+    {
+      "mld": 829.632,
+      "pil": 50.7
+    },
+    {
+      "mld": 835.694,
+      "pil": 50.2
+    },
+    {
+      "mld": 835.037,
+      "pil": 49
+    },
+    {
+      "mld": 851.015,
+      "pil": 48.8
+    },
+    {
+      "mld": 859.018,
+      "pil": 48.3
+    },
+    {
+      "mld": 873.598,
+      "pil": 48.4
+    },
+    {
+      "mld": 948.296,
+      "pil": 56.8
+    },
+    {
+      "mld": 1032.529,
+      "pil": 56
+    },
+    {
+      "mld": 1097.627,
+      "pil": 54.9
+    },
+    {
+      "mld": 1149.206,
+      "pil": 53.6
+    },
+    {
+      "mld": 1109.154,
+      "pil": 50.4
+    }
+  ],
+  "tax_revenue_by_type": [
+    {
+      "year": 2002,
+      "Dirette": 173.653,
+      "Indirette": 160.046
+    },
+    {
+      "year": 2003,
+      "Dirette": 173.189,
+      "Indirette": 168.017
+    },
+    {
+      "year": 2004,
+      "Dirette": 178.988,
+      "Indirette": 180.976
+    },
+    {
+      "year": 2005,
+      "Dirette": 183.575,
+      "Indirette": 178.138
+    },
+    {
+      "year": 2006,
+      "Dirette": 208.248,
+      "Indirette": 192.197
+    },
+    {
+      "year": 2007,
+      "Dirette": 222.813,
+      "Indirette": 194.894
+    },
+    {
+      "year": 2008,
+      "Dirette": 231.618,
+      "Indirette": 191.394
+    },
+    {
+      "year": 2009,
+      "Dirette": 224.236,
+      "Indirette": 184.989
+    },
+    {
+      "year": 2010,
+      "Dirette": 218.014,
+      "Indirette": 189.844
+    },
+    {
+      "year": 2011,
+      "Dirette": 218.09,
+      "Indirette": 194.116
+    },
+    {
+      "year": 2012,
+      "Dirette": 229.009,
+      "Indirette": 195.279
+    },
+    {
+      "year": 2013,
+      "Dirette": 232.631,
+      "Indirette": 192.002
+    },
+    {
+      "year": 2014,
+      "Dirette": 224.994,
+      "Indirette": 194.462
+    },
+    {
+      "year": 2015,
+      "Dirette": 240.059,
+      "Indirette": 197.24
+    },
+    {
+      "year": 2016,
+      "Dirette": 245.294,
+      "Indirette": 205.787059
+    },
+    {
+      "year": 2017,
+      "Dirette": 245.620367,
+      "Indirette": 210.024045
+    },
+    {
+      "year": 2018,
+      "Dirette": 247.77116,
+      "Indirette": 216.004107
+    },
+    {
+      "year": 2019,
+      "Dirette": 252.549165,
+      "Indirette": 219.43009
+    },
+    {
+      "year": 2020,
+      "Dirette": 252.95794,
+      "Indirette": 194.63938
+    },
+    {
+      "year": 2021,
+      "Dirette": 269.844,
+      "Indirette": 226.2
+    },
+    {
+      "year": 2022,
+      "Dirette": 296.20904,
+      "Indirette": 248.53757
+    },
+    {
+      "year": 2023,
+      "Dirette": 317.871,
+      "Indirette": 250.784
+    },
+    {
+      "year": 2024,
+      "Dirette": 345.467244,
+      "Indirette": 258.813963
+    },
+    {
+      "year": 2025,
+      "Dirette": 351.957526,
+      "Indirette": 270.174804
+    }
+  ],
+  "top_revenue_groups_2025": [
+    {
+      "code": "REDDITI_PERSONE",
+      "label": "Redditi persone",
+      "value_mld": 253.78099999999998
+    },
+    {
+      "code": "CONSUMI",
+      "label": "Consumi",
+      "value_mld": 229.9457
+    },
+    {
+      "code": "IMPRESE",
+      "label": "Imprese",
+      "value_mld": 93.4027
+    }
+  ],
+  "irpef_by_band": [
+    {
+      "band": "0 - 15.000",
+      "contributors": 15394946,
+      "tax_eur": 5064727405,
+      "tax_mld": 5.0647,
+      "average_tax_per_contributor": 328986370267.23
+    },
+    {
+      "band": "15.001 - 29.000",
+      "contributors": 14498375,
+      "tax_eur": 37614290881,
+      "tax_mld": 37.6143,
+      "average_tax_per_contributor": 2594379775733.49
+    },
+    {
+      "band": "29.001 - 55.000",
+      "contributors": 10267325,
+      "tax_eur": 73682438675,
+      "tax_mld": 73.6824,
+      "average_tax_per_contributor": 7176400734855.48
+    },
+    {
+      "band": "55.001 - 75.000",
+      "contributors": 1243547,
+      "tax_eur": 20013329021,
+      "tax_mld": 20.0133,
+      "average_tax_per_contributor": 16093745568925.02
+    },
+    {
+      "band": "oltre 75.000",
+      "contributors": 1432813,
+      "tax_eur": 60996612762,
+      "tax_mld": 60.9966,
+      "average_tax_per_contributor": 42571230692351.34
+    }
+  ],
+  "irpef_share_by_band": [
+    {
+      "band": "0 - 15.000",
+      "tax_share": 2.566,
+      "contributors_share": 35.938
+    },
+    {
+      "band": "15.001 - 29.000",
+      "tax_share": 19.058,
+      "contributors_share": 33.845
+    },
+    {
+      "band": "29.001 - 55.000",
+      "tax_share": 37.332,
+      "contributors_share": 23.968
+    },
+    {
+      "band": "55.001 - 75.000",
+      "tax_share": 10.14,
+      "contributors_share": 2.903
+    },
+    {
+      "band": "oltre 75.000",
+      "tax_share": 30.904,
+      "contributors_share": 3.345
+    }
+  ],
+  "income_distribution_by_band": [
+    {
+      "band": "0 - 15.000",
+      "work": 52.1005,
+      "capital_gain": 0.0004,
+      "capital_income": 0.0129,
+      "total_mld": 52.1137
+    },
+    {
+      "band": "15.001 - 29.000",
+      "work": 190.2852,
+      "capital_gain": 0.0006,
+      "capital_income": 0.0233,
+      "total_mld": 190.3091
+    },
+    {
+      "band": "29.001 - 55.000",
+      "work": 216.6845,
+      "capital_gain": 0.001,
+      "capital_income": 0.0535,
+      "total_mld": 216.739
+    },
+    {
+      "band": "55.001 - 75.000",
+      "work": 39.9403,
+      "capital_gain": 0.0006,
+      "capital_income": 0.0348,
+      "total_mld": 39.9757
+    },
+    {
+      "band": "oltre 75.000",
+      "work": 85.1742,
+      "capital_gain": 0.0042,
+      "capital_income": 0.4933,
+      "total_mld": 85.6718
+    }
+  ],
+  "household_wealth_distribution": {
+    "source": "Fonte: Banca d'Italia, Conti distributivi sulla ricchezza delle famiglie, IV trimestre 2025",
+    "items": [
+      {
+        "group": "Top 10% famiglie",
+        "share_percent": 60.6
+      },
+      {
+        "group": "Resto 40%",
+        "share_percent": 32.2
+      },
+      {
+        "group": "Meta' meno abbiente",
+        "share_percent": 7.2
+      }
+    ],
+    "average_wealth_euro": 453000,
+    "gini": 72.2
+  },
+  "succession_gift_tax": {
+    "source": "Fonte: MEF - Dipartimento delle Finanze, Appendici statistiche al bollettino entrate tributarie, dicembre 2025",
+    "series": [
+      {
+        "year": 2023,
+        "value_million_euro": 998
+      },
+      {
+        "year": 2024,
+        "value_million_euro": 1012
+      },
+      {
+        "year": 2025,
+        "value_million_euro": 1081
+      }
+    ],
+    "last_year": 2025,
+    "last_value_million_euro": 1081,
+    "share_of_2025_revenue_percent": 0.0002
+  },
+  "oecd": {
+    "revenue_categories": [
+      {
+        "codice": "_T",
+        "categoria": "Totale\nfisco",
+        "italia": 42.752192,
+        "ocse": 34.171063,
+        "differenza": 8.581129
+      },
+      {
+        "codice": "T_1100",
+        "categoria": "Redditi\npersone",
+        "italia": 11.760426,
+        "ocse": 8.33041,
+        "differenza": 3.430016
+      },
+      {
+        "codice": "T_1200",
+        "categoria": "Imprese",
+        "italia": 2.673185,
+        "ocse": 3.615779,
+        "differenza": -0.942594
+      },
+      {
+        "codice": "T_2000",
+        "categoria": "Contributi\nsociali",
+        "italia": 12.472749,
+        "ocse": 9.139668,
+        "differenza": 3.333081
+      },
+      {
+        "codice": "T_5000",
+        "categoria": "Beni e\nservizi",
+        "italia": 11.53936,
+        "ocse": 10.426894,
+        "differenza": 1.112466
+      },
+      {
+        "codice": "T_5111",
+        "categoria": "IVA",
+        "italia": 6.600142,
+        "ocse": 6.912687,
+        "differenza": -0.312545
+      },
+      {
+        "codice": "T_5120",
+        "categoria": "Accise e\nspecifiche",
+        "italia": 3.456462,
+        "ocse": 2.538462,
+        "differenza": 0.918
+      },
+      {
+        "codice": "T_4000",
+        "categoria": "Patrimonio",
+        "italia": 2.252344,
+        "ocse": 1.647096,
+        "differenza": 0.605248
+      },
+      {
+        "codice": "T_4300",
+        "categoria": "Successioni\ne donazioni",
+        "italia": 0.047099,
+        "ocse": 0.151493,
+        "differenza": -0.104394
+      }
+    ],
+    "spending_categories": [
+      {
+        "codice": "_T",
+        "categoria": "Totale",
+        "italia": 50.369586,
+        "ocse": 44.823606,
+        "differenza": 5.54598
+      },
+      {
+        "codice": "GF01",
+        "categoria": "Servizi generali",
+        "italia": 7.738946,
+        "ocse": 5.591151,
+        "differenza": 2.147794
+      },
+      {
+        "codice": "GF02",
+        "categoria": "Difesa",
+        "italia": 1.285222,
+        "ocse": 1.844966,
+        "differenza": -0.559744
+      },
+      {
+        "codice": "GF03",
+        "categoria": "Ordine pubblico",
+        "italia": 1.775361,
+        "ocse": 1.703035,
+        "differenza": 0.072326
+      },
+      {
+        "codice": "GF04",
+        "categoria": "Affari economici",
+        "italia": 5.103506,
+        "ocse": 4.886904,
+        "differenza": 0.216602
+      },
+      {
+        "codice": "GF05",
+        "categoria": "Ambiente",
+        "italia": 0.900441,
+        "ocse": 0.722351,
+        "differenza": 0.17809
+      },
+      {
+        "codice": "GF06",
+        "categoria": "Casa e territorio",
+        "italia": 0.770775,
+        "ocse": 0.613167,
+        "differenza": 0.157608
+      },
+      {
+        "codice": "GF07",
+        "categoria": "Sanita",
+        "italia": 6.633648,
+        "ocse": 7.022378,
+        "differenza": -0.38873
+      },
+      {
+        "codice": "GF08",
+        "categoria": "Cultura e religione",
+        "italia": 0.852558,
+        "ocse": 1.205825,
+        "differenza": -0.353266
+      },
+      {
+        "codice": "GF09",
+        "categoria": "Istruzione",
+        "italia": 4.049893,
+        "ocse": 5.12069,
+        "differenza": -1.070797
+      },
+      {
+        "codice": "GF10",
+        "categoria": "Protezione sociale",
+        "italia": 21.259236,
+        "ocse": 16.135718,
+        "differenza": 5.123518
+      }
+    ],
+    "peer_revenue_total": [
+      {
+        "REF_AREA": "ITA",
+        "valore": 42.752192,
+        "paese": "Italia"
+      },
+      {
+        "REF_AREA": "COL",
+        "valore": 19.865884,
+        "paese": "COL"
+      },
+      {
+        "REF_AREA": "CHL",
+        "valore": 20.479447,
+        "paese": "CHL"
+      },
+      {
+        "REF_AREA": "CAN",
+        "valore": 34.90457,
+        "paese": "CAN"
+      },
+      {
+        "REF_AREA": "BEL",
+        "valore": 42.571263,
+        "paese": "Belgio"
+      },
+      {
+        "REF_AREA": "AUT",
+        "valore": 43.374411,
+        "paese": "Austria"
+      },
+      {
+        "REF_AREA": "ISR",
+        "valore": 30.877349,
+        "paese": "ISR"
+      },
+      {
+        "REF_AREA": "IRL",
+        "valore": 21.694294,
+        "paese": "IRL"
+      },
+      {
+        "REF_AREA": "ISL",
+        "valore": 36.948753,
+        "paese": "ISL"
+      },
+      {
+        "REF_AREA": "HUN",
+        "valore": 34.353895,
+        "paese": "HUN"
+      },
+      {
+        "REF_AREA": "GRC",
+        "valore": 39.826849,
+        "paese": "GRC"
+      },
+      {
+        "REF_AREA": "DEU",
+        "valore": 38.021492,
+        "paese": "Germania"
+      },
+      {
+        "REF_AREA": "FRA",
+        "valore": 43.462209,
+        "paese": "Francia"
+      },
+      {
+        "REF_AREA": "FIN",
+        "valore": 42.217254,
+        "paese": "FIN"
+      },
+      {
+        "REF_AREA": "EST",
+        "valore": 35.231248,
+        "paese": "EST"
+      },
+      {
+        "REF_AREA": "DNK",
+        "valore": 45.177061,
+        "paese": "Danimarca"
+      },
+      {
+        "REF_AREA": "CZE",
+        "valore": 33.975018,
+        "paese": "CZE"
+      },
+      {
+        "REF_AREA": "CRI",
+        "valore": 24.840079,
+        "paese": "CRI"
+      },
+      {
+        "REF_AREA": "USA",
+        "valore": 25.618333,
+        "paese": "Stati Uniti"
+      },
+      {
+        "REF_AREA": "GBR",
+        "valore": 34.366806,
+        "paese": "Regno Unito"
+      },
+      {
+        "REF_AREA": "TUR",
+        "valore": 23.954049,
+        "paese": "TUR"
+      },
+      {
+        "REF_AREA": "CHE",
+        "valore": 27.169048,
+        "paese": "CHE"
+      },
+      {
+        "REF_AREA": "SWE",
+        "valore": 41.437904,
+        "paese": "Svezia"
+      },
+      {
+        "REF_AREA": "ESP",
+        "valore": 36.682055,
+        "paese": "Spagna"
+      },
+      {
+        "REF_AREA": "SVN",
+        "valore": 38.296929,
+        "paese": "SVN"
+      },
+      {
+        "REF_AREA": "SVK",
+        "valore": 35.551369,
+        "paese": "SVK"
+      },
+      {
+        "REF_AREA": "PRT",
+        "valore": 35.134621,
+        "paese": "PRT"
+      },
+      {
+        "REF_AREA": "POL",
+        "valore": 36.64229,
+        "paese": "POL"
+      },
+      {
+        "REF_AREA": "NOR",
+        "valore": 40.190578,
+        "paese": "NOR"
+      },
+      {
+        "REF_AREA": "NZL",
+        "valore": 32.891771,
+        "paese": "NZL"
+      },
+      {
+        "REF_AREA": "NLD",
+        "valore": 38.541274,
+        "paese": "Paesi Bassi"
+      },
+      {
+        "REF_AREA": "MEX",
+        "valore": 18.280109,
+        "paese": "MEX"
+      },
+      {
+        "REF_AREA": "LUX",
+        "valore": 41.458699,
+        "paese": "LUX"
+      },
+      {
+        "REF_AREA": "LTU",
+        "valore": 33.129851,
+        "paese": "LTU"
+      },
+      {
+        "REF_AREA": "LVA",
+        "valore": 34.90567,
+        "paese": "LVA"
+      },
+      {
+        "REF_AREA": "KOR",
+        "valore": 25.333638,
+        "paese": "KOR"
+      },
+      {
+        "REF_AREA": "OECD_AVG",
+        "valore": 34.171063,
+        "paese": "Media OCSE"
+      }
+    ],
+    "peer_spending_total": [
+      {
+        "REF_AREA": "ISL",
+        "valore": 47.144389,
+        "paese": "ISL"
+      },
+      {
+        "REF_AREA": "AUT",
+        "valore": 55.186235,
+        "paese": "Austria"
+      },
+      {
+        "REF_AREA": "BEL",
+        "valore": 54.08617,
+        "paese": "Belgio"
+      },
+      {
+        "REF_AREA": "CHE",
+        "valore": 32.467436,
+        "paese": "CHE"
+      },
+      {
+        "REF_AREA": "CZE",
+        "valore": 42.858157,
+        "paese": "CZE"
+      },
+      {
+        "REF_AREA": "DNK",
+        "valore": 47.329452,
+        "paese": "Danimarca"
+      },
+      {
+        "REF_AREA": "EST",
+        "valore": 43.958825,
+        "paese": "EST"
+      },
+      {
+        "REF_AREA": "FIN",
+        "valore": 57.745305,
+        "paese": "FIN"
+      },
+      {
+        "REF_AREA": "FRA",
+        "valore": 56.956023,
+        "paese": "Francia"
+      },
+      {
+        "REF_AREA": "DEU",
+        "valore": 49.427855,
+        "paese": "Germania"
+      },
+      {
+        "REF_AREA": "AUS",
+        "valore": 41.166549,
+        "paese": "AUS"
+      },
+      {
+        "REF_AREA": "IRL",
+        "valore": 22.387961,
+        "paese": "IRL"
+      },
+      {
+        "REF_AREA": "ISR",
+        "valore": 44.295739,
+        "paese": "ISR"
+      },
+      {
+        "REF_AREA": "ITA",
+        "valore": 50.369586,
+        "paese": "Italia"
+      },
+      {
+        "REF_AREA": "JPN",
+        "valore": 39.048415,
+        "paese": "JPN"
+      },
+      {
+        "REF_AREA": "LVA",
+        "valore": 45.308363,
+        "paese": "LVA"
+      },
+      {
+        "REF_AREA": "LTU",
+        "valore": 39.415658,
+        "paese": "LTU"
+      },
+      {
+        "REF_AREA": "LUX",
+        "valore": 46.843837,
+        "paese": "LUX"
+      },
+      {
+        "REF_AREA": "NLD",
+        "valore": 44.449121,
+        "paese": "Paesi Bassi"
+      },
+      {
+        "REF_AREA": "NOR",
+        "valore": 47.758796,
+        "paese": "NOR"
+      },
+      {
+        "REF_AREA": "POL",
+        "valore": 49.22999,
+        "paese": "POL"
+      },
+      {
+        "REF_AREA": "PRT",
+        "valore": 42.37818,
+        "paese": "PRT"
+      },
+      {
+        "REF_AREA": "SVK",
+        "valore": 47.467581,
+        "paese": "SVK"
+      },
+      {
+        "REF_AREA": "SVN",
+        "valore": 46.477175,
+        "paese": "SVN"
+      },
+      {
+        "REF_AREA": "ESP",
+        "valore": 45.47371,
+        "paese": "Spagna"
+      },
+      {
+        "REF_AREA": "SWE",
+        "valore": 50.071263,
+        "paese": "Svezia"
+      },
+      {
+        "REF_AREA": "CHL",
+        "valore": 27.477667,
+        "paese": "CHL"
+      },
+      {
+        "REF_AREA": "COL",
+        "valore": 36.603405,
+        "paese": "COL"
+      },
+      {
+        "REF_AREA": "GBR",
+        "valore": 46.035124,
+        "paese": "Regno Unito"
+      },
+      {
+        "REF_AREA": "USA",
+        "valore": 39.570772,
+        "paese": "Stati Uniti"
+      },
+      {
+        "REF_AREA": "GRC",
+        "valore": 48.248692,
+        "paese": "GRC"
+      },
+      {
+        "REF_AREA": "HUN",
+        "valore": 47.117953,
+        "paese": "HUN"
+      },
+      {
+        "REF_AREA": "OECD_AVG",
+        "valore": 44.823606,
+        "paese": "Media OCSE"
+      }
+    ],
+    "peer_inheritance": [
+      {
+        "REF_AREA": "KOR",
+        "valore": 0.600129,
+        "paese": "KOR"
+      },
+      {
+        "REF_AREA": "JPN",
+        "valore": 0.54992,
+        "paese": "JPN"
+      },
+      {
+        "REF_AREA": "COL",
+        "valore": 0,
+        "paese": "COL"
+      },
+      {
+        "REF_AREA": "CHL",
+        "valore": 0.064468,
+        "paese": "CHL"
+      },
+      {
+        "REF_AREA": "CAN",
+        "valore": 0.017153,
+        "paese": "CAN"
+      },
+      {
+        "REF_AREA": "BEL",
+        "valore": 0.617703,
+        "paese": "Belgio"
+      },
+      {
+        "REF_AREA": "AUT",
+        "valore": 0,
+        "paese": "Austria"
+      },
+      {
+        "REF_AREA": "ITA",
+        "valore": 0.047099,
+        "paese": "Italia"
+      },
+      {
+        "REF_AREA": "ISR",
+        "valore": 0,
+        "paese": "ISR"
+      },
+      {
+        "REF_AREA": "IRL",
+        "valore": 0.151718,
+        "paese": "IRL"
+      },
+      {
+        "REF_AREA": "ISL",
+        "valore": 0.317197,
+        "paese": "ISL"
+      },
+      {
+        "REF_AREA": "HUN",
+        "valore": 0.017675,
+        "paese": "HUN"
+      },
+      {
+        "REF_AREA": "DEU",
+        "valore": 0.230794,
+        "paese": "Germania"
+      },
+      {
+        "REF_AREA": "FRA",
+        "valore": 0.734408,
+        "paese": "Francia"
+      },
+      {
+        "REF_AREA": "FIN",
+        "valore": 0.461294,
+        "paese": "FIN"
+      },
+      {
+        "REF_AREA": "EST",
+        "valore": 0,
+        "paese": "EST"
+      },
+      {
+        "REF_AREA": "DNK",
+        "valore": 0.283326,
+        "paese": "Danimarca"
+      },
+      {
+        "REF_AREA": "CZE",
+        "valore": 0,
+        "paese": "CZE"
+      },
+      {
+        "REF_AREA": "CRI",
+        "valore": 0,
+        "paese": "CRI"
+      },
+      {
+        "REF_AREA": "USA",
+        "valore": 0.130209,
+        "paese": "Stati Uniti"
+      },
+      {
+        "REF_AREA": "GBR",
+        "valore": 0.286216,
+        "paese": "Regno Unito"
+      },
+      {
+        "REF_AREA": "TUR",
+        "valore": 0.014835,
+        "paese": "TUR"
+      },
+      {
+        "REF_AREA": "CHE",
+        "valore": 0.175966,
+        "paese": "CHE"
+      },
+      {
+        "REF_AREA": "SWE",
+        "valore": 0,
+        "paese": "Svezia"
+      },
+      {
+        "REF_AREA": "ESP",
+        "valore": 0.220594,
+        "paese": "Spagna"
+      },
+      {
+        "REF_AREA": "SVN",
+        "valore": 0.020733,
+        "paese": "SVN"
+      },
+      {
+        "REF_AREA": "SVK",
+        "valore": 0,
+        "paese": "SVK"
+      },
+      {
+        "REF_AREA": "PRT",
+        "valore": 1e-06,
+        "paese": "PRT"
+      },
+      {
+        "REF_AREA": "POL",
+        "valore": 0.016258,
+        "paese": "POL"
+      },
+      {
+        "REF_AREA": "NOR",
+        "valore": 0.000577,
+        "paese": "NOR"
+      },
+      {
+        "REF_AREA": "NZL",
+        "valore": 0,
+        "paese": "NZL"
+      },
+      {
+        "REF_AREA": "NLD",
+        "valore": 0.304243,
+        "paese": "Paesi Bassi"
+      },
+      {
+        "REF_AREA": "MEX",
+        "valore": 0,
+        "paese": "MEX"
+      },
+      {
+        "REF_AREA": "LUX",
+        "valore": 0.155811,
+        "paese": "LUX"
+      },
+      {
+        "REF_AREA": "LTU",
+        "valore": 0.005534,
+        "paese": "LTU"
+      },
+      {
+        "REF_AREA": "LVA",
+        "valore": 0.029872,
+        "paese": "LVA"
+      },
+      {
+        "REF_AREA": "OECD_AVG",
+        "valore": 0.151493,
+        "paese": "Media OCSE"
+      }
+    ]
+  },
+  "counts": {
+    "revenue_items": 7,
+    "revenue_category_series": 9,
+    "revenue_under_500m_items": 0,
+    "top_taxes": 10,
+    "pressure_points": 30,
+    "peer_countries": 10,
+    "cofog_categories": 10,
+    "cofog_categories_trend": 10,
+    "spending_focus_items": 7,
+    "irpef_bands": 5,
+    "income_bands": 5
+  }
+}

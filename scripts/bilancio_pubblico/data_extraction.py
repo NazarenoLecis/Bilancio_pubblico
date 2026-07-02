@@ -202,6 +202,55 @@ def load_cofog_spending(refresh):
     return pd.DataFrame(records), updated
 
 
+def load_cofog_spending_trend(refresh):
+    # Serie storica completa per funzione COFOG: valori assoluti e % PIL nel tempo.
+    records = []
+    updated = None
+    for code, label in COFOG_LABELS.items():
+        params_mio = {
+            "format": "JSON",
+            "lang": "en",
+            "freq": "A",
+            "unit": "MIO_EUR",
+            "sector": "S13",
+            "cofog99": code,
+            "na_item": "TE",
+            "geo": "IT",
+        }
+        params_gdp = {
+            **params_mio,
+            "unit": "PC_GDP",
+        }
+        series_mio, updated_item = eurostat_series(
+            "gov_10a_exp",
+            params_mio,
+            f"eurostat_gov_10a_exp_{code}_mio_eur_trend.json",
+            refresh,
+        )
+        series_gdp, updated_gdp = eurostat_series(
+            "gov_10a_exp",
+            params_gdp,
+            f"eurostat_gov_10a_exp_{code}_pc_gdp_trend.json",
+            refresh,
+        )
+        shared_years = series_mio.dropna().index.intersection(series_gdp.dropna().index)
+        for year in sorted(shared_years):
+            try:
+                records.append(
+                    {
+                        "codice": code,
+                        "funzione": label,
+                        "anno": int(year),
+                        "mld": float(series_mio.loc[year]) / 1000.0,
+                        "pil": float(series_gdp.loc[year]),
+                    }
+                )
+            except Exception:
+                continue
+        updated = updated_item or updated_gdp or updated
+    return pd.DataFrame(records), updated
+
+
 def load_peer_tax_pressure(refresh):
     # Confronto pressione fiscale e contributiva per Italia + peer geografici.
     records = []

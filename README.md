@@ -6,7 +6,7 @@ L'obiettivo è avere un flusso semplice, ripetibile e leggibile:
 
 - dati da fonti ufficiali,
 - grafici su entrate, spesa, patrimonio e successioni,
-- output tracciabili con `manifest` e `analisi_claims.md`.
+- output tracciabili con manifest grafici e JSON dashboard.
 
 ## Come avviare
 
@@ -31,14 +31,30 @@ FORZA_AGGIORNAMENTO = False
 4. genera i grafici in ordine: entrate, spesa, patrimonio, confronti internazionali;
 5. scrive:
    - [grafici/manifest.csv](/home/nazareno/PycharmProjects/Fisco/grafici/manifest.csv)
-   - [analisi_claims.md](/home/nazareno/PycharmProjects/Fisco/analisi_claims.md).
+   - [data/export/bilancio-pubblico/source-data.json](/home/nazareno/PycharmProjects/Fisco/data/export/bilancio-pubblico/source-data.json) con i dati completi normalizzati.
+   - [data/export/bilancio-pubblico/download-manifest.json](/home/nazareno/PycharmProjects/Fisco/data/export/bilancio-pubblico/download-manifest.json) con i file da passare alla pipeline dati.
 
 ## Output prodotti
 
 - `grafici/`: immagine PNG verticali.
 - `grafici/manifest.csv`: elenco dei file prodotti, fonte e data aggiornamento.
 - `data/raw/`: cache dati (API esterne).
-- `analisi_claims.md`: verifica dei claim principali.
+- `data/export/bilancio-pubblico/source-data.json`: payload completo/intermedio per la pipeline dati.
+- `data/export/bilancio-pubblico/download-manifest.json`: elenco file pronti per `nazarenolecis-data-pipeline`.
+
+Il formato pubblico per la dashboard (`bilancio-pubblico/dashboard.json` su R2) viene creato nel repository `nazarenolecis-data-pipeline`.
+
+Per un export completo da linea comando:
+
+```bash
+python3 scripts/download_all.py
+```
+
+Per forzare il refresh da tutte le API:
+
+```bash
+python3 scripts/download_all.py --refresh
+```
 
 ## Struttura del codice
 
