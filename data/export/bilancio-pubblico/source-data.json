@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-07-02T15:11:23.941895+00:00",
+    "generated_at": "2026-07-02T17:03:25.441615+00:00",
     "generated_by": "Bilancio_pubblico",
-    "updated_at": "2026-07-02T15:11:23.941895+00:00",
+    "updated_at": "2026-07-02T17:03:25.441615+00:00",
     "description": "Dati completi e normalizzati dal repo Bilancio_pubblico per la dashboard Bilancio pubblico italiano.",
     "sources": [
       "Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali e territoriali, competenza giuridica",
@@ -157,6 +157,171 @@
   ],
   "top_taxes": [
     {
+      "code": "CONTRIBUTI_SOCIALI_NETTI",
+      "label": "Contributi sociali netti",
+      "group": "Contributi sociali",
+      "source": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+      "unit": "mld",
+      "year": 2024,
+      "value": 279.4892,
+      "latest_year": 2024,
+      "latest_value_mld": 279.4892,
+      "latest_percent_pil": 12.7,
+      "series": [
+        {
+          "year": 1995,
+          "percent_pil": 14,
+          "value_mld": 126.1667
+        },
+        {
+          "year": 1996,
+          "percent_pil": 14.3,
+          "value_mld": 148.2347
+        },
+        {
+          "year": 1997,
+          "percent_pil": 14.4,
+          "value_mld": 158.3418
+        },
+        {
+          "year": 1998,
+          "percent_pil": 12.1,
+          "value_mld": 137.5801
+        },
+        {
+          "year": 1999,
+          "percent_pil": 12.1,
+          "value_mld": 142.4129
+        },
+        {
+          "year": 2000,
+          "percent_pil": 11.7,
+          "value_mld": 145.5361
+        },
+        {
+          "year": 2001,
+          "percent_pil": 11.8,
+          "value_mld": 154.5219
+        },
+        {
+          "year": 2002,
+          "percent_pil": 11.9,
+          "value_mld": 161.2836
+        },
+        {
+          "year": 2003,
+          "percent_pil": 12.1,
+          "value_mld": 169.2123
+        },
+        {
+          "year": 2004,
+          "percent_pil": 12.1,
+          "value_mld": 176.2146
+        },
+        {
+          "year": 2005,
+          "percent_pil": 12.1,
+          "value_mld": 181.2084
+        },
+        {
+          "year": 2006,
+          "percent_pil": 11.8,
+          "value_mld": 183.9089
+        },
+        {
+          "year": 2007,
+          "percent_pil": 12.5,
+          "value_mld": 202.7159
+        },
+        {
+          "year": 2008,
+          "percent_pil": 13,
+          "value_mld": 213.4638
+        },
+        {
+          "year": 2009,
+          "percent_pil": 13.4,
+          "value_mld": 212.0735
+        },
+        {
+          "year": 2010,
+          "percent_pil": 13.2,
+          "value_mld": 213.5635
+        },
+        {
+          "year": 2011,
+          "percent_pil": 13.1,
+          "value_mld": 217.2325
+        },
+        {
+          "year": 2012,
+          "percent_pil": 13.2,
+          "value_mld": 215.4609
+        },
+        {
+          "year": 2013,
+          "percent_pil": 13.3,
+          "value_mld": 215.6306
+        },
+        {
+          "year": 2014,
+          "percent_pil": 13.1,
+          "value_mld": 214.3625
+        },
+        {
+          "year": 2015,
+          "percent_pil": 13.2,
+          "value_mld": 219.7442
+        },
+        {
+          "year": 2016,
+          "percent_pil": 12.9,
+          "value_mld": 219.8363
+        },
+        {
+          "year": 2017,
+          "percent_pil": 13,
+          "value_mld": 226.7048
+        },
+        {
+          "year": 2018,
+          "percent_pil": 13.2,
+          "value_mld": 234.7627
+        },
+        {
+          "year": 2019,
+          "percent_pil": 13.4,
+          "value_mld": 241.8639
+        },
+        {
+          "year": 2020,
+          "percent_pil": 13.8,
+          "value_mld": 230.3959
+        },
+        {
+          "year": 2021,
+          "percent_pil": 13.4,
+          "value_mld": 247.0694
+        },
+        {
+          "year": 2022,
+          "percent_pil": 13,
+          "value_mld": 259.9117
+        },
+        {
+          "year": 2023,
+          "percent_pil": 12.5,
+          "value_mld": 268.0051
+        },
+        {
+          "year": 2024,
+          "percent_pil": 12.7,
+          "value_mld": 279.4892
+        }
+      ],
+      "note": "Valori in miliardi stimati dalla quota dei contributi sociali netti sul PIL Eurostat e dal PIL implicito nelle serie Eurostat di spesa pubblica."
+    },
+    {
       "code": "IRPEF",
       "label": "IRPEF",
       "year": 2025,
@@ -229,6 +394,171 @@
   ],
   "top_taxes_2025": [
     {
+      "code": "CONTRIBUTI_SOCIALI_NETTI",
+      "label": "Contributi sociali netti",
+      "group": "Contributi sociali",
+      "source": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+      "unit": "mld",
+      "year": 2024,
+      "value": 279.4892,
+      "latest_year": 2024,
+      "latest_value_mld": 279.4892,
+      "latest_percent_pil": 12.7,
+      "series": [
+        {
+          "year": 1995,
+          "percent_pil": 14,
+          "value_mld": 126.1667
+        },
+        {
+          "year": 1996,
+          "percent_pil": 14.3,
+          "value_mld": 148.2347
+        },
+        {
+          "year": 1997,
+          "percent_pil": 14.4,
+          "value_mld": 158.3418
+        },
+        {
+          "year": 1998,
+          "percent_pil": 12.1,
+          "value_mld": 137.5801
+        },
+        {
+          "year": 1999,
+          "percent_pil": 12.1,
+          "value_mld": 142.4129
+        },
+        {
+          "year": 2000,
+          "percent_pil": 11.7,
+          "value_mld": 145.5361
+        },
+        {
+          "year": 2001,
+          "percent_pil": 11.8,
+          "value_mld": 154.5219
+        },
+        {
+          "year": 2002,
+          "percent_pil": 11.9,
+          "value_mld": 161.2836
+        },
+        {
+          "year": 2003,
+          "percent_pil": 12.1,
+          "value_mld": 169.2123
+        },
+        {
+          "year": 2004,
+          "percent_pil": 12.1,
+          "value_mld": 176.2146
+        },
+        {
+          "year": 2005,
+          "percent_pil": 12.1,
+          "value_mld": 181.2084
+        },
+        {
+          "year": 2006,
+          "percent_pil": 11.8,
+          "value_mld": 183.9089
+        },
+        {
+          "year": 2007,
+          "percent_pil": 12.5,
+          "value_mld": 202.7159
+        },
+        {
+          "year": 2008,
+          "percent_pil": 13,
+          "value_mld": 213.4638
+        },
+        {
+          "year": 2009,
+          "percent_pil": 13.4,
+          "value_mld": 212.0735
+        },
+        {
+          "year": 2010,
+          "percent_pil": 13.2,
+          "value_mld": 213.5635
+        },
+        {
+          "year": 2011,
+          "percent_pil": 13.1,
+          "value_mld": 217.2325
+        },
+        {
+          "year": 2012,
+          "percent_pil": 13.2,
+          "value_mld": 215.4609
+        },
+        {
+          "year": 2013,
+          "percent_pil": 13.3,
+          "value_mld": 215.6306
+        },
+        {
+          "year": 2014,
+          "percent_pil": 13.1,
+          "value_mld": 214.3625
+        },
+        {
+          "year": 2015,
+          "percent_pil": 13.2,
+          "value_mld": 219.7442
+        },
+        {
+          "year": 2016,
+          "percent_pil": 12.9,
+          "value_mld": 219.8363
+        },
+        {
+          "year": 2017,
+          "percent_pil": 13,
+          "value_mld": 226.7048
+        },
+        {
+          "year": 2018,
+          "percent_pil": 13.2,
+          "value_mld": 234.7627
+        },
+        {
+          "year": 2019,
+          "percent_pil": 13.4,
+          "value_mld": 241.8639
+        },
+        {
+          "year": 2020,
+          "percent_pil": 13.8,
+          "value_mld": 230.3959
+        },
+        {
+          "year": 2021,
+          "percent_pil": 13.4,
+          "value_mld": 247.0694
+        },
+        {
+          "year": 2022,
+          "percent_pil": 13,
+          "value_mld": 259.9117
+        },
+        {
+          "year": 2023,
+          "percent_pil": 12.5,
+          "value_mld": 268.0051
+        },
+        {
+          "year": 2024,
+          "percent_pil": 12.7,
+          "value_mld": 279.4892
+        }
+      ],
+      "note": "Valori in miliardi stimati dalla quota dei contributi sociali netti sul PIL Eurostat e dal PIL implicito nelle serie Eurostat di spesa pubblica."
+    },
+    {
       "code": "IRPEF",
       "label": "IRPEF",
       "year": 2025,
@@ -300,6 +630,171 @@
     }
   ],
   "main_taxes_2025": [
+    {
+      "code": "CONTRIBUTI_SOCIALI_NETTI",
+      "label": "Contributi sociali netti",
+      "group": "Contributi sociali",
+      "source": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+      "unit": "mld",
+      "year": 2024,
+      "value": 279.4892,
+      "latest_year": 2024,
+      "latest_value_mld": 279.4892,
+      "latest_percent_pil": 12.7,
+      "series": [
+        {
+          "year": 1995,
+          "percent_pil": 14,
+          "value_mld": 126.1667
+        },
+        {
+          "year": 1996,
+          "percent_pil": 14.3,
+          "value_mld": 148.2347
+        },
+        {
+          "year": 1997,
+          "percent_pil": 14.4,
+          "value_mld": 158.3418
+        },
+        {
+          "year": 1998,
+          "percent_pil": 12.1,
+          "value_mld": 137.5801
+        },
+        {
+          "year": 1999,
+          "percent_pil": 12.1,
+          "value_mld": 142.4129
+        },
+        {
+          "year": 2000,
+          "percent_pil": 11.7,
+          "value_mld": 145.5361
+        },
+        {
+          "year": 2001,
+          "percent_pil": 11.8,
+          "value_mld": 154.5219
+        },
+        {
+          "year": 2002,
+          "percent_pil": 11.9,
+          "value_mld": 161.2836
+        },
+        {
+          "year": 2003,
+          "percent_pil": 12.1,
+          "value_mld": 169.2123
+        },
+        {
+          "year": 2004,
+          "percent_pil": 12.1,
+          "value_mld": 176.2146
+        },
+        {
+          "year": 2005,
+          "percent_pil": 12.1,
+          "value_mld": 181.2084
+        },
+        {
+          "year": 2006,
+          "percent_pil": 11.8,
+          "value_mld": 183.9089
+        },
+        {
+          "year": 2007,
+          "percent_pil": 12.5,
+          "value_mld": 202.7159
+        },
+        {
+          "year": 2008,
+          "percent_pil": 13,
+          "value_mld": 213.4638
+        },
+        {
+          "year": 2009,
+          "percent_pil": 13.4,
+          "value_mld": 212.0735
+        },
+        {
+          "year": 2010,
+          "percent_pil": 13.2,
+          "value_mld": 213.5635
+        },
+        {
+          "year": 2011,
+          "percent_pil": 13.1,
+          "value_mld": 217.2325
+        },
+        {
+          "year": 2012,
+          "percent_pil": 13.2,
+          "value_mld": 215.4609
+        },
+        {
+          "year": 2013,
+          "percent_pil": 13.3,
+          "value_mld": 215.6306
+        },
+        {
+          "year": 2014,
+          "percent_pil": 13.1,
+          "value_mld": 214.3625
+        },
+        {
+          "year": 2015,
+          "percent_pil": 13.2,
+          "value_mld": 219.7442
+        },
+        {
+          "year": 2016,
+          "percent_pil": 12.9,
+          "value_mld": 219.8363
+        },
+        {
+          "year": 2017,
+          "percent_pil": 13,
+          "value_mld": 226.7048
+        },
+        {
+          "year": 2018,
+          "percent_pil": 13.2,
+          "value_mld": 234.7627
+        },
+        {
+          "year": 2019,
+          "percent_pil": 13.4,
+          "value_mld": 241.8639
+        },
+        {
+          "year": 2020,
+          "percent_pil": 13.8,
+          "value_mld": 230.3959
+        },
+        {
+          "year": 2021,
+          "percent_pil": 13.4,
+          "value_mld": 247.0694
+        },
+        {
+          "year": 2022,
+          "percent_pil": 13,
+          "value_mld": 259.9117
+        },
+        {
+          "year": 2023,
+          "percent_pil": 12.5,
+          "value_mld": 268.0051
+        },
+        {
+          "year": 2024,
+          "percent_pil": 12.7,
+          "value_mld": 279.4892
+        }
+      ],
+      "note": "Valori in miliardi stimati dalla quota dei contributi sociali netti sul PIL Eurostat e dal PIL implicito nelle serie Eurostat di spesa pubblica."
+    },
     {
       "code": "IRPEF",
       "label": "IRPEF",
@@ -1683,6 +2178,171 @@
       "social_year": 2024
     }
   ],
+  "social_contributions": {
+    "code": "CONTRIBUTI_SOCIALI_NETTI",
+    "label": "Contributi sociali netti",
+    "group": "Contributi sociali",
+    "source": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+    "unit": "mld",
+    "year": 2024,
+    "value": 279.4892,
+    "latest_year": 2024,
+    "latest_value_mld": 279.4892,
+    "latest_percent_pil": 12.7,
+    "series": [
+      {
+        "year": 1995,
+        "percent_pil": 14,
+        "value_mld": 126.1667
+      },
+      {
+        "year": 1996,
+        "percent_pil": 14.3,
+        "value_mld": 148.2347
+      },
+      {
+        "year": 1997,
+        "percent_pil": 14.4,
+        "value_mld": 158.3418
+      },
+      {
+        "year": 1998,
+        "percent_pil": 12.1,
+        "value_mld": 137.5801
+      },
+      {
+        "year": 1999,
+        "percent_pil": 12.1,
+        "value_mld": 142.4129
+      },
+      {
+        "year": 2000,
+        "percent_pil": 11.7,
+        "value_mld": 145.5361
+      },
+      {
+        "year": 2001,
+        "percent_pil": 11.8,
+        "value_mld": 154.5219
+      },
+      {
+        "year": 2002,
+        "percent_pil": 11.9,
+        "value_mld": 161.2836
+      },
+      {
+        "year": 2003,
+        "percent_pil": 12.1,
+        "value_mld": 169.2123
+      },
+      {
+        "year": 2004,
+        "percent_pil": 12.1,
+        "value_mld": 176.2146
+      },
+      {
+        "year": 2005,
+        "percent_pil": 12.1,
+        "value_mld": 181.2084
+      },
+      {
+        "year": 2006,
+        "percent_pil": 11.8,
+        "value_mld": 183.9089
+      },
+      {
+        "year": 2007,
+        "percent_pil": 12.5,
+        "value_mld": 202.7159
+      },
+      {
+        "year": 2008,
+        "percent_pil": 13,
+        "value_mld": 213.4638
+      },
+      {
+        "year": 2009,
+        "percent_pil": 13.4,
+        "value_mld": 212.0735
+      },
+      {
+        "year": 2010,
+        "percent_pil": 13.2,
+        "value_mld": 213.5635
+      },
+      {
+        "year": 2011,
+        "percent_pil": 13.1,
+        "value_mld": 217.2325
+      },
+      {
+        "year": 2012,
+        "percent_pil": 13.2,
+        "value_mld": 215.4609
+      },
+      {
+        "year": 2013,
+        "percent_pil": 13.3,
+        "value_mld": 215.6306
+      },
+      {
+        "year": 2014,
+        "percent_pil": 13.1,
+        "value_mld": 214.3625
+      },
+      {
+        "year": 2015,
+        "percent_pil": 13.2,
+        "value_mld": 219.7442
+      },
+      {
+        "year": 2016,
+        "percent_pil": 12.9,
+        "value_mld": 219.8363
+      },
+      {
+        "year": 2017,
+        "percent_pil": 13,
+        "value_mld": 226.7048
+      },
+      {
+        "year": 2018,
+        "percent_pil": 13.2,
+        "value_mld": 234.7627
+      },
+      {
+        "year": 2019,
+        "percent_pil": 13.4,
+        "value_mld": 241.8639
+      },
+      {
+        "year": 2020,
+        "percent_pil": 13.8,
+        "value_mld": 230.3959
+      },
+      {
+        "year": 2021,
+        "percent_pil": 13.4,
+        "value_mld": 247.0694
+      },
+      {
+        "year": 2022,
+        "percent_pil": 13,
+        "value_mld": 259.9117
+      },
+      {
+        "year": 2023,
+        "percent_pil": 12.5,
+        "value_mld": 268.0051
+      },
+      {
+        "year": 2024,
+        "percent_pil": 12.7,
+        "value_mld": 279.4892
+      }
+    ],
+    "note": "Valori in miliardi stimati dalla quota dei contributi sociali netti sul PIL Eurostat e dal PIL implicito nelle serie Eurostat di spesa pubblica."
+  },
   "revenue_items": [
     {
       "code": "CEDOLARE",
@@ -1744,6 +2404,171 @@
     }
   ],
   "all_revenue_lines": [
+    {
+      "code": "CONTRIBUTI_SOCIALI_NETTI",
+      "label": "Contributi sociali netti",
+      "group": "Contributi sociali",
+      "source": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+      "unit": "mld",
+      "year": 2024,
+      "value": 279.4892,
+      "latest_year": 2024,
+      "latest_value_mld": 279.4892,
+      "latest_percent_pil": 12.7,
+      "series": [
+        {
+          "year": 1995,
+          "percent_pil": 14,
+          "value_mld": 126.1667
+        },
+        {
+          "year": 1996,
+          "percent_pil": 14.3,
+          "value_mld": 148.2347
+        },
+        {
+          "year": 1997,
+          "percent_pil": 14.4,
+          "value_mld": 158.3418
+        },
+        {
+          "year": 1998,
+          "percent_pil": 12.1,
+          "value_mld": 137.5801
+        },
+        {
+          "year": 1999,
+          "percent_pil": 12.1,
+          "value_mld": 142.4129
+        },
+        {
+          "year": 2000,
+          "percent_pil": 11.7,
+          "value_mld": 145.5361
+        },
+        {
+          "year": 2001,
+          "percent_pil": 11.8,
+          "value_mld": 154.5219
+        },
+        {
+          "year": 2002,
+          "percent_pil": 11.9,
+          "value_mld": 161.2836
+        },
+        {
+          "year": 2003,
+          "percent_pil": 12.1,
+          "value_mld": 169.2123
+        },
+        {
+          "year": 2004,
+          "percent_pil": 12.1,
+          "value_mld": 176.2146
+        },
+        {
+          "year": 2005,
+          "percent_pil": 12.1,
+          "value_mld": 181.2084
+        },
+        {
+          "year": 2006,
+          "percent_pil": 11.8,
+          "value_mld": 183.9089
+        },
+        {
+          "year": 2007,
+          "percent_pil": 12.5,
+          "value_mld": 202.7159
+        },
+        {
+          "year": 2008,
+          "percent_pil": 13,
+          "value_mld": 213.4638
+        },
+        {
+          "year": 2009,
+          "percent_pil": 13.4,
+          "value_mld": 212.0735
+        },
+        {
+          "year": 2010,
+          "percent_pil": 13.2,
+          "value_mld": 213.5635
+        },
+        {
+          "year": 2011,
+          "percent_pil": 13.1,
+          "value_mld": 217.2325
+        },
+        {
+          "year": 2012,
+          "percent_pil": 13.2,
+          "value_mld": 215.4609
+        },
+        {
+          "year": 2013,
+          "percent_pil": 13.3,
+          "value_mld": 215.6306
+        },
+        {
+          "year": 2014,
+          "percent_pil": 13.1,
+          "value_mld": 214.3625
+        },
+        {
+          "year": 2015,
+          "percent_pil": 13.2,
+          "value_mld": 219.7442
+        },
+        {
+          "year": 2016,
+          "percent_pil": 12.9,
+          "value_mld": 219.8363
+        },
+        {
+          "year": 2017,
+          "percent_pil": 13,
+          "value_mld": 226.7048
+        },
+        {
+          "year": 2018,
+          "percent_pil": 13.2,
+          "value_mld": 234.7627
+        },
+        {
+          "year": 2019,
+          "percent_pil": 13.4,
+          "value_mld": 241.8639
+        },
+        {
+          "year": 2020,
+          "percent_pil": 13.8,
+          "value_mld": 230.3959
+        },
+        {
+          "year": 2021,
+          "percent_pil": 13.4,
+          "value_mld": 247.0694
+        },
+        {
+          "year": 2022,
+          "percent_pil": 13,
+          "value_mld": 259.9117
+        },
+        {
+          "year": 2023,
+          "percent_pil": 12.5,
+          "value_mld": 268.0051
+        },
+        {
+          "year": 2024,
+          "percent_pil": 12.7,
+          "value_mld": 279.4892
+        }
+      ],
+      "note": "Valori in miliardi stimati dalla quota dei contributi sociali netti sul PIL Eurostat e dal PIL implicito nelle serie Eurostat di spesa pubblica."
+    },
     {
       "code": "MEF_ERARIALI_IRPEF",
       "label": "IRPEF",
@@ -7648,63 +8473,235 @@
   ],
   "revenue_pie": [
     {
+      "code": "CONTRIBUTI_SOCIALI_NETTI",
+      "label": "Contributi sociali netti",
+      "year": 2024,
+      "value_mld": 279.4892,
+      "share_percent": 32.987
+    },
+    {
       "code": "IRPEF",
       "label": "IRPEF",
       "year": 2025,
       "value_mld": 231.301,
-      "share_percent": 40.738
+      "share_percent": 27.3
     },
     {
       "code": "IVA",
       "label": "IVA",
       "year": 2025,
       "value_mld": 186.8087,
-      "share_percent": 32.902
+      "share_percent": 22.048
     },
     {
       "code": "IRES",
       "label": "IRES",
       "year": 2025,
       "value_mld": 60.0847,
-      "share_percent": 10.582
+      "share_percent": 7.092
     },
     {
       "code": "IRAP",
       "label": "IRAP",
       "year": 2025,
       "value_mld": 33.318,
-      "share_percent": 5.868
+      "share_percent": 3.932
     },
     {
       "code": "SUCCESSIONI",
       "label": "Successioni e donazioni",
       "year": 2025,
       "value_mld": 21.0554,
-      "share_percent": 3.708
+      "share_percent": 2.485
     },
     {
       "code": "IMU",
       "label": "IMU (quota comuni)",
       "year": 2025,
       "value_mld": 18.189,
-      "share_percent": 3.204
+      "share_percent": 2.147
     },
     {
       "code": "SUPERBOLLO",
       "label": "Superbollo",
       "year": 2025,
       "value_mld": 10.9976,
-      "share_percent": 1.937
+      "share_percent": 1.298
     },
     {
       "code": "CASSA_AZIONI",
       "label": "Imposte sul registro",
       "year": 2025,
       "value_mld": 6.0252,
-      "share_percent": 1.061
+      "share_percent": 0.711
     }
   ],
   "revenue_category_series": [
+    {
+      "code": "CONTRIBUTI_SOCIALI_NETTI",
+      "label": "Contributi sociali netti",
+      "group": "Contributi sociali",
+      "source": "Fonte: Eurostat gov_10a_taxag, amministrazioni pubbliche S13",
+      "unit": "mld",
+      "year": 2024,
+      "value": 279.4892,
+      "latest_year": 2024,
+      "latest_value_mld": 279.4892,
+      "latest_percent_pil": 12.7,
+      "series": [
+        {
+          "year": 1995,
+          "percent_pil": 14,
+          "value_mld": 126.1667
+        },
+        {
+          "year": 1996,
+          "percent_pil": 14.3,
+          "value_mld": 148.2347
+        },
+        {
+          "year": 1997,
+          "percent_pil": 14.4,
+          "value_mld": 158.3418
+        },
+        {
+          "year": 1998,
+          "percent_pil": 12.1,
+          "value_mld": 137.5801
+        },
+        {
+          "year": 1999,
+          "percent_pil": 12.1,
+          "value_mld": 142.4129
+        },
+        {
+          "year": 2000,
+          "percent_pil": 11.7,
+          "value_mld": 145.5361
+        },
+        {
+          "year": 2001,
+          "percent_pil": 11.8,
+          "value_mld": 154.5219
+        },
+        {
+          "year": 2002,
+          "percent_pil": 11.9,
+          "value_mld": 161.2836
+        },
+        {
+          "year": 2003,
+          "percent_pil": 12.1,
+          "value_mld": 169.2123
+        },
+        {
+          "year": 2004,
+          "percent_pil": 12.1,
+          "value_mld": 176.2146
+        },
+        {
+          "year": 2005,
+          "percent_pil": 12.1,
+          "value_mld": 181.2084
+        },
+        {
+          "year": 2006,
+          "percent_pil": 11.8,
+          "value_mld": 183.9089
+        },
+        {
+          "year": 2007,
+          "percent_pil": 12.5,
+          "value_mld": 202.7159
+        },
+        {
+          "year": 2008,
+          "percent_pil": 13,
+          "value_mld": 213.4638
+        },
+        {
+          "year": 2009,
+          "percent_pil": 13.4,
+          "value_mld": 212.0735
+        },
+        {
+          "year": 2010,
+          "percent_pil": 13.2,
+          "value_mld": 213.5635
+        },
+        {
+          "year": 2011,
+          "percent_pil": 13.1,
+          "value_mld": 217.2325
+        },
+        {
+          "year": 2012,
+          "percent_pil": 13.2,
+          "value_mld": 215.4609
+        },
+        {
+          "year": 2013,
+          "percent_pil": 13.3,
+          "value_mld": 215.6306
+        },
+        {
+          "year": 2014,
+          "percent_pil": 13.1,
+          "value_mld": 214.3625
+        },
+        {
+          "year": 2015,
+          "percent_pil": 13.2,
+          "value_mld": 219.7442
+        },
+        {
+          "year": 2016,
+          "percent_pil": 12.9,
+          "value_mld": 219.8363
+        },
+        {
+          "year": 2017,
+          "percent_pil": 13,
+          "value_mld": 226.7048
+        },
+        {
+          "year": 2018,
+          "percent_pil": 13.2,
+          "value_mld": 234.7627
+        },
+        {
+          "year": 2019,
+          "percent_pil": 13.4,
+          "value_mld": 241.8639
+        },
+        {
+          "year": 2020,
+          "percent_pil": 13.8,
+          "value_mld": 230.3959
+        },
+        {
+          "year": 2021,
+          "percent_pil": 13.4,
+          "value_mld": 247.0694
+        },
+        {
+          "year": 2022,
+          "percent_pil": 13,
+          "value_mld": 259.9117
+        },
+        {
+          "year": 2023,
+          "percent_pil": 12.5,
+          "value_mld": 268.0051
+        },
+        {
+          "year": 2024,
+          "percent_pil": 12.7,
+          "value_mld": 279.4892
+        }
+      ],
+      "note": "Valori in miliardi stimati dalla quota dei contributi sociali netti sul PIL Eurostat e dal PIL implicito nelle serie Eurostat di spesa pubblica."
+    },
     {
       "code": "IRPEF",
       "label": "IRPEF",
@@ -13901,10 +14898,11 @@
   },
   "counts": {
     "revenue_items": 7,
-    "all_revenue_lines": 56,
-    "revenue_category_series": 9,
+    "all_revenue_lines": 57,
+    "social_contributions": 1,
+    "revenue_category_series": 10,
     "revenue_under_500m_items": 6,
-    "top_taxes": 10,
+    "top_taxes": 11,
     "pressure_points": 30,
     "peer_countries": 10,
     "cofog_categories": 10,

@@ -31,6 +31,8 @@ from bilancio_pubblico.utils import (
 IRPEF_TAX_LABEL = "Imposta netta - Ammontare in euro"
 IRPEF_CONTRIBUTORS_LABEL = "Numero contribuenti"
 TARI_GETTITO_2023_MLD = 10.5
+SOCIAL_CONTRIBUTIONS_CODE = "CONTRIBUTI_SOCIALI_NETTI"
+SOCIAL_CONTRIBUTIONS_LABEL = "Contributi sociali netti"
 
 
 AGGREGATE_REVENUE_LABELS = {
@@ -534,6 +536,87 @@ def _tax_pressure_trend(tax_pressure):
         }}
         for year, value in total.items()
     ]
+
+
+def _gdp_mld_by_year(total_spending):
+    if total_spending is None or total_spending.empty:
+        return {}
+    gdp = {}
+    for year, row in total_spending.sort_index().iterrows():
+        spending_mld = _to_number(row.get("value"), 6)
+        if spending_mld is None:
+            spending_mld = _to_number(row.get("mld"), 6)
+        spending_pil = _to_number(row.get("value_pil_percent"), 6)
+        if spending_pil is None:
+            spending_pil = _to_number(row.get("value_pil"), 6)
+        if spending_pil is None:
+            spending_pil = _to_number(row.get("pil_percent"), 6)
+        if spending_pil is None:
+            spending_pil = _to_number(row.get("pil"), 6)
+        if spending_mld and spending_pil:
+            gdp[int(year)] = spending_mld / spending_pil * 100.0
+    return gdp
+
+
+def _build_social_contributions_item(tax_pressure, total_spending):
+    if tax_pressure is None or tax_pressure.empty:
+        return None
+    column = next(
+        (col for col in tax_pressure.columns if "contributi sociali" in str(col).lower()),
+        None,
+    )
+    if column is None:
+        return None
+    gdp_by_year = _gdp_mld_by_year(total_spending)
+    series = []
+    for year, percent_pil in tax_pressure[column].dropna().sort_index().items():
+        year_int = int(year)
+        gdp_mld = gdp_by_year.get(year_int)
+        value_mld = (float(percent_pil) * gdp_mld / 100.0) if gdp_mld else None
+        row = {
+            "year": _to_number(year_int),
+            "percent_pil": _to_number(percent_pil, 4),
+        }
+        if value_mld is not None:
+            row["value_mld"] = _to_number(value_mld, 4)
+        series.append(row)
+    valued = [row for row in series if row.get("value_mld") is not None]
+    if not valued:
+        return None
+    latest = valued[-1]
+    payload = {
+        "code": SOCIAL_CONTRIBUTIONS_CODE,
+        "label": SOCIAL_CONTRIBUTIONS_LABEL,
+        "group": "Contributi sociali",
+        "source": SOURCE_EUROSTAT_TAX,
+        "unit": "mld",
+        "year": latest.get("year"),
+        "value": latest.get("value_mld"),
+        "latest_year": latest.get("year"),
+        "latest_value_mld": latest.get("value_mld"),
+        "latest_percent_pil": latest.get("percent_pil"),
+        "series": series,
+        "note": (
+            "Valori in miliardi stimati dalla quota dei contributi sociali netti sul PIL "
+            "Eurostat e dal PIL implicito nelle serie Eurostat di spesa pubblica."
+        ),
+    }
+    return payload
+
+
+def _prepend_social_contributions(rows, social_contributions):
+    if not social_contributions:
+        return rows
+    filtered = [
+        row for row in rows
+        if row.get("code") != SOCIAL_CONTRIBUTIONS_CODE
+        and row.get("label") != SOCIAL_CONTRIBUTIONS_LABEL
+    ]
+    return sorted(
+        [social_contributions, *filtered],
+        key=lambda row: row.get("latest_value_mld") if row.get("latest_value_mld") is not None else row.get("value") or 0,
+        reverse=True,
+    )
 
 
 def _peer_rows(peer_tax, peer_spending, peer_social):
@@ -1055,8 +1138,12 @@ def export_bilancio_source_json(
         latest_spending_pil = None
         latest_spending_mld = None
 
-    top_taxes = _main_taxes_rows(mef_items, mef_months, territoriali_items, territoriali_months)
     pressure_rows = _tax_pressure_trend(tax_pressure)
+    social_contributions = _build_social_contributions_item(tax_pressure, total_spending)
+    top_taxes = _prepend_social_contributions(
+        _main_taxes_rows(mef_items, mef_months, territoriali_items, territoriali_months),
+        social_contributions,
+    )
     peer_rows = _peer_rows(peer_tax, peer_spending, peer_social)
     social_value = next((item.get("social_spending") for item in peer_rows if item.get("code") == "IT"), None)
     social_year = next((item.get("social_year") for item in peer_rows if item.get("code") == "IT"), None)
@@ -1088,6 +1175,8 @@ def export_bilancio_source_json(
         territoriali_items,
         territoriali_months,
     )
+    revenue_category_series = _prepend_social_contributions(revenue_category_series, social_contributions)
+    all_revenue_lines = _prepend_social_contributions(all_revenue_lines, social_contributions)
     revenue_pie = _build_pie_payload(revenue_category_series, "latest_value_mld")
     spending_category_series = _cofog_category_series(cofog_spending_trend)
     spending_pie = _build_pie_payload(spending_category_series, "latest_value_mld")
@@ -1158,6 +1247,7 @@ def export_bilancio_source_json(
         "fiscal_trend": pressure_rows,
         "pressure_components": pressure_rows,
         "peer": peer_rows,
+        "social_contributions": social_contributions,
         "revenue_items": revenue_tax_items,
         "all_revenue_lines": all_revenue_lines,
         "revenue_pie": revenue_pie,
@@ -1184,6 +1274,7 @@ def export_bilancio_source_json(
         "counts": {
             "revenue_items": len(revenue_tax_items),
             "all_revenue_lines": len(all_revenue_lines),
+            "social_contributions": 1 if social_contributions else 0,
             "revenue_category_series": len(revenue_category_series),
             "revenue_under_500m_items": len(under_500m_revenue.get("entries", [])),
             "top_taxes": len(top_taxes),

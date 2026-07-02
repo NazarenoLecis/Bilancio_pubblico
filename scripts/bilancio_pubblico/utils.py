@@ -245,7 +245,10 @@ def clean_generated_outputs():
     for filename in GENERATED_FILES:
         path = CHART_DIR / filename
         if path.exists():
-            path.unlink()
+            try:
+                path.unlink()
+            except PermissionError:
+                print(f"Output grafico in uso, salto la rimozione: {path.name}")
 
 
 def configure_style():
