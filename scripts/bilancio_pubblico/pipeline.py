@@ -29,6 +29,13 @@ from bilancio_pubblico.chart_generation.italia_entrate import (
 )
 from bilancio_pubblico.chart_generation.italia_patrimonio import plot_household_wealth_distribution
 from bilancio_pubblico.chart_generation.italia_uscite import plot_cofog_spending, plot_total_spending_italy
+from bilancio_pubblico.chart_generation.regioni import (
+    clean_regional_outputs,
+    plot_regional_balances_by_region,
+    plot_regional_revenue_by_region,
+    plot_regional_spending_by_mission,
+    plot_regional_spending_by_region,
+)
 from bilancio_pubblico.data_extraction import (
     load_cofog_spending,
     load_cofog_spending_trend,
@@ -43,6 +50,11 @@ from bilancio_pubblico.data_extraction import (
     load_total_spending_italy,
 )
 from bilancio_pubblico.exporter import export_bilancio_source_json
+from bilancio_pubblico.regional_budgets import (
+    SOURCE_OPENBDAP_REGIONI,
+    append_regional_budgets_to_source_json,
+    load_regional_budgets,
+)
 from bilancio_pubblico.utils import (
     BLACK,
     CHART_DIR,
@@ -73,13 +85,15 @@ def build_manifest_entries(
     peer_spending_updated,
     peer_social_updated,
     total_spending_updated,
+    regional_outputs=None,
+    regional_updated=None,
 ):
     """Prepara la lista standardizzata di record da salvare in `manifest.csv`."""
     # Crea il registro che accompagna tutti i file grafici:
     # - nome file esportato
     # - fonte ufficiale usata
     # - data/periodo aggiornamento
-    return [
+    entries = [
         {
             "file": "01_principali_entrate_tributarie_2025.png",
             "fonte": SOURCE_MEF_ENTRATE_COMBINED,
@@ -182,6 +196,17 @@ def build_manifest_entries(
         },
     ]
 
+    for filename in regional_outputs or []:
+        entries.append(
+            {
+                "file": filename,
+                "fonte": SOURCE_OPENBDAP_REGIONI,
+                "aggiornamento_fonte": regional_updated or "OpenBDAP/RGS",
+            }
+        )
+
+    return entries
+
 
 def run(refresh=False):
     """Esegue tutta la pipeline end-to-end.
@@ -192,6 +217,7 @@ def run(refresh=False):
     ensure_directories()
     configure_style()
     clean_generated_outputs()
+    clean_regional_outputs()
 
     # 2) Download/lettura dati: qui ogni funzione incapsula una fonte specifica
     mef_data, mef_items, mef_months = load_mef_entrate(refresh)
@@ -206,6 +232,7 @@ def run(refresh=False):
     oecd_revenue, oecd_revenue_peers = load_oecd_revenue_data(refresh)
     oecd_spending, oecd_spending_peers = load_oecd_spending_data(refresh)
     tipo_reddito, calcolo_irpef = load_declaration_data(refresh)
+    regional_budgets = load_regional_budgets(refresh)
 
     # 3) Grafici Italia: entrate, contribuzione e composizione redditi
     plot_main_taxes(mef_items, mef_months, territoriali_items, territoriali_months)
@@ -218,10 +245,21 @@ def run(refresh=False):
     plot_revenue_types(mef_items, mef_months, territoriali_items, territoriali_months)
     plot_succession_tax_focus(mef_items, mef_months)
 
-    # 4) Grafici Italia: spesa e patrimonio
+    # 4) Grafici Italia: spesa, patrimonio e bilanci regionali
     plot_cofog_spending(cofog_spending)
     plot_total_spending_italy(total_spending)
     plot_household_wealth_distribution()
+
+    regional_outputs = [
+        filename
+        for filename in (
+            plot_regional_spending_by_region(regional_budgets["spending_by_region"]),
+            plot_regional_revenue_by_region(regional_budgets["revenue_by_region"]),
+            plot_regional_spending_by_mission(regional_budgets["spending_by_mission"]),
+            plot_regional_balances_by_region(regional_budgets["balances_by_region"]),
+        )
+        if filename
+    ]
 
     # 5) Confronti internazionali
     plot_peer_comparison(
@@ -263,6 +301,8 @@ def run(refresh=False):
         peer_spending_updated,
         peer_social_updated,
         total_spending_updated,
+        regional_outputs=regional_outputs,
+        regional_updated=regional_budgets.get("updated"),
     )
     export_bilancio_source_json(
         mef_data,
@@ -291,8 +331,10 @@ def run(refresh=False):
             "peer_spending": peer_spending_updated,
             "peer_social": peer_social_updated,
             "total_spending": total_spending_updated,
+            "regional_budgets": regional_budgets.get("updated"),
         },
         manifest_rows=entries,
     )
+    append_regional_budgets_to_source_json(regional_budgets, manifest_rows=entries)
     write_manifest(entries)
     print(f"Creati {len(entries)} grafici in {CHART_DIR}")
