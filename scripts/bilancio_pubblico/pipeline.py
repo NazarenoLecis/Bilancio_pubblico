@@ -46,6 +46,7 @@ from bilancio_pubblico.data_extraction import (
     load_oecd_revenue_data,
     load_oecd_spending_data,
     load_peer_spending,
+    load_peer_spending_functions,
     load_peer_tax_pressure,
     load_tax_pressure,
     load_total_spending_italy,
@@ -234,6 +235,7 @@ def run(refresh=False):
     peer_tax, peer_tax_updated = load_peer_tax_pressure(refresh)
     peer_spending, peer_spending_updated = load_peer_spending(refresh, "TOTAL", "total")
     peer_social, peer_social_updated = load_peer_spending(refresh, "GF10", "gf10")
+    peer_spending_functions, peer_spending_functions_updated = load_peer_spending_functions(refresh)
     total_spending, total_spending_updated = load_total_spending_italy(refresh)
     spending_adjustments = load_spending_adjustments(refresh)
     cofog_spending_trend = augment_spending_frame(cofog_spending_trend, spending_adjustments)
@@ -329,12 +331,14 @@ def run(refresh=False):
         calcolo_irpef,
         cofog_spending_trend,
         cofog_spending_detail,
+        peer_spending_functions=peer_spending_functions,
         source_updates={
             "eurostat_tax": eurostat_tax_updated,
             "eurostat_exp": eurostat_exp_updated,
             "peer_tax": peer_tax_updated,
             "peer_spending": peer_spending_updated,
             "peer_social": peer_social_updated,
+            "peer_spending_functions": peer_spending_functions_updated,
             "total_spending": total_spending_updated,
             "regional_budgets": regional_budgets.get("updated"),
             "population_hicp": spending_adjustments.get("updated", {}),

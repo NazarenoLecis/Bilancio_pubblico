@@ -14,6 +14,7 @@ from bilancio_pubblico.data_extraction import (
 )
 from bilancio_pubblico.utils import (
     SOURCE_DATA_JSON_PATH,
+    COFOG_DETAIL_LABELS,
     COFOG_LABELS,
     SOURCE_BANKITALIA_WEALTH,
     SOURCE_EUROSTAT_EXP,
@@ -648,6 +649,59 @@ def _peer_rows(peer_tax, peer_spending, peer_social):
     return list(by_code.values())
 
 
+def _peer_spending_function_options(peer_spending_functions):
+    if peer_spending_functions is None or peer_spending_functions.empty:
+        return []
+    columns = [
+        "cofog_code",
+        "cofog_label",
+        "cofog_level",
+        "parent_code",
+        "parent_label",
+    ]
+    options = peer_spending_functions[columns].drop_duplicates().copy()
+    options["cofog_level"] = pd.to_numeric(options["cofog_level"], errors="coerce")
+    options = options.sort_values(["cofog_level", "parent_code", "cofog_code"], na_position="first")
+    return [
+        {
+            "id": row["cofog_code"],
+            "label": row["cofog_label"],
+            "level": _to_number(row["cofog_level"]),
+            "parent_code": _safe_last(row.get("parent_code")),
+            "parent_label": _safe_last(row.get("parent_label")),
+            "unit": "% PIL",
+            "source": "Eurostat gov_10a_exp",
+        }
+        for _, row in options.iterrows()
+    ]
+
+
+def _peer_spending_function_rows(peer_spending_functions):
+    if peer_spending_functions is None or peer_spending_functions.empty:
+        return []
+    rows = []
+    selected = peer_spending_functions.sort_values(
+        ["cofog_level", "parent_code", "cofog_code", "codice"],
+        na_position="first",
+    )
+    for _, row in selected.iterrows():
+        rows.append(
+            {
+                "code": row.get("codice"),
+                "country": row.get("paese") or row.get("codice"),
+                "year": _to_number(row.get("anno")),
+                "value": _to_number(row.get("valore"), 4),
+                "unit": "% PIL",
+                "cofog_code": row.get("cofog_code"),
+                "cofog_label": row.get("cofog_label") or COFOG_DETAIL_LABELS.get(row.get("cofog_code")) or COFOG_LABELS.get(row.get("cofog_code")),
+                "cofog_level": _to_number(row.get("cofog_level")),
+                "parent_code": _safe_last(row.get("parent_code")),
+                "parent_label": _safe_last(row.get("parent_label")),
+            }
+        )
+    return rows
+
+
 def _safe_sum(*values):
     total = 0
     for value in values:
@@ -1167,6 +1221,7 @@ def export_bilancio_source_json(
     calcolo_irpef,
     cofog_spending_trend,
     cofog_spending_detail=None,
+    peer_spending_functions=None,
     source_updates=None,
     manifest_rows=None,
 ):
@@ -1196,6 +1251,8 @@ def export_bilancio_source_json(
         social_contributions,
     )
     peer_rows = _peer_rows(peer_tax, peer_spending, peer_social)
+    peer_spending_function_options = _peer_spending_function_options(peer_spending_functions)
+    peer_spending_function_rows = _peer_spending_function_rows(peer_spending_functions)
     social_value = next((item.get("social_spending") for item in peer_rows if item.get("code") == "IT"), None)
     social_year = next((item.get("social_year") for item in peer_rows if item.get("code") == "IT"), None)
     irpef_by_band, irpef_share_by_band = _build_decl_bands(calcolo_irpef)
@@ -1302,6 +1359,8 @@ def export_bilancio_source_json(
         "fiscal_trend": pressure_rows,
         "pressure_components": pressure_rows,
         "peer": peer_rows,
+        "peer_spending_function_options": peer_spending_function_options,
+        "peer_spending_functions": peer_spending_function_rows,
         "social_contributions": social_contributions,
         "revenue_items": revenue_tax_items,
         "all_revenue_lines": all_revenue_lines,
@@ -1337,6 +1396,8 @@ def export_bilancio_source_json(
             "top_taxes": len(top_taxes),
             "pressure_points": len(pressure_rows),
             "peer_countries": len(peer_rows),
+            "peer_spending_functions": len(peer_spending_function_rows),
+            "peer_spending_function_options": len(peer_spending_function_options),
             "cofog_categories": len(cofog_spending) if cofog_spending is not None else 0,
             "cofog_categories_trend": len(spending_category_series),
             "cofog_detail_categories_trend": len(spending_function_detail_series),

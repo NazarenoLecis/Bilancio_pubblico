@@ -109,6 +109,29 @@ def eurostat_series(dataset, params, cache_name, refresh):
     return series, data.get("updated")
 
 
+def eurostat_records(dataset, params, cache_name, refresh):
+    # Converte un cubo Eurostat JSON-stat in righe, mantenendo tutte le dimensioni selezionate.
+    data = fetch_json(eurostat_url(dataset, params), cache_name, refresh)
+    dimension_ids = data.get("id", [])
+    dimension_sizes = data.get("size", [])
+    labels_by_position = {}
+    for dimension in dimension_ids:
+        index = data["dimension"][dimension]["category"]["index"]
+        labels_by_position[dimension] = {position: label for label, position in index.items()}
+
+    records = []
+    for position_text, value in data.get("value", {}).items():
+        position = int(position_text)
+        coordinates = {}
+        remaining = position
+        for dimension, size in reversed(list(zip(dimension_ids, dimension_sizes))):
+            dimension_position = remaining % size
+            remaining = remaining // size
+            coordinates[dimension] = labels_by_position[dimension].get(dimension_position)
+        records.append({**coordinates, "value": float(value)})
+    return records, data.get("updated")
+
+
 def clean_oecd_frame(frame):
     # Pulisce i frame OCSE: coerziona numeri e rimuove NaN.
     result = frame.copy()
@@ -353,6 +376,70 @@ def load_peer_spending(refresh, cofog_code, cache_suffix):
         series, item_updated = eurostat_series("gov_10a_exp", params, cache_name, refresh)
         year = 2024
         records.append({"paese": country, "codice": geo, "anno": year, "valore": float(series.loc[year])})
+        updated = item_updated or updated
+    return pd.DataFrame(records), updated
+
+
+def load_peer_spending_functions(refresh):
+    # Confronto europeo per tutte le funzioni COFOG disponibili, incluse le sotto-voci.
+    records = []
+    updated = None
+    code_groups = [
+        (code, label, 1, None, None)
+        for code, label in COFOG_LABELS.items()
+    ] + [
+        (
+            code,
+            label,
+            2,
+            code[:4],
+            COFOG_LABELS.get(code[:4], code[:4]),
+        )
+        for code, label in COFOG_DETAIL_LABELS.items()
+    ]
+
+    for cofog_code, label, level, parent_code, parent_label in code_groups:
+        params = {
+            "format": "JSON",
+            "lang": "en",
+            "freq": "A",
+            "unit": "PC_GDP",
+            "sector": "S13",
+            "cofog99": cofog_code,
+            "na_item": "TE",
+            "geo": list(PEER_GEOS.keys()),
+        }
+        try:
+            rows, item_updated = eurostat_records(
+                "gov_10a_exp",
+                params,
+                f"eurostat_gov_10a_exp_peer_{cofog_code.lower()}_pc_gdp.json",
+                refresh,
+            )
+        except Exception:
+            continue
+
+        for row in rows:
+            geo = row.get("geo")
+            try:
+                year = int(row.get("time"))
+            except Exception:
+                continue
+            if geo not in PEER_GEOS or year != 2024:
+                continue
+            records.append(
+                {
+                    "paese": PEER_GEOS[geo],
+                    "codice": geo,
+                    "anno": year,
+                    "valore": float(row.get("value")),
+                    "cofog_code": cofog_code,
+                    "cofog_label": label,
+                    "cofog_level": level,
+                    "parent_code": parent_code,
+                    "parent_label": parent_label,
+                }
+            )
         updated = item_updated or updated
     return pd.DataFrame(records), updated
 
