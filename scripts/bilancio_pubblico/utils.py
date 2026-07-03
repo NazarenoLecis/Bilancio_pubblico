@@ -18,6 +18,8 @@ import pandas as pd
 import requests
 from matplotlib.offsetbox import AnchoredOffsetbox, HPacker, TextArea
 
+from bilancio_pubblico.european_geos import EUROPEAN_GEOS
+
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data" / "raw"
@@ -118,18 +120,7 @@ SUCCESSIONI_DONAZIONI_SERIE = [
     {"anno": 2025, "milioni": 1081},
 ]
 
-PEER_GEOS = {
-    "IT": "Italia",
-    "EU27_2020": "UE",
-    "EA20": "Area euro",
-    "FR": "Francia",
-    "DE": "Germania",
-    "ES": "Spagna",
-    "SE": "Svezia",
-    "DK": "Danimarca",
-    "BE": "Belgio",
-    "AT": "Austria",
-}
+PEER_GEOS = EUROPEAN_GEOS
 
 OECD_MEMBER_AREAS = [
     "AUS",

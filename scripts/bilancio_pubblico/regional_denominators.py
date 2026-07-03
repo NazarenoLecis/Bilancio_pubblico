@@ -9,7 +9,7 @@ SOURCE_EUROSTAT_REGIONAL_POPULATION = (
     "Fonte: Eurostat demo_r_pjanaggr3, popolazione al 1 gennaio per regione NUTS"
 )
 SOURCE_REGIONAL_AREA = (
-    "Fonte: superfici territoriali regionali da fonti statistiche ufficiali; valori kmq stabili nel tempo"
+    "Fonte: superfici territoriali regionali ISTAT/SISTAN; valori kmq stabili nel tempo, usati solo come denominatore derivato"
 )
 
 REGION_NUTS2_GEOS = {
@@ -59,7 +59,7 @@ REGION_AREA_KM2 = {
 }
 
 
-def _population_for_geo(geo, refresh):
+def _population_series_for_geo(geo, refresh):
     params = {
         "format": "JSON",
         "lang": "en",
@@ -76,6 +76,11 @@ def _population_for_geo(geo, refresh):
         refresh,
     )
     series = series.dropna().sort_index()
+    return series, updated
+
+
+def _population_for_geo(geo, refresh):
+    series, updated = _population_series_for_geo(geo, refresh)
     if series.empty:
         return None, None, updated
     year = int(series.index.max())
@@ -87,27 +92,48 @@ def load_regional_denominators(refresh=False):
     errors = []
     updated = None
     for region, geos in REGION_NUTS2_GEOS.items():
-        population = 0.0
-        population_years = []
+        series_by_geo = []
         for geo in geos:
             try:
-                year, value, item_updated = _population_for_geo(geo, refresh)
+                series, item_updated = _population_series_for_geo(geo, refresh)
                 updated = item_updated or updated
-                if year is not None and value is not None:
-                    population += value
-                    population_years.append(year)
             except Exception as exc:
                 errors.append({"regione": region, "geo": geo, "message": str(exc)})
-        row = {
-            "regione": region,
-            "area_km2": REGION_AREA_KM2.get(region),
-            "area_source": SOURCE_REGIONAL_AREA,
-        }
-        if population > 0:
-            row["population"] = population
-            row["population_year"] = min(population_years) if population_years else None
-            row["population_source"] = SOURCE_EUROSTAT_REGIONAL_POPULATION
-        rows.append(row)
+                continue
+            if not series.empty:
+                series_by_geo.append(series)
+
+        if series_by_geo:
+            population_by_year = pd.concat(series_by_geo, axis=1).sum(axis=1, min_count=1).dropna()
+        else:
+            population_by_year = pd.Series(dtype="float64")
+
+        if population_by_year.empty:
+            rows.append(
+                {
+                    "regione": region,
+                    "anno": None,
+                    "area_km2": REGION_AREA_KM2.get(region),
+                    "area_source": SOURCE_REGIONAL_AREA,
+                    "population": None,
+                    "population_year": None,
+                    "population_source": SOURCE_EUROSTAT_REGIONAL_POPULATION,
+                }
+            )
+            continue
+
+        for year, population in population_by_year.items():
+            rows.append(
+                {
+                    "regione": region,
+                    "anno": int(year),
+                    "area_km2": REGION_AREA_KM2.get(region),
+                    "area_source": SOURCE_REGIONAL_AREA,
+                    "population": float(population),
+                    "population_year": int(year),
+                    "population_source": SOURCE_EUROSTAT_REGIONAL_POPULATION,
+                }
+            )
     return {
         "frame": pd.DataFrame(rows),
         "updated": updated,
@@ -122,7 +148,11 @@ def add_regional_denominators(frame, denominators):
     denom = denominators.get("frame") if isinstance(denominators, dict) else None
     if denom is None or denom.empty:
         return frame
-    result = frame.merge(denom, on="regione", how="left")
+    if "anno" in frame.columns and "anno" in denom.columns:
+        result = frame.merge(denom, on=["regione", "anno"], how="left")
+    else:
+        latest = denom.sort_values("anno").drop_duplicates("regione", keep="last")
+        result = frame.merge(latest.drop(columns=["anno"], errors="ignore"), on="regione", how="left")
     if "mld" in result.columns:
         result["euro_per_capita"] = result.apply(
             lambda row: row["mld"] * 1_000_000_000.0 / row["population"]
