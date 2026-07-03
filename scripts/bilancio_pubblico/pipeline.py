@@ -8,6 +8,7 @@ Il flusso è sempre questo:
 5) scrittura manifest e JSON dashboard
 """
 
+import bilancio_pubblico.data_extraction as data_extraction
 from bilancio_pubblico.chart_generation.confronti_europa import plot_peer_comparison
 from bilancio_pubblico.chart_generation.confronti_oecd import (
     plot_oecd_inheritance_tax,
@@ -49,6 +50,7 @@ from bilancio_pubblico.data_extraction import (
     load_tax_pressure,
     load_total_spending_italy,
 )
+from bilancio_pubblico.european_geos import EUROPEAN_GEOS
 from bilancio_pubblico.exporter import export_bilancio_source_json
 from bilancio_pubblico.regional_budgets import (
     SOURCE_OPENBDAP_REGIONI,
@@ -219,6 +221,8 @@ def run(refresh=False):
 
     `refresh=False` usa cache, `refresh=True` forza il refresh da rete.
     """
+    data_extraction.PEER_GEOS = EUROPEAN_GEOS
+
     ensure_directories()
     configure_style()
     clean_generated_outputs()
