@@ -141,7 +141,8 @@ COFOG_DETAIL_LABELS = {
 
 TAXAG_LABELS = {
     "D2": "Imposte su produzione e importazioni",
-    "D5": "Imposte su reddito e patrimonio",
+    "D51": "Imposte su reddito",
+    "D59": "Imposte su patrimonio",
     "D61": "Contributi sociali netti",
     "D91": "Imposte in conto capitale",
 }

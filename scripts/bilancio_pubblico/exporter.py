@@ -1262,6 +1262,9 @@ def export_bilancio_source_json(
                 "mef_territoriali": _safe_last(territoriali_data.get("aggiornamento")),
                 "source": source_updates,
             },
+            "method_notes": [
+                "La pressione fiscale separa le imposte correnti sul reddito (Eurostat D51) dalle altre imposte correnti dell'aggregato D5 (Eurostat D59), riportate in dashboard come componente patrimonio.",
+            ],
             "manifest_rows": len(manifest_rows),
             "manifest": manifest_rows,
         },

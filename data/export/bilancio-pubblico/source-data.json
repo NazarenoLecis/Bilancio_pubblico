@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-07-03T12:54:18.694045+00:00",
+    "generated_at": "2026-07-03T15:22:10.289069+00:00",
     "generated_by": "Bilancio_pubblico",
-    "updated_at": "2026-07-03T12:54:18.694045+00:00",
+    "updated_at": "2026-07-03T15:22:10.289069+00:00",
     "description": "Dati completi e normalizzati dal repo Bilancio_pubblico per la dashboard Bilancio pubblico italiano.",
     "sources": [
       "Fonte: MEF - Dipartimento delle Finanze, Entrate tributarie erariali e territoriali, competenza giuridica",
@@ -37,13 +37,21 @@
       },
       "regional_denominators": {
         "updated": "2026-07-03T11:00:00+0200",
-        "generated_at": "2026-07-03T12:54:18.963016+00:00"
+        "generated_at": "2026-07-03T15:22:10.701206+00:00"
       },
       "population_hicp": {
         "population": "2026-07-03T11:00:00+0200",
         "hicp": "2026-02-06T23:00:00+0100"
       }
     },
+    "method_notes": [
+      "La pressione fiscale separa le imposte correnti sul reddito (Eurostat D51) dalle altre imposte correnti dell'aggregato D5 (Eurostat D59), riportate in dashboard come componente patrimonio.",
+      "I confronti regionali OpenBDAP possono essere normalizzati per popolazione o superficie territoriale.",
+      "La sezione regionale OpenBDAP usa dati di rendiconto/consuntivo della gestione: sono risultati a posteriori diversi dai bilanci previsionali.",
+      "Le serie di spesa in miliardi sono valori nominali in euro correnti se non diversamente indicato.",
+      "Le serie reali sono deflazionate con HICP all-items Eurostat e riportate ai prezzi dell'ultimo anno comune disponibile.",
+      "Le serie pro capite dividono gli importi per la popolazione residente Eurostat al 1 gennaio."
+    ],
     "manifest_rows": 24,
     "manifest": [
       {
@@ -165,24 +173,6 @@
         "file": "24_bilanci_regionali_saldi_per_regione.png",
         "fonte": "Fonte: RGS - OpenBDAP, Finanza degli Enti Territoriali, dati di rendiconto della gestione",
         "aggiornamento_fonte": "OpenBDAP/RGS FET, consultato 2026-07-03"
-      }
-    ],
-    "method_notes": [
-      "I confronti regionali OpenBDAP possono essere normalizzati per popolazione o superficie territoriale.",
-      "Le serie di spesa in miliardi sono valori nominali in euro correnti se non diversamente indicato.",
-      "Le serie reali sono deflazionate con HICP all-items Eurostat e riportate ai prezzi dell'ultimo anno comune disponibile.",
-      "Le serie pro capite dividono gli importi per la popolazione residente Eurostat al 1 gennaio.",
-      "SIOPE e' una fonte sui flussi di cassa degli enti pubblici; resta distinta dalla serie COFOG di contabilita' nazionale usata per la spesa per funzione."
-    ],
-    "reference_sources": [
-      {
-        "id": "siope",
-        "label": "SIOPE",
-        "source": "Fonte: SIOPE - Banca d'Italia/RGS, incassi e pagamenti degli enti pubblici",
-        "url": "https://www.siope.it/Siope/",
-        "status": "reference_source_registered",
-        "scope": "flussi di cassa: incassi, pagamenti, disponibilita' liquide, aggregati territoriali e download CSV",
-        "note": "SIOPE misura flussi di cassa degli enti pubblici. Non sostituisce la serie Eurostat COFOG, che resta la fonte armonizzata per la spesa pubblica per funzione. E' registrato come fonte per una futura sezione di confronto sui flussi di cassa degli enti territoriali."
       }
     ]
   },
@@ -927,7 +917,8 @@
       "year": 1995,
       "value": 40,
       "imposte su produzione e importazioni": 11.7,
-      "imposte su reddito e patrimonio": 13.8,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 14,
       "imposte in conto capitale": 0.5
     },
@@ -935,7 +926,8 @@
       "year": 1996,
       "value": 40.5,
       "imposte su produzione e importazioni": 11.5,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.3,
       "imposte in conto capitale": 0.3
     },
@@ -943,15 +935,17 @@
       "year": 1997,
       "value": 42.2,
       "imposte su produzione e importazioni": 12,
-      "imposte su reddito e patrimonio": 15.1,
+      "imposte su reddito": 14.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.4,
       "imposte in conto capitale": 0.7
     },
     {
       "year": 1998,
-      "value": 40.9,
+      "value": 41,
       "imposte su produzione e importazioni": 14.8,
-      "imposte su reddito e patrimonio": 13.6,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.4
     },
@@ -959,7 +953,8 @@
       "year": 1999,
       "value": 41,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -967,7 +962,8 @@
       "year": 2000,
       "value": 39.8,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.7,
       "imposte in conto capitale": 0.1
     },
@@ -975,7 +971,8 @@
       "year": 2001,
       "value": 39.9,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0.1
     },
@@ -983,7 +980,8 @@
       "year": 2002,
       "value": 39.4,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 13.3,
+      "imposte su reddito": 12.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 11.9,
       "imposte in conto capitale": 0.2
     },
@@ -991,7 +989,8 @@
       "year": 2003,
       "value": 39.8,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 12.8,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 1.3
     },
@@ -999,7 +998,8 @@
       "year": 2004,
       "value": 39.1,
       "imposte su produzione e importazioni": 13.7,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.6
     },
@@ -1007,7 +1007,8 @@
       "year": 2005,
       "value": 38.8,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1015,7 +1016,8 @@
       "year": 2006,
       "value": 39.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0
     },
@@ -1023,7 +1025,8 @@
       "year": 2007,
       "value": 41.2,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0
     },
@@ -1031,15 +1034,17 @@
       "year": 2008,
       "value": 41.1,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0
     },
     {
       "year": 2009,
-      "value": 41.7,
+      "value": 41.8,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.8
     },
@@ -1047,7 +1052,8 @@
       "year": 2010,
       "value": 41.3,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.2
     },
@@ -1055,15 +1061,17 @@
       "year": 2011,
       "value": 41.3,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.4
     },
     {
       "year": 2012,
-      "value": 43.2,
+      "value": 43.1,
       "imposte su produzione e importazioni": 15.2,
-      "imposte su reddito e patrimonio": 14.7,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1071,7 +1079,8 @@
       "year": 2013,
       "value": 43.4,
       "imposte su produzione e importazioni": 14.9,
-      "imposte su reddito e patrimonio": 14.9,
+      "imposte su reddito": 14.4,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.3,
       "imposte in conto capitale": 0.3
     },
@@ -1079,7 +1088,8 @@
       "year": 2014,
       "value": 43.1,
       "imposte su produzione e importazioni": 15.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.1
     },
@@ -1087,7 +1097,8 @@
       "year": 2015,
       "value": 42.9,
       "imposte su produzione e importazioni": 15,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1095,15 +1106,17 @@
       "year": 2016,
       "value": 42.1,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 12.9,
       "imposte in conto capitale": 0.3
     },
     {
       "year": 2017,
-      "value": 41.8,
+      "value": 41.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1111,7 +1124,8 @@
       "year": 2018,
       "value": 41.7,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.4,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1119,7 +1133,8 @@
       "year": 2019,
       "value": 42.3,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1127,15 +1142,17 @@
       "year": 2020,
       "value": 42.7,
       "imposte su produzione e importazioni": 13.8,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.8,
       "imposte in conto capitale": 0.1
     },
     {
       "year": 2021,
-      "value": 42.3,
+      "value": 42.2,
       "imposte su produzione e importazioni": 14.2,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1143,7 +1160,8 @@
       "year": 2022,
       "value": 41.6,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1151,7 +1169,8 @@
       "year": 2023,
       "value": 41.2,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0.1
     },
@@ -1159,7 +1178,8 @@
       "year": 2024,
       "value": 42.5,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 15.6,
+      "imposte su reddito": 15.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.7,
       "imposte in conto capitale": 0.1
     }
@@ -1169,7 +1189,8 @@
       "year": 1995,
       "value": 40,
       "imposte su produzione e importazioni": 11.7,
-      "imposte su reddito e patrimonio": 13.8,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 14,
       "imposte in conto capitale": 0.5
     },
@@ -1177,7 +1198,8 @@
       "year": 1996,
       "value": 40.5,
       "imposte su produzione e importazioni": 11.5,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.3,
       "imposte in conto capitale": 0.3
     },
@@ -1185,15 +1207,17 @@
       "year": 1997,
       "value": 42.2,
       "imposte su produzione e importazioni": 12,
-      "imposte su reddito e patrimonio": 15.1,
+      "imposte su reddito": 14.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.4,
       "imposte in conto capitale": 0.7
     },
     {
       "year": 1998,
-      "value": 40.9,
+      "value": 41,
       "imposte su produzione e importazioni": 14.8,
-      "imposte su reddito e patrimonio": 13.6,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.4
     },
@@ -1201,7 +1225,8 @@
       "year": 1999,
       "value": 41,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1209,7 +1234,8 @@
       "year": 2000,
       "value": 39.8,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.7,
       "imposte in conto capitale": 0.1
     },
@@ -1217,7 +1243,8 @@
       "year": 2001,
       "value": 39.9,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0.1
     },
@@ -1225,7 +1252,8 @@
       "year": 2002,
       "value": 39.4,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 13.3,
+      "imposte su reddito": 12.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 11.9,
       "imposte in conto capitale": 0.2
     },
@@ -1233,7 +1261,8 @@
       "year": 2003,
       "value": 39.8,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 12.8,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 1.3
     },
@@ -1241,7 +1270,8 @@
       "year": 2004,
       "value": 39.1,
       "imposte su produzione e importazioni": 13.7,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.6
     },
@@ -1249,7 +1279,8 @@
       "year": 2005,
       "value": 38.8,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1257,7 +1288,8 @@
       "year": 2006,
       "value": 39.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0
     },
@@ -1265,7 +1297,8 @@
       "year": 2007,
       "value": 41.2,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0
     },
@@ -1273,15 +1306,17 @@
       "year": 2008,
       "value": 41.1,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0
     },
     {
       "year": 2009,
-      "value": 41.7,
+      "value": 41.8,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.8
     },
@@ -1289,7 +1324,8 @@
       "year": 2010,
       "value": 41.3,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.2
     },
@@ -1297,15 +1333,17 @@
       "year": 2011,
       "value": 41.3,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.4
     },
     {
       "year": 2012,
-      "value": 43.2,
+      "value": 43.1,
       "imposte su produzione e importazioni": 15.2,
-      "imposte su reddito e patrimonio": 14.7,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1313,7 +1351,8 @@
       "year": 2013,
       "value": 43.4,
       "imposte su produzione e importazioni": 14.9,
-      "imposte su reddito e patrimonio": 14.9,
+      "imposte su reddito": 14.4,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.3,
       "imposte in conto capitale": 0.3
     },
@@ -1321,7 +1360,8 @@
       "year": 2014,
       "value": 43.1,
       "imposte su produzione e importazioni": 15.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.1
     },
@@ -1329,7 +1369,8 @@
       "year": 2015,
       "value": 42.9,
       "imposte su produzione e importazioni": 15,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1337,15 +1378,17 @@
       "year": 2016,
       "value": 42.1,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 12.9,
       "imposte in conto capitale": 0.3
     },
     {
       "year": 2017,
-      "value": 41.8,
+      "value": 41.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1353,7 +1396,8 @@
       "year": 2018,
       "value": 41.7,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.4,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1361,7 +1405,8 @@
       "year": 2019,
       "value": 42.3,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1369,15 +1414,17 @@
       "year": 2020,
       "value": 42.7,
       "imposte su produzione e importazioni": 13.8,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.8,
       "imposte in conto capitale": 0.1
     },
     {
       "year": 2021,
-      "value": 42.3,
+      "value": 42.2,
       "imposte su produzione e importazioni": 14.2,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1385,7 +1432,8 @@
       "year": 2022,
       "value": 41.6,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1393,7 +1441,8 @@
       "year": 2023,
       "value": 41.2,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0.1
     },
@@ -1401,7 +1450,8 @@
       "year": 2024,
       "value": 42.5,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 15.6,
+      "imposte su reddito": 15.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.7,
       "imposte in conto capitale": 0.1
     }
@@ -1411,7 +1461,8 @@
       "year": 1995,
       "value": 40,
       "imposte su produzione e importazioni": 11.7,
-      "imposte su reddito e patrimonio": 13.8,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 14,
       "imposte in conto capitale": 0.5
     },
@@ -1419,7 +1470,8 @@
       "year": 1996,
       "value": 40.5,
       "imposte su produzione e importazioni": 11.5,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.3,
       "imposte in conto capitale": 0.3
     },
@@ -1427,15 +1479,17 @@
       "year": 1997,
       "value": 42.2,
       "imposte su produzione e importazioni": 12,
-      "imposte su reddito e patrimonio": 15.1,
+      "imposte su reddito": 14.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.4,
       "imposte in conto capitale": 0.7
     },
     {
       "year": 1998,
-      "value": 40.9,
+      "value": 41,
       "imposte su produzione e importazioni": 14.8,
-      "imposte su reddito e patrimonio": 13.6,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.4
     },
@@ -1443,7 +1497,8 @@
       "year": 1999,
       "value": 41,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1451,7 +1506,8 @@
       "year": 2000,
       "value": 39.8,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.7,
       "imposte in conto capitale": 0.1
     },
@@ -1459,7 +1515,8 @@
       "year": 2001,
       "value": 39.9,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0.1
     },
@@ -1467,7 +1524,8 @@
       "year": 2002,
       "value": 39.4,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 13.3,
+      "imposte su reddito": 12.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 11.9,
       "imposte in conto capitale": 0.2
     },
@@ -1475,7 +1533,8 @@
       "year": 2003,
       "value": 39.8,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 12.8,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 1.3
     },
@@ -1483,7 +1542,8 @@
       "year": 2004,
       "value": 39.1,
       "imposte su produzione e importazioni": 13.7,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.6
     },
@@ -1491,7 +1551,8 @@
       "year": 2005,
       "value": 38.8,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1499,7 +1560,8 @@
       "year": 2006,
       "value": 39.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0
     },
@@ -1507,7 +1569,8 @@
       "year": 2007,
       "value": 41.2,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0
     },
@@ -1515,15 +1578,17 @@
       "year": 2008,
       "value": 41.1,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0
     },
     {
       "year": 2009,
-      "value": 41.7,
+      "value": 41.8,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.8
     },
@@ -1531,7 +1596,8 @@
       "year": 2010,
       "value": 41.3,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.2
     },
@@ -1539,15 +1605,17 @@
       "year": 2011,
       "value": 41.3,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.4
     },
     {
       "year": 2012,
-      "value": 43.2,
+      "value": 43.1,
       "imposte su produzione e importazioni": 15.2,
-      "imposte su reddito e patrimonio": 14.7,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1555,7 +1623,8 @@
       "year": 2013,
       "value": 43.4,
       "imposte su produzione e importazioni": 14.9,
-      "imposte su reddito e patrimonio": 14.9,
+      "imposte su reddito": 14.4,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.3,
       "imposte in conto capitale": 0.3
     },
@@ -1563,7 +1632,8 @@
       "year": 2014,
       "value": 43.1,
       "imposte su produzione e importazioni": 15.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.1
     },
@@ -1571,7 +1641,8 @@
       "year": 2015,
       "value": 42.9,
       "imposte su produzione e importazioni": 15,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1579,15 +1650,17 @@
       "year": 2016,
       "value": 42.1,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 12.9,
       "imposte in conto capitale": 0.3
     },
     {
       "year": 2017,
-      "value": 41.8,
+      "value": 41.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1595,7 +1668,8 @@
       "year": 2018,
       "value": 41.7,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.4,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1603,7 +1677,8 @@
       "year": 2019,
       "value": 42.3,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1611,15 +1686,17 @@
       "year": 2020,
       "value": 42.7,
       "imposte su produzione e importazioni": 13.8,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.8,
       "imposte in conto capitale": 0.1
     },
     {
       "year": 2021,
-      "value": 42.3,
+      "value": 42.2,
       "imposte su produzione e importazioni": 14.2,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1627,7 +1704,8 @@
       "year": 2022,
       "value": 41.6,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1635,7 +1713,8 @@
       "year": 2023,
       "value": 41.2,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0.1
     },
@@ -1643,7 +1722,8 @@
       "year": 2024,
       "value": 42.5,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 15.6,
+      "imposte su reddito": 15.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.7,
       "imposte in conto capitale": 0.1
     }
@@ -1653,7 +1733,8 @@
       "year": 1995,
       "value": 40,
       "imposte su produzione e importazioni": 11.7,
-      "imposte su reddito e patrimonio": 13.8,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 14,
       "imposte in conto capitale": 0.5
     },
@@ -1661,7 +1742,8 @@
       "year": 1996,
       "value": 40.5,
       "imposte su produzione e importazioni": 11.5,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.3,
       "imposte in conto capitale": 0.3
     },
@@ -1669,15 +1751,17 @@
       "year": 1997,
       "value": 42.2,
       "imposte su produzione e importazioni": 12,
-      "imposte su reddito e patrimonio": 15.1,
+      "imposte su reddito": 14.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.4,
       "imposte in conto capitale": 0.7
     },
     {
       "year": 1998,
-      "value": 40.9,
+      "value": 41,
       "imposte su produzione e importazioni": 14.8,
-      "imposte su reddito e patrimonio": 13.6,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.4
     },
@@ -1685,7 +1769,8 @@
       "year": 1999,
       "value": 41,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1693,7 +1778,8 @@
       "year": 2000,
       "value": 39.8,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.7,
       "imposte in conto capitale": 0.1
     },
@@ -1701,7 +1787,8 @@
       "year": 2001,
       "value": 39.9,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0.1
     },
@@ -1709,7 +1796,8 @@
       "year": 2002,
       "value": 39.4,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 13.3,
+      "imposte su reddito": 12.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 11.9,
       "imposte in conto capitale": 0.2
     },
@@ -1717,7 +1805,8 @@
       "year": 2003,
       "value": 39.8,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 12.8,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 1.3
     },
@@ -1725,7 +1814,8 @@
       "year": 2004,
       "value": 39.1,
       "imposte su produzione e importazioni": 13.7,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.6
     },
@@ -1733,7 +1823,8 @@
       "year": 2005,
       "value": 38.8,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1741,7 +1832,8 @@
       "year": 2006,
       "value": 39.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0
     },
@@ -1749,7 +1841,8 @@
       "year": 2007,
       "value": 41.2,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0
     },
@@ -1757,15 +1850,17 @@
       "year": 2008,
       "value": 41.1,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0
     },
     {
       "year": 2009,
-      "value": 41.7,
+      "value": 41.8,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.8
     },
@@ -1773,7 +1868,8 @@
       "year": 2010,
       "value": 41.3,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.2
     },
@@ -1781,15 +1877,17 @@
       "year": 2011,
       "value": 41.3,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.4
     },
     {
       "year": 2012,
-      "value": 43.2,
+      "value": 43.1,
       "imposte su produzione e importazioni": 15.2,
-      "imposte su reddito e patrimonio": 14.7,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1797,7 +1895,8 @@
       "year": 2013,
       "value": 43.4,
       "imposte su produzione e importazioni": 14.9,
-      "imposte su reddito e patrimonio": 14.9,
+      "imposte su reddito": 14.4,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.3,
       "imposte in conto capitale": 0.3
     },
@@ -1805,7 +1904,8 @@
       "year": 2014,
       "value": 43.1,
       "imposte su produzione e importazioni": 15.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.1
     },
@@ -1813,7 +1913,8 @@
       "year": 2015,
       "value": 42.9,
       "imposte su produzione e importazioni": 15,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1821,15 +1922,17 @@
       "year": 2016,
       "value": 42.1,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 12.9,
       "imposte in conto capitale": 0.3
     },
     {
       "year": 2017,
-      "value": 41.8,
+      "value": 41.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1837,7 +1940,8 @@
       "year": 2018,
       "value": 41.7,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.4,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -1845,7 +1949,8 @@
       "year": 2019,
       "value": 42.3,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1853,15 +1958,17 @@
       "year": 2020,
       "value": 42.7,
       "imposte su produzione e importazioni": 13.8,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.8,
       "imposte in conto capitale": 0.1
     },
     {
       "year": 2021,
-      "value": 42.3,
+      "value": 42.2,
       "imposte su produzione e importazioni": 14.2,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -1869,7 +1976,8 @@
       "year": 2022,
       "value": 41.6,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -1877,7 +1985,8 @@
       "year": 2023,
       "value": 41.2,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0.1
     },
@@ -1885,7 +1994,8 @@
       "year": 2024,
       "value": 42.5,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 15.6,
+      "imposte su reddito": 15.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.7,
       "imposte in conto capitale": 0.1
     }
@@ -1895,7 +2005,8 @@
       "year": 1995,
       "value": 40,
       "imposte su produzione e importazioni": 11.7,
-      "imposte su reddito e patrimonio": 13.8,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 14,
       "imposte in conto capitale": 0.5
     },
@@ -1903,7 +2014,8 @@
       "year": 1996,
       "value": 40.5,
       "imposte su produzione e importazioni": 11.5,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.3,
       "imposte in conto capitale": 0.3
     },
@@ -1911,15 +2023,17 @@
       "year": 1997,
       "value": 42.2,
       "imposte su produzione e importazioni": 12,
-      "imposte su reddito e patrimonio": 15.1,
+      "imposte su reddito": 14.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 14.4,
       "imposte in conto capitale": 0.7
     },
     {
       "year": 1998,
-      "value": 40.9,
+      "value": 41,
       "imposte su produzione e importazioni": 14.8,
-      "imposte su reddito e patrimonio": 13.6,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.4
     },
@@ -1927,7 +2041,8 @@
       "year": 1999,
       "value": 41,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1935,7 +2050,8 @@
       "year": 2000,
       "value": 39.8,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.7,
       "imposte in conto capitale": 0.1
     },
@@ -1943,7 +2059,8 @@
       "year": 2001,
       "value": 39.9,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0.1
     },
@@ -1951,7 +2068,8 @@
       "year": 2002,
       "value": 39.4,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 13.3,
+      "imposte su reddito": 12.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 11.9,
       "imposte in conto capitale": 0.2
     },
@@ -1959,7 +2077,8 @@
       "year": 2003,
       "value": 39.8,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 12.8,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 1.3
     },
@@ -1967,7 +2086,8 @@
       "year": 2004,
       "value": 39.1,
       "imposte su produzione e importazioni": 13.7,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.6
     },
@@ -1975,7 +2095,8 @@
       "year": 2005,
       "value": 38.8,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 12.7,
+      "imposte su reddito": 12.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.1,
       "imposte in conto capitale": 0.1
     },
@@ -1983,7 +2104,8 @@
       "year": 2006,
       "value": 39.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.3,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 11.8,
       "imposte in conto capitale": 0
     },
@@ -1991,7 +2113,8 @@
       "year": 2007,
       "value": 41.2,
       "imposte su produzione e importazioni": 14.3,
-      "imposte su reddito e patrimonio": 14.4,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0
     },
@@ -1999,15 +2122,17 @@
       "year": 2008,
       "value": 41.1,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0
     },
     {
       "year": 2009,
-      "value": 41.7,
+      "value": 41.8,
       "imposte su produzione e importazioni": 13.5,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.8
     },
@@ -2015,7 +2140,8 @@
       "year": 2010,
       "value": 41.3,
       "imposte su produzione e importazioni": 13.9,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.6,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.2
     },
@@ -2023,15 +2149,17 @@
       "year": 2011,
       "value": 41.3,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 13.7,
+      "imposte su reddito": 13.2,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.4
     },
     {
       "year": 2012,
-      "value": 43.2,
+      "value": 43.1,
       "imposte su produzione e importazioni": 15.2,
-      "imposte su reddito e patrimonio": 14.7,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -2039,7 +2167,8 @@
       "year": 2013,
       "value": 43.4,
       "imposte su produzione e importazioni": 14.9,
-      "imposte su reddito e patrimonio": 14.9,
+      "imposte su reddito": 14.4,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.3,
       "imposte in conto capitale": 0.3
     },
@@ -2047,7 +2176,8 @@
       "year": 2014,
       "value": 43.1,
       "imposte su produzione e importazioni": 15.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.1,
       "imposte in conto capitale": 0.1
     },
@@ -2055,7 +2185,8 @@
       "year": 2015,
       "value": 42.9,
       "imposte su produzione e importazioni": 15,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14.1,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -2063,15 +2194,17 @@
       "year": 2016,
       "value": 42.1,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 13.9,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 12.9,
       "imposte in conto capitale": 0.3
     },
     {
       "year": 2017,
-      "value": 41.8,
+      "value": 41.9,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -2079,7 +2212,8 @@
       "year": 2018,
       "value": 41.7,
       "imposte su produzione e importazioni": 14.4,
-      "imposte su reddito e patrimonio": 14,
+      "imposte su reddito": 13.4,
+      "imposte su patrimonio": 0.6,
       "contributi sociali netti": 13.2,
       "imposte in conto capitale": 0.1
     },
@@ -2087,7 +2221,8 @@
       "year": 2019,
       "value": 42.3,
       "imposte su produzione e importazioni": 14.5,
-      "imposte su reddito e patrimonio": 14.3,
+      "imposte su reddito": 13.8,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -2095,15 +2230,17 @@
       "year": 2020,
       "value": 42.7,
       "imposte su produzione e importazioni": 13.8,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.8,
       "imposte in conto capitale": 0.1
     },
     {
       "year": 2021,
-      "value": 42.3,
+      "value": 42.2,
       "imposte su produzione e importazioni": 14.2,
-      "imposte su reddito e patrimonio": 14.6,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13.4,
       "imposte in conto capitale": 0.1
     },
@@ -2111,7 +2248,8 @@
       "year": 2022,
       "value": 41.6,
       "imposte su produzione e importazioni": 14,
-      "imposte su reddito e patrimonio": 14.5,
+      "imposte su reddito": 14,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 13,
       "imposte in conto capitale": 0.1
     },
@@ -2119,7 +2257,8 @@
       "year": 2023,
       "value": 41.2,
       "imposte su produzione e importazioni": 13.6,
-      "imposte su reddito e patrimonio": 15,
+      "imposte su reddito": 14.5,
+      "imposte su patrimonio": 0.5,
       "contributi sociali netti": 12.5,
       "imposte in conto capitale": 0.1
     },
@@ -2127,7 +2266,8 @@
       "year": 2024,
       "value": 42.5,
       "imposte su produzione e importazioni": 14.1,
-      "imposte su reddito e patrimonio": 15.6,
+      "imposte su reddito": 15.2,
+      "imposte su patrimonio": 0.4,
       "contributi sociali netti": 12.7,
       "imposte in conto capitale": 0.1
     }
@@ -2136,7 +2276,7 @@
     {
       "code": "EU27_2020",
       "country": "UE27",
-      "tax_pressure": 40.3,
+      "tax_pressure": 40.4,
       "tax_year": 2024,
       "public_spending": 49.1,
       "spending_year": 2024,
@@ -2166,7 +2306,7 @@
     {
       "code": "BE",
       "country": "Belgio",
-      "tax_pressure": 44.6,
+      "tax_pressure": 44.5,
       "tax_year": 2024,
       "public_spending": 54.1,
       "spending_year": 2024,
@@ -2196,7 +2336,7 @@
     {
       "code": "CY",
       "country": "Cipro",
-      "tax_pressure": 37.4,
+      "tax_pressure": 37.5,
       "tax_year": 2024,
       "public_spending": 38.3,
       "spending_year": 2024,
@@ -2266,7 +2406,7 @@
     {
       "code": "EL",
       "country": "Grecia",
-      "tax_pressure": 41.5,
+      "tax_pressure": 41.6,
       "tax_year": 2024,
       "public_spending": 48.2,
       "spending_year": 2024,
@@ -2276,7 +2416,7 @@
     {
       "code": "HU",
       "country": "Ungheria",
-      "tax_pressure": 35.2,
+      "tax_pressure": 35.1,
       "tax_year": 2024,
       "public_spending": 47.1,
       "spending_year": 2024,
@@ -2306,7 +2446,7 @@
     {
       "code": "LV",
       "country": "Lettonia",
-      "tax_pressure": 35.3,
+      "tax_pressure": 35.4,
       "tax_year": 2024,
       "public_spending": 45.6,
       "spending_year": 2024,
@@ -2316,7 +2456,7 @@
     {
       "code": "LT",
       "country": "Lituania",
-      "tax_pressure": 33.2,
+      "tax_pressure": 33.3,
       "tax_year": 2024,
       "public_spending": 39.4,
       "spending_year": 2024,
@@ -2326,7 +2466,7 @@
     {
       "code": "LU",
       "country": "Lussemburgo",
-      "tax_pressure": 42.7,
+      "tax_pressure": 42.8,
       "tax_year": 2024,
       "public_spending": 46.8,
       "spending_year": 2024,
@@ -2346,7 +2486,7 @@
     {
       "code": "NL",
       "country": "Paesi Bassi",
-      "tax_pressure": 39,
+      "tax_pressure": 39.1,
       "tax_year": 2024,
       "public_spending": 44.4,
       "spending_year": 2024,
@@ -2406,7 +2546,7 @@
     {
       "code": "ES",
       "country": "Spagna",
-      "tax_pressure": 37.2,
+      "tax_pressure": 37.1,
       "tax_year": 2024,
       "public_spending": 45.5,
       "spending_year": 2024,
@@ -2416,7 +2556,7 @@
     {
       "code": "SE",
       "country": "Svezia",
-      "tax_pressure": 42.2,
+      "tax_pressure": 42.1,
       "tax_year": 2024,
       "public_spending": 50.5,
       "spending_year": 2024,
@@ -2426,7 +2566,7 @@
     {
       "code": "NO",
       "country": "Norvegia",
-      "tax_pressure": 39.1,
+      "tax_pressure": 39.2,
       "tax_year": 2024,
       "public_spending": 47.8,
       "spending_year": 2024,
@@ -2436,7 +2576,7 @@
     {
       "code": "IS",
       "country": "Islanda",
-      "tax_pressure": 37.0,
+      "tax_pressure": 36.9,
       "tax_year": 2024,
       "public_spending": 47.1,
       "spending_year": 2024,
@@ -2446,7 +2586,7 @@
     {
       "code": "CH",
       "country": "Svizzera",
-      "tax_pressure": 28,
+      "tax_pressure": 27.9,
       "tax_year": 2024,
       "public_spending": 32.5,
       "spending_year": 2024,
@@ -39833,7 +39973,7 @@
   "regional_budgets": {
     "source": "Fonte: RGS - OpenBDAP, Finanza degli Enti Territoriali, dati di rendiconto della gestione",
     "updated": "OpenBDAP/RGS FET, consultato 2026-07-03",
-    "generated_at": "2026-07-03T12:54:18.819374+00:00",
+    "generated_at": "2026-07-03T15:22:10.367738+00:00",
     "datasets": [
       {
         "dataset": "spending_by_region",
@@ -76987,17 +77127,8 @@
       "source": "Fonte: Eurostat gov_10a_exp, spesa totale S13 per funzione COFOG; Fonte: Eurostat prc_hicp_aind, HICP all-items, indice annuale 2015=100; Fonte: Eurostat demo_pjan, popolazione residente al 1 gennaio, totale"
     }
   ],
-  "siope_reference": {
-    "id": "siope",
-    "label": "SIOPE",
-    "source": "Fonte: SIOPE - Banca d'Italia/RGS, incassi e pagamenti degli enti pubblici",
-    "url": "https://www.siope.it/Siope/",
-    "status": "reference_source_registered",
-    "scope": "flussi di cassa: incassi, pagamenti, disponibilita' liquide, aggregati territoriali e download CSV",
-    "note": "SIOPE misura flussi di cassa degli enti pubblici. Non sostituisce la serie Eurostat COFOG, che resta la fonte armonizzata per la spesa pubblica per funzione. E' registrato come fonte per una futura sezione di confronto sui flussi di cassa degli enti territoriali."
-  },
   "spending_adjustment_sources": {
-    "generated_at": "2026-07-03T12:54:19.049168+00:00",
+    "generated_at": "2026-07-03T15:22:10.863161+00:00",
     "population_source": "Fonte: Eurostat demo_pjan, popolazione residente al 1 gennaio, totale",
     "price_source": "Fonte: Eurostat prc_hicp_aind, HICP all-items, indice annuale 2015=100",
     "population": [

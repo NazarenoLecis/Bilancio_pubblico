@@ -203,7 +203,7 @@ def _append_unique(items, value):
 
 
 def append_spending_adjustments_to_source_json(adjustments):
-    """Aggiunge metadati su pro capite, valori reali e fonte SIOPE al JSON."""
+    """Aggiunge metadati su pro capite e valori reali al JSON."""
     if not SOURCE_DATA_JSON_PATH.exists():
         return
 
@@ -213,21 +213,15 @@ def append_spending_adjustments_to_source_json(adjustments):
     for source in (SOURCE_EUROSTAT_POPULATION, SOURCE_EUROSTAT_HICP):
         _append_unique(sources, source)
 
-    reference_sources = meta.setdefault("reference_sources", [])
-    if not any(item.get("id") == SIOPE_REFERENCE["id"] for item in reference_sources if isinstance(item, dict)):
-        reference_sources.append(SIOPE_REFERENCE)
-
     method_notes = meta.setdefault("method_notes", [])
     for note in (
         "Le serie di spesa in miliardi sono valori nominali in euro correnti se non diversamente indicato.",
         "Le serie reali sono deflazionate con HICP all-items Eurostat e riportate ai prezzi dell'ultimo anno comune disponibile.",
         "Le serie pro capite dividono gli importi per la popolazione residente Eurostat al 1 gennaio.",
-        "SIOPE e' una fonte sui flussi di cassa degli enti pubblici; resta distinta dalla serie COFOG di contabilita' nazionale usata per la spesa per funzione.",
     ):
         _append_unique(method_notes, note)
 
     payload["spending_metric_options"] = SPENDING_METRIC_OPTIONS
-    payload["siope_reference"] = SIOPE_REFERENCE
     payload["spending_adjustment_sources"] = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "population_source": SOURCE_EUROSTAT_POPULATION,

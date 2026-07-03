@@ -58,9 +58,12 @@ def append_regional_normalization_to_source_json(regional_budgets):
             sources.append(source)
 
     method_notes = meta.setdefault("method_notes", [])
-    note = "I confronti regionali OpenBDAP possono essere normalizzati per popolazione o superficie territoriale."
-    if note not in method_notes:
-        method_notes.append(note)
+    for note in (
+        "I confronti regionali OpenBDAP possono essere normalizzati per popolazione o superficie territoriale.",
+        "La sezione regionale OpenBDAP usa dati di rendiconto/consuntivo della gestione: sono risultati a posteriori diversi dai bilanci previsionali.",
+    ):
+        if note not in method_notes:
+            method_notes.append(note)
 
     meta.setdefault("source_updates", {})["regional_denominators"] = {
         "updated": regional_budgets.get("denominator_updated"),
