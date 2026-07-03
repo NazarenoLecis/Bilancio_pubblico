@@ -55,6 +55,12 @@ from bilancio_pubblico.regional_budgets import (
     append_regional_budgets_to_source_json,
     load_regional_budgets,
 )
+from bilancio_pubblico.spending_adjustments import (
+    append_spending_adjustments_to_source_json,
+    augment_spending_frame,
+    augment_total_spending_frame,
+    load_spending_adjustments,
+)
 from bilancio_pubblico.utils import (
     BLACK,
     CHART_DIR,
@@ -229,6 +235,9 @@ def run(refresh=False):
     peer_spending, peer_spending_updated = load_peer_spending(refresh, "TOTAL", "total")
     peer_social, peer_social_updated = load_peer_spending(refresh, "GF10", "gf10")
     total_spending, total_spending_updated = load_total_spending_italy(refresh)
+    spending_adjustments = load_spending_adjustments(refresh)
+    cofog_spending_trend = augment_spending_frame(cofog_spending_trend, spending_adjustments)
+    total_spending = augment_total_spending_frame(total_spending, spending_adjustments)
     oecd_revenue, oecd_revenue_peers = load_oecd_revenue_data(refresh)
     oecd_spending, oecd_spending_peers = load_oecd_spending_data(refresh)
     tipo_reddito, calcolo_irpef = load_declaration_data(refresh)
@@ -332,9 +341,11 @@ def run(refresh=False):
             "peer_social": peer_social_updated,
             "total_spending": total_spending_updated,
             "regional_budgets": regional_budgets.get("updated"),
+            "population_hicp": spending_adjustments.get("updated", {}),
         },
         manifest_rows=entries,
     )
     append_regional_budgets_to_source_json(regional_budgets, manifest_rows=entries)
+    append_spending_adjustments_to_source_json(spending_adjustments)
     write_manifest(entries)
     print(f"Creati {len(entries)} grafici in {CHART_DIR}")

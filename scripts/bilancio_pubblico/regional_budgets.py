@@ -28,6 +28,7 @@ DEFAULT_COMPARTMENT = "Regionieprovinceautonome"
 FET_PHASE = "1"
 FET_TOTAL_YEARS = list(range(2019, 2025))
 FET_DETAIL_YEARS = [2024]
+OPENBDAP_DETAIL_YEAR = 2024
 
 COMPARTMENTS = {
     "Regionieprovinceautonome": "Regioni e province autonome",
@@ -312,6 +313,39 @@ def _records(frame):
     return rows
 
 
+def _year_frame(frame, year=OPENBDAP_DETAIL_YEAR):
+    if frame is None or frame.empty or "anno" not in frame:
+        return pd.DataFrame()
+    return frame[frame["anno"] == int(year)].copy()
+
+
+def _top_frame(frame, limit=80):
+    if frame is None or frame.empty or "mld" not in frame:
+        return pd.DataFrame()
+    return frame.sort_values("mld", ascending=False).head(limit).reset_index(drop=True)
+
+
+def _spending_2024_detail(regional_budgets):
+    by_region = _year_frame(regional_budgets.get("spending_by_region"))
+    by_mission = _year_frame(regional_budgets.get("spending_by_mission"))
+    by_title = _year_frame(regional_budgets.get("spending_by_title"))
+    return {
+        "year": OPENBDAP_DETAIL_YEAR,
+        "source": regional_budgets.get("source", SOURCE_OPENBDAP_REGIONI),
+        "unit": "mld",
+        "perimeter": COMPARTMENTS.get(DEFAULT_COMPARTMENT, DEFAULT_COMPARTMENT),
+        "by_region": _records(by_region.sort_values("mld", ascending=False) if not by_region.empty else by_region),
+        "by_mission": _records(by_mission.sort_values(["regione", "missione_code"]) if not by_mission.empty else by_mission),
+        "by_title": _records(by_title.sort_values(["regione", "titolo_code"]) if not by_title.empty else by_title),
+        "top_region_mission": _records(_top_frame(by_mission, limit=80)),
+        "top_region_title": _records(_top_frame(by_title, limit=80)),
+        "note": (
+            "Dettaglio OpenBDAP FET 2024 per Regioni e province autonome. "
+            "Le missioni e i titoli sono letti dagli endpoint della pagina Finanza degli Enti Territoriali."
+        ),
+    }
+
+
 def load_regional_budgets(refresh=False):
     """Carica e normalizza la sezione sui bilanci regionali."""
     specs = []
@@ -412,6 +446,7 @@ def append_regional_budgets_to_source_json(regional_budgets, manifest_rows=None)
         "spending_by_region": _records(regional_budgets.get("spending_by_region")),
         "spending_by_mission": _records(regional_budgets.get("spending_by_mission")),
         "spending_by_title": _records(regional_budgets.get("spending_by_title")),
+        "spending_2024_detail": _spending_2024_detail(regional_budgets),
         "revenue_by_region": _records(regional_budgets.get("revenue_by_region")),
         "revenue_by_title": _records(regional_budgets.get("revenue_by_title")),
         "balances_by_region": _records(regional_budgets.get("balances_by_region")),
