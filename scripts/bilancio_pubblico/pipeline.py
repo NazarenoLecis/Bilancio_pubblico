@@ -55,6 +55,10 @@ from bilancio_pubblico.regional_budgets import (
     append_regional_budgets_to_source_json,
     load_regional_budgets,
 )
+from bilancio_pubblico.regional_normalization import (
+    append_regional_normalization_to_source_json,
+    enrich_regional_budgets,
+)
 from bilancio_pubblico.spending_adjustments import (
     append_spending_adjustments_to_source_json,
     augment_spending_frame,
@@ -95,10 +99,6 @@ def build_manifest_entries(
     regional_updated=None,
 ):
     """Prepara la lista standardizzata di record da salvare in `manifest.csv`."""
-    # Crea il registro che accompagna tutti i file grafici:
-    # - nome file esportato
-    # - fonte ufficiale usata
-    # - data/periodo aggiornamento
     entries = [
         {
             "file": "01_principali_entrate_tributarie_2025.png",
@@ -219,13 +219,11 @@ def run(refresh=False):
 
     `refresh=False` usa cache, `refresh=True` forza il refresh da rete.
     """
-    # 1) Setup ambiente
     ensure_directories()
     configure_style()
     clean_generated_outputs()
     clean_regional_outputs()
 
-    # 2) Download/lettura dati: qui ogni funzione incapsula una fonte specifica
     mef_data, mef_items, mef_months = load_mef_entrate(refresh)
     territoriali_data, territoriali_items, territoriali_months = load_mef_territoriali(refresh)
     tax_pressure, eurostat_tax_updated = load_tax_pressure(refresh)
@@ -241,9 +239,8 @@ def run(refresh=False):
     oecd_revenue, oecd_revenue_peers = load_oecd_revenue_data(refresh)
     oecd_spending, oecd_spending_peers = load_oecd_spending_data(refresh)
     tipo_reddito, calcolo_irpef = load_declaration_data(refresh)
-    regional_budgets = load_regional_budgets(refresh)
+    regional_budgets = enrich_regional_budgets(load_regional_budgets(refresh), refresh)
 
-    # 3) Grafici Italia: entrate, contribuzione e composizione redditi
     plot_main_taxes(mef_items, mef_months, territoriali_items, territoriali_months)
     plot_direct_indirect(mef_items, mef_months)
     plot_tax_pressure(tax_pressure)
@@ -254,7 +251,6 @@ def run(refresh=False):
     plot_revenue_types(mef_items, mef_months, territoriali_items, territoriali_months)
     plot_succession_tax_focus(mef_items, mef_months)
 
-    # 4) Grafici Italia: spesa, patrimonio e bilanci regionali
     plot_cofog_spending(cofog_spending)
     plot_total_spending_italy(total_spending)
     plot_household_wealth_distribution()
@@ -270,37 +266,34 @@ def run(refresh=False):
         if filename
     ]
 
-    # 5) Confronti internazionali
     plot_peer_comparison(
         peer_tax,
-        [[("ITALIA: ", BLACK), ("TASSE ALTE?", ORANGE)]],
-        "Pressione fiscale e contributiva 2024\n% del PIL",
+        [[("PRESSIONE ", BLACK), ("FISCALE", ORANGE)]],
+        "Entrate fiscali e contributive 2024\n% del PIL",
         "09_pressione_fiscale_confronto_ue_2024.png",
         SOURCE_EUROSTAT_TAX,
     )
     plot_peer_comparison(
         peer_spending,
-        [[("CHI ", BLACK), ("SPENDE", ORANGE), (" DI PIU'?", BLACK)]],
+        [[("SPESA ", BLACK), ("PUBBLICA", ORANGE)]],
         "Spesa pubblica totale 2024\n% del PIL",
         "10_spesa_pubblica_confronto_ue_2024.png",
         SOURCE_EUROSTAT_EXP,
     )
     plot_peer_comparison(
         peer_social,
-        [[("QUANTO PESANO", BLACK)], [("PENSIONI E WELFARE?", ORANGE)]],
+        [[("PENSIONI E WELFARE", ORANGE)]],
         "Spesa per protezione sociale 2024\n% del PIL",
         "11_protezione_sociale_confronto_ue_2024.png",
         SOURCE_EUROSTAT_EXP,
     )
 
-    # 6) Confronti OCSE per struttura fiscale, spesa e indicatori di sintesi
     plot_oecd_revenue_categories(oecd_revenue)
     plot_oecd_spending_categories(oecd_spending)
     plot_oecd_total_tax(oecd_revenue_peers["_T"])
     plot_oecd_inheritance_tax(oecd_revenue_peers["T_4300"])
     plot_oecd_total_spending(oecd_spending_peers["_T"])
 
-    # 7) Report finale: manifest grafici e dati normalizzati
     entries = build_manifest_entries(
         mef_data,
         territoriali_data,
@@ -342,10 +335,12 @@ def run(refresh=False):
             "total_spending": total_spending_updated,
             "regional_budgets": regional_budgets.get("updated"),
             "population_hicp": spending_adjustments.get("updated", {}),
+            "regional_denominators": regional_budgets.get("denominator_updated"),
         },
         manifest_rows=entries,
     )
     append_regional_budgets_to_source_json(regional_budgets, manifest_rows=entries)
+    append_regional_normalization_to_source_json(regional_budgets)
     append_spending_adjustments_to_source_json(spending_adjustments)
     write_manifest(entries)
     print(f"Creati {len(entries)} grafici in {CHART_DIR}")
