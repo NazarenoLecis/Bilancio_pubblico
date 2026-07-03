@@ -6,6 +6,7 @@ L'obiettivo è avere un flusso semplice, ripetibile e leggibile:
 
 - dati da fonti ufficiali,
 - grafici su entrate, spesa, patrimonio, successioni e bilanci regionali,
+- serie consultabili in valori correnti, reali, pro capite e in quota di PIL quando disponibili,
 - output tracciabili con manifest grafici e JSON dashboard.
 
 ## Come avviare
@@ -29,7 +30,8 @@ FORZA_AGGIORNAMENTO = False
 2. pulisce gli output precedenti dichiarati;
 3. carica i dati (MEF, Eurostat, OCSE, dichiarazioni, OpenBDAP/RGS);
 4. genera i grafici in ordine: entrate, spesa, patrimonio, bilanci regionali, confronti internazionali;
-5. scrive:
+5. arricchisce le serie di spesa con popolazione e indice prezzi per metriche pro capite e reali;
+6. scrive:
    - [grafici/manifest.csv](/home/nazareno/PycharmProjects/Fisco/grafici/manifest.csv)
    - [data/export/bilancio-pubblico/source-data.json](/home/nazareno/PycharmProjects/Fisco/data/export/bilancio-pubblico/source-data.json) con i dati completi normalizzati.
    - [data/export/bilancio-pubblico/download-manifest.json](/home/nazareno/PycharmProjects/Fisco/data/export/bilancio-pubblico/download-manifest.json) con i file da passare alla pipeline dati.
@@ -62,6 +64,7 @@ python3 scripts/download_all.py --refresh
 - [scripts/bilancio_pubblico/utils.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/utils.py): costanti, path, download/caching, stile grafico, utilità salvataggio e formatter.
 - [scripts/bilancio_pubblico/data_extraction.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/data_extraction.py): tutte le funzioni di estrazione e normalizzazione dati nazionali e internazionali.
 - [scripts/bilancio_pubblico/regional_budgets.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/regional_budgets.py): ricerca OpenBDAP/RGS via CKAN, caricamento bilanci regionali, normalizzazione e append al JSON dashboard.
+- [scripts/bilancio_pubblico/spending_adjustments.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/spending_adjustments.py): popolazione, HICP, metriche di spesa reali e pro capite, riferimento SIOPE.
 - [scripts/bilancio_pubblico/pipeline.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/pipeline.py): orchestrazione completa del flusso.
 - [scripts/bilancio_pubblico/chart_generation/italia_entrate.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/italia_entrate.py): grafici Italia su entrate, IRPEF, redditi, successioni.
 - [scripts/bilancio_pubblico/chart_generation/italia_uscite.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/italia_uscite.py): grafici Italia su spesa per funzione e spesa totale.
@@ -92,6 +95,24 @@ Nel JSON dashboard viene aggiunta la chiave `regional_budgets`, con:
 - saldi per Regione;
 - dettaglio dei saldi.
 
+## Metriche reali e pro capite
+
+Le serie di spesa COFOG mantengono il valore nominale originale in `mld` e aggiungono campi derivati:
+
+- `pil`: valore in percentuale del PIL, già scaricato da Eurostat `gov_10a_exp`;
+- `population`: popolazione residente usata come denominatore;
+- `euro_per_capita`: euro correnti per abitante;
+- `mld_2024`: miliardi di euro a prezzi dell'ultimo anno comune disponibile, costruiti con HICP all-items;
+- `euro_2024_per_capita`: euro reali per abitante.
+
+La chiave JSON `spending_metric_options` descrive le metriche che la dashboard può mostrare. La fonte primaria della classificazione per funzione resta Eurostat COFOG. Popolazione e HICP servono solo per normalizzare la stessa serie.
+
+## SIOPE
+
+SIOPE viene registrato nel JSON come fonte di riferimento per i flussi di cassa degli enti pubblici. È distinto da Eurostat COFOG: SIOPE misura incassi, pagamenti e disponibilità liquide; Eurostat COFOG misura la spesa delle amministrazioni pubbliche secondo la contabilità nazionale.
+
+Nel JSON la chiave `siope_reference` conserva URL, perimetro e nota metodologica. L'integrazione diretta dei CSV SIOPE può essere aggiunta in una fase successiva, per una sezione specifica sui flussi di cassa degli enti territoriali.
+
 ## Fonti dati
 
 - MEF - API Entrate tributarie erariali e territoriali.
@@ -99,10 +120,13 @@ Nel JSON dashboard viene aggiunta la chiave `regional_budgets`, con:
 - MEF - Appendici statistiche alle entrate tributarie, dicembre 2025.
 - Eurostat `gov_10a_taxag` (pressione fiscale/contributiva).
 - Eurostat `gov_10a_exp` (spesa pubblica COFOG).
+- Eurostat `demo_pjan` (popolazione residente).
+- Eurostat `prc_hicp_aind` (HICP all-items, indice annuale).
 - Banca d'Italia, conti distributivi sulla ricchezza delle famiglie.
 - OCSE, Revenue Statistics 2025.
 - OCSE, National Accounts Statistics.
 - OpenBDAP/RGS, bilanci degli enti della PA, dati di consuntivo regionali.
+- SIOPE - Banca d'Italia/RGS, incassi e pagamenti degli enti pubblici.
 
 ## Note metodologiche
 
@@ -110,6 +134,7 @@ Nel JSON dashboard viene aggiunta la chiave `regional_budgets`, con:
 - Le somme sono coerenti con le unità riportate nelle singole fonti; i confronti internazionali usano la medesima logica usata nei grafici.
 - I valori OCSE usano il dato disponibile 2024 e includono la voce “Media OCSE” calcolata sui paesi con dato completo.
 - La sezione regionale dipende dalla disponibilità dei file tabellari nel catalogo OpenBDAP. Se il catalogo cambia nome alle risorse, la pipeline registra l'errore nel JSON senza bloccare i grafici nazionali.
+- Le serie reali sono deflazionate con HICP all-items. Per analisi tecniche su spesa pubblica reale si può valutare anche un deflatore di contabilità nazionale.
 - I grafici includono sempre fonte e firma in basso.
 
 ## Le variabili/concetti utili
@@ -117,6 +142,8 @@ Nel JSON dashboard viene aggiunta la chiave `regional_budgets`, con:
 - `FORZA_AGGIORNAMENTO` in `scripts/genera_grafici.py`.
 - `SOURCE_*` in `scripts/bilancio_pubblico/utils.py`: testo sorgenti da riportare in calce.
 - `SOURCE_OPENBDAP_REGIONI` in `scripts/bilancio_pubblico/regional_budgets.py`: fonte della sezione regionale.
+- `SPENDING_METRIC_OPTIONS` in `scripts/bilancio_pubblico/spending_adjustments.py`: metriche disponibili per la dashboard.
+- `SIOPE_REFERENCE` in `scripts/bilancio_pubblico/spending_adjustments.py`: metadati SIOPE e nota metodologica.
 - `GENERATED_FILES` in `scripts/bilancio_pubblico/utils.py`: elenco file gestiti nella pulizia e output.
 - `PEER_GEOS` e `OECD_MEMBER_AREAS`: elenchi paesi per i confronti.
 
