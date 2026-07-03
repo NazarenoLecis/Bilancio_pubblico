@@ -38,6 +38,7 @@ from bilancio_pubblico.chart_generation.regioni import (
 )
 from bilancio_pubblico.data_extraction import (
     load_cofog_spending,
+    load_cofog_spending_detail,
     load_cofog_spending_trend,
     load_declaration_data,
     load_mef_entrate,
@@ -229,6 +230,7 @@ def run(refresh=False):
     tax_pressure, eurostat_tax_updated = load_tax_pressure(refresh)
     cofog_spending, eurostat_exp_updated = load_cofog_spending(refresh)
     cofog_spending_trend, _cofog_spending_trend_updated = load_cofog_spending_trend(refresh)
+    cofog_spending_detail, _cofog_spending_detail_updated = load_cofog_spending_detail(refresh)
     peer_tax, peer_tax_updated = load_peer_tax_pressure(refresh)
     peer_spending, peer_spending_updated = load_peer_spending(refresh, "TOTAL", "total")
     peer_social, peer_social_updated = load_peer_spending(refresh, "GF10", "gf10")
@@ -326,6 +328,7 @@ def run(refresh=False):
         tipo_reddito,
         calcolo_irpef,
         cofog_spending_trend,
+        cofog_spending_detail,
         source_updates={
             "eurostat_tax": eurostat_tax_updated,
             "eurostat_exp": eurostat_exp_updated,

@@ -15,6 +15,7 @@ import pandas as pd
 
 from bilancio_pubblico.utils import (
     BAND_ORDER,
+    COFOG_DETAIL_LABELS,
     COFOG_LABELS,
     EUROSTAT_BASE_URL,
     fetch_json,
@@ -238,6 +239,62 @@ def load_cofog_spending_trend(refresh):
             try:
                 records.append(
                     {
+                        "codice": code,
+                        "funzione": label,
+                        "anno": int(year),
+                        "mld": float(series_mio.loc[year]) / 1000.0,
+                        "pil": float(series_gdp.loc[year]),
+                    }
+                )
+            except Exception:
+                continue
+        updated = updated_item or updated_gdp or updated
+    return pd.DataFrame(records), updated
+
+
+def load_cofog_spending_detail(refresh):
+    # Serie storica COFOG di secondo livello: serve a spiegare cosa compone le macro voci.
+    records = []
+    updated = None
+    for code, label in COFOG_DETAIL_LABELS.items():
+        parent_code = code[:4]
+        params_mio = {
+            "format": "JSON",
+            "lang": "en",
+            "freq": "A",
+            "unit": "MIO_EUR",
+            "sector": "S13",
+            "cofog99": code,
+            "na_item": "TE",
+            "geo": "IT",
+        }
+        params_gdp = {
+            **params_mio,
+            "unit": "PC_GDP",
+        }
+        try:
+            series_mio, updated_item = eurostat_series(
+                "gov_10a_exp",
+                params_mio,
+                f"eurostat_gov_10a_exp_{code}_mio_eur_detail.json",
+                refresh,
+            )
+            series_gdp, updated_gdp = eurostat_series(
+                "gov_10a_exp",
+                params_gdp,
+                f"eurostat_gov_10a_exp_{code}_pc_gdp_detail.json",
+                refresh,
+            )
+        except Exception:
+            continue
+
+        shared_years = series_mio.dropna().index.intersection(series_gdp.dropna().index)
+        for year in sorted(shared_years):
+            try:
+                records.append(
+                    {
+                        "parent_code": parent_code,
+                        "parent_function": COFOG_LABELS.get(parent_code, parent_code),
                         "codice": code,
                         "funzione": label,
                         "anno": int(year),

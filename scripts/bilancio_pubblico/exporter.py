@@ -740,7 +740,7 @@ def _build_revenue_category_series(erariali_items, erariali_months, territoriali
             "code": "SUCCESSIONI",
             "label": "Successioni e donazioni",
             "group": "Altri tributari",
-            "selectors": [{"starts": "Sost. redditi"}, {"contains": "successioni"}, {"contains": "donazioni"}],
+            "selectors": [{"contains": "successioni"}, {"contains": "donazioni"}],
             "source": "MEF erariali",
             "source_items": "erariali",
         },
@@ -860,6 +860,57 @@ def _cofog_category_series(cofog_spending):
     return sorted(payload, key=lambda item: item["latest_value_mld"] or 0, reverse=True)
 
 
+def _cofog_detail_series(cofog_spending_detail):
+    if cofog_spending_detail is None or cofog_spending_detail.empty:
+        return []
+
+    grouped = cofog_spending_detail.sort_values("anno").groupby("codice")
+    payload = []
+    for code, group in grouped:
+        group = group.sort_values("anno")
+        records = []
+        for _, row in group.iterrows():
+            value_mld = _to_number(row["mld"], 4)
+            value_pil = _to_number(row["pil"], 4)
+            if value_mld is not None or value_pil is not None:
+                records.append(
+                    {
+                        "year": _to_number(int(row["anno"])),
+                        "value_mld": value_mld,
+                        "value_pil": value_pil,
+                    }
+                )
+        last_row = group.iloc[-1]
+        item = {
+            "code": code,
+            "label": _safe_last(last_row["funzione"]) or code,
+            "parent_code": _safe_last(last_row["parent_code"]) or str(code)[:4],
+            "parent_label": _safe_last(last_row["parent_function"]) or str(code)[:4],
+            "unit": "mld",
+            "series": records,
+            "latest_year": _to_number(int(last_row["anno"])),
+            "latest_value_mld": _to_number(last_row["mld"], 4),
+            "latest_value_pil": _to_number(last_row["pil"], 4),
+        }
+        if records:
+            payload.append(item)
+
+    parent_totals = {}
+    for item in payload:
+        parent_key = (item["parent_code"], item["latest_year"])
+        parent_totals[parent_key] = parent_totals.get(parent_key, 0) + (item.get("latest_value_mld") or 0)
+
+    for item in payload:
+        parent_total = parent_totals.get((item["parent_code"], item["latest_year"]))
+        item["latest_share_parent_percent"] = (
+            _to_number((item.get("latest_value_mld") or 0) / parent_total * 100.0, 4)
+            if parent_total
+            else None
+        )
+
+    return sorted(payload, key=lambda item: (item.get("parent_code") or "", -(item.get("latest_value_mld") or 0)))
+
+
 def _build_pie_payload(rows, value_key, year_key="latest_year"):
     normalized = [row for row in rows if row and _safe_last(row.get(value_key)) is not None and _safe_last(row.get(year_key)) is not None]
     total = _safe_sum(*[row.get(value_key) for row in normalized])
@@ -951,8 +1002,7 @@ def _build_wealth_payload():
 def _build_succession_payload(total_erariali):
     try:
         total = float(total_erariali) if total_erariali is not None and not pd.isna(total_erariali) else None
-        # 1.081 mld = 1081 mln.
-        share = (SUCCESSIONI_DONAZIONI_2025 / 1000.0) / total * 100.0 if total else None
+        share = SUCCESSIONI_DONAZIONI_2025 / total * 100.0 if total else None
     except Exception:
         share = None
 
@@ -1116,6 +1166,7 @@ def export_bilancio_source_json(
     tipo_reddito,
     calcolo_irpef,
     cofog_spending_trend,
+    cofog_spending_detail=None,
     source_updates=None,
     manifest_rows=None,
 ):
@@ -1179,6 +1230,7 @@ def export_bilancio_source_json(
     all_revenue_lines = _prepend_social_contributions(all_revenue_lines, social_contributions)
     revenue_pie = _build_pie_payload(revenue_category_series, "latest_value_mld")
     spending_category_series = _cofog_category_series(cofog_spending_trend)
+    spending_function_detail_series = _cofog_detail_series(cofog_spending_detail)
     spending_pie = _build_pie_payload(spending_category_series, "latest_value_mld")
     under_500m_revenue = _build_under_500m_revenue_summary(
         all_revenue_lines,
@@ -1260,7 +1312,9 @@ def export_bilancio_source_json(
         "spending_by_function": cofog_summary,
         "spending_focus": spending_focus,
         "cofog_spending_trend": _records_from_frame(cofog_spending_trend),
+        "cofog_spending_detail": _records_from_frame(cofog_spending_detail),
         "spending_category_series": spending_category_series,
+        "spending_function_detail_series": spending_function_detail_series,
         "spending_pie": spending_pie,
         "total_spending_trend": _records_from_frame(total_spending),
         "tax_revenue_by_type": direct_indirect,
@@ -1282,6 +1336,7 @@ def export_bilancio_source_json(
             "peer_countries": len(peer_rows),
             "cofog_categories": len(cofog_spending) if cofog_spending is not None else 0,
             "cofog_categories_trend": len(spending_category_series),
+            "cofog_detail_categories_trend": len(spending_function_detail_series),
             "spending_focus_items": len(spending_focus),
             "irpef_bands": len(irpef_by_band),
             "income_bands": len(income_by_band),
