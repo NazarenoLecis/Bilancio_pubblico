@@ -46,10 +46,10 @@ def plot_main_taxes(erariali_items, erariali_months, territoriali_items, territo
 
     fig, ax = create_post(
         [
-            [("QUALI ", BLACK), ("TASSE", ORANGE), (" INCASSA", BLACK)],
-            [("LO STATO ITALIANO?", BLACK)],
+            [("ENTRATE ", BLACK), ("TRIBUTARIE", ORANGE)],
+            [("PRINCIPALI", BLACK)],
         ],
-        "Entrate tributarie principali 2025\nMiliardi di euro correnti",
+        "Imposte, accise e principali tributi 2025\nMiliardi di euro correnti",
         axes_rect=[0.31, 0.305, 0.58, 0.39],
     )
     colors = [NAVY] * (len(frame) - 1) + [ORANGE]
@@ -80,7 +80,8 @@ def plot_direct_indirect(items, months):
 
     fig, ax = create_post(
         [
-            [("DIRETTE O ", BLACK), ("INDIRETTE?", ORANGE)],
+            [("IMPOSTE ", BLACK), ("DIRETTE", ORANGE)],
+            [("E INDIRETTE", BLACK)],
         ],
         "Entrate erariali per natura\nMiliardi di euro correnti",
         axes_rect=[0.105, 0.305, 0.84, 0.455],
