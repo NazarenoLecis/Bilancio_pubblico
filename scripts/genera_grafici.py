@@ -4,6 +4,8 @@ Questo file non contiene logica di elaborazione complessa.
 Il suo unico compito è:
 - indicare come deve partire la run (`FORZA_AGGIORNAMENTO`)
 - chiamare la funzione `run` del pipeline con quel flag
+- aggiungere al JSON finale la vista logica per sezioni
+- scrivere i file JSON separati delle quattro sezioni
 
 Come si usa:
 - apri questo file e imposta FORZA_AGGIORNAMENTO
@@ -15,6 +17,7 @@ Valori accettati:
 """
 
 from bilancio_pubblico.pipeline import run
+from bilancio_pubblico.section_export import materialize_section_outputs
 
 
 FORZA_AGGIORNAMENTO = False
@@ -28,6 +31,7 @@ def genera_tutta_la_pubb(forza_aggiornamento=False) -> None:
       False -> usa cache locale, True -> forza il refresh da API.
     """
     run(forza_aggiornamento)
+    materialize_section_outputs(sections="all")
 
 
 def main():
