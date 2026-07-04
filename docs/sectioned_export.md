@@ -9,15 +9,104 @@ In aggiunta, dopo la pipeline viene aggiunta una vista logica a quattro sezioni:
 3. `confronto_ocse`
 4. `regioni`
 
-Questa estensione non modifica la dashboard. Serve a rendere piu' leggibile l'export dati e a preparare eventuali viste future senza rompere le chiavi gia' usate.
+Questa estensione non modifica la dashboard. Serve a rendere piu' leggibile l'export dati, a produrre file separati per sezione e a preparare notebook di controllo.
 
-## Chiavi aggiunte
+## Schema centrale
+
+Lo schema operativo e' in:
+
+```text
+scripts/bilancio_pubblico/section_schema.py
+```
+
+Contiene:
+
+- `SECTION_SCHEMA`, cioe' le quattro sezioni con id, label, ordine, perimetro, fonti principali, chiavi legacy, file di output e notebook associato;
+- `SECTION_IDS`, cioe' l'ordine canonico delle sezioni;
+- alias CLI come `all`, `tutte`, `italia`, `europa`, `ocse`, `regioni`;
+- aggregati regionali di entrata e spesa.
+
+## Chiavi aggiunte al source JSON
 
 `section_index` contiene l'indice ordinato delle sezioni, con etichetta, descrizione, perimetro e fonti principali.
 
 `sections` contiene i payload raggruppati per sezione.
 
 Le chiavi legacy restano al primo livello del JSON.
+
+## File separati per sezione
+
+Dopo la materializzazione vengono creati quattro file:
+
+```text
+data/export/bilancio-pubblico/sections/italia.json
+data/export/bilancio-pubblico/sections/confronto_europeo.json
+data/export/bilancio-pubblico/sections/confronto_ocse.json
+data/export/bilancio-pubblico/sections/regioni.json
+```
+
+Viene creato anche il manifest specifico:
+
+```text
+data/export/bilancio-pubblico/sections/download-manifest.json
+```
+
+Il manifest generale `data/export/bilancio-pubblico/download-manifest.json` include il source JSON, i quattro section JSON e il manifest delle sezioni.
+
+## Run delle sezioni
+
+Per runnare tutto:
+
+```bash
+python3 scripts/run_sections.py --sections all
+```
+
+Per runnare solo alcune sezioni:
+
+```bash
+python3 scripts/run_sections.py --sections italia,regioni
+```
+
+Per riscrivere solo gli export di sezione da un `source-data.json` gia' presente:
+
+```bash
+python3 scripts/run_sections.py --sections all --skip-pipeline
+```
+
+Per forzare il refresh delle fonti:
+
+```bash
+python3 scripts/run_sections.py --sections all --refresh
+```
+
+La pipeline dati resta eseguita una sola volta. Le sezioni sono materializzate dopo la generazione del JSON sorgente.
+
+## Download
+
+Per produrre source JSON, quattro section JSON e manifest completo:
+
+```bash
+python3 scripts/download_all.py
+```
+
+Con refresh completo:
+
+```bash
+python3 scripts/download_all.py --refresh
+```
+
+## Notebook
+
+I notebook sono in:
+
+```text
+notebooks/01_italia.ipynb
+notebooks/02_confronto_europeo.ipynb
+notebooks/03_confronto_ocse.ipynb
+notebooks/04_regioni.ipynb
+```
+
+Ogni notebook legge prima il file separato della propria sezione. Se il file non esiste, legge la sezione corrispondente da `source-data.json`.
 
 ## Sezione Italia
 
@@ -57,20 +146,3 @@ Oltre alle chiavi gia' presenti in `regional_budgets`, la sezione crea aggregati
 Crea anche `saldo_finale`, calcolato come entrate finali meno spese finali. Le spese finali sono i titoli 1-3. Debito, anticipazioni e partite di giro restano disponibili come voci separate.
 
 Gli aggregati regionali mantengono, quando disponibili, euro pro capite ed euro per kmq.
-
-## Esecuzione
-
-Le due entrypoint standard aggiungono automaticamente la vista a sezioni:
-
-```bash
-python3 scripts/genera_grafici.py
-python3 scripts/download_all.py
-```
-
-Il modulo puo' anche essere eseguito da codice:
-
-```python
-from bilancio_pubblico.section_export import append_sectioned_export_to_source_json
-
-append_sectioned_export_to_source_json()
-```
