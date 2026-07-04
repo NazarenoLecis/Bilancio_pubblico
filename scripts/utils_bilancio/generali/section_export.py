@@ -25,6 +25,16 @@ from utils_bilancio.generali.costanti import SOURCE_DATA_JSON_PATH
 
 SECTION_EXPORT_DIR = SOURCE_DATA_JSON_PATH.parent / "sections"
 SECTION_MANIFEST_PATH = SECTION_EXPORT_DIR / "download-manifest.json"
+REGIONAL_REAL_METRIC_FIELDS = {
+    "mld_reale",
+    "real_base_year",
+    "mld_2024",
+    "euro_reale_per_capita",
+    "euro_2024_per_capita",
+    "entrate_finali_mld_reale",
+    "spese_finali_mld_reale",
+}
+REGIONAL_REAL_METRIC_IDS = {"mld_reale", "euro_reale_per_capita"}
 
 
 def path_or_default(path):
@@ -50,6 +60,26 @@ def round_number(value, digits=6):
 
 def as_rows(value):
     return value if isinstance(value, list) else []
+
+
+def strip_regional_real_metrics(rows):
+    output = []
+    for row in as_rows(rows):
+        if not isinstance(row, dict):
+            continue
+        output.append({key: value for key, value in row.items() if key not in REGIONAL_REAL_METRIC_FIELDS})
+    return output
+
+
+def strip_regional_real_options(options):
+    output = []
+    for option in as_rows(options):
+        if not isinstance(option, dict):
+            continue
+        if option.get("id") in REGIONAL_REAL_METRIC_IDS or option.get("field") in REGIONAL_REAL_METRIC_FIELDS:
+            continue
+        output.append(option)
+    return output
 
 
 def safe_get(payload, key, fallback=None):
@@ -117,31 +147,16 @@ def aggregate_title_rows(rows, aggregate_specs, value_field="mld"):
                 value = round_number(row.get(value_field), 12)
                 if value is not None:
                     item["mld"] += value
-                real_value = round_number(row.get("mld_reale"), 12)
-                if real_value is not None:
-                    item["mld_reale"] = item.get("mld_reale", 0.0) + real_value
-                    item["real_base_year"] = row.get("real_base_year")
-                value_2024 = round_number(row.get("mld_2024"), 12)
-                if value_2024 is not None:
-                    item["mld_2024"] = item.get("mld_2024", 0.0) + value_2024
                 for optional_key in ("comparto", "comparto_label"):
                     if optional_key in row and optional_key not in item:
                         item[optional_key] = row.get(optional_key)
 
         for item in grouped.values():
             item["mld"] = round_number(item["mld"], 6)
-            if "mld_reale" in item:
-                item["mld_reale"] = round_number(item["mld_reale"], 6)
-            if "mld_2024" in item:
-                item["mld_2024"] = round_number(item["mld_2024"], 6)
             population = round_number(item.get("population"), 6)
             area = round_number(item.get("area_km2"), 6)
             if item["mld"] is not None and population:
                 item["euro_per_capita"] = round_number(item["mld"] * 1_000_000_000.0 / population, 6)
-            if item.get("mld_reale") is not None and population:
-                item["euro_reale_per_capita"] = round_number(item["mld_reale"] * 1_000_000_000.0 / population, 6)
-            if item.get("mld_2024") is not None and population:
-                item["euro_2024_per_capita"] = round_number(item["mld_2024"] * 1_000_000_000.0 / population, 6)
             if item["mld"] is not None and area:
                 item["euro_per_km2"] = round_number(item["mld"] * 1_000_000_000.0 / area, 6)
             gdp_mld = round_number(item.get("gdp_mld"), 6)
@@ -175,16 +190,6 @@ def build_final_balance_rows(revenue_aggregates, spending_aggregates):
         balance_mld = None
         if revenue_mld is not None and spending_mld is not None:
             balance_mld = revenue_mld - spending_mld
-        revenue_real_mld = round_number(revenue_row.get("mld_reale"), 12)
-        spending_real_mld = round_number(spending_row.get("mld_reale"), 12)
-        balance_real_mld = None
-        if revenue_real_mld is not None and spending_real_mld is not None:
-            balance_real_mld = revenue_real_mld - spending_real_mld
-        revenue_2024_mld = round_number(revenue_row.get("mld_2024"), 12)
-        spending_2024_mld = round_number(spending_row.get("mld_2024"), 12)
-        balance_2024_mld = None
-        if revenue_2024_mld is not None and spending_2024_mld is not None:
-            balance_2024_mld = revenue_2024_mld - spending_2024_mld
         item = {
             "regione": key[0],
             "anno": key[1],
@@ -192,13 +197,8 @@ def build_final_balance_rows(revenue_aggregates, spending_aggregates):
             "aggregate_label": "Saldo finale",
             "unit": "mld",
             "mld": round_number(balance_mld, 6),
-            "mld_reale": round_number(balance_real_mld, 6),
-            "real_base_year": revenue_row.get("real_base_year") or spending_row.get("real_base_year"),
-            "mld_2024": round_number(balance_2024_mld, 6),
             "entrate_finali_mld": round_number(revenue_mld, 6),
             "spese_finali_mld": round_number(spending_mld, 6),
-            "entrate_finali_mld_reale": round_number(revenue_real_mld, 6),
-            "spese_finali_mld_reale": round_number(spending_real_mld, 6),
             "population": revenue_row.get("population") or spending_row.get("population"),
             "area_km2": revenue_row.get("area_km2") or spending_row.get("area_km2"),
             "gdp_mld": revenue_row.get("gdp_mld") or spending_row.get("gdp_mld"),
@@ -209,10 +209,6 @@ def build_final_balance_rows(revenue_aggregates, spending_aggregates):
         area = round_number(item.get("area_km2"), 6)
         if item["mld"] is not None and population:
             item["euro_per_capita"] = round_number(item["mld"] * 1_000_000_000.0 / population, 6)
-        if item.get("mld_reale") is not None and population:
-            item["euro_reale_per_capita"] = round_number(item["mld_reale"] * 1_000_000_000.0 / population, 6)
-        if item.get("mld_2024") is not None and population:
-            item["euro_2024_per_capita"] = round_number(item["mld_2024"] * 1_000_000_000.0 / population, 6)
         if item["mld"] is not None and area:
             item["euro_per_km2"] = round_number(item["mld"] * 1_000_000_000.0 / area, 6)
         gdp_mld = round_number(item.get("gdp_mld"), 6)
@@ -316,8 +312,18 @@ def build_oecd_section(payload):
 def build_regions_section(payload):
     regional = safe_get(payload, "regional_budgets", {})
     siope = safe_get(payload, "siope_flussi", {})
-    revenue_aggregates = aggregate_title_rows(regional.get("revenue_by_title"), REGIONAL_REVENUE_AGGREGATES)
-    spending_aggregates = aggregate_title_rows(regional.get("spending_by_title"), REGIONAL_SPENDING_AGGREGATES)
+    regional_options = strip_regional_real_options(regional.get("normalization_options", []))
+    siope_options = strip_regional_real_options(siope.get("normalization_options", []))
+    revenue_by_region = strip_regional_real_metrics(regional.get("revenue_by_region", []))
+    revenue_by_title = strip_regional_real_metrics(regional.get("revenue_by_title", []))
+    revenue_by_tipology = strip_regional_real_metrics(regional.get("revenue_by_tipology", []))
+    spending_by_region = strip_regional_real_metrics(regional.get("spending_by_region", []))
+    spending_by_mission = strip_regional_real_metrics(regional.get("spending_by_mission", []))
+    spending_by_mission_title = strip_regional_real_metrics(regional.get("spending_by_mission_title", []))
+    spending_by_title = strip_regional_real_metrics(regional.get("spending_by_title", []))
+    balances_by_region = strip_regional_real_metrics(regional.get("balances_by_region", []))
+    revenue_aggregates = aggregate_title_rows(revenue_by_title, REGIONAL_REVENUE_AGGREGATES)
+    spending_aggregates = aggregate_title_rows(spending_by_title, REGIONAL_SPENDING_AGGREGATES)
     final_balance = build_final_balance_rows(revenue_aggregates, spending_aggregates)
     return {
         "id": "regioni",
@@ -326,8 +332,8 @@ def build_regions_section(payload):
         "updated": regional.get("updated"),
         "coverage": regional.get("coverage", []),
         "perimeters": regional.get("perimeters", []),
-        "normalization_options": regional.get("normalization_options", []),
-        "real_adjustment_sources": regional.get("real_adjustment_sources", {}),
+        "normalization_options": regional_options,
+        "real_adjustment_sources": {},
         "denominators": {
             "rows": regional.get("regional_denominators", []),
             "sources": regional.get("denominator_sources", []),
@@ -335,23 +341,26 @@ def build_regions_section(payload):
             "errors": regional.get("denominator_errors", []),
         },
         "revenue": {
-            "by_region": regional.get("revenue_by_region", []),
-            "by_title": regional.get("revenue_by_title", []),
+            "by_region": revenue_by_region,
+            "by_title": revenue_by_title,
+            "by_tipology": revenue_by_tipology,
             "aggregates_by_region": revenue_aggregates,
             "aggregate_options": REGIONAL_REVENUE_AGGREGATES,
-            "note": "La vista per aggregati regionali distingue entrate finali, correnti e voci non finali usando i titoli OpenBDAP disponibili.",
+            "note": "La vista per aggregati regionali distingue entrate finali, correnti e voci non finali usando i titoli OpenBDAP disponibili. La vista per tipologia scende al codice a 6 cifre esposto da OpenBDAP/FET per i confronti regionali.",
         },
         "spending": {
-            "by_region": regional.get("spending_by_region", []),
-            "by_mission": regional.get("spending_by_mission", []),
-            "by_title": regional.get("spending_by_title", []),
+            "by_region": spending_by_region,
+            "by_mission": spending_by_mission,
+            "by_mission_title": spending_by_mission_title,
+            "by_title": spending_by_title,
             "aggregates_by_region": spending_aggregates,
             "aggregate_options": REGIONAL_SPENDING_AGGREGATES,
+            "note": "Il dettaglio regionale OpenBDAP/FET arriva al livello missione x titolo. I macroaggregati sono disponibili nella UI OpenBDAP come gerarchia nazionale, ma non come matrice regionale stabile nello stesso endpoint.",
         },
         "balances": {
-            "by_region": regional.get("balances_by_region", []),
+            "by_region": balances_by_region,
             "final_by_region": final_balance,
-            "detail": regional.get("balances_detail", []),
+            "detail": strip_regional_real_metrics(regional.get("balances_detail", [])),
             "note": "Il saldo finale usa solo titoli finali. Il saldo totale storico resta nella chiave regional_budgets.balances_by_region.",
         },
         "siope": {
@@ -361,13 +370,13 @@ def build_regions_section(payload):
             "complete_years": siope.get("complete_years", []),
             "partial_years": siope.get("partial_years", []),
             "perimeters": siope.get("perimeters", []),
-            "normalization_options": siope.get("normalization_options", []),
-            "real_adjustment_sources": siope.get("real_adjustment_sources", {}),
-            "by_region_year": siope.get("by_region_year", []),
-            "by_region_month": siope.get("by_region_month", []),
-            "by_region_code_year": siope.get("by_region_code_year", []),
-            "balances_by_region_year": siope.get("balances_by_region_year", []),
-            "by_region_compartment_year": siope.get("by_region_compartment_year", []),
+            "normalization_options": siope_options,
+            "real_adjustment_sources": {},
+            "by_region_year": strip_regional_real_metrics(siope.get("by_region_year", [])),
+            "by_region_month": strip_regional_real_metrics(siope.get("by_region_month", [])),
+            "by_region_code_year": strip_regional_real_metrics(siope.get("by_region_code_year", [])),
+            "balances_by_region_year": strip_regional_real_metrics(siope.get("balances_by_region_year", [])),
+            "by_region_compartment_year": strip_regional_real_metrics(siope.get("by_region_compartment_year", [])),
             "entity_counts_by_region": siope.get("entity_counts_by_region", []),
             "datasets": siope.get("datasets", []),
             "errors": siope.get("errors", []),
@@ -376,7 +385,9 @@ def build_regions_section(payload):
         "latest_years": {
             "totals": latest_year(regional.get("revenue_by_region"), "anno"),
             "titles": latest_year(regional.get("revenue_by_title"), "anno"),
+            "tipologies": latest_year(regional.get("revenue_by_tipology"), "anno"),
             "missions": latest_year(regional.get("spending_by_mission"), "anno"),
+            "mission_titles": latest_year(regional.get("spending_by_mission_title"), "anno"),
             "siope": latest_year(siope.get("by_region_year"), "anno"),
         },
         "source_updates": source_meta(payload, "regional_budgets", "regional_denominators", "siope_flussi"),

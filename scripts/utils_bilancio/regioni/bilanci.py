@@ -126,6 +126,35 @@ REVENUE_TITLE_LABELS = {
     "09": "Entrate per conto terzi e partite di giro",
 }
 
+REVENUE_TIPOLOGY_LABELS = {
+    "010101": "Imposte tasse e proventi assimilati",
+    "010102": "Tributi destinati al finanziamento della sanita'",
+    "010103": "Tributi devoluti e regolati alle autonomie speciali",
+    "010104": "Compartecipazioni di tributi",
+    "010301": "Fondi perequativi da Amministrazioni Centrali",
+    "020101": "Trasferimenti correnti da Amministrazioni pubbliche",
+    "020102": "Trasferimenti correnti da Famiglie",
+    "020103": "Trasferimenti correnti da Imprese",
+    "020104": "Trasferimenti correnti da Istituzioni Sociali Private",
+    "020105": "Trasferimenti correnti dall'Unione Europea e dal Resto del Mondo",
+    "030100": "Vendita di beni e servizi e proventi derivanti dalla gestione dei beni",
+    "030200": "Proventi derivanti dall'attivita' di controllo e repressione delle irregolarita' e degli illeciti",
+    "030300": "Interessi attivi",
+    "030400": "Altre entrate da redditi da capitale",
+    "030500": "Rimborsi e altre entrate correnti",
+    "040100": "Tributi in conto capitale",
+    "040200": "Contributi agli investimenti",
+    "040300": "Altri trasferimenti in conto capitale",
+    "040400": "Entrate da alienazione di beni materiali e immateriali",
+    "040500": "Altre entrate in conto capitale",
+    "050100": "Alienazione di attivita' finanziarie",
+    "050200": "Riscossione di crediti di breve termine",
+    "050300": "Riscossione crediti di medio-lungo termine",
+    "050400": "Altre entrate per riduzione di attivita' finanziarie",
+    "060300": "Accensione Mutui e altri finanziamenti a medio lungo termine",
+    "060400": "Altre forme di indebitamento",
+}
+
 
 def normalise_text(value):
     text = "" if value is None else str(value)
@@ -329,6 +358,7 @@ def top_frame(frame, limit=80):
 def spending_2024_detail(regional_budgets):
     by_region = year_frame(regional_budgets.get("spending_by_region"))
     by_mission = year_frame(regional_budgets.get("spending_by_mission"))
+    by_mission_title = year_frame(regional_budgets.get("spending_by_mission_title"))
     by_title = year_frame(regional_budgets.get("spending_by_title"))
     return {
         "year": OPENBDAP_DETAIL_YEAR,
@@ -337,8 +367,10 @@ def spending_2024_detail(regional_budgets):
         "perimeter": COMPARTMENTS.get(DEFAULT_COMPARTMENT, DEFAULT_COMPARTMENT),
         "by_region": records(by_region.sort_values("mld", ascending=False) if not by_region.empty else by_region),
         "by_mission": records(by_mission.sort_values(["regione", "missione_code"]) if not by_mission.empty else by_mission),
+        "by_mission_title": records(by_mission_title.sort_values(["regione", "missione_code", "titolo_code"]) if not by_mission_title.empty else by_mission_title),
         "by_title": records(by_title.sort_values(["regione", "titolo_code"]) if not by_title.empty else by_title),
         "top_region_mission": records(top_frame(by_mission, limit=80)),
+        "top_region_mission_title": records(top_frame(by_mission_title, limit=120)),
         "top_region_title": records(top_frame(by_title, limit=80)),
         "note": (
             "Dettaglio OpenBDAP FET 2024 per Regioni e province autonome. "
@@ -375,6 +407,22 @@ def load_regional_budgets(refresh=False):
                 }
             )
 
+        for mission_code, mission_label in MISSION_LABELS.items():
+            for title_code, title_label in SPENDING_TITLE_LABELS.items():
+                specs.append(
+                    {
+                        **region_spec(year, DEFAULT_COMPARTMENT, "1", mission=mission_code, title=title_code, measure="spesa"),
+                        "dataset": "spending_by_mission_title",
+                        "label": "Spesa per missione e titolo",
+                        "extra": {
+                            "missione_code": mission_code,
+                            "missione": mission_label,
+                            "titolo_code": title_code,
+                            "titolo": title_label,
+                        },
+                    }
+                )
+
         for code, label in REVENUE_TITLE_LABELS.items():
             specs.append(
                 {
@@ -382,6 +430,22 @@ def load_regional_budgets(refresh=False):
                     "dataset": "revenue_by_title",
                     "label": "Entrate per titolo",
                     "extra": {"titolo_code": code, "titolo": label},
+                }
+            )
+
+        for code, label in REVENUE_TIPOLOGY_LABELS.items():
+            title_code = code[:2]
+            specs.append(
+                {
+                    **region_spec(year, DEFAULT_COMPARTMENT, "2", title=title_code, tipologia=code, measure="entrate"),
+                    "dataset": "revenue_by_tipology",
+                    "label": "Entrate per tipologia",
+                    "extra": {
+                        "titolo_code": title_code,
+                        "titolo": REVENUE_TITLE_LABELS.get(title_code, title_code),
+                        "tipologia_code": code,
+                        "tipologia": label,
+                    },
                 }
             )
 
@@ -397,18 +461,22 @@ def load_regional_budgets(refresh=False):
             "coverage": [],
             "spending_by_region": empty_region,
             "spending_by_mission": empty_category,
+            "spending_by_mission_title": empty_category,
             "spending_by_title": empty_category,
             "revenue_by_region": empty_region,
             "revenue_by_title": empty_category,
+            "revenue_by_tipology": empty_category,
             "balances_by_region": empty_region,
             "balances_detail": empty_category,
         }
 
     spending_by_region = frame[(frame["misura"] == "spesa") & frame["missione"].isna() & frame["titolo"].isna()].copy()
     revenue_by_region = frame[(frame["misura"] == "entrate") & frame["missione"].isna() & frame["titolo"].isna()].copy()
-    spending_by_mission = frame[(frame["misura"] == "spesa") & frame["missione"].notna()].copy()
-    spending_by_title = frame[(frame["misura"] == "spesa") & frame["titolo"].notna()].copy()
-    revenue_by_title = frame[(frame["misura"] == "entrate") & frame["titolo"].notna()].copy()
+    spending_by_mission = frame[(frame["misura"] == "spesa") & frame["missione"].notna() & frame["titolo"].isna()].copy()
+    spending_by_mission_title = frame[(frame["misura"] == "spesa") & frame["missione"].notna() & frame["titolo"].notna()].copy()
+    spending_by_title = frame[(frame["misura"] == "spesa") & frame["missione"].isna() & frame["titolo"].notna()].copy()
+    revenue_by_title = frame[(frame["misura"] == "entrate") & frame["titolo"].notna() & frame["tipologia"].isna()].copy()
+    revenue_by_tipology = frame[(frame["misura"] == "entrate") & frame["tipologia"].notna()].copy()
     balances_by_region = balance_frame(spending_by_region, revenue_by_region)
 
     return {
@@ -420,9 +488,11 @@ def load_regional_budgets(refresh=False):
         "perimeters": [{"code": code, "label": label} for code, label in COMPARTMENTS.items()],
         "spending_by_region": spending_by_region.sort_values(["anno", "regione"]).reset_index(drop=True),
         "spending_by_mission": spending_by_mission.sort_values(["anno", "regione", "missione_code"]).reset_index(drop=True),
+        "spending_by_mission_title": spending_by_mission_title.sort_values(["anno", "regione", "missione_code", "titolo_code"]).reset_index(drop=True),
         "spending_by_title": spending_by_title.sort_values(["anno", "regione", "titolo_code"]).reset_index(drop=True),
         "revenue_by_region": revenue_by_region.sort_values(["anno", "regione"]).reset_index(drop=True),
         "revenue_by_title": revenue_by_title.sort_values(["anno", "regione", "titolo_code"]).reset_index(drop=True),
+        "revenue_by_tipology": revenue_by_tipology.sort_values(["anno", "regione", "titolo_code", "tipologia_code"]).reset_index(drop=True),
         "balances_by_region": balances_by_region.sort_values(["anno", "regione"]).reset_index(drop=True),
         "balances_detail": pd.DataFrame(),
     }
@@ -446,10 +516,12 @@ def append_regional_budgets_to_source_json(regional_budgets, manifest_rows=None)
         "perimeters": regional_budgets.get("perimeters", []),
         "spending_by_region": records(regional_budgets.get("spending_by_region")),
         "spending_by_mission": records(regional_budgets.get("spending_by_mission")),
+        "spending_by_mission_title": records(regional_budgets.get("spending_by_mission_title")),
         "spending_by_title": records(regional_budgets.get("spending_by_title")),
         "spending_2024_detail": spending_2024_detail(regional_budgets),
         "revenue_by_region": records(regional_budgets.get("revenue_by_region")),
         "revenue_by_title": records(regional_budgets.get("revenue_by_title")),
+        "revenue_by_tipology": records(regional_budgets.get("revenue_by_tipology")),
         "balances_by_region": records(regional_budgets.get("balances_by_region")),
         "balances_detail": records(regional_budgets.get("balances_detail")),
     }

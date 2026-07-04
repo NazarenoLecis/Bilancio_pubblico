@@ -21,8 +21,6 @@ from utils_bilancio.regioni.denominatori import (
     denominator_records,
     load_regional_denominators,
 )
-from utils_bilancio.regioni.normalizzazione import add_real_values
-from utils_bilancio.italia.aggiustamenti import SOURCE_EUROSTAT_HICP, load_spending_adjustments
 from utils_bilancio.generali.costanti import DATA_DIR, SOURCE_DATA_JSON_PATH, USER_AGENT
 
 
@@ -386,15 +384,13 @@ def combine_parts(parts, columns):
     return frame.groupby(columns, as_index=False)["mld"].sum()
 
 
-def enrich_siope_frame(frame, denominators, adjustments):
+def enrich_siope_frame(frame, denominators):
     if frame is None or frame.empty:
         return frame
-    result = add_regional_denominators(frame, denominators)
-    result = add_real_values(result, adjustments)
-    return result
+    return add_regional_denominators(frame, denominators)
 
 
-def build_siope_balances(year_frame, denominators, adjustments):
+def build_siope_balances(year_frame, denominators):
     if year_frame is None or year_frame.empty:
         return pd.DataFrame()
     pivot = year_frame.pivot_table(
@@ -420,7 +416,7 @@ def build_siope_balances(year_frame, denominators, adjustments):
             "uscite_mld",
         ]
     ].copy()
-    return enrich_siope_frame(result, denominators, adjustments)
+    return enrich_siope_frame(result, denominators)
 
 
 def records_from_frame(frame):
@@ -494,11 +490,10 @@ def load_siope_flows(refresh=False, years=None, adjustments=None):
         compartment_frame = compartment_frame.merge(compartments, on="comparto", how="left")
 
     denominators = load_regional_denominators(refresh=refresh)
-    spending_adjustments = adjustments if adjustments is not None else load_spending_adjustments(refresh=refresh)
-    year_frame = enrich_siope_frame(year_frame, denominators, spending_adjustments)
-    code_frame = enrich_siope_frame(code_frame, denominators, spending_adjustments)
-    compartment_frame = enrich_siope_frame(compartment_frame, denominators, spending_adjustments)
-    balances = build_siope_balances(year_frame, denominators, spending_adjustments)
+    year_frame = enrich_siope_frame(year_frame, denominators)
+    code_frame = enrich_siope_frame(code_frame, denominators)
+    compartment_frame = enrich_siope_frame(compartment_frame, denominators)
+    balances = build_siope_balances(year_frame, denominators)
 
     return {
         "source": SOURCE_SIOPE_FLUSSI,
@@ -510,20 +505,10 @@ def load_siope_flows(refresh=False, years=None, adjustments=None):
         "perimeters": SIOPE_PERIMETERS,
         "normalization_options": [
             {"id": "mld", "label": "Miliardi correnti", "field": "mld", "unit": "mld"},
-            {"id": "mld_reale", "label": "Miliardi reali", "field": "mld_reale", "unit": "mld_reale"},
             {"id": "pil", "label": "% PIL regionale", "field": "pil", "unit": "% PIL"},
             {"id": "euro_per_capita", "label": "Euro pro capite", "field": "euro_per_capita", "unit": "euro"},
-            {
-                "id": "euro_reale_per_capita",
-                "label": "Euro reali pro capite",
-                "field": "euro_reale_per_capita",
-                "unit": "euro_reale",
-            },
         ],
-        "real_adjustment_sources": {
-            "price_source": SOURCE_EUROSTAT_HICP,
-            "updated": (spending_adjustments.get("updated", {}) or {}).get("hicp"),
-        },
+        "real_adjustment_sources": {},
         "denominators": {
             "rows": denominator_records(denominators),
             "sources": denominators.get("sources", []),
@@ -563,9 +548,8 @@ def append_siope_flows_to_source_json(siope_flows):
 
     meta = payload.setdefault("meta", {})
     sources = meta.setdefault("sources", [])
-    for source in (SOURCE_SIOPE_FLUSSI, SOURCE_EUROSTAT_HICP):
-        if source not in sources:
-            sources.append(source)
+    if SOURCE_SIOPE_FLUSSI not in sources:
+        sources.append(SOURCE_SIOPE_FLUSSI)
 
     method_notes = meta.setdefault("method_notes", [])
     for note in (
