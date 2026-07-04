@@ -1,6 +1,6 @@
 # Bilancio pubblico
 
-Progetto Python per generare grafici social-format sulla situazione del fisco italiano, con fonte e dicitura `Elaborazione di Nazareno Lecis`.
+Progetto Python per generare grafici social-format sulla situazione del bilancio pubblico italiano.
 
 L'obiettivo è avere un flusso semplice, ripetibile e leggibile:
 
@@ -261,11 +261,3 @@ Se la variabile non è impostata, il codice prova tutti gli anni previsti in `SI
 - `SIOPE_AVAILABLE_YEARS` e `SIOPE_YEAR_ENV` in `scripts/utils_bilancio/regioni/siope_flussi.py`: anni e filtro operativo SIOPE.
 - `GENERATED_FILES` in `scripts/utils_bilancio/generali/costanti.py`: elenco file gestiti nella pulizia e output.
 - `PEER_GEOS` e `OECD_MEMBER_AREAS`: elenchi paesi per i confronti.
-
-## Note operative
-
-Il percorso base del progetto è:
-
-```text
-/home/nazareno/PycharmProjects/Bilancio_pubblico
-```
