@@ -7,7 +7,7 @@ L'obiettivo è avere un flusso semplice, ripetibile e leggibile:
 - dati da fonti ufficiali,
 - grafici su entrate, spesa, patrimonio, successioni e bilanci regionali,
 - serie consultabili in valori correnti, reali, pro capite e in quota di PIL quando disponibili,
-- output tracciabili con manifest grafici e JSON dashboard.
+- output tracciabili con manifest grafici, JSON completo, JSON per sezione e notebook di controllo.
 
 ## Come avviare
 
@@ -15,7 +15,7 @@ L'obiettivo è avere un flusso semplice, ripetibile e leggibile:
 python3 scripts/genera_grafici.py
 ```
 
-Il file [scripts/genera_grafici.py](/home/nazareno/PycharmProjects/Fisco/scripts/genera_grafici.py) espone un'unica variabile di controllo:
+Il file `scripts/genera_grafici.py` espone un'unica variabile di controllo:
 
 ```python
 FORZA_AGGIORNAMENTO = False
@@ -24,17 +24,54 @@ FORZA_AGGIORNAMENTO = False
 - `False`: usa la cache locale in `data/raw` quando disponibile.
 - `True`: forza la riscarica da tutte le fonti.
 
+## Run delle quattro sezioni
+
+Lo schema operativo del repo è basato su quattro sezioni:
+
+1. `italia`
+2. `confronto_europeo`
+3. `confronto_ocse`
+4. `regioni`
+
+Per runnarle tutte:
+
+```bash
+python3 scripts/run_sections.py --sections all
+```
+
+Per runnarne solo alcune:
+
+```bash
+python3 scripts/run_sections.py --sections italia,regioni
+```
+
+Per riscrivere solo gli export di sezione da un `source-data.json` già presente:
+
+```bash
+python3 scripts/run_sections.py --sections all --skip-pipeline
+```
+
+Per forzare il refresh da tutte le fonti:
+
+```bash
+python3 scripts/run_sections.py --sections all --refresh
+```
+
+La pipeline dati viene eseguita una volta. Le sezioni vengono materializzate dopo la generazione del JSON sorgente.
+
 ## Cosa succede quando parte lo script
 
 1. prepara le cartelle e lo stile grafico;
 2. pulisce gli output precedenti dichiarati;
 3. carica i dati (MEF, Eurostat, OCSE, dichiarazioni, OpenBDAP/RGS);
 4. genera i grafici in ordine: entrate, spesa, patrimonio, bilanci regionali, confronti internazionali;
-5. arricchisce le serie di spesa con popolazione e indice prezzi per metriche pro capite e reali;
+5. arricchisce le serie di spesa e i bilanci regionali con denominatori utili;
 6. scrive:
-   - [grafici/manifest.csv](/home/nazareno/PycharmProjects/Fisco/grafici/manifest.csv)
-   - [data/export/bilancio-pubblico/source-data.json](/home/nazareno/PycharmProjects/Fisco/data/export/bilancio-pubblico/source-data.json) con i dati completi normalizzati.
-   - [data/export/bilancio-pubblico/download-manifest.json](/home/nazareno/PycharmProjects/Fisco/data/export/bilancio-pubblico/download-manifest.json) con i file da passare alla pipeline dati.
+   - `grafici/manifest.csv`;
+   - `data/export/bilancio-pubblico/source-data.json` con i dati completi normalizzati;
+   - `data/export/bilancio-pubblico/sections/*.json` con i quattro export di sezione;
+   - `data/export/bilancio-pubblico/sections/download-manifest.json` con il manifest delle sezioni;
+   - `data/export/bilancio-pubblico/download-manifest.json` con i file da passare alla pipeline dati.
 
 ## Output prodotti
 
@@ -42,6 +79,10 @@ FORZA_AGGIORNAMENTO = False
 - `grafici/manifest.csv`: elenco dei file prodotti, fonte e data aggiornamento.
 - `data/raw/`: cache dati (API esterne).
 - `data/export/bilancio-pubblico/source-data.json`: payload completo/intermedio per la pipeline dati.
+- `data/export/bilancio-pubblico/sections/italia.json`: export sezione Italia.
+- `data/export/bilancio-pubblico/sections/confronto_europeo.json`: export sezione confronto europeo.
+- `data/export/bilancio-pubblico/sections/confronto_ocse.json`: export sezione confronto OCSE.
+- `data/export/bilancio-pubblico/sections/regioni.json`: export sezione Regioni.
 - `data/export/bilancio-pubblico/download-manifest.json`: elenco file pronti per `nazarenolecis-data-pipeline`.
 
 Il formato pubblico per la dashboard (`bilancio-pubblico/dashboard.json` su R2) viene creato nel repository `nazarenolecis-data-pipeline`.
@@ -58,24 +99,40 @@ Per forzare il refresh da tutte le API:
 python3 scripts/download_all.py --refresh
 ```
 
+## Notebook
+
+I notebook sono in `notebooks/`:
+
+- `01_italia.ipynb`
+- `02_confronto_europeo.ipynb`
+- `03_confronto_ocse.ipynb`
+- `04_regioni.ipynb`
+
+Ogni notebook legge prima il JSON separato della propria sezione. Se il file non esiste, legge la sezione corrispondente da `source-data.json`.
+
 ## Struttura del codice
 
-- [scripts/genera_grafici.py](/home/nazareno/PycharmProjects/Fisco/scripts/genera_grafici.py): entrypoint semplice, senza parser.
-- [scripts/bilancio_pubblico/utils.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/utils.py): costanti, path, download/caching, stile grafico, utilità salvataggio e formatter.
-- [scripts/bilancio_pubblico/data_extraction.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/data_extraction.py): tutte le funzioni di estrazione e normalizzazione dati nazionali e internazionali.
-- [scripts/bilancio_pubblico/regional_budgets.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/regional_budgets.py): ricerca OpenBDAP/RGS via CKAN, caricamento bilanci regionali, normalizzazione e append al JSON dashboard.
-- [scripts/bilancio_pubblico/spending_adjustments.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/spending_adjustments.py): popolazione, HICP, metriche di spesa reali e pro capite, riferimento SIOPE.
-- [scripts/bilancio_pubblico/pipeline.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/pipeline.py): orchestrazione completa del flusso.
-- [scripts/bilancio_pubblico/chart_generation/italia_entrate.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/italia_entrate.py): grafici Italia su entrate, IRPEF, redditi, successioni.
-- [scripts/bilancio_pubblico/chart_generation/italia_uscite.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/italia_uscite.py): grafici Italia su spesa per funzione e spesa totale.
-- [scripts/bilancio_pubblico/chart_generation/italia_patrimonio.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/italia_patrimonio.py): grafici patrimonio familiare.
-- [scripts/bilancio_pubblico/chart_generation/regioni.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/regioni.py): grafici su spese, entrate, missioni e saldi regionali.
-- [scripts/bilancio_pubblico/chart_generation/confronti_europa.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/confronti_europa.py): confronti UE e paesi europei.
-- [scripts/bilancio_pubblico/chart_generation/confronti_oecd.py](/home/nazareno/PycharmProjects/Fisco/scripts/bilancio_pubblico/chart_generation/confronti_oecd.py): confronti con OCSE.
+- `scripts/genera_grafici.py`: entrypoint semplice, senza parser.
+- `scripts/run_sections.py`: CLI per materializzare tutte o alcune sezioni.
+- `scripts/download_all.py`: export completo e manifest dei file scaricabili.
+- `scripts/bilancio_pubblico/section_schema.py`: schema operativo delle quattro sezioni.
+- `scripts/bilancio_pubblico/section_export.py`: costruzione di `section_index`, `sections`, JSON separati e manifest sezioni.
+- `scripts/bilancio_pubblico/utils.py`: costanti, path, download/caching, stile grafico, utilità salvataggio e formatter.
+- `scripts/bilancio_pubblico/data_extraction.py`: funzioni di estrazione e normalizzazione dati nazionali e internazionali.
+- `scripts/bilancio_pubblico/regional_budgets.py`: caricamento OpenBDAP/FET dei bilanci regionali, normalizzazione e append al JSON.
+- `scripts/bilancio_pubblico/regional_normalization.py`: denominatori regionali e normalizzazioni pro capite/kmq.
+- `scripts/bilancio_pubblico/spending_adjustments.py`: popolazione, HICP, metriche di spesa reali e pro capite, riferimento SIOPE.
+- `scripts/bilancio_pubblico/pipeline.py`: orchestrazione completa del flusso.
+- `scripts/bilancio_pubblico/chart_generation/italia_entrate.py`: grafici Italia su entrate, IRPEF, redditi, successioni.
+- `scripts/bilancio_pubblico/chart_generation/italia_uscite.py`: grafici Italia su spesa per funzione e spesa totale.
+- `scripts/bilancio_pubblico/chart_generation/italia_patrimonio.py`: grafici patrimonio familiare.
+- `scripts/bilancio_pubblico/chart_generation/regioni.py`: grafici su spese, entrate, missioni e saldi regionali.
+- `scripts/bilancio_pubblico/chart_generation/confronti_europa.py`: confronti UE e paesi europei.
+- `scripts/bilancio_pubblico/chart_generation/confronti_oecd.py`: confronti con OCSE.
 
 ## Sezione bilanci regionali
 
-La sezione regionale usa OpenBDAP/RGS come fonte. Il codice interroga il catalogo CKAN di OpenBDAP con query su bilanci degli enti della PA, Regioni e consuntivi. Quando trova una risorsa tabellare leggibile, normalizza i dati per Regione, anno e voce contabile.
+La sezione regionale usa OpenBDAP/RGS come fonte. Il codice usa gli endpoint pubblici FET della pagina Finanza degli Enti Territoriali e normalizza i dati per Regione, anno e voce contabile.
 
 I grafici regionali generati, quando la fonte restituisce dati leggibili, sono:
 
@@ -84,16 +141,19 @@ I grafici regionali generati, quando la fonte restituisce dati leggibili, sono:
 - `23_bilanci_regionali_spesa_per_missione.png`
 - `24_bilanci_regionali_saldi_per_regione.png`
 
-Nel JSON dashboard viene aggiunta la chiave `regional_budgets`, con:
+Nel JSON viene aggiunta la chiave `regional_budgets`, con:
 
 - metadati dei dataset OpenBDAP caricati;
 - eventuali errori di ricerca o lettura;
 - spese per Regione;
 - spese per missione;
+- spese per titolo;
 - entrate per Regione;
 - entrate per titolo;
 - saldi per Regione;
 - dettaglio dei saldi.
+
+Nella sezione `sections.regioni` vengono aggiunti anche aggregati derivati: entrate finali, entrate correnti, componenti per titolo, spese finali e saldo finale.
 
 ## Metriche reali e pro capite
 
@@ -133,13 +193,14 @@ Nel JSON la chiave `siope_reference` conserva URL, perimetro e nota metodologica
 - Le mappe di entrate e i focus su tipologie fiscali seguono scelte comunicative per chiarezza visiva.
 - Le somme sono coerenti con le unità riportate nelle singole fonti; i confronti internazionali usano la medesima logica usata nei grafici.
 - I valori OCSE usano il dato disponibile 2024 e includono la voce “Media OCSE” calcolata sui paesi con dato completo.
-- La sezione regionale dipende dalla disponibilità dei file tabellari nel catalogo OpenBDAP. Se il catalogo cambia nome alle risorse, la pipeline registra l'errore nel JSON senza bloccare i grafici nazionali.
+- La sezione regionale dipende dalla disponibilità dei file tabellari OpenBDAP/FET. Se la fonte cambia struttura, la pipeline registra l'errore nel JSON senza bloccare i grafici nazionali.
 - Le serie reali sono deflazionate con HICP all-items. Per analisi tecniche su spesa pubblica reale si può valutare anche un deflatore di contabilità nazionale.
 - I grafici includono sempre fonte e firma in basso.
 
 ## Le variabili/concetti utili
 
 - `FORZA_AGGIORNAMENTO` in `scripts/genera_grafici.py`.
+- `SECTION_SCHEMA` in `scripts/bilancio_pubblico/section_schema.py`.
 - `SOURCE_*` in `scripts/bilancio_pubblico/utils.py`: testo sorgenti da riportare in calce.
 - `SOURCE_OPENBDAP_REGIONI` in `scripts/bilancio_pubblico/regional_budgets.py`: fonte della sezione regionale.
 - `SPENDING_METRIC_OPTIONS` in `scripts/bilancio_pubblico/spending_adjustments.py`: metriche disponibili per la dashboard.
