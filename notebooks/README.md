@@ -2,7 +2,33 @@
 
 I notebook leggono gli export generati dal repo e servono per controllare i dati, visualizzare grafici e aggiungere contesto analitico.
 
-Prima di aprirli, genera i dati:
+La prima cella di ogni notebook richiama il codice Python del repo tramite:
+
+```python
+from bilancio_pubblico.notebook_inputs import load_section
+```
+
+Se il file JSON della sezione non esiste, il notebook genera automaticamente l'input:
+
+1. se esiste `source-data.json`, materializza solo la sezione richiesta;
+2. se manca anche `source-data.json`, esegue la pipeline completa e poi materializza la sezione;
+3. se `FORCE_DOWNLOAD = True`, riesegue la pipeline anche quando l'input esiste.
+
+I flag iniziali sono:
+
+```python
+REFRESH = False
+FORCE_DOWNLOAD = False
+```
+
+Per forzare il refresh delle fonti dal notebook, imposta entrambi in modo coerente nella prima cella:
+
+```python
+REFRESH = True
+FORCE_DOWNLOAD = True
+```
+
+Puoi comunque generare tutti gli input prima di aprire i notebook:
 
 ```bash
 python3 scripts/run_sections.py --sections all
@@ -27,8 +53,4 @@ I notebook cercano prima i file separati in:
 data/export/bilancio-pubblico/sections/
 ```
 
-Se quei file non esistono, leggono la sezione corrispondente da:
-
-```text
-data/export/bilancio-pubblico/source-data.json
-```
+Se quei file non esistono, li creano richiamando il codice Python del repo.
