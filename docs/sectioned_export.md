@@ -106,7 +106,32 @@ notebooks/03_confronto_ocse.ipynb
 notebooks/04_regioni.ipynb
 ```
 
-Ogni notebook legge prima il file separato della propria sezione. Se il file non esiste, legge la sezione corrispondente da `source-data.json`.
+La prima cella di ogni notebook richiama il codice Python del repo tramite:
+
+```python
+from bilancio_pubblico.notebook_inputs import load_section
+```
+
+Il comportamento e' questo:
+
+1. se il JSON della sezione esiste, il notebook lo legge;
+2. se manca il JSON della sezione ma esiste `source-data.json`, il notebook materializza solo quella sezione;
+3. se manca anche `source-data.json`, il notebook esegue la pipeline completa e poi materializza la sezione;
+4. se `FORCE_DOWNLOAD = True`, il notebook riesegue la pipeline anche quando l'input esiste.
+
+I flag iniziali sono:
+
+```python
+REFRESH = False
+FORCE_DOWNLOAD = False
+```
+
+Per forzare il refresh dal notebook:
+
+```python
+REFRESH = True
+FORCE_DOWNLOAD = True
+```
 
 ## Sezione Italia
 
