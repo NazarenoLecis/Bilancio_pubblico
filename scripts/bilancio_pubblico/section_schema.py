@@ -1,4 +1,9 @@
-"""Schema operativo delle sezioni del progetto Bilancio pubblico."""
+"""Schema operativo delle sezioni del progetto Bilancio pubblico.
+
+Il modulo centralizza gli identificativi delle quattro sezioni, i metadati usati
+negli export e gli aggregati contabili regionali. Ogni nuova analisi deve essere
+ricondotta a una di queste sezioni quando possibile.
+"""
 
 SECTION_IDS = ("italia", "confronto_europeo", "confronto_ocse", "regioni")
 
@@ -148,15 +153,36 @@ REGIONAL_SPENDING_AGGREGATES = [
 
 
 def list_section_ids():
+    """Restituisce la lista ordinata degli identificativi di sezione.
+
+    Output:
+        list[str]: identificativi stabili usati da pipeline, notebook ed export.
+    """
     return list(SECTION_IDS)
 
 
 def section_index():
+    """Restituisce i metadati delle sezioni come lista di dizionari copiati.
+
+    Output:
+        list[dict]: schema serializzabile da inserire in `source-data.json`.
+    """
     return [dict(section) for section in SECTION_SCHEMA]
 
 
 def normalize_section_ids(selection=None):
-    """Normalizza input CLI/lista in una lista ordinata di sezioni valide."""
+    """Normalizza input CLI o liste in identificativi di sezione validi.
+
+    Input:
+        selection (str | list | tuple | None): alias, lista di alias o stringa separata da virgole.
+
+    Output:
+        list[str]: sezioni valide, ordinate secondo `SECTION_IDS` e senza duplicati.
+
+    Criterio:
+        gli alias vengono risolti tramite `SECTION_ALIASES`; l'ordine finale resta quello
+        dello schema per mantenere export e notebook coerenti.
+    """
     if selection is None:
         return list(SECTION_IDS)
     if isinstance(selection, str):
