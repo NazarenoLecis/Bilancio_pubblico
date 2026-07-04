@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timezone
 
 from bilancio_pubblico.pipeline import run
+from bilancio_pubblico.section_export import append_sectioned_export_to_source_json
 from bilancio_pubblico.utils import SOURCE_DATA_JSON_PATH
 
 
@@ -50,6 +51,7 @@ def write_download_manifest():
 
 def download_all(refresh=False):
     run(refresh)
+    append_sectioned_export_to_source_json()
     manifest_path = write_download_manifest()
     return manifest_path
 
