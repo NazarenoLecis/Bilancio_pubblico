@@ -1,137 +1,30 @@
-"""Costruisce un export a sezioni sopra `source-data.json`.
+"""Costruisce e materializza l'export a sezioni sopra `source-data.json`.
 
 Questo modulo non cambia la dashboard. Aggiunge al JSON generato dal repo una
-lettura coerente con quattro blocchi analitici:
-
-- Italia
-- confronto europeo
-- confronto OCSE
-- regioni
-
-Le chiavi storiche restano disponibili. Le nuove chiavi `section_index` e
-`sections` servono a rendere piu' semplice una futura pipeline o una futura UI,
-senza rompere l'export gia' consumato dal sito.
+lettura coerente con quattro blocchi analitici e, quando richiesto, scrive un
+file JSON indipendente per ciascuna sezione.
 """
 
 from collections import defaultdict
 from datetime import datetime, timezone
 import json
+import math
 from pathlib import Path
 
+from bilancio_pubblico.section_schema import (
+    REGIONAL_REVENUE_AGGREGATES,
+    REGIONAL_SPENDING_AGGREGATES,
+    SECTION_BY_ID,
+    SECTION_SCHEMA,
+    list_section_ids,
+    normalize_section_ids,
+    section_index,
+)
 from bilancio_pubblico.utils import SOURCE_DATA_JSON_PATH
 
 
-SECTION_INDEX = [
-    {
-        "id": "italia",
-        "label": "Italia",
-        "order": 1,
-        "scope": "Quadro nazionale",
-        "description": "Entrate, spese, pressione fiscale, distribuzione IRPEF, patrimonio e serie storiche italiane.",
-        "primary_sources": ["MEF", "Eurostat", "Banca d'Italia", "UPB"],
-    },
-    {
-        "id": "confronto_europeo",
-        "label": "Confronto europeo",
-        "order": 2,
-        "scope": "Paesi europei, UE e area euro quando disponibili",
-        "description": "Confronti armonizzati Eurostat su pressione fiscale, spesa pubblica e funzioni COFOG.",
-        "primary_sources": ["Eurostat gov_10a_taxag", "Eurostat gov_10a_exp"],
-    },
-    {
-        "id": "confronto_ocse",
-        "label": "Confronto OCSE",
-        "order": 3,
-        "scope": "Paesi OCSE e media OCSE quando disponibile",
-        "description": "Confronti OCSE su gettito, struttura delle entrate, spesa e imposte su successioni e donazioni.",
-        "primary_sources": ["OECD Revenue Statistics", "OECD National Accounts"],
-    },
-    {
-        "id": "regioni",
-        "label": "Regioni",
-        "order": 4,
-        "scope": "Regioni e province autonome",
-        "description": "Rendiconti OpenBDAP/FET con entrate, spese, saldi, titoli, missioni e normalizzazioni territoriali.",
-        "primary_sources": ["RGS OpenBDAP/FET", "Eurostat popolazione regionale", "ISTAT/SISTAN superfici"],
-    },
-]
-
-REGIONAL_REVENUE_AGGREGATES = [
-    {
-        "id": "entrate_finali",
-        "label": "Entrate finali",
-        "title_codes": ["01", "02", "03", "04", "05"],
-        "note": "Titoli 1-5. Esclude accensione prestiti, anticipazioni e partite di giro.",
-    },
-    {
-        "id": "entrate_correnti",
-        "label": "Entrate correnti",
-        "title_codes": ["01", "02", "03"],
-        "note": "Titoli 1-3.",
-    },
-    {
-        "id": "entrate_tributarie_perequative",
-        "label": "Entrate tributarie, contributive e perequative",
-        "title_codes": ["01"],
-    },
-    {
-        "id": "trasferimenti_correnti",
-        "label": "Trasferimenti correnti",
-        "title_codes": ["02"],
-    },
-    {
-        "id": "entrate_extratributarie",
-        "label": "Entrate extratributarie",
-        "title_codes": ["03"],
-    },
-    {
-        "id": "entrate_conto_capitale",
-        "label": "Entrate in conto capitale",
-        "title_codes": ["04"],
-    },
-    {
-        "id": "riduzione_attivita_finanziarie",
-        "label": "Riduzione di attivita finanziarie",
-        "title_codes": ["05"],
-    },
-    {
-        "id": "accensione_prestiti",
-        "label": "Accensione prestiti",
-        "title_codes": ["06"],
-    },
-    {
-        "id": "anticipazioni_tesoreria",
-        "label": "Anticipazioni da tesoriere/cassiere",
-        "title_codes": ["07"],
-    },
-    {
-        "id": "partite_giro",
-        "label": "Entrate per conto terzi e partite di giro",
-        "title_codes": ["09"],
-    },
-]
-
-REGIONAL_SPENDING_AGGREGATES = [
-    {
-        "id": "spese_finali",
-        "label": "Spese finali",
-        "title_codes": ["01", "02", "03"],
-        "note": "Titoli 1-3. Esclude rimborso prestiti e chiusura anticipazioni.",
-    },
-    {"id": "spese_correnti", "label": "Spese correnti", "title_codes": ["01"]},
-    {"id": "spese_conto_capitale", "label": "Spese in conto capitale", "title_codes": ["02"]},
-    {
-        "id": "incremento_attivita_finanziarie",
-        "label": "Incremento attivita finanziarie",
-        "title_codes": ["03"],
-    },
-    {"id": "rimborso_prestiti", "label": "Rimborso prestiti", "title_codes": ["04"]},
-    {
-        "id": "chiusura_anticipazioni",
-        "label": "Chiusura anticipazioni ricevute",
-        "title_codes": ["05"],
-    },
-]
+SECTION_EXPORT_DIR = SOURCE_DATA_JSON_PATH.parent / "sections"
+SECTION_MANIFEST_PATH = SECTION_EXPORT_DIR / "download-manifest.json"
 
 
 def _path_or_default(path):
@@ -147,7 +40,7 @@ def _round_number(value, digits=6):
         number = float(value)
     except (TypeError, ValueError):
         return None
-    if number != number:
+    if not math.isfinite(number):
         return None
     rounded = round(number, digits)
     if rounded.is_integer():
@@ -360,25 +253,15 @@ def _build_oecd_section(payload):
             {"id": "peer_inheritance", "label": "Successioni e donazioni"},
         ],
         "data": oecd,
-        "latest_years": {
-            key: _latest_year(value)
-            for key, value in oecd.items()
-            if isinstance(value, list)
-        },
+        "latest_years": {key: _latest_year(value) for key, value in oecd.items() if isinstance(value, list)},
         "source_updates": _source_meta(payload, "oecd_revenue", "oecd_spending"),
     }
 
 
 def _build_regions_section(payload):
     regional = _safe_get(payload, "regional_budgets", {})
-    revenue_aggregates = _aggregate_title_rows(
-        regional.get("revenue_by_title"),
-        REGIONAL_REVENUE_AGGREGATES,
-    )
-    spending_aggregates = _aggregate_title_rows(
-        regional.get("spending_by_title"),
-        REGIONAL_SPENDING_AGGREGATES,
-    )
+    revenue_aggregates = _aggregate_title_rows(regional.get("revenue_by_title"), REGIONAL_REVENUE_AGGREGATES)
+    spending_aggregates = _aggregate_title_rows(regional.get("spending_by_title"), REGIONAL_SPENDING_AGGREGATES)
     final_balance = _build_final_balance_rows(revenue_aggregates, spending_aggregates)
     return {
         "id": "regioni",
@@ -433,18 +316,24 @@ def build_sections(payload):
     }
 
 
+def _load_payload(path=None):
+    output_path = _path_or_default(path)
+    if not output_path.exists():
+        return None, output_path
+    return json.loads(output_path.read_text(encoding="utf-8")), output_path
+
+
 def append_sectioned_export_to_source_json(path=None):
     """Aggiunge `section_index` e `sections` al JSON sorgente.
 
     La funzione e' idempotente. Se il file non esiste restituisce `None`.
     """
-    output_path = _path_or_default(path)
-    if not output_path.exists():
+    payload, output_path = _load_payload(path)
+    if payload is None:
         return None
 
-    payload = json.loads(output_path.read_text(encoding="utf-8"))
     generated_at = datetime.now(timezone.utc).isoformat()
-    payload["section_index"] = SECTION_INDEX
+    payload["section_index"] = section_index()
     payload["sections"] = build_sections(payload)
 
     meta = payload.setdefault("meta", {})
@@ -463,9 +352,87 @@ def append_sectioned_export_to_source_json(path=None):
             method_notes.append(note)
 
     counts = payload.setdefault("counts", {})
-    counts["sections"] = len(SECTION_INDEX)
+    counts["sections"] = len(SECTION_SCHEMA)
     counts["regional_revenue_aggregates"] = len(payload["sections"]["regioni"]["revenue"]["aggregates_by_region"])
     counts["regional_final_balances"] = len(payload["sections"]["regioni"]["balances"]["final_by_region"])
 
     output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return str(output_path)
+
+
+def _section_file_payload(payload, section_id):
+    section = SECTION_BY_ID[section_id]
+    return {
+        "meta": {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "generated_by": "Bilancio_pubblico",
+            "source_json": str(SOURCE_DATA_JSON_PATH),
+            "section_id": section_id,
+            "section_label": section["label"],
+            "scope": section["scope"],
+            "description": section["description"],
+            "primary_sources": section["primary_sources"],
+            "legacy_keys": section["legacy_keys"],
+            "notebook": section["notebook"],
+        },
+        "section": payload.get("sections", {}).get(section_id, {}),
+    }
+
+
+def write_section_files(path=None, sections=None, output_dir=None):
+    """Scrive un JSON per ciascuna sezione selezionata."""
+    payload, output_path = _load_payload(path)
+    if payload is None:
+        return []
+    if "sections" not in payload:
+        append_sectioned_export_to_source_json(output_path)
+        payload, _output_path = _load_payload(output_path)
+
+    selected = normalize_section_ids(sections)
+    target_dir = Path(output_dir) if output_dir is not None else SECTION_EXPORT_DIR
+    target_dir.mkdir(parents=True, exist_ok=True)
+    written = []
+    for section_id in selected:
+        section_path = target_dir / f"{section_id}.json"
+        section_path.write_text(
+            json.dumps(_section_file_payload(payload, section_id), ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        written.append(
+            {
+                "section_id": section_id,
+                "label": SECTION_BY_ID[section_id]["label"],
+                "path": str(section_path),
+                "name": section_path.name,
+                "role": "section_json",
+                "notebook": SECTION_BY_ID[section_id]["notebook"],
+            }
+        )
+    return written
+
+
+def write_section_download_manifest(section_files=None, output_path=None):
+    """Scrive il manifest di download delle sezioni."""
+    if section_files is None:
+        section_files = write_section_files(sections=list_section_ids())
+    manifest_path = Path(output_path) if output_path is not None else SECTION_MANIFEST_PATH
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "total_sections": len(section_files),
+        "files": section_files,
+    }
+    manifest_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return str(manifest_path)
+
+
+def materialize_section_outputs(path=None, sections=None, output_dir=None):
+    """Aggiorna il JSON sorgente, scrive i file di sezione e il manifest."""
+    source_path = append_sectioned_export_to_source_json(path)
+    section_files = write_section_files(path=path, sections=sections, output_dir=output_dir)
+    manifest_path = write_section_download_manifest(section_files)
+    return {
+        "source_json": source_path,
+        "section_files": section_files,
+        "section_manifest": manifest_path,
+    }
