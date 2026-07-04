@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-07-04T13:24:01.783685+00:00",
+  "total_sections": 1,
+  "files": [
+    {
+      "section_id": "regioni",
+      "label": "Regioni",
+      "path": "/home/nazareno/PycharmProjects/Bilancio_pubblico/data/export/bilancio-pubblico/sections/regioni.json",
+      "name": "regioni.json",
+      "role": "section_json",
+      "notebook": "notebooks/04_regioni.ipynb"
+    }
+  ]
+}

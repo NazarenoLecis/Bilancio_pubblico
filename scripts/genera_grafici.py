@@ -16,8 +16,8 @@ Valori accettati:
 - True: riscarica i dati da tutte le fonti ufficiali.
 """
 
-from bilancio_pubblico.pipeline import run
-from bilancio_pubblico.section_export import materialize_section_outputs
+from utils_bilancio.generali.pipeline import run
+from utils_bilancio.generali.section_export import materialize_section_outputs
 
 
 FORZA_AGGIORNAMENTO = False

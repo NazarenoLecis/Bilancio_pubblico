@@ -7,22 +7,23 @@ raccolti dalla pipeline dati.
 
 import json
 from datetime import datetime, timezone
+import sys
 
-from bilancio_pubblico.section_export import (
+from utils_bilancio.generali.section_export import (
     SECTION_EXPORT_DIR,
     SECTION_MANIFEST_PATH,
     materialize_section_outputs,
 )
-from bilancio_pubblico.pipeline import run
-from bilancio_pubblico.section_schema import SECTION_BY_ID, list_section_ids
-from bilancio_pubblico.utils import SOURCE_DATA_JSON_PATH
+from utils_bilancio.generali.pipeline import run
+from utils_bilancio.generali.section_schema import SECTION_BY_ID, list_section_ids
+from utils_bilancio.generali.costanti import SOURCE_DATA_JSON_PATH
 
 
 EXPORT_DIR = SOURCE_DATA_JSON_PATH.parent
 MANIFEST_PATH = EXPORT_DIR / "download-manifest.json"
 
 
-def _build_file_entry(path, role, endpoint_hint=None, section_id=None):
+def build_file_entry(path, role, endpoint_hint=None, section_id=None):
     entry = {
         "path": str(path),
         "name": path.name,
@@ -39,13 +40,13 @@ def _build_file_entry(path, role, endpoint_hint=None, section_id=None):
 def build_download_manifest():
     entries = []
     if SOURCE_DATA_JSON_PATH.exists():
-        entries.append(_build_file_entry(SOURCE_DATA_JSON_PATH, role="source_json"))
+        entries.append(build_file_entry(SOURCE_DATA_JSON_PATH, role="source_json"))
     for section_id in list_section_ids():
         path = SECTION_EXPORT_DIR / f"{section_id}.json"
         if path.exists():
-            entries.append(_build_file_entry(path, role="section_json", section_id=section_id))
+            entries.append(build_file_entry(path, role="section_json", section_id=section_id))
     if SECTION_MANIFEST_PATH.exists():
-        entries.append(_build_file_entry(SECTION_MANIFEST_PATH, role="section_manifest"))
+        entries.append(build_file_entry(SECTION_MANIFEST_PATH, role="section_manifest"))
     return sorted(entries, key=lambda item: (item["role"], item.get("section_id") or "", item["name"]))
 
 
@@ -68,17 +69,23 @@ def download_all(refresh=False):
     return manifest_path
 
 
-def main():
-    from argparse import ArgumentParser
+def parse_command_line(arguments):
+    refresh = False
+    for argument in arguments:
+        if argument == "--refresh":
+            refresh = True
+        else:
+            raise ValueError(f"Argomento non riconosciuto: {argument}")
+    return {"refresh": refresh}
 
-    parser = ArgumentParser(description="Scarica/regenera tutti i dati del progetto Bilancio pubblico.")
-    parser.add_argument(
-        "--refresh",
-        action="store_true",
-        help="Forza il refresh da API per ogni fonte dati.",
-    )
-    args = parser.parse_args()
-    manifest_path = download_all(refresh=args.refresh)
+
+def main():
+    try:
+        options = parse_command_line(sys.argv[1:])
+    except ValueError as exc:
+        print(f"Errore: {exc}")
+        sys.exit(2)
+    manifest_path = download_all(refresh=options["refresh"])
     print(f"Manifest di upload scritto in: {manifest_path}")
 
 

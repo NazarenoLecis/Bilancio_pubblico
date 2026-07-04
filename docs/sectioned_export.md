@@ -16,7 +16,7 @@ Questa estensione non modifica la dashboard. Serve a rendere piu' leggibile l'ex
 Lo schema operativo e' in:
 
 ```text
-scripts/bilancio_pubblico/section_schema.py
+scripts/utils_bilancio/generali/section_schema.py
 ```
 
 Contiene:
@@ -25,6 +25,12 @@ Contiene:
 - `SECTION_IDS`, cioe' l'ordine canonico delle sezioni;
 - alias CLI come `all`, `tutte`, `italia`, `europa`, `ocse`, `regioni`;
 - aggregati regionali di entrata e spesa.
+
+Il codice operativo e' organizzato in sei aree sotto `scripts/utils_bilancio/`:
+`generali`, `notebook`, `italia`, `europa`, `ocse`, `regioni`. Il livello alto
+contiene solo cartelle di area: niente wrapper `.py`. Le costanti stanno in
+`generali/costanti.py`; `generali/utils.py` contiene solo funzioni. Non vengono
+usati file di inizializzazione dei pacchetti.
 
 ## Chiavi aggiunte al source JSON
 
@@ -106,11 +112,9 @@ notebooks/03_confronto_ocse.ipynb
 notebooks/04_regioni.ipynb
 ```
 
-La prima cella di ogni notebook richiama il codice Python del repo tramite:
-
-```python
-from bilancio_pubblico.notebook_inputs import load_section
-```
+Ogni notebook segue la sequenza: spiegazione, cella **Scaricamento dati** con
+`scripts/run_sections.py`, cella **Import e caricamento** con
+`utils_bilancio.notebook`, poi analisi.
 
 Il comportamento e' questo:
 
@@ -144,6 +148,8 @@ Le fonti principali sono MEF, Eurostat, Banca d'Italia e UPB.
 La sezione `confronto_europeo` raggruppa i confronti Eurostat.
 
 Contiene pressione fiscale, spesa pubblica, spesa sociale e dettaglio COFOG per paese.
+Include sia snapshot sull'ultimo anno sia serie storiche in `peer_series` e
+`peer_spending_functions_series`.
 
 ## Sezione confronto OCSE
 
@@ -153,7 +159,8 @@ Contiene entrate per categoria, spese per funzione, pressione fiscale totale, sp
 
 ## Sezione regioni
 
-La sezione `regioni` raggruppa i dati OpenBDAP/FET su Regioni e province autonome.
+La sezione `regioni` raggruppa i dati OpenBDAP/FET su Regioni e province autonome
+e i flussi SIOPE di cassa per territorio.
 
 Oltre alle chiavi gia' presenti in `regional_budgets`, la sezione crea aggregati derivati:
 
@@ -167,6 +174,22 @@ Oltre alle chiavi gia' presenti in `regional_budgets`, la sezione crea aggregati
 - `accensione_prestiti`, titolo 6
 - `anticipazioni_tesoreria`, titolo 7
 - `partite_giro`, titolo 9
+
+Nel blocco `siope` espone anche:
+
+- `by_region_year`
+- `by_region_month`
+- `by_region_code_year`
+- `balances_by_region_year`
+- `by_region_compartment_year`
+- `entity_counts_by_region`
+
+Per limitare gli anni SIOPE in fase di sviluppo:
+
+```bash
+BILANCIO_PUBBLICO_SIOPE_YEARS=2024 python3 scripts/run_sections.py --sections regioni --refresh
+BILANCIO_PUBBLICO_SIOPE_YEARS=2019-2024 python3 scripts/run_sections.py --sections regioni --refresh
+```
 
 Crea anche `saldo_finale`, calcolato come entrate finali meno spese finali. Le spese finali sono i titoli 1-3. Debito, anticipazioni e partite di giro restano disponibili come voci separate.
 

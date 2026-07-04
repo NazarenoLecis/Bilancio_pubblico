@@ -1,56 +1,107 @@
-# Notebook sezioni bilancio pubblico
+# Notebook del progetto
 
-I notebook leggono gli export generati dal repo e servono per controllare i dati, visualizzare grafici e aggiungere contesto analitico.
+In questi notebook trovi analisi pronte per lavorare subito sui quattro JSON
+di sezione in `data/export/bilancio-pubblico/sections/`.
 
-La prima cella di ogni notebook richiama il codice Python del repo tramite:
+I dati completi sono caricati automaticamente: la cella **Scaricamento dati**
+usa `scripts/run_sections.py`, mentre la cella **Import e caricamento** usa gli
+helper in `utils_bilancio.notebook`.
 
-```python
-from bilancio_pubblico.notebook_inputs import load_section
-```
+## Cosa usare, quando usarlo
 
-Se il file JSON della sezione non esiste, il notebook genera automaticamente l'input:
+- `01_italia.ipynb` → quadro nazionale completo (entrate, spese, pressione,
+  distribuzioni)
+- `02_confronto_europeo.ipynb` → benchmark con UE/Europei, anche COFOG
+- `03_confronto_ocse.ipynb` → confronto OCSE con anno/i più recenti e serie
+  storiche per categoria
+- `04_regioni.ipynb` → rendiconti regionali OpenBDAP e flussi SIOPE con
+  normalizzazioni (mld, valori reali, euro per abitante, per km², % PIL regionale)
 
-1. se esiste `source-data.json`, materializza solo la sezione richiesta;
-2. se manca anche `source-data.json`, esegue la pipeline completa e poi materializza la sezione;
-3. se `FORCE_DOWNLOAD = True`, riesegue la pipeline anche quando l'input esiste.
+## Avvio rapido (stessa regola per tutti)
 
-I flag iniziali sono:
+1. Apri il notebook.
+2. Spiegazione: la prima parte descrive cosa stai caricando.
+3. Esegui la cella **"Scaricamento dati"**:
+   - ricalca sezione + fonti quando serve;
+   - se i file esistono e `REFRESH`/`FORCE_DOWNLOAD` sono `False`, usa la cache.
+4. Esegui la cella **"Import e caricamento"**: inserisce il path del progetto e carica `section`.
+5. Leggi i markdown esplicativi delle sezioni.
+6. Cambia i parametri che trovi nelle celle di analisi (metrica, anno, top, regioni, metriche disponibili).
+7. Esegui le celle grafiche.
 
-```python
-REFRESH = False
-FORCE_DOWNLOAD = False
-```
+Subito dopo la cella di import c'è anche la sezione **Elenco opzioni disponibili**: eseguila prima di impostare `MEASURE`, `METRIC`, `YEAR`, `TOP`, `REGION`, perimetri SIOPE o codici OCSE/COFOG, così hai i valori ammessi dalla tua run (case e caratteri corretti).
 
-Per forzare il refresh delle fonti dal notebook, imposta entrambi in modo coerente nella prima cella:
+Per aggiornare i dati da remoto:
 
-```python
+```bash
 REFRESH = True
 FORCE_DOWNLOAD = True
 ```
 
-Puoi comunque generare tutti gli input prima di aprire i notebook:
+I notebook non richiedono più configurazioni di path avanzate: la cella di
+download prova automaticamente il repository corrente e, se necessario,
+usa gli helper condivisi in `scripts/utils_bilancio/notebook/`.
+
+## Generazione dati da terminale
 
 ```bash
 python3 scripts/run_sections.py --sections all
-```
-
-Se `source-data.json` esiste gia' e vuoi solo riscrivere i file di sezione:
-
-```bash
 python3 scripts/run_sections.py --sections all --skip-pipeline
+python3 scripts/run_sections.py --sections all --refresh
+python3 scripts/download_all.py
+python3 scripts/download_all.py --refresh
 ```
 
-Notebook disponibili:
+## Parametri comuni presenti nei notebook
+
+Nella maggior parte dei notebook trovi blocchi con variabili come:
+
+- `YEAR` → anno da analizzare
+- `TOP` → numero elementi da mostrare nelle classifiche
+- `METRIC` → metrica da visualizzare
+- `COLUMNS` / `MEASURE` / `NORMALIZATION` → scelta della colonna/normalizzazione
+- `SIOPE_YEARS` nel notebook Regioni → `""` per tutti gli anni previsti, `"2024"` per test veloce, `"2019-2024"` per intervallo, `"2019,2021,2024"` per anni separati
+- `SIOPE_PERIMETER`, `SIOPE_FLOW`, `SIOPE_METRIC`, `SIOPE_CODE` nel notebook Regioni → valori da copiare dalla cella opzioni
+
+Se una cella stampa **"Nessun dato"** significa che quel dataset in quel punto
+non era stato popolato nella tua run corrente; prova a rilanciare una
+materializzazione completa delle sezioni.
+
+## Nota importante
+
+Le dashboard sono più leggere e dedicate; i notebook sono pensati per analisi
+esplorative intense: puoi produrre facilmente molti grafici variando i pochi
+parametri sopra e riutilizzando le celle di utilità (helper).
+
+## Sezione Italia
 
 - `01_italia.ipynb`
+
+## Confronto europeo
+
 - `02_confronto_europeo.ipynb`
+
+## Confronto OCSE
+
 - `03_confronto_ocse.ipynb`
+
+## Regioni
+
 - `04_regioni.ipynb`
 
-I notebook cercano prima i file separati in:
+## Come usare i notebook
 
-```text
-data/export/bilancio-pubblico/sections/
+In ogni notebook trovi due flag all'inizio:
+`REFRESH` e `FORCE_DOWNLOAD`.
+
+Imposta entrambi a `False` per usare la cache locale.
+Imposta entrambi a `True` per rigenerare da fonti e aggiornare i CSV.
+
+### Comandi utili
+```bash
+python3 scripts/run_sections.py --sections all
+python3 scripts/run_sections.py --sections all --skip-pipeline
+python3 scripts/run_sections.py --sections all --refresh
+python3 scripts/download_all.py
+python3 scripts/download_all.py --refresh
 ```
-
-Se quei file non esistono, li creano richiamando il codice Python del repo.
