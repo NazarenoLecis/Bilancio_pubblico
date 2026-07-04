@@ -108,7 +108,28 @@ I notebook sono in `notebooks/`:
 - `03_confronto_ocse.ipynb`
 - `04_regioni.ipynb`
 
-Ogni notebook legge prima il JSON separato della propria sezione. Se il file non esiste, legge la sezione corrispondente da `source-data.json`.
+La prima cella di ogni notebook richiama il codice Python del repo tramite `bilancio_pubblico.notebook_inputs`.
+
+Il comportamento è questo:
+
+1. se il JSON della sezione esiste, il notebook lo legge;
+2. se manca il JSON della sezione ma esiste `source-data.json`, il notebook materializza solo quella sezione;
+3. se manca anche `source-data.json`, il notebook esegue la pipeline completa e poi materializza la sezione;
+4. se `FORCE_DOWNLOAD = True`, il notebook riesegue la pipeline anche quando l'input esiste.
+
+I flag nella prima cella sono:
+
+```python
+REFRESH = False
+FORCE_DOWNLOAD = False
+```
+
+Per forzare il refresh dal notebook:
+
+```python
+REFRESH = True
+FORCE_DOWNLOAD = True
+```
 
 ## Struttura del codice
 
@@ -117,6 +138,7 @@ Ogni notebook legge prima il JSON separato della propria sezione. Se il file non
 - `scripts/download_all.py`: export completo e manifest dei file scaricabili.
 - `scripts/bilancio_pubblico/section_schema.py`: schema operativo delle quattro sezioni.
 - `scripts/bilancio_pubblico/section_export.py`: costruzione di `section_index`, `sections`, JSON separati e manifest sezioni.
+- `scripts/bilancio_pubblico/notebook_inputs.py`: helper usato dai notebook per generare o caricare gli input.
 - `scripts/bilancio_pubblico/utils.py`: costanti, path, download/caching, stile grafico, utilità salvataggio e formatter.
 - `scripts/bilancio_pubblico/data_extraction.py`: funzioni di estrazione e normalizzazione dati nazionali e internazionali.
 - `scripts/bilancio_pubblico/regional_budgets.py`: caricamento OpenBDAP/FET dei bilanci regionali, normalizzazione e append al JSON.
